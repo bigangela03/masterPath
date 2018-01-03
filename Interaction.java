@@ -3,7 +3,8 @@ package masterPATH;
 import java.util.List;
 
 /**
- *
+ * Interaction class describes an Interaction object
+ * 
  * @author Natalia Rubanova
  */
 public class Interaction {
@@ -19,7 +20,7 @@ public class Interaction {
     String dir;
 
     /**
-     *
+     * Constructor 
      * @param id id of the interaction
      * @param other_ids ids from the source databases
      * @param int1 first interactor
@@ -59,7 +60,7 @@ public class Interaction {
     }
 
     /**
-     *Print all interaction information in one line
+     *Print all information about interaction in one line
      */
     public void print() {
         System.out.println(id + "\t" + int1.id + "\t" + int2.id + "\t" + type + "\t" + sourcedb + "\t" + quality + "\t" + dir);

@@ -1,5 +1,6 @@
 package masterPATH;
 
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -13,8 +14,9 @@ import java.util.Map;
 import java.util.Random;
 
 /**
- *
- * @author a
+ * NetworkTopology class contains methods to calculate network's topological properties
+ * 
+ * @author Natalia Rubanova
  */
 public class NetworkTopology {
 
@@ -30,7 +32,7 @@ public class NetworkTopology {
      * @param foundDF_mirnas
      * @throws IOException
      */
-    public void get_and_calculate_for_random(PathwayManager putils, NetworkManager nutils, DBManager dbutils, Network all, String musclef_com, String fp, String foundDF, String foundDF_mirnas) throws IOException {
+    private void get_and_calculate_for_random(PathwayManager putils, NetworkManager nutils, DBManager dbutils, Network all, String musclef_com, String fp, String foundDF, String foundDF_mirnas) throws IOException {
         Random randomGenerator = new Random();
         Map<String, String> r_hl = new HashMap();
         int count = 1000;
@@ -52,20 +54,14 @@ public class NetworkTopology {
             }
             r_hl_file.close();
             //   nutils.getLongPathsforListDF(all,  dbutils.hugo, 6, foundDF + "_random", "ququ");
-            putils.calcmiRNAs(foundDF + "_random", foundDF_mirnas + "_random", dbutils.mirtarbase, r_hl, nutils.fpl, 6, 2, "");
+            putils.find_miRNAs_on_pathways(foundDF + "_random", foundDF_mirnas + "_random", dbutils.mirtarbase, r_hl, nutils.fpl, 6, 2, "");
         }
     }
 
 
 
-    /**
-     *
-     * @param all
-     * @param outfile
-     * @param len
-     * @throws IOException
-     */
-    public void pathHubStatistics(Network all, String outfile, int len) throws IOException {
+
+    private void hubStatistics(Network all, String outfile, int len) throws IOException {
         BufferedWriter wr = new BufferedWriter(new FileWriter(outfile));
         ArrayList<String> nodes = new ArrayList();
         ArrayList<String> nbs = new ArrayList();
@@ -104,19 +100,14 @@ public class NetworkTopology {
         wr.close();
     }
 
-    /**
-     *
-     * @param all
-     * @return
-     */
-    public Network remove_genes(Network all) {
+    private Network remove_genes(Network all) {
         Network all_new = new Network();
         return all_new;
     }
 
     /**
-     *
-     * @param all
+     * Calculate average clustering coefficient for PPI network
+     * @param all Network
      */
     public void calculate_average_clustering_coefficient_ppi(Network all) {
         double ccoef = 0.0;
@@ -178,160 +169,9 @@ public class NetworkTopology {
         System.out.println("density = " + density);
     }
 
-    /**
-     *
-     * @param all
-     */
-    public void calculate_number_of_conected_components_ppi(Network all) {
-        List<List<String>> components = new ArrayList();
-        int number_of_components = 0;
-        List<String> nbrs;
-        String n2 = "";
-        int path = 0;
-        boolean add = false;
-        List<String> new_level;
-        List<String> visited_nodes = new ArrayList();
-        for (Node n : all.nodes.values()) {
-            if (n.type.equals("protein") && !visited_nodes.contains(n.id)) {
-                if (n.revnbrs.isEmpty()) {
-                    continue;
-                }
-                path = 0;
-                number_of_components++;
-                nbrs = new ArrayList();
-                visited_nodes.add(n.id);
-                for (Interaction edg : n.revnbrs.values()) {
-                    if (!edg.int1.id.equals(n.id) && !visited_nodes.contains(edg.int1.id)) {
-                        n2 = edg.int1.id;
-                        nbrs.add(n2);
-                        visited_nodes.add(n2);
-                    }
-                    if (!edg.int2.id.equals(n.id) && !visited_nodes.contains(edg.int2.id)) {
-                        n2 = edg.int2.id;
-                        nbrs.add(n2);
-                        visited_nodes.add(n2);
-                    }
-                }
-                new_level = new ArrayList();
-                new_level.addAll(nbrs);
-
-                if (nbrs.isEmpty()) {
-                    // System.out.println("A " + n.id + " " + n.revnbrs.size() );
-                }
-                while (!new_level.isEmpty()) {
-                    path++;
-                    for (String n3 : nbrs) {
-                        new_level.remove(n3);
-                        for (Interaction edg : all.nodes.get(n3).revnbrs.values()) {
-                            if (!visited_nodes.contains(edg.int1.id)) {
-                                new_level.add(edg.int1.id);
-                                visited_nodes.add(edg.int1.id);
-                            }
-                            if (!visited_nodes.contains(edg.int2.id)) {
-                                new_level.add(edg.int2.id);
-                                visited_nodes.add(edg.int2.id);
-                            }
-                        }
-                    }
-                    nbrs.clear();
-                    nbrs.addAll(new_level);
-                }
-                System.out.println("path = " + path);
-            }
-        }
-        System.out.println("number of connected components = " + number_of_components);
-    }
-
-    /**
-     *
-     * @param all
-     */
-    public void calculate_diametr_ppi(Network all) {
-        List<String> nodes = new ArrayList();
-        for (Node n : all.nodes.values()) {
-            if (n.type.equals("protein") && !n.revnbrs.isEmpty()) {
-                nodes.add(n.id);
-            }
-        }
-        int[][] matrix = new int[nodes.size()][nodes.size()];
-        for (int i = 0; i < nodes.size(); i++) {
-            for (int j = 0; j < nodes.size(); j++) {
-                if (i == j) {
-                    matrix[i][j] = 0;
-                } else {
-                    matrix[i][j] = 10000;
-                    //System.out.println( matrix[i][j]);
-                }
-            }
-        }
-        int f, s;
-        for (Interaction edg : all.interactions.values()) {
-            if (edg.int1.type.equals("protein") && edg.int2.type.equals("protein") && !edg.int1.id.equals(edg.int2.id)) {
-                f = nodes.indexOf(edg.int1.id);
-                s = nodes.indexOf(edg.int2.id);
-                matrix[f][s] = 1;
-                matrix[s][f] = 1;
-            }
-        }
-        for (int k = 0; k < nodes.size(); k++) {
-            for (int i = 0; i < nodes.size(); i++) {
-                for (int j = 0; j < nodes.size(); j++) {
-                    if (matrix[i][j] > matrix[i][k] + matrix[k][j]) {
-                        matrix[i][j] = matrix[i][k] + matrix[k][j];
-                        //System.out.println(matrix[i][j]);
-                    }
-                }
-            }
-        }
-
-        int diametr = 0;
-        for (int i = 0; i < nodes.size(); i++) {
-            for (int j = 0; j < nodes.size(); j++) {
-                if (diametr < matrix[i][j] && matrix[i][j] < 10000) {
-                    diametr = matrix[i][j];
-                }
-            }
-        }
-        int aspl_number = 0;
-        double aspl = 0.0;
-        for (int i = 0; i < nodes.size(); i++) {
-            for (int j = 0; j < nodes.size(); j++) {
-                if (i != j && matrix[i][j] < 1000) {
-                    aspl = aspl + matrix[i][j];
-                    aspl_number++;
-                }
-            }
-        }
-        aspl = aspl / aspl_number;
-        System.out.println("diametr = " + diametr);
-        System.out.println("aspl = " + aspl);
-    }
-
-    /**
-     *
-     * @param all
-     * @param outfile
-     * @throws IOException
-     */
-    public void get_degree_distribution_ppi(Network all, String outfile) throws IOException {
-        BufferedWriter wr = new BufferedWriter(new FileWriter(outfile));
-        int degree = 0;
-        for (Node n : all.nodes.values()) {
-            if (n.type.equals("protein")) {
-                if (n.revnbrs.isEmpty()) {
-                    continue;
-                }
-                System.out.println("" + n.revnbrs.size());
-                wr.write("" + n.revnbrs.size());
-                wr.newLine();
-            }
-        }
-        wr.close();
-    }
-
-    /**
-     *
-     * @param all
+      /**
+     * Calculate average clustering coefficient for direct network
+     * @param all Network
      */
     public void calculate_average_clustering_coefficient_direct(Network all) {
         double ccoef = 0.0;
@@ -444,12 +284,216 @@ public class NetworkTopology {
         System.out.println("average number of neighbours = " + number_of_nbrs);
         System.out.println("density = " + density);
     }
+    
+    
+    /**
+     * Calculate number of connected components PPI network 
+     * @param all Network
+     */
+    public void calculate_number_of_connected_components_ppi(Network all) {
+        List<List<String>> components = new ArrayList();
+        int number_of_components = 0;
+        List<String> nbrs;
+        String n2 = "";
+        int path = 0;
+        boolean add = false;
+        List<String> new_level;
+        List<String> visited_nodes = new ArrayList();
+        for (Node n : all.nodes.values()) {
+            if (n.type.equals("protein") && !visited_nodes.contains(n.id)) {
+                if (n.revnbrs.isEmpty()) {
+                    continue;
+                }
+                path = 0;
+                number_of_components++;
+                nbrs = new ArrayList();
+                visited_nodes.add(n.id);
+                for (Interaction edg : n.revnbrs.values()) {
+                    if (!edg.int1.id.equals(n.id) && !visited_nodes.contains(edg.int1.id)) {
+                        n2 = edg.int1.id;
+                        nbrs.add(n2);
+                        visited_nodes.add(n2);
+                    }
+                    if (!edg.int2.id.equals(n.id) && !visited_nodes.contains(edg.int2.id)) {
+                        n2 = edg.int2.id;
+                        nbrs.add(n2);
+                        visited_nodes.add(n2);
+                    }
+                }
+                new_level = new ArrayList();
+                new_level.addAll(nbrs);
+
+                if (nbrs.isEmpty()) {
+                    // System.out.println("A " + n.id + " " + n.revnbrs.size() );
+                }
+                while (!new_level.isEmpty()) {
+                    path++;
+                    for (String n3 : nbrs) {
+                        new_level.remove(n3);
+                        for (Interaction edg : all.nodes.get(n3).revnbrs.values()) {
+                            if (!visited_nodes.contains(edg.int1.id)) {
+                                new_level.add(edg.int1.id);
+                                visited_nodes.add(edg.int1.id);
+                            }
+                            if (!visited_nodes.contains(edg.int2.id)) {
+                                new_level.add(edg.int2.id);
+                                visited_nodes.add(edg.int2.id);
+                            }
+                        }
+                    }
+                    nbrs.clear();
+                    nbrs.addAll(new_level);
+                }
+                System.out.println("path = " + path);
+            }
+        }
+        System.out.println("number of connected components = " + number_of_components);
+    }
 
     /**
-     *
-     * @param all
+     * Calculate number of connected components for direct network
+     * @param all Network
      */
-    public void calculate_diametr_direct(Network all) {
+    public void calculate_number_of_connected_components_direct(Network all) {
+        int number_of_components = 0;
+        List<String> nbrs;
+        String n2;
+        int path = 0;
+        List<String> new_level;
+        List<String> visited_nodes = new ArrayList();
+        List<Interaction> all_nbrs = new ArrayList();
+        for (Node n : all.nodes.values()) {
+            if (!visited_nodes.contains(n.id)) {
+                if (n.revnbrs.isEmpty() && n.upnbrs.isEmpty() && n.downnbrs.isEmpty()) {
+                    continue;
+                }
+                path = 0;
+                number_of_components++;
+                nbrs = new ArrayList();
+                visited_nodes.add(n.id);
+                all_nbrs.clear();
+                all_nbrs.addAll(n.revnbrs.values());
+                all_nbrs.addAll(n.upnbrs.values());
+                all_nbrs.addAll(n.downnbrs.values());
+                for (Interaction edg : all_nbrs) {
+                    if (!edg.int1.id.equals(n.id) && !visited_nodes.contains(edg.int1.id)) {
+                        n2 = edg.int1.id;
+                        nbrs.add(n2);
+                        visited_nodes.add(n2);
+                    }
+                    if (!edg.int2.id.equals(n.id) && !visited_nodes.contains(edg.int2.id)) {
+                        n2 = edg.int2.id;
+                        nbrs.add(n2);
+                        visited_nodes.add(n2);
+                    }
+                }
+                new_level = new ArrayList();
+                new_level.addAll(nbrs);
+
+                if (nbrs.isEmpty()) {
+                    // System.out.println("A " + n.id + " " + n.revnbrs.size() );
+                }
+
+                while (!new_level.isEmpty()) {
+                    path++;
+                    for (String n3 : nbrs) {
+                        new_level.remove(n3);
+
+                        all_nbrs.clear();
+                        all_nbrs.addAll(all.nodes.get(n3).revnbrs.values());
+                        all_nbrs.addAll(all.nodes.get(n3).upnbrs.values());
+                        all_nbrs.addAll(all.nodes.get(n3).downnbrs.values());
+                        for (Interaction edg : all_nbrs) {
+                            if (!visited_nodes.contains(edg.int1.id)) {
+                                new_level.add(edg.int1.id);
+                                visited_nodes.add(edg.int1.id);
+                            }
+                            if (!visited_nodes.contains(edg.int2.id)) {
+                                new_level.add(edg.int2.id);
+                                visited_nodes.add(edg.int2.id);
+                            }
+                        }
+                    }
+                    nbrs.clear();
+                    nbrs.addAll(new_level);
+                }
+                //System.out.println("path = " + path);
+            }
+        }
+        System.out.println("number of connected components = " + number_of_components);
+    }
+    
+   
+    /**
+     * Calculate diameter
+     * @param all Network
+     */
+    public void calculate_diameter_ppi(Network all) {
+        List<String> nodes = new ArrayList();
+        for (Node n : all.nodes.values()) {
+            if (n.type.equals("protein") && !n.revnbrs.isEmpty()) {
+                nodes.add(n.id);
+            }
+        }
+        int[][] matrix = new int[nodes.size()][nodes.size()];
+        for (int i = 0; i < nodes.size(); i++) {
+            for (int j = 0; j < nodes.size(); j++) {
+                if (i == j) {
+                    matrix[i][j] = 0;
+                } else {
+                    matrix[i][j] = 10000;
+                    //System.out.println( matrix[i][j]);
+                }
+            }
+        }
+        int f, s;
+        for (Interaction edg : all.interactions.values()) {
+            if (edg.int1.type.equals("protein") && edg.int2.type.equals("protein") && !edg.int1.id.equals(edg.int2.id)) {
+                f = nodes.indexOf(edg.int1.id);
+                s = nodes.indexOf(edg.int2.id);
+                matrix[f][s] = 1;
+                matrix[s][f] = 1;
+            }
+        }
+        for (int k = 0; k < nodes.size(); k++) {
+            for (int i = 0; i < nodes.size(); i++) {
+                for (int j = 0; j < nodes.size(); j++) {
+                    if (matrix[i][j] > matrix[i][k] + matrix[k][j]) {
+                        matrix[i][j] = matrix[i][k] + matrix[k][j];
+                        //System.out.println(matrix[i][j]);
+                    }
+                }
+            }
+        }
+
+        int diametr = 0;
+        for (int i = 0; i < nodes.size(); i++) {
+            for (int j = 0; j < nodes.size(); j++) {
+                if (diametr < matrix[i][j] && matrix[i][j] < 10000) {
+                    diametr = matrix[i][j];
+                }
+            }
+        }
+        int aspl_number = 0;
+        double aspl = 0.0;
+        for (int i = 0; i < nodes.size(); i++) {
+            for (int j = 0; j < nodes.size(); j++) {
+                if (i != j && matrix[i][j] < 1000) {
+                    aspl = aspl + matrix[i][j];
+                    aspl_number++;
+                }
+            }
+        }
+        aspl = aspl / aspl_number;
+        System.out.println("diametr = " + diametr);
+        System.out.println("aspl = " + aspl);
+    }
+
+    /**
+     * Calculate diameter of a direct network 
+     * @param all Network
+     */
+    public void calculate_diameter_direct(Network all) {
         List<String> nodes = new ArrayList();
         for (Node n : all.nodes.values()) {
             if ((!n.revnbrs.isEmpty() || !n.upnbrs.isEmpty() || !n.downnbrs.isEmpty()) && !n.type.equals("gene")) {
@@ -529,85 +573,33 @@ public class NetworkTopology {
         System.out.println("diametr = " + diametr);
         System.out.println("aspl = " + aspl);
     }
-
+    
+    
     /**
-     *
-     * @param all
+     * Build degree distribution for PPI network
+     * @param all Network
+     * @param outfile Output file
      */
-    public void calculate_number_of_connected_components_direct(Network all) {
-        int number_of_components = 0;
-        List<String> nbrs;
-        String n2;
-        int path = 0;
-        List<String> new_level;
-        List<String> visited_nodes = new ArrayList();
-        List<Interaction> all_nbrs = new ArrayList();
+    public void get_degree_distribution_ppi(Network all, String outfile) throws IOException {
+        BufferedWriter wr = new BufferedWriter(new FileWriter(outfile));
+        int degree = 0;
         for (Node n : all.nodes.values()) {
-            if (!visited_nodes.contains(n.id)) {
-                if (n.revnbrs.isEmpty() && n.upnbrs.isEmpty() && n.downnbrs.isEmpty()) {
+            if (n.type.equals("protein")) {
+                if (n.revnbrs.isEmpty()) {
                     continue;
                 }
-                path = 0;
-                number_of_components++;
-                nbrs = new ArrayList();
-                visited_nodes.add(n.id);
-                all_nbrs.clear();
-                all_nbrs.addAll(n.revnbrs.values());
-                all_nbrs.addAll(n.upnbrs.values());
-                all_nbrs.addAll(n.downnbrs.values());
-                for (Interaction edg : all_nbrs) {
-                    if (!edg.int1.id.equals(n.id) && !visited_nodes.contains(edg.int1.id)) {
-                        n2 = edg.int1.id;
-                        nbrs.add(n2);
-                        visited_nodes.add(n2);
-                    }
-                    if (!edg.int2.id.equals(n.id) && !visited_nodes.contains(edg.int2.id)) {
-                        n2 = edg.int2.id;
-                        nbrs.add(n2);
-                        visited_nodes.add(n2);
-                    }
-                }
-                new_level = new ArrayList();
-                new_level.addAll(nbrs);
-
-                if (nbrs.isEmpty()) {
-                    // System.out.println("A " + n.id + " " + n.revnbrs.size() );
-                }
-
-                while (!new_level.isEmpty()) {
-                    path++;
-                    for (String n3 : nbrs) {
-                        new_level.remove(n3);
-
-                        all_nbrs.clear();
-                        all_nbrs.addAll(all.nodes.get(n3).revnbrs.values());
-                        all_nbrs.addAll(all.nodes.get(n3).upnbrs.values());
-                        all_nbrs.addAll(all.nodes.get(n3).downnbrs.values());
-                        for (Interaction edg : all_nbrs) {
-                            if (!visited_nodes.contains(edg.int1.id)) {
-                                new_level.add(edg.int1.id);
-                                visited_nodes.add(edg.int1.id);
-                            }
-                            if (!visited_nodes.contains(edg.int2.id)) {
-                                new_level.add(edg.int2.id);
-                                visited_nodes.add(edg.int2.id);
-                            }
-                        }
-                    }
-                    nbrs.clear();
-                    nbrs.addAll(new_level);
-                }
-                //System.out.println("path = " + path);
+                System.out.println("" + n.revnbrs.size());
+                wr.write("" + n.revnbrs.size());
+                wr.newLine();
             }
         }
-        System.out.println("number of connected components = " + number_of_components);
+        wr.close();
     }
 
     /**
-     *
-     * @param all
-     * @param outfile
-     * @throws IOException
+     * Build degree distribution for direct network
+     * @param all Network
+     * @param outfile Output file
      */
     public void get_degree_distribution_direct(Network all, String outfile) throws IOException {
         BufferedWriter wr_in = new BufferedWriter(new FileWriter(outfile + "_in"));
@@ -670,41 +662,18 @@ public class NetworkTopology {
         wr_out.close();
         wr_total.close();
     }
+    
+    
+  
+    
+
+    
+    
 
     /**
-     *
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
-    public void compare_two_lists() throws FileNotFoundException, IOException {
-        BufferedReader rd1 = new BufferedReader(new FileReader("F:\\Dropbox\\_Работа\\Programms\\DATA\\PhD\\Systems\\Case2_Control\\output\\hubs_CC3_good_pvalue.txt"));
-        BufferedReader rd2 = new BufferedReader(new FileReader("F:\\Dropbox\\_Работа\\Programms\\DATA\\PhD\\Systems\\Case2_Control\\input\\HitGenes.txt"));
-        String s;
-        List<String> genes = new ArrayList();
-        while ((s = rd1.readLine()) != null) {
-            genes.add(s);
-        }
-        System.out.println("hubs " + genes.size());
-        int count_hits = 0;
-        int count_common = 0;
-        while ((s = rd2.readLine()) != null) {
-            count_hits++;
-            if (genes.contains(s)) {
-                System.out.println(s);
-                count_common++;
-            }
-
-        }
-        System.out.println("hits " + count_hits);
-        System.out.println("common " + count_common);
-    }
-
-    /**
-     *
-     * @param all
-     * @param fname
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Calculate subnetwork properties
+     * @param all Network 
+     * @param fname File with pathways to create subnetwork
      */
     public void get_subnetwork_statistics(Network all, String fname) throws FileNotFoundException, IOException {
         BufferedReader rd = new BufferedReader(new FileReader(fname));

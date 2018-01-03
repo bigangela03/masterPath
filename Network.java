@@ -1,5 +1,6 @@
 package masterPATH;
 
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -13,7 +14,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * Network class describes an Network object
+ * 
  * @author Natalia Rubanova
  */
 public class Network {
@@ -22,20 +24,15 @@ public class Network {
     Map<String, Interaction> interactions;
 
     /**
-     *
+     * Constructor
      */
     public Network() {
         this.nodes = new HashMap();
         this.interactions = new HashMap();
     }
 
-    /**
-     * Saves all interactions in the network to the output file
-     *
-     * @param file output file
-     * @throws IOException
-     */
-    public void print_interactions_to_file(String file) throws IOException {
+
+    private void print_interactions_to_file(String file) throws IOException {
         //      String id,List<String> other_ids, Node int1, Node int2, String type, String sourcedb,List<String []> sourcedbentry, String quality, String dir
         BufferedWriter wr = new BufferedWriter(new FileWriter(file));
         for (String id : interactions.keySet()) {
@@ -51,12 +48,9 @@ public class Network {
     }
 
     /**
-     * Load network from two files
-     *
+     * Load network from two files     *
      * @param nodef file with information about nodes
      * @param intf file with information about interactions
-     * @throws FileNotFoundException
-     * @throws IOException
      */
     public void loadNetworkfromfile(String nodef, String intf) throws FileNotFoundException, IOException {
         //String id, String type, String id_type, String db_flag, List<String[]> ids  
@@ -106,11 +100,9 @@ public class Network {
     }
 
     /**
-     * Saves all interactions and nodes in the network to the two output files
-     *
+     * Save all interactions and nodes in the network to the two output files
      * @param nodef node file
      * @param intf interaction file
-     * @throws IOException
      */
     public void saveNetworktofile(String nodef, String intf) throws IOException {
         BufferedWriter wn = new BufferedWriter(new FileWriter(nodef));
@@ -149,11 +141,10 @@ public class Network {
     /**
      * Load network from databases
      *
-     * @param nutils NetworkTools object
-     * @param putils PathwayTools object
-     * @param outils OverrepresentedTools object
-     * @param dbutils DBkTools object
-     * @throws IOException
+     * @param nutils NetworkManager object
+     * @param putils PathwayManager object
+     * @param outils CentralityManager object
+     * @param dbutils DBManager object
      */
     public void loadNetwork2(NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils) throws IOException {
         Network all=new Network();
@@ -185,9 +176,9 @@ public class Network {
         networks.add(dbutils.tfacts);
         
         //all = nutils.merge_list_of_networks(networks);
-        nutils.buildNeighbours(all);
-        nutils.add_genes_and_products(all);
-        nutils.buildNeighbours(all);
+        nutils.build_map_of_neighbors(all);
+        nutils.add_missing_genes_and_products(all);
+        nutils.build_map_of_neighbors(all);
         this.interactions = all.interactions;
         this.nodes = all.nodes;
         all = null;

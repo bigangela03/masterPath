@@ -13,31 +13,31 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-
 /**
+ * NetworkManager class contains methods to deal with networks
  *
  * @author Natalia Rubanova
  */
 public class NetworkManager {
-    
+
     static Map<String, String> fpl = new HashMap();
     static Map<String, String> hg = new HashMap();
 
     /**
      * Merge list of networks
+     *
      * @param n List of networks
-     * @return
      */
     public Network merge_list_of_networks(List<Network> n) {
         System.out.println("\n +++++++++++++merge list of networks++++++++++++ \n");
         Network tmp_add = new Network(), tmp_sub = new Network(), mrg = new Network();
-        
+
         boolean match = false;
         int i = 0, j = 0, k = 0, l = 0;
         for (Network nw : n) {
             mrg.nodes.putAll(nw.nodes);
         }
-        
+
         for (Network nw : n) {
             // tmp_add = new Network();
             // tmp_sub = new Network();
@@ -79,9 +79,9 @@ public class NetworkManager {
                     mrg.interactions.remove(int_id);
                 }
             }
-            
+
         }
-        
+
         for (Network nw : n) {
             System.out.println("network nodes " + nw.nodes.size() + " interactions " + nw.interactions.size());
         }
@@ -90,10 +90,11 @@ public class NetworkManager {
     }
 
     /**
-     *Create a map of neighbors for each node
+     * Create links to all neighbors for every node in the network
+     *
      * @param nw Network
      */
-    public void buildNeighbours(Network nw) {
+    public void build_map_of_neighbors(Network nw) {
         System.out.println("+++++++++++buildNeighbours++++++++++");
         Map<String, String> it_type = new HashMap();
         String n1;
@@ -111,7 +112,7 @@ public class NetworkManager {
         }
         System.out.println("sum degree1 " + sum_degree);
         System.out.println("interactions1 " + nw.interactions.size());
-        
+
         for (String it : nw.interactions.keySet()) {
             if (nw.interactions.get(it).int1.type.toLowerCase().equals("stimulus")
                     || nw.interactions.get(it).int1.type.toLowerCase().equals("chemical")
@@ -126,7 +127,7 @@ public class NetworkManager {
                 //duplicate_int.add(it);
                 continue;
             }
-            
+
             if (!nw.interactions.get(it).int1.type.toLowerCase().equals("stimulus")
                     && !nw.interactions.get(it).int1.type.toLowerCase().equals("chemical")
                     && !nw.interactions.get(it).int1.type.toLowerCase().equals("smallmolecule")
@@ -155,7 +156,7 @@ public class NetworkManager {
             try {
                 n1 = nw.interactions.get(it).int1.id;
                 n2 = nw.interactions.get(it).int2.id;
-                
+
             } catch (NullPointerException e) {
                 System.out.print("BN error " + it + "\t");
                 System.out.println(nw.interactions.get(it).sourcedbentry.get(0));
@@ -167,19 +168,19 @@ public class NetworkManager {
                 }
                 continue;
             }
-            
+
             if (nw.interactions.get(it).dir.toLowerCase().equals("indirect") || nw.interactions.get(it).type.toLowerCase().equals("kegg_reaction_reversible")) {
-                
+
                 if (nw.nodes.get(n1).revnbrs.containsKey(n2)) {
                     if (!duplicate_int.contains(it)) {
-                     //   duplicate_int.add(it);
+                        //   duplicate_int.add(it);
                     }
                     continue;
                 }
-                
+
                 if (nw.nodes.get(n2).revnbrs.containsKey(n1)) {
                     if (!duplicate_int.contains(it)) {
-                     //   duplicate_int.add(it);
+                        //   duplicate_int.add(it);
                     }
                     continue;
                 }
@@ -188,17 +189,17 @@ public class NetworkManager {
                     System.out.println("ERROR2 ");
                     break;
                 }
-                
+
                 nw.nodes.get(n1).revnbrs.put(n2, nw.interactions.get(it));
                 nw.nodes.get(n2).revnbrs.put(n1, nw.interactions.get(it));
-                
+
             } else {
-                
+
                 if (nw.nodes.get(n1).downnbrs.containsKey(n2)) {
                     //  System.out.println("AAAA11 " + nw.nodes.get(n1).downnbrs.get(nw.interactions.get(it).int2.id).type);
                     //  System.out.println("AAAA12 " + nw.interactions.get(it).type);
                     if (!duplicate_int.contains(it)) {
-                     //   duplicate_int.add(it);
+                        //   duplicate_int.add(it);
                     }
                     continue;
                 }
@@ -206,11 +207,11 @@ public class NetworkManager {
                     //  System.out.println("AAAA21 " + nw.nodes.get(n1).upnbrs.get(nw.interactions.get(it).int1.id).id);
                     //  System.out.println("AAAA22 " + it);
                     if (!duplicate_int.contains(it)) {
-                     //   duplicate_int.add(it);
+                        //   duplicate_int.add(it);
                     }
                     continue;
                 }
-                
+
                 if (nw.nodes.get(n1).downnbrs.containsKey(n2) && !nw.nodes.get(n2).upnbrs.containsKey(n1)) {
                     System.out.println("ERROR ");
                     break;
@@ -222,7 +223,7 @@ public class NetworkManager {
                 }
                 nw.nodes.get(n1).downnbrs.put(n2, nw.interactions.get(it));
                 nw.nodes.get(n2).upnbrs.put(n1, nw.interactions.get(it));
-                
+
             }
             /*if (nw.interactions.get(it).type.equals("kegg_reaction_reversible")) {
              //nw.nodes.get(n1).revnbrs.put(nw.interactions.get(it).int2, nw.interactions.get(it));
@@ -260,16 +261,17 @@ public class NetworkManager {
     }
 
     /**
-     *Load hit genes and final implementers files
+     * Load hit genes and final implementers files
+     *
      * @param hgf Hit genes file
      * @param fpf Final players file
      * @param hugo Link to the HGNC nomenclature
-     * @throws FileNotFoundException
-     * @throws IOException
      */
-    public void loadHitGenes_and_FinalPlayers(String hgf, String fpf, Map<String, String[]> hugo) throws FileNotFoundException, IOException {
+    public void load_hitlist_and_finalimpl(String hgf, String fpf, Map<String, String[]> hugo) throws FileNotFoundException, IOException {
         System.out.println(" +++++++++++++loadHitGenes_and_FinalPlayers++++++++++++ ");
         System.out.println("Loading hit list and fplayers files");
+        char[] alphabet = "123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
+        char[] digit = "123456789".toCharArray();
         //loadHitGenes_and_FinalPlayers(hgf, fpf, hugo);
         fpl = new HashMap<String, String>();
         hg = new HashMap<String, String>();
@@ -284,50 +286,75 @@ public class NetworkManager {
         }
         rd.close();
         rd = new BufferedReader(new FileReader(hgf));
+        boolean flag = false;
+        String sep = "";
         while ((s = rd.readLine()) != null) {
             i++;
             if (hugo.containsKey(s)) {
+                flag = false;
                 if (s.startsWith("MIR") && (hugo.get(s)[2].startsWith("microRNA"))) {
                     if (s.contains("LET")) {
                         hg.put("hsa-let-" + s.substring(6).toLowerCase(), s);
-                        j++;
+                        flag = true;
                         //   System.out.println(s + "\t" + "hsa-let-" + s.substring(6));
                     } else {
+                        flag = true;
                         hg.put("hsa-mir-" + s.substring(3).toLowerCase(), s);
-                        j++;
                         //  System.out.println(s + "\t" + "hsa-mir-" + s.substring(3));
                     }
                 } else {
+                    flag = true;
                     hg.put("p" + hugo.get(s)[0], "p" + s);// hit gene - gene
-                    j++;
                 }
-            } else {
-                if (s.startsWith("MIR")) {
-                    if (!s.matches("^.*\\d$") && hugo.containsKey(s + "1")) {
-                        hg.put("hsa-mir-" + s.substring(3).toLowerCase(), s + "1");
-                        j++;
-//   System.out.println(s + "\t" + s + "1" + "\t" + "hsa-mir-" + s.substring(3));
-                    } else if (hugo.containsKey(s + "-1")) {
-                        hg.put("hsa-mir-" + s.substring(3).toLowerCase(), s + "1");
-                        j++;
-                        //    System.out.println(s + "\t" + s + "-1" + "\t" + "hsa-mir-" + s.substring(3));
-                    } else if (hugo.containsKey(s + "A")) {
-                        hg.put("hsa-mir-" + s.substring(3).toLowerCase(), s + "A");
-                        j++;
-                        //   System.out.println(s + "\t" + s + "A" + "\t" + "hsa-mir-" + s.substring(3));
+            } else if (s.startsWith("MIR")) {
+                flag = false;
+                for (char c : alphabet) {
+                    if (s.contains("LET")) {
+                        if (hugo.containsKey(s + c) && !(Character.isDigit(c) && Character.isDigit(s.charAt(s.length() - 1)))) {
+                            if (Character.isDigit(c)) {
+                                hg.put("hsa-let-" + s.substring(6).toLowerCase() + "-" + c, s + c);
+                            } else {
+                                hg.put("hsa-let-" + s.substring(6).toLowerCase() + "" + c, s + c);
+                            }
+                            flag = true;
+                        }
+                        if (hugo.containsKey(s + "-" + c)) {
+                            hg.put("hsa-let-" + s.substring(6).toLowerCase() + "-" + c, s);
+                            flag = true;
+                        }
                     } else {
-                        System.out.println("Not in HUGO! " + s);
+                        if (hugo.containsKey(s + c) && !(Character.isDigit(c) && Character.isDigit(s.charAt(s.length() - 1)))) {
+                            if (Character.isDigit(c)) {
+                                hg.put("hsa-mir-" + s.substring(3).toLowerCase() + "-" + c, s + c);
+                            } else {
+                                hg.put("hsa-mir-" + s.substring(3).toLowerCase() + c, s + c);
+                            }
+                            flag = true;
+                        }
+                        if (hugo.containsKey(s + "-" + c)) {
+                            hg.put("hsa-mir-" + s.substring(3).toLowerCase(), s);
+                            flag = true;
+                        }
                     }
                 }
             }
-            /*if (s.equals("MIR206")) {
-             hg.put("hsa-mir-206", s);
-             } */
+            if (!flag) {
+                System.out.println("Not in HUGO! " + s);
+            } else {
+                j++;
+            }
+
         }
+        /*if (s.equals("MIR206")) {
+         hg.put("hsa-mir-206", s);
+         } */
+
         rd.close();
-        System.out.println(j + "/" + i + " finished");
+
+        System.out.println(j
+                + "/" + i + " finished");
     }
-    
+
     private int return_node_type(String current_node) {
         int node_type;
         //System.out.println(current_node);
@@ -344,21 +371,20 @@ public class NetworkManager {
     }
 
     /**
-     * Find a pathway between two lists of nodes 
-     * @param network
-     * @param n1 List of beginning nodes
-     * @param n2 List of end nodes
+     * Find length-bound pathways between two lists of nodes
+     *
+     * @param network Network
+     * @param n1 List of Hit genes nodes
+     * @param n2 List of Final implementers nodes
      * @param max Maximum length
-     * @param prefix Prefix for interaction id
+     * @param prefix Prefix for pathway id
      * @param out Output file
-     * @return
-     * @throws IOException
      */
-    public List<PathUnit> getLongPathBF(Network network, List<String> n1, List<String> n2, int max, String prefix, FileWriter out) throws IOException {
+    public List<PathUnit> find_pathway_BF_algorithm(Network network, List<String> n1, List<String> n2, int max, String prefix, FileWriter out) throws IOException {
         PathUnit curn, tmp_curn;//Buffered
         List<String> path, seeds;
         LinkedList<PathUnit> found = new LinkedList(), pre_found = new LinkedList();
-        
+
         int current_hg = 0, id = 0;
         Map<String, Integer> visited_depth = new HashMap();
         String tmp_s, path_string = "";
@@ -397,7 +423,7 @@ public class NetworkManager {
                         tmp_path_type[path_type] = 1;
                         visited_nodes.put(n, tmp_path_type);
                     }
-                    
+
                 }
 ////////////////////////////////////////////////////////////////////////////////
                 for (String n : network.nodes.get(beg).revnbrs.keySet()) {
@@ -426,7 +452,7 @@ public class NetworkManager {
                 tmp_paths = new ArrayList();
                 tmp_visited_nodes = new HashMap();
                 for (int j = 0; j < p_s; j++) {
-                    
+
                     curn = paths.get(j);
 ////////////////////////////////////////////////////////////////////////////////           
                     for (String n : network.nodes.get(curn.current_seed).revnbrs.keySet()) {
@@ -448,7 +474,8 @@ public class NetworkManager {
                                 continue;
                             }
                             cont = true;
-                            if (visited_nodes.containsKey(n)) {//!Arrays.equals(visited_nodes.get(n), visited_nodes.get(curn.current_seed))  || || path_type >= 1 
+                            if (visited_nodes.containsKey(n)) {
+
                                 if (!Arrays.equals(only_ppi, visited_nodes.get(curn.current_seed))) {
                                     cont = false;
                                 }
@@ -468,7 +495,6 @@ public class NetworkManager {
                                     tmp_path_type = visited_nodes.get(curn.current_seed).clone();
                                 }
                                 tmp_path_type[path_type] = 1;
-                                //||  !tmp_visited_nodes.containsKey(n)
                                 if (!Arrays.equals(only_ppi, tmp_path_type) || !tmp_visited_nodes.containsKey(n)) {
                                     tmp_visited_nodes.put(n, tmp_path_type);
                                 }
@@ -517,7 +543,7 @@ public class NetworkManager {
                             //!tmp_visited_nodes.containsKey(n)
                             if (!Arrays.equals(only_ppi, tmp_path_type) || !tmp_visited_nodes.containsKey(n)) {
                                 tmp_visited_nodes.put(n, tmp_path_type);
-                                
+
                             }
                         }
                     }
@@ -586,21 +612,20 @@ public class NetworkManager {
     }
 
     /**
-     * Find a pathway between two lists of nodes in PPI network
-     * @param network Network
-     * @param n1 List of proteins
-     * @param n2 List of proteins
+     * Find length-bound pathways between two lists of nodes in a PPI network
+     *
+     * @param network
+     * @param n1 List of Hit genes nodes
+     * @param n2 List of Final implementers nodes
      * @param max Maximum length
      * @param prefix Prefix for interaction id
      * @param out output file
-     * @return
-     * @throws IOException
      */
-    public List<PathUnit> getLongPathBF_ppi(Network network, List<String> n1, List<String> n2, int max, String prefix, BufferedWriter out) throws IOException {
+    public List<PathUnit> find_pathway_BF_algorithm_ppi(Network network, List<String> n1, List<String> n2, int max, String prefix, BufferedWriter out) throws IOException {
         PathUnit curn, tmp_curn;
         List<String> path, seeds;
         LinkedList<PathUnit> found = new LinkedList(), pre_found = new LinkedList();
-        
+
         int current_hg = 0, id = 0;
         Map<String, Integer> visited_depth = new HashMap();
         String tmp_s, path_string = "";
@@ -641,7 +666,7 @@ public class NetworkManager {
                         tmp_path_type[path_type] = 1;
                         visited_nodes.put(n, tmp_path_type);
                     }
-                    
+
                 }
 ////////////////////////////////////////////////////////////////////////////////
                 for (String n : network.nodes.get(beg).revnbrs.keySet()) {
@@ -757,7 +782,7 @@ public class NetworkManager {
                             //!tmp_visited_nodes.containsKey(n)
                             if (!Arrays.equals(only_ppi, tmp_path_type) || !tmp_visited_nodes.containsKey(n)) {
                                 tmp_visited_nodes.put(n, tmp_path_type);
-                                
+
                             }
                         }
                     }
@@ -766,7 +791,7 @@ public class NetworkManager {
                             System.out.print(j + "\t");
                         }
                     }
-                    
+
                 }
                 //System.out.println("continue_length " + continue_length);
                 if (i < 5) {
@@ -828,14 +853,14 @@ public class NetworkManager {
 
     /**
      * Wrapper for finding pathways
+     *
      * @param nw Network
      * @param hugo Link to HGNC nomenclature
      * @param max Maximum length
      * @param outf Output file
      * @param prefix Prefix for interaction id
-     * @throws IOException
      */
-    public void getLongPathsforListBF(Network nw, Map<String, String[]> hugo, int max, String outf, String prefix) throws IOException {
+    public void find_pathway_for_list_BF_algorithm(Network nw, Map<String, String[]> hugo, int max, String outf, String prefix) throws IOException {
         System.out.println("++++++++++getPathforListBF+++++++++");
         FileWriter out = new FileWriter(outf);
         List<PathUnit> paths;
@@ -844,7 +869,7 @@ public class NetworkManager {
         // for (String s : hg.keySet()) {
         //current_hg++;
         //System.out.println("Current hit gene " + s + "(" + current_hg + "/" + hg.keySet().size() + ")");
-        paths = getLongPathBF(nw, new ArrayList(hg.keySet()), new ArrayList(fpl.keySet()), max, prefix, out);
+        paths = find_pathway_BF_algorithm(nw, new ArrayList(hg.keySet()), new ArrayList(fpl.keySet()), max, prefix, out);
         /*for (int i = 0; i < paths.size(); i++) {
          id++;
          out.write(prefix + id + "\t");
@@ -861,30 +886,30 @@ public class NetworkManager {
     }
 
     /**
-     * Wrapper for finding pathways
+     * Wrapper for finding pathways in a PPI network
+     *
      * @param nw Network
      * @param hugo Link to HGNC nomenclature
      * @param max Maximum length
      * @param outf Output file
      * @param prefix Prefix for interaction id
-     * @throws IOException
      */
-    public void getLongPathsforListBF_ppi(Network nw, Map<String, String[]> hugo, int max, String outf, String prefix) throws IOException {
+    public void find_pathway_for_list_BF_algorithm_ppi(Network nw, Map<String, String[]> hugo, int max, String outf, String prefix) throws IOException {
         System.out.println("++++++++++getPathforListBF+++++++++");
         BufferedWriter out = new BufferedWriter(new FileWriter(outf));
         List<PathUnit> paths;
         int id = 0;
         int current_hg = 0;
-        paths = getLongPathBF_ppi(nw, new ArrayList(hg.keySet()), new ArrayList(fpl.keySet()), max, prefix, out);
+        paths = find_pathway_BF_algorithm_ppi(nw, new ArrayList(hg.keySet()), new ArrayList(fpl.keySet()), max, prefix, out);
         out.close();
     }
 
     /**
-     * Adds missing genes and products to the network
+     * Add transcription information
      *
      * @param nw Network
      */
-    public void add_genes_and_products(Network nw) {
+    public void add_missing_genes_and_products(Network nw) {
         System.out.println("+++++++++++add_genes_and_products++++++++++");
         System.out.println("Before statistics: nodes " + nw.nodes.size() + " interactions " + nw.interactions.size());
         String id, type, id_type, tmp_id;
@@ -892,7 +917,7 @@ public class NetworkManager {
         Interaction int1;
         int i = 0;
         List<String> other_ids;
-        
+
         List<String> sourcedbentry;
         Map<String, Node> new_nodes = new HashMap();
         Map<String, Interaction> tmp_map;
@@ -998,14 +1023,14 @@ public class NetworkManager {
                 }
             }
         }
-        
+
         nw.nodes.putAll(new_nodes);
         nw.interactions.putAll(new_int);
         System.out.println("After statistics: nodes " + nw.nodes.size() + " interactions " + nw.interactions.size());
         System.out.println("Added nodes " + new_nodes.size() + " int  " + new_int.size());
         System.out.println("i " + i);
     }
-    
+
     private String db_name_by_number(int i) {
         switch (i) {
             case 2:
@@ -1023,47 +1048,47 @@ public class NetworkManager {
             default: {
                 System.out.println("error");
                 return "error";
-                
+
             }
         }
     }
-    
+
     class Depth_List_of_PathUnit {
-        
+
         int max_depth;
         List<PathUnit> punits;
-        
+
         public Depth_List_of_PathUnit() {
             this.max_depth = 0;
             this.punits = new ArrayList();
         }
-        
+
         public Depth_List_of_PathUnit(int max_depth, List<PathUnit> punits) {
             this.max_depth = max_depth;
             this.punits = punits;
         }
     }
-    
+
     class PathUnit {
-        
+
         List<String> path;
         List<String> seeds; // list of seeds
         String current_seed;
         String path_string;
-        
+
         public PathUnit() {
             this.path = new ArrayList();
             this.seeds = new ArrayList();
             this.current_seed = "";
         }
-        
+
         public PathUnit(List<String> path, List<String> seeds, String seed, String path_string) {
             this.path = path;
             this.current_seed = seed;
             this.seeds = seeds;
             this.path_string = path_string;
         }
-        
+
         public String toString() {
             String s = this.current_seed;
             for (int i = 0; i < this.path.size(); i++) {
@@ -1072,25 +1097,25 @@ public class NetworkManager {
             return s;
         }
     }
-    
+
     class PathUnitwFP {
-        
+
         List<String> path;
         String seed;
         String fp;
-        
+
         public PathUnitwFP() {
             this.path = new ArrayList();
             this.seed = "";
             this.fp = "";
         }
-        
+
         public PathUnitwFP(List<String> path, String seed, String fp) {
             this.path = path;
             this.seed = seed;
             this.fp = fp;
         }
-        
+
         public String toString() {
             String s = this.seed;
             for (int i = 0; i < this.path.size(); i++) {
@@ -1342,7 +1367,7 @@ public class NetworkManager {
  public void getLongPathsforListBFd(Network nw, String hgf, String fpf, Map<String, String[]> hugo, int max, String outfolder) throws IOException {
  System.out.println("++++++++++getLongPathforLIst+++++++++");
  System.out.println("Loading hit list and fplayers files");
- loadHitGenes_and_FinalPlayers(hgf, fpf, hugo);
+ load_hitlist_and_finalimpl(hgf, fpf, hugo);
  System.out.println("finished");
  String foundf = outfolder + "found.txt";
  BufferedWriter found_out = new BufferedWriter(new FileWriter(foundf));
@@ -1439,7 +1464,7 @@ public class NetworkManager {
  System.out.println("++++++++++getPathforLIst+++++++++");
  BufferedWriter out = new BufferedWriter(new FileWriter(outf));
  System.out.println("Loading hit list and fplayers files");
- loadHitGenes_and_FinalPlayers(hgf, fpf, hugo);
+ load_hitlist_and_finalimpl(hgf, fpf, hugo);
  System.out.println("finished");
  List<PathUnit> paths = new ArrayList();
  for (String s : fpl.keySet()) {
@@ -1533,7 +1558,7 @@ public class NetworkManager {
  System.out.println("++++++++++getPathforListDF+++++++++");
  BufferedWriter out = new BufferedWriter(new FileWriter(outf));
  System.out.println("Loading hit list and fplayers files");
- loadHitGenes_and_FinalPlayers(hgf, fpf, hugo);
+ load_hitlist_and_finalimpl(hgf, fpf, hugo);
  System.out.println("finished");
  List<PathUnit> paths = new ArrayList();
  for (String t : fpl.keySet()) {
@@ -1556,7 +1581,7 @@ public class NetworkManager {
  out.close();
  }
 
- public void loadHitGenes_and_FinalPlayers(String hgf, String fpf, Map<String, String[]> hugo) throws FileNotFoundException, IOException {
+ public void load_hitlist_and_finalimpl(String hgf, String fpf, Map<String, String[]> hugo) throws FileNotFoundException, IOException {
  String s;
  String[] ss = new String[3];
  BufferedReader rd = new BufferedReader(new FileReader(fpf));
@@ -1587,8 +1612,8 @@ public class NetworkManager {
 
 
 
- public void add_genes_and_products(Network nw) {
- System.out.println("+++++++++++add_genes_and_products++++++++++");
+ public void add_missing_genes_and_products(Network nw) {
+ System.out.println("+++++++++++add_missing_genes_and_products++++++++++");
  System.out.println("Before statistics: nodes " + nw.nodes.size() + " interactions " + nw.interactions.size());
  String id, type, id_type, gp_id;
  Node n2;
@@ -1788,8 +1813,8 @@ public class NetworkManager {
  }
 
 
- public void add_genes_and_products(Network nw) {
- System.out.println("+++++++++++add_genes_and_products++++++++++");
+ public void add_missing_genes_and_products(Network nw) {
+ System.out.println("+++++++++++add_missing_genes_and_products++++++++++");
  System.out.println("Before statistics: nodes " + nw.nodes.size() + " interactions " + nw.interactions.size());
  String id, type, id_type, tmp_id;
  Node n2;

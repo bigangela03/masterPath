@@ -1,29 +1,497 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package masterPATH;
+
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import static sun.net.www.http.HttpClient.New;
+
 
 /**
+ * RandomManager contains methods to calculate p-values
  *
- * @author a
+ * @author Natalia Rubanova
  */
 public class RandomManager {
+
+    
+    /**
+     * Permute phenotype label
+     *
+     * @param all Network
+     * @param nutils NetworkManager object
+     * @param putils PathwayManager object
+     * @param outils CentralityManager object
+     * @param dbutils DBManager object
+     * @param folder Folder to store information about pathways
+     * @param prefix Prefix for pathways ids
+     * @param count Number of shuffling steps
+     * @param hit_list Hit List
+     * @param hugo_by_id HGNC ids map
+     * @param fplayers Final implementers
+     */
+    public void permute_phenotype_label(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String folder, String prefix, int count, List<String> hit_list, Map<String, String[]> hugo_by_id, String fplayers) throws IOException {
+
+        System.out.println("+++++++++++++build_paths_for_random_hit_lists++++++++++++");
+        java.util.Random randomGenerator = new java.util.Random();
+        List<String> all_hugo_ids = new ArrayList();
+        List<String> all_mirnas_ids = new ArrayList();
+        int count_list_size = hit_list.size();
+        int randomInt, degree;
+        int max_degree = 0;
+        int bin = 0;
+        int index = 0;
+        int number_of_proteins = 0;
+        for (Node n : all.nodes.values()) {
+            if (n.type.equals("protein")) {
+                degree = n.downnbrs.size() + n.upnbrs.size() + n.revnbrs.size();
+                if (degree > 0) {
+                    number_of_proteins++;
+                }
+            }
+        }
+        int[] degree_distribution = new int[number_of_proteins];
+        for (Node n : all.nodes.values()) {
+            if (n.type.equals("protein")) {
+                degree = n.downnbrs.size() + n.upnbrs.size() + n.revnbrs.size();
+                if (degree > 0) {
+                    degree_distribution[index] = degree;
+                    index++;
+                    if (max_degree < degree) {
+                        max_degree = degree;
+                    }
+                }
+            }
+        }
+
+        Arrays.sort(degree_distribution);
+        int prev = degree_distribution[0];
+        int number = 1;
+        for (int i = 1; i < degree_distribution.length; i++) {
+            if (prev != degree_distribution[i]) {
+                System.out.print(prev + "-" + number + " ");
+                prev = degree_distribution[i];
+                number = 1;
+            } else {
+                number++;
+            }
+        }
+        System.out.print(prev + "-" + number + "\n");
+
+        int number_of_bins = 5;
+        ArrayList<String>[] bins = new ArrayList[number_of_bins];
+        for (bin = 0; bin < number_of_bins; bin++) {
+            bins[bin] = new ArrayList();
+            //System.out.println(bin + " " + bins[bin].size());
+        }
+        bin = 0;
+        String id, suf;
+        for (Node n : all.nodes.values()) {
+            if (n.type.equals("protein")) {
+                degree = n.downnbrs.size() + n.revnbrs.size() + n.upnbrs.size();
+                if (degree > 0) {
+                    try {
+                        bin = get_bin(degree);
+                        if (bin == number_of_bins) {
+                            bin = number_of_bins;
+                        }
+                        bins[bin].add(hugo_by_id.get(n.id.substring(1))[1]);
+                        //all_hugo_ids.add(hugo_by_id.get(n.id.substring(1))[1]);
+                    } catch (NullPointerException e) {
+
+                    }
+                }
+            }
+
+        }
+
+        for (String t : hugo_by_id.keySet()) {
+            if (hugo_by_id.get(t)[1].startsWith("MIR")) {
+                all_mirnas_ids.add(hugo_by_id.get(t)[1]);
+            }
+        }
+
+        for (bin = 0; bin < number_of_bins; bin++) {
+            System.out.println(bin + " " + bins[bin].size());
+        }
+        String next_gene;
+        String flag;
+        bin = 0;
+        BufferedWriter random_hg_file = new BufferedWriter(new FileWriter(folder + "RandomHitGenes.txt"));
+        BufferedWriter random_hg_file_lists = new BufferedWriter(new FileWriter(folder + "RandomHitGenes_lists.txt"));
+        List<Integer>[] already_encountered_p = new ArrayList[10];
+        List<Integer> already_encountered_m = new ArrayList();
+        for (bin = 0; bin < number_of_bins; bin++) {
+            already_encountered_p[bin] = new ArrayList();
+        }
+        for (int j = count; j >= 0; j--) {
+            random_hg_file_lists.write("HitList" + j + "\n");
+            for (int i = count_list_size - 1; i >= 0; i--) {
+
+                if (!hit_list.get(i).startsWith("MIR")) {
+                    try {
+                        int h = all.nodes.get(hit_list.get(i)).downnbrs.size();
+                    } catch (NullPointerException e) {
+                        System.out.println(hit_list.get(i));
+                    }
+                    degree = all.nodes.get(hit_list.get(i)).downnbrs.size() + all.nodes.get(hit_list.get(i)).upnbrs.size() + all.nodes.get(hit_list.get(i)).revnbrs.size();
+                    bin = get_bin(degree);
+                    if (bin == number_of_bins) {
+                        bin = number_of_bins;
+                    }
+                    randomInt = randomGenerator.nextInt(bins[bin].size());
+                    next_gene = bins[bin].get(randomInt);
+                    flag = "p";
+                } else {
+                    randomInt = randomGenerator.nextInt(all_mirnas_ids.size());
+                    next_gene = all_mirnas_ids.get(randomInt);
+                    flag = "m";
+                }
+                if ((flag.equals("p") && already_encountered_p[bin].contains(randomInt)) || (flag.equals("m") && already_encountered_m.contains(randomInt))) {
+                    random_hg_file_lists.write(next_gene + "\n");
+                } else {
+                    random_hg_file_lists.write(next_gene + "\n");
+                    random_hg_file.write(next_gene + "\n");
+                    if (flag.equals("p")) {
+                        already_encountered_p[bin].add(randomInt);
+                    } else {
+                        already_encountered_m.add(randomInt);
+                    }
+                }
+            }
+        }
+        random_hg_file.close();
+        random_hg_file_lists.close();
+
+        nutils.load_hitlist_and_finalimpl(folder + "RandomHitGenes.txt", fplayers, dbutils.hugo);
+        nutils.find_pathway_for_list_BF_algorithm(all, dbutils.hugo, 5, folder + "foundDF.txt", prefix);
+        putils.find_the_shortest_paths(folder + "foundDF.txt", "_top_ranked", all, nutils.hg, nutils.fpl, 0, 0, 0, 0);
+
+    }
+
+    /**
+     * Calculate p-values for paths for shuffled phenotype label
+     *
+     * @param all Network
+     * @param nutils NetworkManager object
+     * @param putils PathwayManager object
+     * @param outils CentralityManager object
+     * @param dbutils DBManager object
+     * @param random_paths_file File name for pathways from shuffled hit genes
+     * @param ovrreps_paths_file File with paths
+     * @param hitlists_file File with hit genes
+     * @param hitlist_length Length of hit list
+     * @param position_of_overreps_count Position of the centrality count in the
+     * paths file
+     * @param hugo_by_id HGNC ids map
+     */
+    public void calculate_p_values_phenotype_label_permutation(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, int position_of_overreps_count, Map<String, String[]> hugo_by_id) throws IOException {
+        System.out.println("+++++++++++++calculate_p_values++++++++++++");
+        BufferedReader rndm = new BufferedReader(new FileReader(random_paths_file));
+        BufferedReader overrep = new BufferedReader(new FileReader(ovrreps_paths_file));
+        BufferedReader hitlist = new BufferedReader(new FileReader(hitlists_file));
+        BufferedWriter overrep_pvalue = new BufferedWriter(new FileWriter(ovrreps_paths_file + "_pvalues"));
+
+        String s;
+        String[] ss;
+        List<String> tmp_list;
+        String tmp_s;
+        Map<String, List<String>> random_paths = new HashMap();
+        Map<String, String> overreps = new HashMap();
+        Map<String, Map<String, Integer>> overreps_counts = new HashMap();
+        Map<String, List<String>> hitlists = new HashMap();
+        Map<String, Integer> tmp_map;
+        /*       while ((s = rndm.readLine()) != null) {
+         ss = s.split(("\t"));
+         if (random_paths.containsKey(ss[1])) {
+         tmp_list = random_paths.get(ss[1]);
+         tmp_list.add(s);
+         } else {
+         tmp_list = new ArrayList();
+         tmp_list.add(s);
+         }
+         random_paths.put(ss[1], tmp_list);
+         } */
+        int j = 0;
+        while ((s = overrep.readLine()) != null) {
+            ss = s.split(("\t"));
+            //System.out.println(ss[position_of_overreps_count]);
+            if (Integer.parseInt(ss[position_of_overreps_count]) > 3 || (Integer.parseInt(ss[0])) >= 3 && Integer.parseInt(ss[position_of_overreps_count]) >= 2) {
+                tmp_s = ss[1];
+                for (int i = 2; i <= Integer.parseInt(ss[0]); i++) {
+                    tmp_s = tmp_s + "\t" + ss[i];
+                }
+                overreps.put(tmp_s, s);
+            }
+        }
+
+        int tmp_count;
+        String hg_hugo_id;
+        while ((s = rndm.readLine()) != null) {
+            ss = s.split(("\t")); // ss[1] - hitgene
+            try {
+                if (ss[1].startsWith("hsa-")) {
+                    hg_hugo_id = ss[1];
+                } else if (ss[1].startsWith("p")) {
+                    hg_hugo_id = "p" + hugo_by_id.get(ss[1].substring(1))[1];
+                    //System.out.println(hg_hugo_id);
+                } else {
+                    hg_hugo_id = "CAUTION";
+                    System.out.println("CAUTION");
+                    break;
+                }
+                for (String key : overreps.keySet()) {
+                    if (s.contains(key)) {
+                        if (overreps_counts.containsKey(key)) {
+                            if (overreps_counts.get(key).containsKey(hg_hugo_id)) {
+                                tmp_count = overreps_counts.get(key).get(hg_hugo_id) + 1;
+                                overreps_counts.get(key).put(hg_hugo_id, tmp_count);
+                            } else {
+                                tmp_count = 1;
+                                overreps_counts.get(key).put(hg_hugo_id, tmp_count);
+                            }
+                        } else {
+                            tmp_map = new HashMap();
+                            tmp_map.put(hg_hugo_id, 1);
+                            overreps_counts.put(key, tmp_map);
+                        }
+                    } /*else {
+                     if (!overreps_counts.containsKey(key)) {
+                     tmp_map = new HashMap();
+                     tmp_map.put(hg_hugo_id, 0);
+                     overreps_counts.put(key, tmp_map);
+                     } else {
+                     if (!overreps_counts.get(key).containsKey(hg_hugo_id)) {
+                     tmp_map = overreps_counts.get(key);
+                     tmp_map.put(hg_hugo_id, 0);
+                     overreps_counts.put(key, tmp_map);
+                     }
+                     }
+                     } */
+
+                }
+            } catch (NullPointerException e) {
+                System.out.println(" --------- " + ss[1].substring(1));
+            }
+        }
+
+        /*
+         for (String key : overreps.keySet()) {
+         tmp_map = new HashMap();
+         for (String hg : random_paths.keySet()) {
+         tmp_count = 0;
+         for (String s1 : random_paths.get(hg)) {
+         if (s1.contains(key)) {
+         tmp_count++;
+         }
+         }
+         try {
+         tmp_map.put("p" + hugo_by_id.get(hg.substring(1))[1], tmp_count);
+         } catch (NullPointerException e) {
+         System.out.println(" --------- " + hg.substring(1));
+         }
+         }
+         overreps_counts.put(key, tmp_map);
+         j++;
+         }
+         */
+        while ((s = hitlist.readLine()) != null) {
+            if (s.contains("HitList")) {
+                tmp_s = s;
+                tmp_list = new ArrayList();
+                for (int i = 0; i < hitlist_length; i++) {
+                    s = hitlist.readLine();
+                    tmp_list.add(s);
+                }
+                hitlists.put(tmp_s, tmp_list);
+            }
+        }
+        double pvalue;
+        int count_hitlists;
+        int overreps_counts_value = 0;
+        String id = "";
+        for (String key : overreps_counts.keySet()) {
+            overrep_pvalue.write(overreps.get(key) + "\t");
+            count_hitlists = 0;
+            for (String hl : hitlists.keySet()) {
+                tmp_count = 0;
+                for (String hg : hitlists.get(hl)) {
+                    try {
+                        id = returnGeneName(hg, hugo_by_id);
+                        /*
+                         if (hg.startsWith("MIR") && (hugo_by_id.get(hg)[2].startsWith("microRNA"))) {
+                         if (hg.contains("LET")) {
+                         id = "hsa-let-" + hg.substring(6).toLowerCase();
+                         } else {
+                         id = "hsa-mir-" + hg.substring(3).toLowerCase();
+                         }
+                         } else {
+                         id = "p" + hg;// hit gene - gene                    
+                         } */
+                        //System.out.println("hg " + hg +" id " + id + " " + hl);
+                        overreps_counts_value = overreps_counts.get(key).get(id);
+                    } catch (NullPointerException e) {
+                        overreps_counts_value = 0;
+                    }
+                    tmp_count = tmp_count + overreps_counts_value;
+                }
+                if (tmp_count >= Integer.parseInt(overreps.get(key).split("\t")[position_of_overreps_count])) {
+                    count_hitlists++;
+                }
+            }
+            pvalue = (double) count_hitlists / (double) hitlists.size();
+
+            overrep_pvalue.write(pvalue
+                    + "\n");
+        }
+
+        overrep_pvalue.close();
+        rndm.close();
+        overrep.close();
+        hitlist.close();
+    }
+
+    
+
+    /**
+     * Calculate p-values for nodes for shuffled phenotype label
+     *
+     * @param all Network
+     * @param nutils NetworkManager object
+     * @param putils PathwayManager object
+     * @param outils CentralityManager object
+     * @param dbutils DBManager object
+     * @param random_paths_file File name for pathways from shuffled hit genes
+     * @param ovrreps_paths_file File with nodes
+     * @param hitlists_file File with hit genes
+     * @param hitlist_length Length of hit list
+     * @param hugo_by_id HGNC ids map
+     */
+    public void calculate_p_values_phenotype_label_permutation_nodes(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, Map<String, String[]> hugo_by_id) throws IOException {
+        System.out.println("+++++++++++++calculate_p_values_hubs++++++++++++");
+        BufferedReader rndm = new BufferedReader(new FileReader(random_paths_file));
+        BufferedReader overrep = new BufferedReader(new FileReader(ovrreps_paths_file));
+        BufferedReader hitlist = new BufferedReader(new FileReader(hitlists_file));
+        BufferedWriter overrep_pvalue = new BufferedWriter(new FileWriter(ovrreps_paths_file + "_pvalues"));
+
+        String s;
+        String[] ss;
+        List<String> tmp_list;
+        String tmp_s;
+        Map<String, List<String>> random_paths = new HashMap();
+        Map<String, String> hubs = new HashMap();
+        Map<String, Map<String, Integer>> overreps_counts = new HashMap();
+        Map<String, List<String>> hitlists = new HashMap();
+        Map<String, Integer> tmp_map;
+        int j = 0;
+        while ((s = overrep.readLine()) != null) {
+            ss = s.split(("\t"));
+            if (Integer.parseInt(ss[2]) > 1) {
+                hubs.put(ss[0], s);
+            }
+        }
+
+        int tmp_count;
+        String hg_hugo_id;
+        boolean found;
+        while ((s = rndm.readLine()) != null) {
+            ss = s.split(("\t")); // ss[1] - hitgene
+            try {
+                if (ss[1].startsWith("hsa-")) {
+                    hg_hugo_id = ss[1];
+                } else if (ss[1].startsWith("p")) {
+                    hg_hugo_id = "p" + hugo_by_id.get(ss[1].substring(1))[1];
+                } else {
+                    hg_hugo_id = "CAUTION";
+                    System.out.println("CAUTION");
+                    break;
+                }
+
+            } catch (NullPointerException e) {
+                System.out.println(" --------- " + ss[1].substring(1));
+                break;
+            }
+            for (String key : hubs.keySet()) {
+                found = false;
+                for (int k = 2; k < ss.length - 2; k++) {
+                    try {
+                        if (all.interactions.get(ss[k]).int1.id.equals(key)
+                                || all.interactions.get(ss[k]).int2.id.equals(key)) {
+                            found = true;
+                            break;
+                        }
+                    } catch (NullPointerException e) {
+                        System.out.println(" ++++ " + ss[k]);
+                        break;
+                    }
+                }
+                if (found) {
+                    if (overreps_counts.containsKey(key)) {
+                        if (overreps_counts.get(key).containsKey(hg_hugo_id)) {
+                            tmp_count = overreps_counts.get(key).get(hg_hugo_id) + 1;
+                            overreps_counts.get(key).put(hg_hugo_id, tmp_count);
+                        } else {
+                            tmp_count = 1;
+                            overreps_counts.get(key).put(hg_hugo_id, tmp_count);
+                        }
+                    } else {
+                        tmp_map = new HashMap();
+                        tmp_map.put(hg_hugo_id, 1);
+                        overreps_counts.put(key, tmp_map);
+                    }
+                }
+            }
+
+        }
+        while ((s = hitlist.readLine()) != null) {
+            if (s.contains("HitList")) {
+                tmp_s = s;
+                tmp_list = new ArrayList();
+                for (int i = 0; i < hitlist_length; i++) {
+                    s = hitlist.readLine();
+                    tmp_list.add(s);
+                }
+                hitlists.put(tmp_s, tmp_list);
+            }
+        }
+        double pvalue;
+        int count_hitlists;
+        String id = "";
+        int overreps_counts_value = 0;
+        for (String key : overreps_counts.keySet()) {
+            overrep_pvalue.write(hubs.get(key) + "\t");
+            count_hitlists = 0;
+            for (String hl : hitlists.keySet()) {
+                tmp_count = 0;
+                for (String hg : hitlists.get(hl)) {
+                    try {
+                        id = returnGeneName(hg, hugo_by_id);
+                        overreps_counts_value = overreps_counts.get(key).get(id);
+                        //overreps_counts_value = overreps_counts.get(key).get("p" + hg);
+                    } catch (NullPointerException e) {
+                        overreps_counts_value = 0;
+                    }
+                    tmp_count = tmp_count + overreps_counts_value;
+                }
+                if (tmp_count >= Integer.parseInt(hubs.get(key).split("\t")[2])) {
+                    count_hitlists++;
+                }
+            }
+            pvalue = (double) count_hitlists / (double) hitlists.size();
+            overrep_pvalue.write(pvalue + "\n");
+        }
+
+        overrep_pvalue.close();
+        rndm.close();
+        overrep.close();
+        hitlist.close();
+    }
 
     /**
      *
@@ -32,9 +500,279 @@ public class RandomManager {
      * @param putils
      * @param outils
      * @param dbutils
-     * @return
+     * @param random_paths_file
+     * @param ovrreps_paths_file
+     * @param hitlists_file
+     * @param hitlist_length
+     * @param position_of_overreps_count
+     * @param hugo_by_id
+     * @throws IOException
      */
-    public Network build_random_networks(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils) {
+    public void calculate_p_values_paths_random_networks(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, int position_of_overreps_count, Map<String, String[]> hugo_by_id) throws IOException {
+        System.out.println("+++++++++++++calculate_p_values++++++++++++");
+        BufferedReader rndm = new BufferedReader(new FileReader(random_paths_file));
+        BufferedReader overrep = new BufferedReader(new FileReader(ovrreps_paths_file));
+        BufferedReader hitlist = new BufferedReader(new FileReader(hitlists_file));
+        BufferedWriter overrep_pvalue = new BufferedWriter(new FileWriter(ovrreps_paths_file + "_pvalues_2"));
+
+        String s;
+        String[] ss;
+        List<String> tmp_list;
+        String tmp_s;
+        Map<String, List<String>> random_paths = new HashMap();
+        Map<String, String> overreps = new HashMap();
+        Map<String, Map<String, Integer>> overreps_counts = new HashMap();
+        Map<String, List<String>> hitlists = new HashMap();
+        Map<String, Integer> tmp_map;
+        while ((s = rndm.readLine()) != null) {
+            ss = s.split(("\t"));
+            if (random_paths.containsKey(ss[1])) {
+                tmp_list = random_paths.get(ss[1]);
+                tmp_list.add(s);
+            } else {
+                tmp_list = new ArrayList();
+                tmp_list.add(s);
+            }
+            random_paths.put(ss[1], tmp_list);
+        }
+
+        int j = 0;
+        while ((s = overrep.readLine()) != null) {
+            ss = s.split(("\t"));
+            if (Integer.parseInt(ss[position_of_overreps_count]) > 3 || (Integer.parseInt(ss[0])) >= 3 && Integer.parseInt(ss[position_of_overreps_count]) > 2) {
+                tmp_s = ss[1];
+                for (int i = 2; i <= Integer.parseInt(ss[0]); i++) {
+                    tmp_s = tmp_s + "\t" + ss[i];
+                }
+                overreps.put(tmp_s, s);
+            }
+        }
+
+        int tmp_count;
+        for (String key : overreps.keySet()) {
+            tmp_map = new HashMap();
+            for (String hg : random_paths.keySet()) {
+                tmp_count = 0;
+                for (String s1 : random_paths.get(hg)) {
+                    if (s1.contains(key)) {
+                        tmp_count++;
+                    }
+                }
+                try {
+                    tmp_map.put("p" + hugo_by_id.get(hg.substring(1))[1], tmp_count);
+                } catch (NullPointerException e) {
+                    System.out.println(" --------- " + hg.substring(1));
+                }
+            }
+            overreps_counts.put(key, tmp_map);
+            j++;
+        }
+
+        while ((s = hitlist.readLine()) != null) {
+            if (s.contains("HitList")) {
+                tmp_s = s;
+                tmp_list = new ArrayList();
+                for (int i = 0; i < hitlist_length; i++) {
+                    s = hitlist.readLine();
+                    tmp_list.add(s);
+                }
+                hitlists.put(tmp_s, tmp_list);
+            }
+        }
+        double pvalue;
+        int count_hitlists;
+        for (String key : overreps_counts.keySet()) {
+            overrep_pvalue.write(overreps.get(key) + "\t");
+            count_hitlists = 0;
+            for (String hl : hitlists.keySet()) {
+                tmp_count = 0;
+                for (String hg : hitlists.get(hl)) {
+                    // System.out.println(overreps_counts.get(key).get("p" + hg));
+                    try {
+                        tmp_count = tmp_count + overreps_counts.get(key).get("p" + hg);
+                    } catch (NullPointerException e) {
+
+                    }
+                }
+                // System.out.println(tmp_count + "\t"+Integer.parseInt(overreps.get(key).split("\t")[position_of_overreps_count]));
+                if (tmp_count >= Integer.parseInt(overreps.get(key).split("\t")[position_of_overreps_count])) {
+                    count_hitlists++;
+                }
+
+            }
+            pvalue = (double) count_hitlists / (double) hitlists.size();
+            // System.out.println(pvalue);
+            overrep_pvalue.write(pvalue + "\n");
+        }
+        overrep_pvalue.close();
+        rndm.close();
+        overrep.close();
+        hitlist.close();
+    }
+
+    /**
+     * Calculate p-values for paths for shuffled phenotype label for ppi network
+     *
+     * @param all Network
+     * @param nutils NetworkManager object
+     * @param putils PathwayManager object
+     * @param outils CentralityManager object
+     * @param dbutils DBManager object
+     * @param random_paths_file File name for pathways from shuffled hit genes
+     * @param ovrreps_paths_file File with paths
+     * @param hitlists_file File with hit genes
+     * @param hitlist_length Length of hit list
+     * @param position_of_overreps_count Position of the centrality count in the
+     * paths file
+     * @param hugo_by_id HGNC ids map
+     */
+    public void calculate_p_values_phenotype_label_permutation_ppi(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, int position_of_overreps_count, Map<String, String[]> hugo_by_id) throws IOException {
+        System.out.println("+++++++++++++calculate_p_values++++++++++++");
+        BufferedReader rndm = new BufferedReader(new FileReader(random_paths_file));
+        BufferedReader overrep = new BufferedReader(new FileReader(ovrreps_paths_file));
+        BufferedReader hitlist = new BufferedReader(new FileReader(hitlists_file));
+        BufferedWriter overrep_pvalue = new BufferedWriter(new FileWriter(ovrreps_paths_file + "_pvalues"));
+
+        String s;
+        String[] ss;
+        List<String> tmp_list;
+        String tmp_s;
+        Map<String, List<String>> random_paths = new HashMap();
+        Map<String, String> overreps = new HashMap();
+        Map<String, Map<String, Integer>> overreps_counts = new HashMap();
+        Map<String, List<String>> hitlists = new HashMap();
+        Map<String, Integer> tmp_map;
+        System.out.println("0");
+        while ((s = rndm.readLine()) != null) {
+            ss = s.split(("\t"));
+            if (random_paths.containsKey(ss[1])) {
+                tmp_list = random_paths.get(ss[1]);
+                tmp_list.add(s);
+            } else {
+                tmp_list = new ArrayList();
+                tmp_list.add(s);
+            }
+            random_paths.put(ss[1], tmp_list);
+        }
+        System.out.println("1");
+        int j = 0;
+        while ((s = overrep.readLine()) != null) {
+            ss = s.split(("\t"));
+            if (Integer.parseInt(ss[position_of_overreps_count]) > 10 || (Integer.parseInt(ss[0])) >= 3 && Integer.parseInt(ss[position_of_overreps_count]) >= 10) {
+                tmp_s = ss[1];
+                for (int i = 2; i <= Integer.parseInt(ss[0]); i++) {
+                    tmp_s = tmp_s + "\t" + ss[i];
+                }
+                overreps.put(tmp_s, s);
+                // System.out.println(tmp_s);                
+            }
+        }
+        // int j=0;
+        int tmp_count;
+        System.out.println("2");
+        /*       for (String key : overreps.keySet()) {
+         tmp_map = new HashMap();            
+         for (String hg : random_paths.keySet()) {
+         tmp_count = 0;
+         for (String s1 : random_paths.get(hg)) {                    
+         if (s1.contains(key)) {
+         tmp_count++;
+         // System.out.println( j + "\t"+s1);
+         //j++;
+         }
+         if (s1.contains(CentralityManager.return_symmetric_path(key))) {
+         tmp_count++;
+         // System.out.println( j + "\t"+s1);
+         //j++;
+         }
+         }                
+         tmp_map.put("p" + hugo_by_id.get(hg.substring(1))[1], tmp_count);
+         // System.out.println("p" + hugo_by_id.get(hg.substring(1))[1]);
+         }
+         overreps_counts.put(key, tmp_map);
+         // System.out.println(j+"/" + overreps.keySet().size()+ "\t" +key);            
+         j++;
+         } */
+        String hg_name;
+        for (String key : overreps.keySet()) {
+            overreps_counts.put(key, new HashMap());
+        }
+        for (String hg : random_paths.keySet()) {
+            System.out.println(j + "/" + random_paths.size());
+            j++;
+            hg_name = "p" + hugo_by_id.get(hg.substring(1))[1];
+            tmp_count = 0;
+            for (String s1 : random_paths.get(hg)) {
+                for (String key : overreps.keySet()) {
+                    if (!overreps_counts.get(key).containsKey(hg_name)) {
+                        overreps_counts.get(key).put(hg_name, 0);
+                    }
+                    if (s1.contains(key)) {
+                        // System.out.println(overreps_counts.get(key).get(hg_name));
+                        overreps_counts.get(key).put(hg_name, overreps_counts.get(key).get(hg_name) + 1);
+                        // System.out.println(overreps_counts.get(key).get(hg_name));
+                    }
+                    if (s1.contains(CentralityManager.return_symmetric_path(key))) {
+                        overreps_counts.get(key).put(hg_name, overreps_counts.get(key).get(hg_name) + 1);
+                    }
+                }
+            }
+        }
+
+        System.out.println("3");
+        while ((s = hitlist.readLine()) != null) {
+            if (s.contains("HitList")) {
+                tmp_s = s;
+                tmp_list = new ArrayList();
+                for (int i = 0; i < hitlist_length; i++) {
+                    s = hitlist.readLine();
+                    tmp_list.add(s);
+                }
+                hitlists.put(tmp_s, tmp_list);
+            }
+        }
+        double pvalue;
+        int count_hitlists;
+        System.out.println("4");
+        for (String key : overreps_counts.keySet()) {
+            overrep_pvalue.write(overreps.get(key) + "\t");
+            count_hitlists = 0;
+            for (String hl : hitlists.keySet()) {
+                tmp_count = 0;
+                for (String hg : hitlists.get(hl)) {
+                    // System.out.println(overreps_counts.get(key).get("p" + hg));
+                    try {
+                        tmp_count = tmp_count + overreps_counts.get(key).get("p" + hg);
+                    } catch (NullPointerException e) {
+
+                    }
+                }
+                // System.out.println(tmp_count + "\t"+Integer.parseInt(overreps.get(key).split("\t")[position_of_overreps_count]));
+                if (tmp_count >= Integer.parseInt(overreps.get(key).split("\t")[position_of_overreps_count])) {
+                    count_hitlists++;
+                }
+            }
+            pvalue = (double) count_hitlists / (double) hitlists.size();
+            System.out.println(pvalue);
+            overrep_pvalue.write(pvalue + "\n");
+        }
+        overrep_pvalue.close();
+        rndm.close();
+        overrep.close();
+        hitlist.close();
+    }
+    
+    
+    /**
+     * Create random network with the same degree distribution
+     *
+     * @param all Network
+     * @param nutils NetworkManager object
+     * @param putils PathwayManager object
+     * @param outils CentralityManager object
+     * @param dbutils DBManager object
+     */
+    public Network create_random_network(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils) {
         java.util.Random random_number = new java.util.Random();
         int randint = 0, randint2 = 0, step;
         String randid = "", randid2 = "", type, quality, dir, node_type;
@@ -607,19 +1345,20 @@ public class RandomManager {
     }
 
     /**
+     * Calculate p-values for nodes on random network
      *
-     * @param all
-     * @param nutils
-     * @param putils
-     * @param outils
-     * @param dbutils
-     * @param file_name_random
-     * @param count
-     * @param hubs_file
-     * @param overreps_file
-     * @throws IOException
+     * @param all Network
+     * @param nutils NetworkManager object
+     * @param putils PathwayManager object
+     * @param outils CentralityManager object
+     * @param dbutils DBManager object
+     * @param file_name_random Name for file to store information about pathways
+     * built on the random network
+     * @param count Number of shuffling steps
+     * @param hubs_file File with nodes and centrality scores
+     * @param overreps_file File with paths and centrality scores
      */
-    public void test_on_random_networks(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String file_name_random, int count, String hubs_file, String overreps_file) throws IOException {
+    public void calculate_p_values_nodes_random_networks(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String file_name_random, int count, String hubs_file, String overreps_file) throws IOException {
         BufferedReader rd = new BufferedReader(new FileReader(hubs_file));
         BufferedWriter wr = new BufferedWriter(new FileWriter(hubs_file + "_pvalues"));
         Map<String, String[]> hubs = new HashMap();
@@ -636,14 +1375,14 @@ public class RandomManager {
         }
         rd.close();
         for (int j = count; j > 0; j--) {
-            Network all_random = build_random_networks(all, nutils, putils, outils, dbutils);
-            nutils.getLongPathsforListBF(all_random, dbutils.hugo, 6, file_name_random, "RD");
-            putils.rank_pathways(file_name_random, "_top_ranked", all_random, nutils.hg, nutils.fpl, 0, 0, 0, 0);
-            putils.calculate_connectivity_for_pathways(all_random, file_name_random + "_top_ranked", file_name_random + "_top_ranked_with_connectivity");
-            outils.get_centrality_paths_wo_redundancy(all, file_name_random + "_top_ranked", file_name_random + "_top_ranked__unique_overrepr", 1, 4);
-            outils.put_names_on_common_parts_wo_redundancy(file_name_random + "_top_ranked__unique_overrepr", file_name_random + "_top_ranked__unique_overrepr_w_names", all_random, dbutils.hugo_by_id);
-            outils.put_connectivity_on_paths_wo_redundancy(file_name_random + "_top_ranked__unique_overrepr_w_names", file_name_random + "_top_ranked_with_connectivity", file_name_random + "_top_ranked__unique_overrepr_w_names_pthconn");
-            outils.get_centrality_nodes(all_random, dbutils.hugo_by_id, nutils, file_name_random + "_top_ranked", file_name_random + "_top_ranked_hubs");
+            Network all_random = create_random_network(all, nutils, putils, outils, dbutils);
+            nutils.find_pathway_for_list_BF_algorithm(all_random, dbutils.hugo, 6, file_name_random, "RD");
+            putils.find_the_shortest_paths(file_name_random, "_top_ranked", all_random, nutils.hg, nutils.fpl, 0, 0, 0, 0);
+            putils.add_connectivity_to_pathways(all_random, file_name_random + "_top_ranked", file_name_random + "_top_ranked_with_connectivity");
+            outils.calculate_centrality_scores_for_paths(all, file_name_random + "_top_ranked", file_name_random + "_top_ranked__unique_overrepr", 1, 4);
+            outils.add_hgnc_symbols_to_paths(file_name_random + "_top_ranked__unique_overrepr", file_name_random + "_top_ranked__unique_overrepr_w_names", all_random, dbutils.hugo_by_id);
+            outils.calculate_paths_degree(file_name_random + "_top_ranked__unique_overrepr_w_names", file_name_random + "_top_ranked_with_connectivity", file_name_random + "_top_ranked__unique_overrepr_w_names_pthconn");
+            outils.calculate_centrality_scores_for_nodes(all_random, dbutils.hugo_by_id, nutils, file_name_random + "_top_ranked", file_name_random + "_top_ranked_hubs");
             rd = new BufferedReader(new FileReader(file_name_random + "_top_ranked_hubs"));
 
             while ((s = rd.readLine()) != null) {
@@ -667,19 +1406,20 @@ public class RandomManager {
     }
 
     /**
+     * Calculate p-values on for nodes random ppi network
      *
-     * @param all
-     * @param nutils
-     * @param putils
-     * @param outils
-     * @param dbutils
-     * @param file_name_random
-     * @param count
-     * @param hubs_file
-     * @param overreps_file
-     * @throws IOException
+     * @param all Network
+     * @param nutils NetworkManager object
+     * @param putils PathwayManager object
+     * @param outils CentralityManager object
+     * @param dbutils DBManager object
+     * @param file_name_random File name to store information about pathways
+     * built on the random network
+     * @param count Number of shuffling steps
+     * @param hubs_file File with nodes and centrality scores
+     * @param overreps_file File with paths and centrality scores
      */
-    public void test_on_random_networks_ppi(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String file_name_random, int count, String hubs_file, String overreps_file) throws IOException {
+    public void calculate_p_values_nodes_random_networks_ppi(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String file_name_random, int count, String hubs_file, String overreps_file) throws IOException {
         BufferedReader rd = new BufferedReader(new FileReader(hubs_file));
         BufferedWriter wr = new BufferedWriter(new FileWriter(hubs_file + "_pvalues"));
         Map<String, String[]> hubs = new HashMap();
@@ -696,14 +1436,14 @@ public class RandomManager {
         }
         rd.close();
         for (int j = count; j > 0; j--) {
-            Network all_random = build_random_networks(all, nutils, putils, outils, dbutils);
-            nutils.getLongPathsforListBF_ppi(all_random, dbutils.hugo, 6, file_name_random, "RD");
-            putils.rank_pathways(file_name_random, "_top_ranked", all_random, nutils.hg, nutils.fpl, 0, 0, 0, 0);
-            putils.calculate_connectivity_for_pathways(all_random, file_name_random + "_top_ranked", file_name_random + "_top_ranked_with_connectivity");
-            outils.get_centrality_paths_wo_redundancy_ppi(all_random, file_name_random + "_top_ranked", file_name_random + "_top_ranked__unique_overrepr", 1, 4);
-            outils.put_names_on_common_parts_wo_redundancy(file_name_random + "_top_ranked__unique_overrepr", file_name_random + "_top_ranked__unique_overrepr_w_names", all_random, dbutils.hugo_by_id);
-            outils.put_connectivity_on_paths_wo_redundancy(file_name_random + "_top_ranked__unique_overrepr_w_names", file_name_random + "_top_ranked_with_connectivity", file_name_random + "_top_ranked__unique_overrepr_w_names_pthconn");
-            outils.get_centrality_nodes(all_random, dbutils.hugo_by_id, nutils, file_name_random + "_top_ranked", file_name_random + "_top_ranked_hubs");
+            Network all_random = create_random_network(all, nutils, putils, outils, dbutils);
+            nutils.find_pathway_for_list_BF_algorithm_ppi(all_random, dbutils.hugo, 6, file_name_random, "RD");
+            putils.find_the_shortest_paths(file_name_random, "_top_ranked", all_random, nutils.hg, nutils.fpl, 0, 0, 0, 0);
+            putils.add_connectivity_to_pathways(all_random, file_name_random + "_top_ranked", file_name_random + "_top_ranked_with_connectivity");
+            outils.calculate_centrality_scores_for_paths_ppi(all_random, file_name_random + "_top_ranked", file_name_random + "_top_ranked__unique_overrepr", 1, 4);
+            outils.add_hgnc_symbols_to_paths(file_name_random + "_top_ranked__unique_overrepr", file_name_random + "_top_ranked__unique_overrepr_w_names", all_random, dbutils.hugo_by_id);
+            outils.calculate_paths_degree(file_name_random + "_top_ranked__unique_overrepr_w_names", file_name_random + "_top_ranked_with_connectivity", file_name_random + "_top_ranked__unique_overrepr_w_names_pthconn");
+            outils.calculate_centrality_scores_for_nodes(all_random, dbutils.hugo_by_id, nutils, file_name_random + "_top_ranked", file_name_random + "_top_ranked_hubs");
 
             rd = new BufferedReader(new FileReader(file_name_random + "_top_ranked_hubs"));
             while ((s = rd.readLine()) != null) {
@@ -725,644 +1465,107 @@ public class RandomManager {
         wr.close();
     }
 
-    /**
-     * Random analysis
-     *
-     * @param all
-     * @param nutils
-     * @param putils
-     * @param outils
-     * @param dbutils
-     * @param folder
-     * @param prefix
-     * @param count
-     * @param hit_list
-     * @param hugo_by_id
-     * @param fplayers
-     * @throws IOException
-     */
-    public void build_paths_for_random_hit_lists(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String folder, String prefix, int count, List<String> hit_list, Map<String, String[]> hugo_by_id, String fplayers) throws IOException {
-
-        System.out.println("+++++++++++++build_paths_for_random_hit_lists++++++++++++");
-        java.util.Random randomGenerator = new java.util.Random();
+    private void check_distributions(Network all, Map<String, String[]> hugo_by_id) {
+        int number_of_bins = 5;
         List<String> all_hugo_ids = new ArrayList();
         List<String> all_mirnas_ids = new ArrayList();
-        int count_list_size = hit_list.size();
-        int randomInt,degree;
-        int max_degree = 0;
+        ArrayList<String>[] bins = new ArrayList[number_of_bins];
+        int degree = 0;
+        int bin = 0;
+        String id = "", id2 = "", suf = "";
+        int mirna_count = 0, mirna_con_count = 0, mirna_hugo_count = 0;
         for (Node n : all.nodes.values()) {
             if (n.type.equals("protein")) {
-                if (max_degree < n.downnbrs.size() + n.downnbrs.size() + n.downnbrs.size()) {
-                    max_degree = n.downnbrs.size() + n.downnbrs.size() + n.downnbrs.size();
-                }
-            }
-        }
-        ArrayList<String>[] bins = new ArrayList[10];  
-        
-        for (Node n : all.nodes.values()) {
-            if (n.type.equals("protein")) {
-                degree=n.downnbrs.size() + n.downnbrs.size() + n.downnbrs.size();
-                try {
-                    bins[(degree*10)/max_degree].add(hugo_by_id.get(n.id.substring(1))[1]);
-                    //all_hugo_ids.add(hugo_by_id.get(n.id.substring(1))[1]);
-                } catch (NullPointerException e) {
+                degree = n.downnbrs.size() + n.revnbrs.size() + n.upnbrs.size();
+                if (degree > 0) {
+                    try {
+                        bin = get_bin(degree);
+                        if (bin == number_of_bins) {
+                            bin = number_of_bins;
+                        }
+                        bins[bin].add(hugo_by_id.get(n.id.substring(1))[1]);
+                        //all_hugo_ids.add(hugo_by_id.get(n.id.substring(1))[1]);
+                    } catch (NullPointerException e) {
+
+                    }
                 }
             }
             if (n.type.toLowerCase().equals("miRNA".toLowerCase())) {
-                try {
-                    all_mirnas_ids.add(n.id);
-                } catch (NullPointerException e) {
+                mirna_count++;
+                degree = n.downnbrs.size() + n.revnbrs.size() + n.upnbrs.size();
+                if (degree > 0) {
+                    mirna_con_count++;
                 }
-            }
-        }
-        String next_gene;
-        String flag;
-        int bin=0;
-        BufferedWriter random_hg_file = new BufferedWriter(new FileWriter(folder + "RandomHitGenes.txt"));
-        BufferedWriter random_hg_file_lists = new BufferedWriter(new FileWriter(folder + "RandomHitGenes_lists.txt"));
-        List<Integer>[] already_encountered_p = new ArrayList[10];
-        List<Integer> already_encountered_m = new ArrayList();
-        for (int j = count; j >= 0; j--) {
-            random_hg_file_lists.write("HitList" + j + "\n");
-            for (int i = count_list_size; i >= 0; i--) {
-                if (!hit_list.get(count_list_size).startsWith("MIR")) {
-                    degree=all.nodes.get(hit_list.get(count_list_size)).downnbrs.size() + all.nodes.get(hit_list.get(count_list_size)).upnbrs.size() + all.nodes.get(hit_list.get(count_list_size)).revnbrs.size();
-                    bin=(degree*10)/max_degree;
-                    randomInt = randomGenerator.nextInt(bins[bin].size());
-                    next_gene = bins[bin].get(randomInt);
-                    flag = "p";
+                id = n.id.replace("-3p", "").replace("-5p", "").replace("*", "");
+                if (id.charAt(id.length() - 2) == '-' && Character.isDigit(id.charAt(id.length() - 1)) && Character.isDigit(id.charAt(id.length() - 3))) {
+                    suf = "-" + id.substring(id.length() - 1);
+                    id = id.substring(0, id.length() - 2);
                 } else {
-                    randomInt = randomGenerator.nextInt(all_mirnas_ids.size());
-                    next_gene = all_mirnas_ids.get(randomInt);
-                    flag = "m";
+                    suf = "";
                 }
-                if ((flag.equals('p') && already_encountered_p[bin].contains(randomInt)) || (flag.equals('m') && already_encountered_m.contains(randomInt))) {
-                    random_hg_file_lists.write(next_gene + "\n");
+                if (id.contains("let-")) {
+                    id2 = "MIR" + id.replace("-", "").substring(3).toUpperCase() + suf;
+                    all_mirnas_ids.add(id2);
+                    //System.out.println(id + " " + id2);
                 } else {
-                    random_hg_file_lists.write(next_gene + "\n");
-                    random_hg_file.write(next_gene + "\n");
-                    if (flag.equals("p")) {
-                        already_encountered_p[bin].add(randomInt);
-                    } else {
-                        already_encountered_m.add(randomInt);
-                    }
+                    id2 = id.replace("-", "").substring(3).toUpperCase() + suf;
+                    all_mirnas_ids.add(id2);
+                    //System.out.println(id + " " + id2);
                 }
+
             }
         }
-        random_hg_file.close();
-        random_hg_file_lists.close();
 
-        nutils.loadHitGenes_and_FinalPlayers(folder + "RandomHitGenes.txt", fplayers, dbutils.hugo);
-        nutils.getLongPathsforListBF(all, dbutils.hugo, 5, folder + "foundDF.txt", prefix);
-        putils.rank_pathways(folder + "foundDF.txt", "_top_ranked", all, nutils.hg, nutils.fpl, 0, 0, 0, 0);
+        for (String t : hugo_by_id.keySet()) {
+
+            if (hugo_by_id.get(t)[1].startsWith("MIR")) {
+                //System.out.println(hugo_by_id.get(t)[1]);
+                mirna_hugo_count++;
+            }
+        }
+        System.out.println(mirna_hugo_count + " mirna_hugo_count " + mirna_count + " mirna_count " + mirna_con_count + " mirna_con_count");
+    }
+
+    
+    private int get_bin(int degree) {
+        boolean found = false;
+        int i;
+        int[] bins = new int[]{1, 3, 5, 10, 100};
+        for (i = 0; i <= bins.length - 2; i++) {
+            if (degree >= bins[i] && degree < bins[i + 1]) {
+                return i;
+            }
+        }
+        return i;
 
     }
 
-    /**
-     *
-     * @param all
-     * @param nutils
-     * @param putils
-     * @param outils
-     * @param dbutils
-     * @param random_paths_file
-     * @param ovrreps_paths_file
-     * @param hitlists_file
-     * @param hitlist_length
-     * @param position_of_overreps_count
-     * @param hugo_by_id
-     * @throws IOException
-     */
-    public void calculate_p_values(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, int position_of_overreps_count, Map<String, String[]> hugo_by_id) throws IOException {
-        System.out.println("+++++++++++++calculate_p_values++++++++++++");
-        BufferedReader rndm = new BufferedReader(new FileReader(random_paths_file));
-        BufferedReader overrep = new BufferedReader(new FileReader(ovrreps_paths_file));
-        BufferedReader hitlist = new BufferedReader(new FileReader(hitlists_file));
-        BufferedWriter overrep_pvalue = new BufferedWriter(new FileWriter(ovrreps_paths_file + "_pvalues"));
-
-        String s;
-        String[] ss;
-        List<String> tmp_list;
-        String tmp_s;
-        Map<String, List<String>> random_paths = new HashMap();
-        Map<String, String> overreps = new HashMap();
-        Map<String, Map<String, Integer>> overreps_counts = new HashMap();
-        Map<String, List<String>> hitlists = new HashMap();
-        Map<String, Integer> tmp_map;
-        /*       while ((s = rndm.readLine()) != null) {
-         ss = s.split(("\t"));
-         if (random_paths.containsKey(ss[1])) {
-         tmp_list = random_paths.get(ss[1]);
-         tmp_list.add(s);
-         } else {
-         tmp_list = new ArrayList();
-         tmp_list.add(s);
-         }
-         random_paths.put(ss[1], tmp_list);
-         } */
-        int j = 0;
-        while ((s = overrep.readLine()) != null) {
-            ss = s.split(("\t"));
-            if (Integer.parseInt(ss[position_of_overreps_count]) > 3 || (Integer.parseInt(ss[0])) >= 3 && Integer.parseInt(ss[position_of_overreps_count]) >= 2) {
-                tmp_s = ss[1];
-                for (int i = 2; i <= Integer.parseInt(ss[0]); i++) {
-                    tmp_s = tmp_s + "\t" + ss[i];
+    
+    
+    private String returnGeneName(String s, Map<String, String[]> hugo_by_id) {
+        String index = "";
+        String gene;
+        if (s.startsWith("MIR")) {
+            if (s.contains("LET")) {
+                index = s.substring(6).toLowerCase();
+                if (index.length() >= 2 && Character.isDigit(index.charAt(index.length() - 1)) && !Character.isDigit(index.charAt(index.length() - 2))) {
+                    index = index.substring(0, index.length() - 2) + "-" + index.charAt(index.length() - 1);
                 }
-                overreps.put(tmp_s, s);
-            }
-        }
-
-        int tmp_count;
-        String hg_hugo_id;
-        while ((s = rndm.readLine()) != null) {
-            ss = s.split(("\t")); // ss[1] - hitgene
-            try {
-                hg_hugo_id = "p" + hugo_by_id.get(ss[1].substring(1))[1];
-                for (String key : overreps.keySet()) {
-                    if (s.contains(key)) {
-                        if (overreps_counts.containsKey(key)) {
-                            if (overreps_counts.get(key).containsKey(hg_hugo_id)) {
-                                tmp_count = overreps_counts.get(key).get(hg_hugo_id) + 1;
-                                overreps_counts.get(key).put(hg_hugo_id, tmp_count);
-                            } else {
-                                tmp_count = 1;
-                                overreps_counts.get(key).put(hg_hugo_id, tmp_count);
-                            }
-                        } else {
-                            tmp_map = new HashMap();
-                            tmp_map.put(hg_hugo_id, 1);
-                            overreps_counts.put(key, tmp_map);
-                        }
-                    } /*else {
-                     if (!overreps_counts.containsKey(key)) {
-                     tmp_map = new HashMap();
-                     tmp_map.put(hg_hugo_id, 0);
-                     overreps_counts.put(key, tmp_map);
-                     } else {
-                     if (!overreps_counts.get(key).containsKey(hg_hugo_id)) {
-                     tmp_map = overreps_counts.get(key);
-                     tmp_map.put(hg_hugo_id, 0);
-                     overreps_counts.put(key, tmp_map);
-                     }
-                     }
-                     } */
-
-                }
-            } catch (NullPointerException e) {
-                System.out.println(" --------- " + ss[1].substring(1));
-            }
-        }
-
-        /*
-         for (String key : overreps.keySet()) {
-         tmp_map = new HashMap();
-         for (String hg : random_paths.keySet()) {
-         tmp_count = 0;
-         for (String s1 : random_paths.get(hg)) {
-         if (s1.contains(key)) {
-         tmp_count++;
-         }
-         }
-         try {
-         tmp_map.put("p" + hugo_by_id.get(hg.substring(1))[1], tmp_count);
-         } catch (NullPointerException e) {
-         System.out.println(" --------- " + hg.substring(1));
-         }
-         }
-         overreps_counts.put(key, tmp_map);
-         j++;
-         }
-         */
-        while ((s = hitlist.readLine()) != null) {
-            if (s.contains("HitList")) {
-                tmp_s = s;
-                tmp_list = new ArrayList();
-                for (int i = 0; i < hitlist_length; i++) {
-                    s = hitlist.readLine();
-                    tmp_list.add(s);
-                }
-                hitlists.put(tmp_s, tmp_list);
-            }
-        }
-        double pvalue;
-        int count_hitlists;
-        int overreps_counts_value = 0;
-        for (String key : overreps_counts.keySet()) {
-            overrep_pvalue.write(overreps.get(key) + "\t");
-            count_hitlists = 0;
-            for (String hl : hitlists.keySet()) {
-                tmp_count = 0;
-                for (String hg : hitlists.get(hl)) {
-                    try {
-                        overreps_counts_value = overreps_counts.get(key).get("p" + hg);
-                    } catch (NullPointerException e) {
-                        overreps_counts_value = 0;
-                    }
-                    tmp_count = tmp_count + overreps_counts_value;
-                }
-                if (tmp_count >= Integer.parseInt(overreps.get(key).split("\t")[position_of_overreps_count])) {
-                    count_hitlists++;
-                }
-            }
-            pvalue = (double) count_hitlists / (double) hitlists.size();
-            overrep_pvalue.write(pvalue + "\n");
-        }
-
-        overrep_pvalue.close();
-        rndm.close();
-        overrep.close();
-        hitlist.close();
-    }
-
-    /**
-     *
-     * @param all
-     * @param nutils
-     * @param putils
-     * @param outils
-     * @param dbutils
-     * @param random_paths_file
-     * @param ovrreps_paths_file
-     * @param hitlists_file
-     * @param hitlist_length
-     * @param hugo_by_id
-     * @throws IOException
-     */
-    public void calculate_p_values_hubs(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, Map<String, String[]> hugo_by_id) throws IOException {
-        System.out.println("+++++++++++++calculate_p_values_hubs++++++++++++");
-        BufferedReader rndm = new BufferedReader(new FileReader(random_paths_file));
-        BufferedReader overrep = new BufferedReader(new FileReader(ovrreps_paths_file));
-        BufferedReader hitlist = new BufferedReader(new FileReader(hitlists_file));
-        BufferedWriter overrep_pvalue = new BufferedWriter(new FileWriter(ovrreps_paths_file + "_pvalues"));
-
-        String s;
-        String[] ss;
-        List<String> tmp_list;
-        String tmp_s;
-        Map<String, List<String>> random_paths = new HashMap();
-        Map<String, String> hubs = new HashMap();
-        Map<String, Map<String, Integer>> overreps_counts = new HashMap();
-        Map<String, List<String>> hitlists = new HashMap();
-        Map<String, Integer> tmp_map;
-        int j = 0;
-        while ((s = overrep.readLine()) != null) {
-            ss = s.split(("\t"));
-            if (Integer.parseInt(ss[2]) > 1) {
-                hubs.put(ss[0], s);
-            }
-        }
-
-        int tmp_count;
-        String hg_hugo_id;
-        boolean found;
-        while ((s = rndm.readLine()) != null) {
-            ss = s.split(("\t")); // ss[1] - hitgene
-            try {
-                hg_hugo_id = "p" + hugo_by_id.get(ss[1].substring(1))[1];
-            } catch (NullPointerException e) {
-                System.out.println(" --------- " + ss[1].substring(1));
-                break;
-            }
-            for (String key : hubs.keySet()) {
-                found = false;
-                for (int k = 2; k < ss.length - 2; k++) {
-                    try {
-                        if (all.interactions.get(ss[k]).int1.id.equals(key)
-                                || all.interactions.get(ss[k]).int2.id.equals(key)) {
-                            found = true;
-                            break;
-                        }
-                    } catch (NullPointerException e) {
-                        System.out.println(" ++++ " + ss[k]);
-                        break;
-                    }
-                }
-                if (found) {
-                    if (overreps_counts.containsKey(key)) {
-                        if (overreps_counts.get(key).containsKey(hg_hugo_id)) {
-                            tmp_count = overreps_counts.get(key).get(hg_hugo_id) + 1;
-                            overreps_counts.get(key).put(hg_hugo_id, tmp_count);
-                        } else {
-                            tmp_count = 1;
-                            overreps_counts.get(key).put(hg_hugo_id, tmp_count);
-                        }
-                    } else {
-                        tmp_map = new HashMap();
-                        tmp_map.put(hg_hugo_id, 1);
-                        overreps_counts.put(key, tmp_map);
-                    }
-                }
-            }
-
-        }
-        while ((s = hitlist.readLine()) != null) {
-            if (s.contains("HitList")) {
-                tmp_s = s;
-                tmp_list = new ArrayList();
-                for (int i = 0; i < hitlist_length; i++) {
-                    s = hitlist.readLine();
-                    tmp_list.add(s);
-                }
-                hitlists.put(tmp_s, tmp_list);
-            }
-        }
-        double pvalue;
-        int count_hitlists;
-        int overreps_counts_value = 0;
-        for (String key : overreps_counts.keySet()) {
-            overrep_pvalue.write(hubs.get(key) + "\t");
-            count_hitlists = 0;
-            for (String hl : hitlists.keySet()) {
-                tmp_count = 0;
-                for (String hg : hitlists.get(hl)) {
-                    try {
-                        overreps_counts_value = overreps_counts.get(key).get("p" + hg);
-                    } catch (NullPointerException e) {
-                        overreps_counts_value = 0;
-                    }
-                    tmp_count = tmp_count + overreps_counts_value;
-                }
-                if (tmp_count >= Integer.parseInt(hubs.get(key).split("\t")[2])) {
-                    count_hitlists++;
-                }
-            }
-            pvalue = (double) count_hitlists / (double) hitlists.size();
-            overrep_pvalue.write(pvalue + "\n");
-        }
-
-        overrep_pvalue.close();
-        rndm.close();
-        overrep.close();
-        hitlist.close();
-    }
-
-    /**
-     *
-     * @param all
-     * @param nutils
-     * @param putils
-     * @param outils
-     * @param dbutils
-     * @param random_paths_file
-     * @param ovrreps_paths_file
-     * @param hitlists_file
-     * @param hitlist_length
-     * @param position_of_overreps_count
-     * @param hugo_by_id
-     * @throws IOException
-     */
-    public void calculate_p_values_random_networks(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, int position_of_overreps_count, Map<String, String[]> hugo_by_id) throws IOException {
-        System.out.println("+++++++++++++calculate_p_values++++++++++++");
-        BufferedReader rndm = new BufferedReader(new FileReader(random_paths_file));
-        BufferedReader overrep = new BufferedReader(new FileReader(ovrreps_paths_file));
-        BufferedReader hitlist = new BufferedReader(new FileReader(hitlists_file));
-        BufferedWriter overrep_pvalue = new BufferedWriter(new FileWriter(ovrreps_paths_file + "_pvalues_2"));
-
-        String s;
-        String[] ss;
-        List<String> tmp_list;
-        String tmp_s;
-        Map<String, List<String>> random_paths = new HashMap();
-        Map<String, String> overreps = new HashMap();
-        Map<String, Map<String, Integer>> overreps_counts = new HashMap();
-        Map<String, List<String>> hitlists = new HashMap();
-        Map<String, Integer> tmp_map;
-        while ((s = rndm.readLine()) != null) {
-            ss = s.split(("\t"));
-            if (random_paths.containsKey(ss[1])) {
-                tmp_list = random_paths.get(ss[1]);
-                tmp_list.add(s);
+                gene = "hsa-let-" + index;
             } else {
-                tmp_list = new ArrayList();
-                tmp_list.add(s);
-            }
-            random_paths.put(ss[1], tmp_list);
-        }
-
-        int j = 0;
-        while ((s = overrep.readLine()) != null) {
-            ss = s.split(("\t"));
-            if (Integer.parseInt(ss[position_of_overreps_count]) > 3 || (Integer.parseInt(ss[0])) >= 3 && Integer.parseInt(ss[position_of_overreps_count]) > 2) {
-                tmp_s = ss[1];
-                for (int i = 2; i <= Integer.parseInt(ss[0]); i++) {
-                    tmp_s = tmp_s + "\t" + ss[i];
+                index = s.substring(3).toLowerCase();
+                if (index.length() >= 2 && Character.isDigit(index.charAt(index.length() - 1)) && !Character.isDigit(index.charAt(index.length() - 2))) {
+                    index = index.substring(0, index.length() - 2) + "-" + index.charAt(index.length() - 1);
                 }
-                overreps.put(tmp_s, s);
-            }
-        }
-
-        int tmp_count;
-        for (String key : overreps.keySet()) {
-            tmp_map = new HashMap();
-            for (String hg : random_paths.keySet()) {
-                tmp_count = 0;
-                for (String s1 : random_paths.get(hg)) {
-                    if (s1.contains(key)) {
-                        tmp_count++;
-                    }
-                }
-                try {
-                    tmp_map.put("p" + hugo_by_id.get(hg.substring(1))[1], tmp_count);
-                } catch (NullPointerException e) {
-                    System.out.println(" --------- " + hg.substring(1));
-                }
-            }
-            overreps_counts.put(key, tmp_map);
-            j++;
-        }
-
-        while ((s = hitlist.readLine()) != null) {
-            if (s.contains("HitList")) {
-                tmp_s = s;
-                tmp_list = new ArrayList();
-                for (int i = 0; i < hitlist_length; i++) {
-                    s = hitlist.readLine();
-                    tmp_list.add(s);
-                }
-                hitlists.put(tmp_s, tmp_list);
-            }
-        }
-        double pvalue;
-        int count_hitlists;
-        for (String key : overreps_counts.keySet()) {
-            overrep_pvalue.write(overreps.get(key) + "\t");
-            count_hitlists = 0;
-            for (String hl : hitlists.keySet()) {
-                tmp_count = 0;
-                for (String hg : hitlists.get(hl)) {
-                    // System.out.println(overreps_counts.get(key).get("p" + hg));
-                    try {
-                        tmp_count = tmp_count + overreps_counts.get(key).get("p" + hg);
-                    } catch (NullPointerException e) {
-
-                    }
-                }
-                // System.out.println(tmp_count + "\t"+Integer.parseInt(overreps.get(key).split("\t")[position_of_overreps_count]));
-                if (tmp_count >= Integer.parseInt(overreps.get(key).split("\t")[position_of_overreps_count])) {
-                    count_hitlists++;
-                }
+                gene = "hsa-mir-" + index;
 
             }
-            pvalue = (double) count_hitlists / (double) hitlists.size();
-            // System.out.println(pvalue);
-            overrep_pvalue.write(pvalue + "\n");
+        } else {
+            gene = "p" + hugo_by_id.get(s)[0];// hit gene - gene
         }
-        overrep_pvalue.close();
-        rndm.close();
-        overrep.close();
-        hitlist.close();
+        return gene;
     }
-
-    /**
-     *
-     * @param all
-     * @param nutils
-     * @param putils
-     * @param outils
-     * @param dbutils
-     * @param random_paths_file
-     * @param ovrreps_paths_file
-     * @param hitlists_file
-     * @param hitlist_length
-     * @param position_of_overreps_count
-     * @param hugo_by_id
-     * @throws IOException
-     */
-    public void calculate_p_values_ppi(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, int position_of_overreps_count, Map<String, String[]> hugo_by_id) throws IOException {
-        System.out.println("+++++++++++++calculate_p_values++++++++++++");
-        BufferedReader rndm = new BufferedReader(new FileReader(random_paths_file));
-        BufferedReader overrep = new BufferedReader(new FileReader(ovrreps_paths_file));
-        BufferedReader hitlist = new BufferedReader(new FileReader(hitlists_file));
-        BufferedWriter overrep_pvalue = new BufferedWriter(new FileWriter(ovrreps_paths_file + "_pvalues"));
-
-        String s;
-        String[] ss;
-        List<String> tmp_list;
-        String tmp_s;
-        Map<String, List<String>> random_paths = new HashMap();
-        Map<String, String> overreps = new HashMap();
-        Map<String, Map<String, Integer>> overreps_counts = new HashMap();
-        Map<String, List<String>> hitlists = new HashMap();
-        Map<String, Integer> tmp_map;
-        System.out.println("0");
-        while ((s = rndm.readLine()) != null) {
-            ss = s.split(("\t"));
-            if (random_paths.containsKey(ss[1])) {
-                tmp_list = random_paths.get(ss[1]);
-                tmp_list.add(s);
-            } else {
-                tmp_list = new ArrayList();
-                tmp_list.add(s);
-            }
-            random_paths.put(ss[1], tmp_list);
-        }
-        System.out.println("1");
-        int j = 0;
-        while ((s = overrep.readLine()) != null) {
-            ss = s.split(("\t"));
-            if (Integer.parseInt(ss[position_of_overreps_count]) > 10 || (Integer.parseInt(ss[0])) >= 3 && Integer.parseInt(ss[position_of_overreps_count]) >= 10) {
-                tmp_s = ss[1];
-                for (int i = 2; i <= Integer.parseInt(ss[0]); i++) {
-                    tmp_s = tmp_s + "\t" + ss[i];
-                }
-                overreps.put(tmp_s, s);
-                // System.out.println(tmp_s);                
-            }
-        }
-        // int j=0;
-        int tmp_count;
-        System.out.println("2");
-        /*       for (String key : overreps.keySet()) {
-         tmp_map = new HashMap();            
-         for (String hg : random_paths.keySet()) {
-         tmp_count = 0;
-         for (String s1 : random_paths.get(hg)) {                    
-         if (s1.contains(key)) {
-         tmp_count++;
-         // System.out.println( j + "\t"+s1);
-         //j++;
-         }
-         if (s1.contains(CentralityManager.return_symmetric_path(key))) {
-         tmp_count++;
-         // System.out.println( j + "\t"+s1);
-         //j++;
-         }
-         }                
-         tmp_map.put("p" + hugo_by_id.get(hg.substring(1))[1], tmp_count);
-         // System.out.println("p" + hugo_by_id.get(hg.substring(1))[1]);
-         }
-         overreps_counts.put(key, tmp_map);
-         // System.out.println(j+"/" + overreps.keySet().size()+ "\t" +key);            
-         j++;
-         } */
-        String hg_name;
-        for (String key : overreps.keySet()) {
-            overreps_counts.put(key, new HashMap());
-        }
-        for (String hg : random_paths.keySet()) {
-            System.out.println(j + "/" + random_paths.size());
-            j++;
-            hg_name = "p" + hugo_by_id.get(hg.substring(1))[1];
-            tmp_count = 0;
-            for (String s1 : random_paths.get(hg)) {
-                for (String key : overreps.keySet()) {
-                    if (!overreps_counts.get(key).containsKey(hg_name)) {
-                        overreps_counts.get(key).put(hg_name, 0);
-                    }
-                    if (s1.contains(key)) {
-                        // System.out.println(overreps_counts.get(key).get(hg_name));
-                        overreps_counts.get(key).put(hg_name, overreps_counts.get(key).get(hg_name) + 1);
-                        // System.out.println(overreps_counts.get(key).get(hg_name));
-                    }
-                    if (s1.contains(CentralityManager.return_symmetric_path(key))) {
-                        overreps_counts.get(key).put(hg_name, overreps_counts.get(key).get(hg_name) + 1);
-                    }
-                }
-            }
-        }
-
-        System.out.println("3");
-        while ((s = hitlist.readLine()) != null) {
-            if (s.contains("HitList")) {
-                tmp_s = s;
-                tmp_list = new ArrayList();
-                for (int i = 0; i < hitlist_length; i++) {
-                    s = hitlist.readLine();
-                    tmp_list.add(s);
-                }
-                hitlists.put(tmp_s, tmp_list);
-            }
-        }
-        double pvalue;
-        int count_hitlists;
-        System.out.println("4");
-        for (String key : overreps_counts.keySet()) {
-            overrep_pvalue.write(overreps.get(key) + "\t");
-            count_hitlists = 0;
-            for (String hl : hitlists.keySet()) {
-                tmp_count = 0;
-                for (String hg : hitlists.get(hl)) {
-                    // System.out.println(overreps_counts.get(key).get("p" + hg));
-                    try {
-                        tmp_count = tmp_count + overreps_counts.get(key).get("p" + hg);
-                    } catch (NullPointerException e) {
-
-                    }
-                }
-                // System.out.println(tmp_count + "\t"+Integer.parseInt(overreps.get(key).split("\t")[position_of_overreps_count]));
-                if (tmp_count >= Integer.parseInt(overreps.get(key).split("\t")[position_of_overreps_count])) {
-                    count_hitlists++;
-                }
-            }
-            pvalue = (double) count_hitlists / (double) hitlists.size();
-            System.out.println(pvalue);
-            overrep_pvalue.write(pvalue + "\n");
-        }
-        overrep_pvalue.close();
-        rndm.close();
-        overrep.close();
-        hitlist.close();
-    }
+    
 }
 /*
 
@@ -1725,4 +1928,177 @@ public class RandomManager {
  || it.int1.type.toLowerCase().equals("proteinfamily")) {
  continue;
  }
+ */
+/*int third_q = (int) Math.round(degree_distribution.length * 75.0 / 100.0);
+ int first_q = (int) Math.round(degree_distribution.length * 25.0 / 100.0);
+ double iqr = degree_distribution[third_q] - degree_distribution[first_q];
+ double step = 2 * iqr * Math.pow(degree_distribution.length, -0.33);
+ int number_of_bins = (int) Math.round((degree_distribution[degree_distribution.length - 1] - degree_distribution[0]) * (1.0 / step));
+ System.out.println("\n" + degree_distribution[third_q] + " " + degree_distribution[first_q]);
+ System.out.println(1 / step);
+ System.out.println(step); */
+/*
+
+ public void permute_phenotype_label(Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String folder, String prefix, int count, List<String> hit_list, Map<String, String[]> hugo_by_id, String fplayers) throws IOException {
+
+ System.out.println("+++++++++++++build_paths_for_random_hit_lists++++++++++++");
+ java.util.Random randomGenerator = new java.util.Random();
+ List<String> all_hugo_ids = new ArrayList();
+ List<String> all_mirnas_ids = new ArrayList();
+ int count_list_size = hit_list.size();
+ int randomInt, degree;
+ int max_degree = 0;
+ int bin = 0;
+ int index = 0;
+ int number_of_proteins = 0;
+ for (Node n : all.nodes.values()) {
+ if (n.type.equals("protein")) {
+ degree = n.downnbrs.size() + n.upnbrs.size() + n.revnbrs.size();
+ if (degree > 0) {
+ number_of_proteins++;
+ }
+ }
+ }
+ int[] degree_distribution = new int[number_of_proteins];
+ for (Node n : all.nodes.values()) {
+ if (n.type.equals("protein")) {
+ degree = n.downnbrs.size() + n.upnbrs.size() + n.revnbrs.size();
+ if (degree > 0) {
+ degree_distribution[index] = degree;
+ index++;
+ if (max_degree < degree) {
+ max_degree = degree;
+ }
+ }
+ }
+ }
+
+ Arrays.sort(degree_distribution);
+ int prev = degree_distribution[0];
+ int number = 1;
+ for (int i = 1; i < degree_distribution.length; i++) {
+ if (prev != degree_distribution[i]) {
+ System.out.print(prev + "-" + number + " ");
+ prev = degree_distribution[i];
+ number = 1;
+ } else {
+ number++;
+ }
+ }
+ System.out.print(prev + "-" + number + "\n");
+
+ int number_of_bins = 5;
+ ArrayList<String>[] bins = new ArrayList[number_of_bins];
+ for (bin = 0; bin < number_of_bins; bin++) {
+ bins[bin] = new ArrayList();
+ //System.out.println(bin + " " + bins[bin].size());
+ }
+ bin = 0;
+ String id, suf;
+ for (Node n : all.nodes.values()) {
+ if (n.type.equals("protein")) {
+ degree = n.downnbrs.size() + n.revnbrs.size() + n.upnbrs.size();
+ if (degree > 0) {
+ try {
+ bin = get_bin(degree);
+ if (bin == number_of_bins) {
+ bin = number_of_bins;
+ }
+ bins[bin].add(hugo_by_id.get(n.id.substring(1))[1]);
+ //all_hugo_ids.add(hugo_by_id.get(n.id.substring(1))[1]);
+ } catch (NullPointerException e) {
+
+ }
+ }
+ }
+ if (n.type.toLowerCase().equals("miRNA".toLowerCase())) {
+ id = n.id.replace("-3p", "").replace("-5p", "").replace("*", "");
+ if (id.charAt(id.length() - 2) == '-' && Character.isDigit(id.charAt(id.length() - 1)) && Character.isDigit(id.charAt(id.length() - 3))) {
+ suf = id.substring(id.length() - 2);
+ id = id.substring(0, id.length() - 2);
+ } else {
+ suf = "";
+ }
+ if (id.contains("let-")) {
+ all_mirnas_ids.add("MIR" + id.replace("-", "").substring(3).toUpperCase() + suf);
+ System.out.println(id + " MIR" + id.replace("-", "").substring(3).toUpperCase());
+ } else {
+ all_mirnas_ids.add(id.replace("-", "").substring(3).toUpperCase() + suf);
+ System.out.println(id + " " + id.replace("-", "").substring(3).toUpperCase());
+ }
+ /*
+ System.out.println("\n\n\n" + n.id + " " +n.db_flag);
+                
+ for (String [] s: n.ids){
+ for (int i=0; i< s.length; i++){
+ System.out.println(s[i]);
+ }
+ }
+ try {
+ all_mirnas_ids.add(n.id);
+ } catch (NullPointerException e) {
+ } */ /*
+ }
+ }
+
+ for (bin = 0; bin < number_of_bins; bin++) {
+ System.out.println(bin + " " + bins[bin].size());
+ }
+ String next_gene;
+ String flag;
+ bin = 0;
+ BufferedWriter random_hg_file = new BufferedWriter(new FileWriter(folder + "RandomHitGenes.txt"));
+ BufferedWriter random_hg_file_lists = new BufferedWriter(new FileWriter(folder + "RandomHitGenes_lists.txt"));
+ List<Integer>[] already_encountered_p = new ArrayList[10];
+ List<Integer> already_encountered_m = new ArrayList();
+ for (bin = 0; bin < number_of_bins; bin++) {
+ already_encountered_p[bin] = new ArrayList();
+ }
+ for (int j = count; j >= 0; j--) {
+ random_hg_file_lists.write("HitList" + j + "\n");
+ for (int i = count_list_size - 1; i >= 0; i--) {
+
+ if (!hit_list.get(i).startsWith("MIR")) {
+ try {
+ int h = all.nodes.get(hit_list.get(i)).downnbrs.size();
+ } catch (NullPointerException e) {
+ System.out.println(hit_list.get(i));
+ }
+ degree = all.nodes.get(hit_list.get(i)).downnbrs.size() + all.nodes.get(hit_list.get(i)).upnbrs.size() + all.nodes.get(hit_list.get(i)).revnbrs.size();
+ bin = get_bin(degree);
+ if (bin == number_of_bins) {
+ bin = number_of_bins;
+ }
+ randomInt = randomGenerator.nextInt(bins[bin].size());
+ next_gene = bins[bin].get(randomInt);
+ flag = "p";
+ } else {
+ randomInt = randomGenerator.nextInt(all_mirnas_ids.size());
+ next_gene = all_mirnas_ids.get(randomInt);
+ flag = "m";
+ }
+ if ((flag.equals("p") && already_encountered_p[bin].contains(randomInt)) || (flag.equals("m") && already_encountered_m.contains(randomInt))) {
+ random_hg_file_lists.write(next_gene + "\n");
+ } else {
+ random_hg_file_lists.write(next_gene + "\n");
+ random_hg_file.write(next_gene + "\n");
+ if (flag.equals("p")) {
+ already_encountered_p[bin].add(randomInt);
+ } else {
+ already_encountered_m.add(randomInt);
+ }
+ }
+ }
+ }
+ random_hg_file.close();
+ random_hg_file_lists.close();
+
+ nutils.load_hitlist_and_finalimpl(folder + "RandomHitGenes.txt", fplayers, dbutils.hugo);
+ nutils.find_pathway_for_list_BF_algorithm(all, dbutils.hugo, 5, folder + "foundDF.txt", prefix);
+ putils.find_the_shortest_paths(folder + "foundDF.txt", "_top_ranked", all, nutils.hg, nutils.fpl, 0, 0, 0, 0);
+
+ }
+
+
+
  */

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * DBManager class contains methods to load databases
  *
  * @author Natalia Rubanova
  */
@@ -33,12 +34,11 @@ public class DBManager {
 
     Map<String, String[]> hugo = new HashMap(); //name - строка
     Map<String, String[]> hugo_by_id = new HashMap(); // id -строка
-    
-    
+
     Map<String, String> tfacts_to_hugo = new HashMap();
-    Map<String, String[]> hugo_entrez = new HashMap();    
+    Map<String, String[]> hugo_entrez = new HashMap();
     Map<String, String[]> entrez_wo_hugo = new HashMap();
-    
+
     Map<String, String> hprd_to_hugo = new HashMap();
     Map<String, String> transpath_to_hugo = new HashMap();
     Map<String, String> bioDBhprd_to_hugo = new HashMap();
@@ -46,16 +46,14 @@ public class DBManager {
 
     /**
      *
-     * @throws IOException
+     * Constructor
      */
     public DBManager() throws IOException {
         loadHUGO();
     }
 
     /**
-     *Loads HGNC nomenclature
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Loads HGNC nomenclature
      */
     public void loadHUGO() throws FileNotFoundException, IOException {
         String s;
@@ -67,10 +65,11 @@ public class DBManager {
 
             s = rd.readLine();
             while ((s = rd.readLine()) != null) {
-                ss = s.split("\t");
-                hugo.put(ss[1], ss);
-                hugo_by_id.put(ss[0], ss);
-
+                if (!s.toLowerCase().contains("entry withdrawn")) {
+                    ss = s.split("\t");
+                    hugo.put(ss[1], ss);
+                    hugo_by_id.put(ss[0], ss);
+                }
             }
             rd.close();
         }
@@ -116,9 +115,7 @@ public class DBManager {
     }
 
     /**
-     *
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Load HPRD database
      */
     public void loadHPRD() throws FileNotFoundException, IOException {
         //entities
@@ -173,13 +170,11 @@ public class DBManager {
         System.out.println("hprd.nodes.size " + hprd.nodes.size());
         System.out.println("hprd.interactions.size " + hprd.interactions.size());
     }
-    
-    
+
     /**
-     *Loads HIPPIE database
+     * Load HIPPIE database
+     *
      * @param high load all or only high confidence interactions
-     * @throws FileNotFoundException
-     * @throws IOException
      */
     public void loadHIPPIE(boolean high) throws FileNotFoundException, IOException {
         //entities
@@ -241,31 +236,31 @@ public class DBManager {
             db_entr = new ArrayList();
             db_entr.add(s);
             hippie.interactions.put("hp:" + i, new Interaction("hp:" + i, other_ids, n1, n2, "PPI", "hp_" + ss[5], db_entr, ss[4], "indirect"));
-            if (Double.valueOf(ss[4])>=0.73) {
+            if (Double.valueOf(ss[4]) >= 0.73) {
                 //System.out.println(Double.valueOf(ss[4]) +"  "+ ss[4]);
                 hippie_high.interactions.put("hp:" + i, new Interaction("hp:" + i, other_ids, n1, n2, "PPI", "hp_" + ss[5], db_entr, ss[4], "indirect"));
                 hippie_high.nodes.put(n1.id, n1);
                 hippie_high.nodes.put(n2.id, n2);
             }
-            if (Double.valueOf(ss[4])>0.63) {
+            if (Double.valueOf(ss[4]) > 0.63) {
                 //System.out.println(Double.valueOf(ss[4]) +"  "+ ss[4]);
                 hippie_medium_m.interactions.put("hp:" + i, new Interaction("hp:" + i, other_ids, n1, n2, "PPI", "hp_" + ss[5], db_entr, ss[4], "indirect"));
                 hippie_medium_m.nodes.put(n1.id, n1);
                 hippie_medium_m.nodes.put(n2.id, n2);
             }
-            if (Double.valueOf(ss[4])>=0.63) {
+            if (Double.valueOf(ss[4]) >= 0.63) {
                 //System.out.println(Double.valueOf(ss[4]) +"  "+ ss[4]);
                 hippie_medium_meq.interactions.put("hp:" + i, new Interaction("hp:" + i, other_ids, n1, n2, "PPI", "hp_" + ss[5], db_entr, ss[4], "indirect"));
                 hippie_medium_meq.nodes.put(n1.id, n1);
                 hippie_medium_meq.nodes.put(n2.id, n2);
             }
-            if (Double.valueOf(ss[4])>0.0) {
+            if (Double.valueOf(ss[4]) > 0.0) {
                 //System.out.println(Double.valueOf(ss[4]) +"  "+ ss[4]);
                 hippie_medium_m0.interactions.put("hp:" + i, new Interaction("hp:" + i, other_ids, n1, n2, "PPI", "hp_" + ss[5], db_entr, ss[4], "indirect"));
                 hippie_medium_m0.nodes.put(n1.id, n1);
                 hippie_medium_m0.nodes.put(n2.id, n2);
             }
-            
+
 // hippie.interactions.get("hp:" + i).print();
         }
         rd.close();
@@ -279,13 +274,11 @@ public class DBManager {
         System.out.println("hippie_medium_meq.interactions.size " + hippie_medium_meq.interactions.size());
         System.out.println("hippie_medium_m0.nodes.size " + hippie_medium_m0.nodes.size());
         System.out.println("hippie_medium_m0.interactions.size " + hippie_medium_m0.interactions.size());
-        
+
     }
 
     /**
-     *Loads Signor database
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Load Signor database
      */
     public void loadSignor() throws FileNotFoundException, IOException {
         //entities
@@ -407,9 +400,7 @@ public class DBManager {
     }
 
     /**
-     *Loads Signalink database
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Load Signalink database
      */
     public void loadSignalink() throws FileNotFoundException, IOException {
         //entities
@@ -538,15 +529,8 @@ public class DBManager {
         System.out.println("signalink.interactions.size " + signalink.interactions.size());
     }
 
-   
-    
-
-    
-
     /**
-     *Loads tFacts database
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Load tFacts database
      */
     public void loadtFacts() throws FileNotFoundException, IOException {
         System.out.println("+++++++++++++tFacts++++++++++++");
@@ -642,9 +626,7 @@ public class DBManager {
     }
 
     /**
-     *Loads KEGG database
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Load KEGG database
      */
     public void loadKEGG() throws FileNotFoundException, IOException {
         System.out.println("+++++++++++++KEGG++++++++++++");
@@ -748,9 +730,7 @@ public class DBManager {
     }
 
     /**
-     *Loads transMir database
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Load TransMir database
      */
     public void loadTransmir() throws FileNotFoundException, IOException {
         System.out.println("+++++++++++++Transmir++++++++++++");
@@ -827,6 +807,7 @@ public class DBManager {
                     if (mirna_gene.contains("-")) {
                         temp = mirna_gene.indexOf("-");
                         if (Character.isLetter(mirna_gene.charAt(temp - 1)) && Character.isDigit(mirna_gene.charAt(temp + 1))) {
+                            //System.out.println(mirna_gene);
                             mirna_gene = mirna_gene.replaceFirst("-", "");
                         }
                     }
@@ -887,9 +868,7 @@ public class DBManager {
     }
 
     /**
-     *Loads mitTarBase database
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Load mitTarBase database
      */
     public void loadmirTarBase() throws FileNotFoundException, IOException {
         System.out.println("+++++++++++++mirTarBase++++++++++++");
@@ -1072,391 +1051,389 @@ public class DBManager {
 
 
  */
-
-
 /*
     
-    public void loadHPRD() throws FileNotFoundException, IOException {
-        //entities
-        System.out.println("+++++++++++++HPRD++++++++++++");
-        List<String> db_entr;
-        List<String> other_ids = new ArrayList(); //interactions , сначала пустой
-        other_ids.add("-");
-        String s;
-        String[] ss;
-        List<String[]> new_ids;
-        String new_id;
-        BufferedReader rd = new BufferedReader(new FileReader(FoldersPaths.hprd_conv));
-        HashMap<String, String> conv_map = new HashMap();
-        Node n1, n2;
+ public void loadHPRD() throws FileNotFoundException, IOException {
+ //entities
+ System.out.println("+++++++++++++HPRD++++++++++++");
+ List<String> db_entr;
+ List<String> other_ids = new ArrayList(); //interactions , сначала пустой
+ other_ids.add("-");
+ String s;
+ String[] ss;
+ List<String[]> new_ids;
+ String new_id;
+ BufferedReader rd = new BufferedReader(new FileReader(FoldersPaths.hprd_conv));
+ HashMap<String, String> conv_map = new HashMap();
+ Node n1, n2;
 
-        while ((s = rd.readLine()) != null) {
-            ss = s.split("\t");
-            conv_map.put(ss[0], ss[ss.length - 1]);
-        }
-        rd.close();
+ while ((s = rd.readLine()) != null) {
+ ss = s.split("\t");
+ conv_map.put(ss[0], ss[ss.length - 1]);
+ }
+ rd.close();
 
-        //interactions
-        rd = new BufferedReader(new FileReader(FoldersPaths.hprd_int));
-        while ((s = rd.readLine()) != null) {
-            ss = s.split("\t");
-            if (!conv_map.containsKey(ss[2]) || !conv_map.containsKey(ss[5])) {
-                continue;
-            }
-            new_id = "p" + conv_map.get(ss[2]);
-            if (!hprd.nodes.containsKey(new_id)) {
-                new_ids = new ArrayList();
-                new_ids.add(new String[]{ss[2]});
-                hprd.nodes.put(new_id, new Node(new_id, "protein", "id", "hprd", new_ids));
-                n1 = hprd.nodes.get(new_id);
-            } else {
-                n1 = hprd.nodes.get(new_id);
-            }
-            new_id = "p" + conv_map.get(ss[5]);
-            if (!hprd.nodes.containsKey(new_id)) {
-                new_ids = new ArrayList();
-                new_ids.add(new String[]{ss[5]});
-                hprd.nodes.put(new_id, new Node(new_id, "protein", "id", "hprd", new_ids));
-                n2 = hprd.nodes.get(new_id);
-            } else {
-                n2 = hprd.nodes.get(new_id);
-            }
-            db_entr = new ArrayList();
-            db_entr.add(s);
-            hprd.interactions.put("hprd:" + ss[0], new Interaction("hprd:" + ss[0], other_ids, n1, n2, "PPI", "hprd", db_entr, "-", "indirect"));
-        }
-        rd.close();
-        System.out.println("hprd.nodes.size " + hprd.nodes.size());
-        System.out.println("hprd.interactions.size " + hprd.interactions.size());
-    }
+ //interactions
+ rd = new BufferedReader(new FileReader(FoldersPaths.hprd_int));
+ while ((s = rd.readLine()) != null) {
+ ss = s.split("\t");
+ if (!conv_map.containsKey(ss[2]) || !conv_map.containsKey(ss[5])) {
+ continue;
+ }
+ new_id = "p" + conv_map.get(ss[2]);
+ if (!hprd.nodes.containsKey(new_id)) {
+ new_ids = new ArrayList();
+ new_ids.add(new String[]{ss[2]});
+ hprd.nodes.put(new_id, new Node(new_id, "protein", "id", "hprd", new_ids));
+ n1 = hprd.nodes.get(new_id);
+ } else {
+ n1 = hprd.nodes.get(new_id);
+ }
+ new_id = "p" + conv_map.get(ss[5]);
+ if (!hprd.nodes.containsKey(new_id)) {
+ new_ids = new ArrayList();
+ new_ids.add(new String[]{ss[5]});
+ hprd.nodes.put(new_id, new Node(new_id, "protein", "id", "hprd", new_ids));
+ n2 = hprd.nodes.get(new_id);
+ } else {
+ n2 = hprd.nodes.get(new_id);
+ }
+ db_entr = new ArrayList();
+ db_entr.add(s);
+ hprd.interactions.put("hprd:" + ss[0], new Interaction("hprd:" + ss[0], other_ids, n1, n2, "PPI", "hprd", db_entr, "-", "indirect"));
+ }
+ rd.close();
+ System.out.println("hprd.nodes.size " + hprd.nodes.size());
+ System.out.println("hprd.interactions.size " + hprd.interactions.size());
+ }
 
     
-    public void loadTRANSPATH() throws FileNotFoundException, IOException {
-        System.out.println("+++++++++++++TRANSPATH++++++++++++");
-        List<String> db_entr;
-        List<String> other_ids = new ArrayList(); //interactions , сначала пустой
-        other_ids.add("-");
-        String s;
-        String[] ss = new String[9];
-        List<String[]> new_ids;
-        String new_id = new String();
-        BufferedReader rd = new BufferedReader(new FileReader(FoldersPaths.tp_ent));
-        int i = 0;
-        int j = 0;
-        boolean flag;
-        String tmp;
-        String id_type;
-        String db_flag;
-        Map<String, String> lost = new <String, String> HashMap();
-        // String tmp2;
-        while ((s = rd.readLine()) != null) {
-            new_ids = new ArrayList();
-            ss = s.split("\t");
-            flag = false;
-            if (!ss[7].equals("-")) {
-                if (ss[2].equals("protein")) {
-                    //new_id = "p" + hprd_to_hugo.get(ss[7]);
-                    if (hprd_to_hugo.containsKey(ss[7])) {
-                        new_id = hprd_to_hugo.get(ss[7]);
-                        id_type = "hugo";
-                        db_flag = "123";
-                    } else {
-                        new_id = ss[7];
-                        id_type = "hprd";
-                        db_flag = "023";
-                    }
-                } else {
-                    if (hprd_to_hugo.containsKey(ss[7])) {
-                        new_id = hprd_to_hugo.get(ss[7]).substring(1);
-                        id_type = "hugo";
-                        db_flag = "123";
-                    } else {
-                        new_id = "g" + ss[7];
-                        id_type = "hprd";
-                        db_flag = "023";
-                    }
-                }
-                new_ids.add(hugo.get(new_id));
-                new_ids.add(ss);
-                if (transpath.nodes.containsKey(new_id)) {
-                    j++;
-                    transpath.nodes.get(new_id).db_flag = transpath.nodes.get(new_id).db_flag + "3";
-                    transpath.nodes.get(new_id).ids.add(ss);
-                    transpath.nodes.get(new_id).id_type = transpath.nodes.get(new_id).id_type + id_type;
-                } else {
-                    transpath.nodes.put(new_id, new Node(new_id, ss[2], id_type, db_flag, new_ids));
-                }
-                if (id_type.equals("hugo")) {
-                    transpath_to_hugo.put(ss[0], new_id);
-                } else {
-                    transpath.nodes.put(new_id, new Node(new_id, ss[2], "hprd", "023", new_ids));
-                }
-                continue;
-            }
-            if (ss[7].equals("-")) {
-                if (ss[1].contains("_")) {
-                    tmp = ss[1].replace("_", "").toUpperCase();
-                } else {
-                    tmp = ss[1].toUpperCase();
-                }
-                if (ss[2].equals("gene")) {
-                    tmp = tmp.substring(1);
-                }
-                if (hugo.containsKey(ss[1])) {
-                    if (ss[2].equals("protein")) {
-                        new_id = "p" + hugo.get(ss[1])[0];
-                    } else {
-                        new_id = hugo.get(ss[1])[0];
-                    }
-                    new_ids.add(hugo.get(ss[1]));
-                    new_ids.add(ss);
-                    if (transpath.nodes.containsKey(new_id)) {
-                        j++;
-                        transpath.nodes.get(new_id).db_flag = transpath.nodes.get(new_id).db_flag + "3";
-                        transpath.nodes.get(new_id).ids.add(ss);
-                        transpath.nodes.get(new_id).id_type = transpath.nodes.get(new_id).id_type + "hugo_wc";
-                    } else {
-                        transpath.nodes.put(new_id, new Node(new_id, ss[2], "hugo_wc", "103", new_ids));
-                    }
-                    transpath_to_hugo.put(ss[0], new_id);
-                    continue;
-                } else if (hugo.containsKey(tmp)) {
-                    if (ss[2].equals("protein")) {
-                        new_id = "p" + hugo.get(tmp)[0];
-                    } else {
-                        new_id = hugo.get(tmp)[0];
-                    }
-                    new_ids.add(hugo.get(tmp));
-                    new_ids.add(ss);
-                    if (transpath.nodes.containsKey(new_id)) {
-                        j++;
-                        transpath.nodes.get(new_id).db_flag = transpath.nodes.get(new_id).db_flag + "3";
-                        transpath.nodes.get(new_id).ids.add(ss);
-                        transpath.nodes.get(new_id).id_type = transpath.nodes.get(new_id).id_type + "hugo_wc";
-                    } else {
-                        transpath.nodes.put(new_id, new Node(new_id, ss[2], "hugo_wc", "103", new_ids));
-                    }
-                    transpath_to_hugo.put(ss[0], new_id);
-                    continue;
-                } else if (hugo.containsKey(ss[6])) {
-                    if (ss[2].equals("protein")) {
-                        new_id = "p" + hugo.get(ss[6])[0];
-                    } else {
-                        new_id = hugo.get(ss[6])[0];
-                        if (hugo.get(ss[6])[0] == null) {
-                            System.out.println("--------------" + ss[6]);
-                        }
-                    }
-                    new_ids.add(hugo.get(ss[6]));
-                    new_ids.add(ss);
-                    if (transpath.nodes.containsKey(new_id)) {
-                        j++;
-                        transpath.nodes.get(new_id).db_flag = transpath.nodes.get(new_id).db_flag + "3";
-                        transpath.nodes.get(new_id).ids.add(ss);
-                        transpath.nodes.get(new_id).id_type = transpath.nodes.get(new_id).id_type + "hugo_wc";
-                    } else {
-                        transpath.nodes.put(new_id, new Node(new_id, ss[2], "hugo_wc", "103", new_ids));
-                    }
-                    transpath_to_hugo.put(ss[0], new_id);
-                    continue;
-                } else {
-                    for (String key : hugo.keySet()) {
-                        if ((!tmp.equals("-") && (hugo.get(key)[2].contains(tmp) || hugo.get(key)[4].contains(tmp) || hugo.get(key)[6].contains(tmp)))
-                                || (!ss[1].equals("-") && (hugo.get(key)[2].contains(ss[1]) || hugo.get(key)[4].contains(ss[1]) || hugo.get(key)[6].contains(ss[1])))
-                                || (!ss[4].equals("-") && (hugo.get(key)[2].contains(ss[4]) || hugo.get(key)[4].contains(ss[4]) || hugo.get(key)[6].contains(ss[4])))
-                                || (!ss[6].equals("-") && (hugo.get(key)[2].contains(ss[6]) || hugo.get(key)[4].contains(ss[6]) || hugo.get(key)[6].contains(ss[6])))) {
-                            if (ss[2].equals("protein")) {
-                                new_id = "p" + hugo.get(key)[0];
-                            } else {
-                                new_id = hugo.get(key)[0];
-                            }
-                            new_ids.add(hugo.get(key));
-                            new_ids.add(ss);
-                            if (transpath.nodes.containsKey(new_id)) {
-                                j++;
-                                transpath.nodes.get(new_id).db_flag = transpath.nodes.get(new_id).db_flag + "3";
-                                transpath.nodes.get(new_id).ids.add(ss);
-                                transpath.nodes.get(new_id).id_type = transpath.nodes.get(new_id).id_type + "hugo_wc";
-                            } else {
-                                transpath.nodes.put(new_id, new Node(new_id, ss[2], "hugo_wc", "103", new_ids));
-                            }
-                            transpath_to_hugo.put(ss[0], new_id);
-                            flag = true;
-                            break;
-                        }
-                    }
-                    if (!flag) {
-                        i++;
-                        new_id = ss[0];
-                        new_ids.add(null);
-                        new_ids.add(ss);
-                        transpath.nodes.put(new_id, new Node(new_id, ss[2], "transpath", "003", new_ids));
-                    }
-                }
-            }
-        }
-        System.out.println(i + "  " + j);
-        rd.close();
+ public void loadTRANSPATH() throws FileNotFoundException, IOException {
+ System.out.println("+++++++++++++TRANSPATH++++++++++++");
+ List<String> db_entr;
+ List<String> other_ids = new ArrayList(); //interactions , сначала пустой
+ other_ids.add("-");
+ String s;
+ String[] ss = new String[9];
+ List<String[]> new_ids;
+ String new_id = new String();
+ BufferedReader rd = new BufferedReader(new FileReader(FoldersPaths.tp_ent));
+ int i = 0;
+ int j = 0;
+ boolean flag;
+ String tmp;
+ String id_type;
+ String db_flag;
+ Map<String, String> lost = new <String, String> HashMap();
+ // String tmp2;
+ while ((s = rd.readLine()) != null) {
+ new_ids = new ArrayList();
+ ss = s.split("\t");
+ flag = false;
+ if (!ss[7].equals("-")) {
+ if (ss[2].equals("protein")) {
+ //new_id = "p" + hprd_to_hugo.get(ss[7]);
+ if (hprd_to_hugo.containsKey(ss[7])) {
+ new_id = hprd_to_hugo.get(ss[7]);
+ id_type = "hugo";
+ db_flag = "123";
+ } else {
+ new_id = ss[7];
+ id_type = "hprd";
+ db_flag = "023";
+ }
+ } else {
+ if (hprd_to_hugo.containsKey(ss[7])) {
+ new_id = hprd_to_hugo.get(ss[7]).substring(1);
+ id_type = "hugo";
+ db_flag = "123";
+ } else {
+ new_id = "g" + ss[7];
+ id_type = "hprd";
+ db_flag = "023";
+ }
+ }
+ new_ids.add(hugo.get(new_id));
+ new_ids.add(ss);
+ if (transpath.nodes.containsKey(new_id)) {
+ j++;
+ transpath.nodes.get(new_id).db_flag = transpath.nodes.get(new_id).db_flag + "3";
+ transpath.nodes.get(new_id).ids.add(ss);
+ transpath.nodes.get(new_id).id_type = transpath.nodes.get(new_id).id_type + id_type;
+ } else {
+ transpath.nodes.put(new_id, new Node(new_id, ss[2], id_type, db_flag, new_ids));
+ }
+ if (id_type.equals("hugo")) {
+ transpath_to_hugo.put(ss[0], new_id);
+ } else {
+ transpath.nodes.put(new_id, new Node(new_id, ss[2], "hprd", "023", new_ids));
+ }
+ continue;
+ }
+ if (ss[7].equals("-")) {
+ if (ss[1].contains("_")) {
+ tmp = ss[1].replace("_", "").toUpperCase();
+ } else {
+ tmp = ss[1].toUpperCase();
+ }
+ if (ss[2].equals("gene")) {
+ tmp = tmp.substring(1);
+ }
+ if (hugo.containsKey(ss[1])) {
+ if (ss[2].equals("protein")) {
+ new_id = "p" + hugo.get(ss[1])[0];
+ } else {
+ new_id = hugo.get(ss[1])[0];
+ }
+ new_ids.add(hugo.get(ss[1]));
+ new_ids.add(ss);
+ if (transpath.nodes.containsKey(new_id)) {
+ j++;
+ transpath.nodes.get(new_id).db_flag = transpath.nodes.get(new_id).db_flag + "3";
+ transpath.nodes.get(new_id).ids.add(ss);
+ transpath.nodes.get(new_id).id_type = transpath.nodes.get(new_id).id_type + "hugo_wc";
+ } else {
+ transpath.nodes.put(new_id, new Node(new_id, ss[2], "hugo_wc", "103", new_ids));
+ }
+ transpath_to_hugo.put(ss[0], new_id);
+ continue;
+ } else if (hugo.containsKey(tmp)) {
+ if (ss[2].equals("protein")) {
+ new_id = "p" + hugo.get(tmp)[0];
+ } else {
+ new_id = hugo.get(tmp)[0];
+ }
+ new_ids.add(hugo.get(tmp));
+ new_ids.add(ss);
+ if (transpath.nodes.containsKey(new_id)) {
+ j++;
+ transpath.nodes.get(new_id).db_flag = transpath.nodes.get(new_id).db_flag + "3";
+ transpath.nodes.get(new_id).ids.add(ss);
+ transpath.nodes.get(new_id).id_type = transpath.nodes.get(new_id).id_type + "hugo_wc";
+ } else {
+ transpath.nodes.put(new_id, new Node(new_id, ss[2], "hugo_wc", "103", new_ids));
+ }
+ transpath_to_hugo.put(ss[0], new_id);
+ continue;
+ } else if (hugo.containsKey(ss[6])) {
+ if (ss[2].equals("protein")) {
+ new_id = "p" + hugo.get(ss[6])[0];
+ } else {
+ new_id = hugo.get(ss[6])[0];
+ if (hugo.get(ss[6])[0] == null) {
+ System.out.println("--------------" + ss[6]);
+ }
+ }
+ new_ids.add(hugo.get(ss[6]));
+ new_ids.add(ss);
+ if (transpath.nodes.containsKey(new_id)) {
+ j++;
+ transpath.nodes.get(new_id).db_flag = transpath.nodes.get(new_id).db_flag + "3";
+ transpath.nodes.get(new_id).ids.add(ss);
+ transpath.nodes.get(new_id).id_type = transpath.nodes.get(new_id).id_type + "hugo_wc";
+ } else {
+ transpath.nodes.put(new_id, new Node(new_id, ss[2], "hugo_wc", "103", new_ids));
+ }
+ transpath_to_hugo.put(ss[0], new_id);
+ continue;
+ } else {
+ for (String key : hugo.keySet()) {
+ if ((!tmp.equals("-") && (hugo.get(key)[2].contains(tmp) || hugo.get(key)[4].contains(tmp) || hugo.get(key)[6].contains(tmp)))
+ || (!ss[1].equals("-") && (hugo.get(key)[2].contains(ss[1]) || hugo.get(key)[4].contains(ss[1]) || hugo.get(key)[6].contains(ss[1])))
+ || (!ss[4].equals("-") && (hugo.get(key)[2].contains(ss[4]) || hugo.get(key)[4].contains(ss[4]) || hugo.get(key)[6].contains(ss[4])))
+ || (!ss[6].equals("-") && (hugo.get(key)[2].contains(ss[6]) || hugo.get(key)[4].contains(ss[6]) || hugo.get(key)[6].contains(ss[6])))) {
+ if (ss[2].equals("protein")) {
+ new_id = "p" + hugo.get(key)[0];
+ } else {
+ new_id = hugo.get(key)[0];
+ }
+ new_ids.add(hugo.get(key));
+ new_ids.add(ss);
+ if (transpath.nodes.containsKey(new_id)) {
+ j++;
+ transpath.nodes.get(new_id).db_flag = transpath.nodes.get(new_id).db_flag + "3";
+ transpath.nodes.get(new_id).ids.add(ss);
+ transpath.nodes.get(new_id).id_type = transpath.nodes.get(new_id).id_type + "hugo_wc";
+ } else {
+ transpath.nodes.put(new_id, new Node(new_id, ss[2], "hugo_wc", "103", new_ids));
+ }
+ transpath_to_hugo.put(ss[0], new_id);
+ flag = true;
+ break;
+ }
+ }
+ if (!flag) {
+ i++;
+ new_id = ss[0];
+ new_ids.add(null);
+ new_ids.add(ss);
+ transpath.nodes.put(new_id, new Node(new_id, ss[2], "transpath", "003", new_ids));
+ }
+ }
+ }
+ }
+ System.out.println(i + "  " + j);
+ rd.close();
 
-        //interactions
-        rd = new BufferedReader(new FileReader(FoldersPaths.tp_int));
-        ss = new String[10];
-        Node n1, n2;
-        String ntype;
-        int pg = 0;
-        int pp = 0;
-        int gg = 0;
-        int gp = 0;
-        List<String> used_proteins = new ArrayList();
-        List<String> used_genes = new ArrayList();
-        while ((s = rd.readLine()) != null) {
-            ss = s.split("\t");
-            if ((ss[3].charAt(0) == 'M') && (ss[4].charAt(0) == 'M')) {
-                pp++;
-                if (!used_proteins.contains(ss[3])) {
-                    used_proteins.add(ss[3]);
-                }
-                if (!used_proteins.contains(ss[4])) {
-                    used_proteins.add(ss[4]);
-                }
-            }
-            if ((ss[3].charAt(0) == 'G') && (ss[4].charAt(0) == 'M')) {
-                gp++;
-                if (!used_genes.contains(ss[3])) {
-                    used_genes.add(ss[3]);
-                }
-                if (!used_proteins.contains(ss[4])) {
-                    used_proteins.add(ss[4]);
-                }
-                continue;
-            }
-            if ((ss[3].charAt(0) == 'G') && (ss[4].charAt(0) == 'G')) {
-                gg++;
-                if (!used_genes.contains(ss[3])) {
-                    used_genes.add(ss[3]);
-                }
-                if (!used_genes.contains(ss[4])) {
-                    used_genes.add(ss[4]);
-                }
-            }
-            if ((ss[3].charAt(0) == 'M') && (ss[4].charAt(0) == 'G')) {
-                pg++;
-                if (!used_proteins.contains(ss[3])) {
-                    used_proteins.add(ss[3]);
-                }
-                if (!used_genes.contains(ss[4])) {
-                    used_genes.add(ss[4]);
-                }
-            }
-            if (transpath_to_hugo.containsKey(ss[3])) {
-                n1 = transpath.nodes.get(transpath_to_hugo.get(ss[3]));
-            } else {
-                if (!transpath.nodes.containsKey(ss[3])) {
-                    if (ss[3].charAt(0) == 'M') {
-                        ntype = "protein";
-                    } else {
-                        ntype = "gene";
-                    }
-                    new_ids = new ArrayList();
-                    new_ids.add(ss);
-                    transpath.nodes.put(ss[3], new Node(ss[3], ntype, "TP_id", "003", new_ids));
-                }
-                n1 = transpath.nodes.get(ss[3]);
-            }
-            if (transpath_to_hugo.containsKey(ss[4])) {
-                n2 = transpath.nodes.get(transpath_to_hugo.get(ss[4]));
-            } else {
-                if (!transpath.nodes.containsKey(ss[4])) {
-                    if (ss[4].charAt(0) == 'M') {
-                        ntype = "protein";
-                    } else {
-                        ntype = "gene";
-                    }
-                    new_ids = new ArrayList();
-                    new_ids.add(ss);
-                    transpath.nodes.put(ss[4], new Node(ss[4], ntype, "TP_id", "003", new_ids));
-                }
-                n2 = transpath.nodes.get(ss[4]);
-            }
-            if (!transpath.nodes.containsKey(n2.id)) {
-                lost.put(ss[4], "1");
-            }
-            if (!transpath.nodes.containsKey(n1.id)) {
-                lost.put(ss[3], "1");
-            }
-            db_entr = new ArrayList();
-            db_entr.add(s);
-            transpath.interactions.put(ss[0], new Interaction(ss[0], other_ids, n1, n2, ss[7], "TP", db_entr, "-", ss[9]));
-        }
-        rd.close();
-        for (String qq : lost.keySet()) {
-            System.out.println("zhuzhu  " + qq);
-        }
-        System.out.println(" pp " + pp + " pg " + pg + " gg " + gg + " gp " + gp);
-        System.out.println(" used genes " + used_genes.size() + " used proteins " + used_proteins.size());
-        System.out.println("tp.nodes.size " + transpath.nodes.size());
-        System.out.println("tp.interactions.size " + transpath.interactions.size());
-    }
+ //interactions
+ rd = new BufferedReader(new FileReader(FoldersPaths.tp_int));
+ ss = new String[10];
+ Node n1, n2;
+ String ntype;
+ int pg = 0;
+ int pp = 0;
+ int gg = 0;
+ int gp = 0;
+ List<String> used_proteins = new ArrayList();
+ List<String> used_genes = new ArrayList();
+ while ((s = rd.readLine()) != null) {
+ ss = s.split("\t");
+ if ((ss[3].charAt(0) == 'M') && (ss[4].charAt(0) == 'M')) {
+ pp++;
+ if (!used_proteins.contains(ss[3])) {
+ used_proteins.add(ss[3]);
+ }
+ if (!used_proteins.contains(ss[4])) {
+ used_proteins.add(ss[4]);
+ }
+ }
+ if ((ss[3].charAt(0) == 'G') && (ss[4].charAt(0) == 'M')) {
+ gp++;
+ if (!used_genes.contains(ss[3])) {
+ used_genes.add(ss[3]);
+ }
+ if (!used_proteins.contains(ss[4])) {
+ used_proteins.add(ss[4]);
+ }
+ continue;
+ }
+ if ((ss[3].charAt(0) == 'G') && (ss[4].charAt(0) == 'G')) {
+ gg++;
+ if (!used_genes.contains(ss[3])) {
+ used_genes.add(ss[3]);
+ }
+ if (!used_genes.contains(ss[4])) {
+ used_genes.add(ss[4]);
+ }
+ }
+ if ((ss[3].charAt(0) == 'M') && (ss[4].charAt(0) == 'G')) {
+ pg++;
+ if (!used_proteins.contains(ss[3])) {
+ used_proteins.add(ss[3]);
+ }
+ if (!used_genes.contains(ss[4])) {
+ used_genes.add(ss[4]);
+ }
+ }
+ if (transpath_to_hugo.containsKey(ss[3])) {
+ n1 = transpath.nodes.get(transpath_to_hugo.get(ss[3]));
+ } else {
+ if (!transpath.nodes.containsKey(ss[3])) {
+ if (ss[3].charAt(0) == 'M') {
+ ntype = "protein";
+ } else {
+ ntype = "gene";
+ }
+ new_ids = new ArrayList();
+ new_ids.add(ss);
+ transpath.nodes.put(ss[3], new Node(ss[3], ntype, "TP_id", "003", new_ids));
+ }
+ n1 = transpath.nodes.get(ss[3]);
+ }
+ if (transpath_to_hugo.containsKey(ss[4])) {
+ n2 = transpath.nodes.get(transpath_to_hugo.get(ss[4]));
+ } else {
+ if (!transpath.nodes.containsKey(ss[4])) {
+ if (ss[4].charAt(0) == 'M') {
+ ntype = "protein";
+ } else {
+ ntype = "gene";
+ }
+ new_ids = new ArrayList();
+ new_ids.add(ss);
+ transpath.nodes.put(ss[4], new Node(ss[4], ntype, "TP_id", "003", new_ids));
+ }
+ n2 = transpath.nodes.get(ss[4]);
+ }
+ if (!transpath.nodes.containsKey(n2.id)) {
+ lost.put(ss[4], "1");
+ }
+ if (!transpath.nodes.containsKey(n1.id)) {
+ lost.put(ss[3], "1");
+ }
+ db_entr = new ArrayList();
+ db_entr.add(s);
+ transpath.interactions.put(ss[0], new Interaction(ss[0], other_ids, n1, n2, ss[7], "TP", db_entr, "-", ss[9]));
+ }
+ rd.close();
+ for (String qq : lost.keySet()) {
+ System.out.println("zhuzhu  " + qq);
+ }
+ System.out.println(" pp " + pp + " pg " + pg + " gg " + gg + " gp " + gp);
+ System.out.println(" used genes " + used_genes.size() + " used proteins " + used_proteins.size());
+ System.out.println("tp.nodes.size " + transpath.nodes.size());
+ System.out.println("tp.interactions.size " + transpath.interactions.size());
+ }
 
-public void loadPC() throws FileNotFoundException, IOException {
-        //entities
-        System.out.println("+++++++++++++Pathway commons++++++++++++");
-        List<String> db_entr;
-        List<String> other_ids = new ArrayList(); //interactions , сначала пустой
-        other_ids.add("-");
-        String s;
-        String[] ss;
-        List<String[]> new_ids;
-        String new_id, type;
-        BufferedReader rd = new BufferedReader(new FileReader(FoldersPaths.pc_int));
-        Node n1, n2;
-        int i = 0;
-        int j = 0;
-        int k = 0;
-        while ((s = rd.readLine()) != null) {
-            ss = s.split("\t");
-            if (ss[1].equals("catalysis-precedes") || ss[1].equals("chemical-affects") || ss[1].equals("consumption-controlled-by") || ss[1].equals("controls-production-of") || ss[1].equals("reacts-with") || ss[1].equals("controls-transport-of-chemical") || ss[1].equals("used-to-produce")) {
-                j++;
-                continue;
-            }
-            i++;
-            if (hugo.containsKey(ss[0]) && hugo.containsKey(ss[2])) {
-                new_id = "p" + hugo.get(ss[0])[0];
-                // System.out.println(new_id);
-                if (!pc.nodes.containsKey(new_id)) {
-                    new_ids = new ArrayList();
-                    new_ids.add(hugo.get(ss[0]));
-                    pc.nodes.put(new_id, new Node(new_id, "protein", "hgnc", "12", new_ids));
-                    n1 = pc.nodes.get(new_id);
-                } else {
-                    n1 = pc.nodes.get(new_id);
-                }
-                if (ss[1].equals("controls-expression-of")) {
-                    new_id = "p" + hugo.get(ss[2])[0];
-                    type = "protein";
-                } else {
-                    new_id = hugo.get(ss[2])[0];
-                    type = "gene";
-                }
-                if (!pc.nodes.containsKey(new_id)) {
-                    new_ids = new ArrayList();
-                    new_ids.add(hugo.get(ss[2]));
-                    pc.nodes.put(new_id, new Node(new_id, type, "hgnc", "12", new_ids));
-                    n2 = pc.nodes.get(new_id);
-                } else {
-                    n2 = pc.nodes.get(new_id);
-                }
+ public void loadPC() throws FileNotFoundException, IOException {
+ //entities
+ System.out.println("+++++++++++++Pathway commons++++++++++++");
+ List<String> db_entr;
+ List<String> other_ids = new ArrayList(); //interactions , сначала пустой
+ other_ids.add("-");
+ String s;
+ String[] ss;
+ List<String[]> new_ids;
+ String new_id, type;
+ BufferedReader rd = new BufferedReader(new FileReader(FoldersPaths.pc_int));
+ Node n1, n2;
+ int i = 0;
+ int j = 0;
+ int k = 0;
+ while ((s = rd.readLine()) != null) {
+ ss = s.split("\t");
+ if (ss[1].equals("catalysis-precedes") || ss[1].equals("chemical-affects") || ss[1].equals("consumption-controlled-by") || ss[1].equals("controls-production-of") || ss[1].equals("reacts-with") || ss[1].equals("controls-transport-of-chemical") || ss[1].equals("used-to-produce")) {
+ j++;
+ continue;
+ }
+ i++;
+ if (hugo.containsKey(ss[0]) && hugo.containsKey(ss[2])) {
+ new_id = "p" + hugo.get(ss[0])[0];
+ // System.out.println(new_id);
+ if (!pc.nodes.containsKey(new_id)) {
+ new_ids = new ArrayList();
+ new_ids.add(hugo.get(ss[0]));
+ pc.nodes.put(new_id, new Node(new_id, "protein", "hgnc", "12", new_ids));
+ n1 = pc.nodes.get(new_id);
+ } else {
+ n1 = pc.nodes.get(new_id);
+ }
+ if (ss[1].equals("controls-expression-of")) {
+ new_id = "p" + hugo.get(ss[2])[0];
+ type = "protein";
+ } else {
+ new_id = hugo.get(ss[2])[0];
+ type = "gene";
+ }
+ if (!pc.nodes.containsKey(new_id)) {
+ new_ids = new ArrayList();
+ new_ids.add(hugo.get(ss[2]));
+ pc.nodes.put(new_id, new Node(new_id, type, "hgnc", "12", new_ids));
+ n2 = pc.nodes.get(new_id);
+ } else {
+ n2 = pc.nodes.get(new_id);
+ }
 
-                db_entr = new ArrayList();
-                db_entr.add(s);
-                pc.interactions.put("pc:" + i, new Interaction("pc:" + i, other_ids, n1, n2, ss[1], "pc", db_entr, "-", "-"));
-            } else {
+ db_entr = new ArrayList();
+ db_entr.add(s);
+ pc.interactions.put("pc:" + i, new Interaction("pc:" + i, other_ids, n1, n2, ss[1], "pc", db_entr, "-", "-"));
+ } else {
 
-            }
-        }
+ }
+ }
 
-        rd.close();
-        System.out.println("pc.nodes.size " + pc.nodes.size());
-        System.out.println("pc.interactions.size " + pc.interactions.size());
-    }
-*/
+ rd.close();
+ System.out.println("pc.nodes.size " + pc.nodes.size());
+ System.out.println("pc.interactions.size " + pc.interactions.size());
+ }
+ */

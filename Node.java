@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * Node class describes a Node object
+ * 
  * @author Natalia Rubanova
  */
 public class Node {
@@ -20,7 +21,7 @@ public class Node {
     List<String[]> ids;
 
     /**
-     *
+     * Constructor
      * @param id id of the Node
      * @param type type of the Node
      * @param id_type type of the id(nomenclature)
@@ -52,7 +53,7 @@ public class Node {
     }
     
     /**
-     * Print all node information in one line
+     * Print node information in one line
      */
     public void print() {
         System.out.println(id + "\t" + type + "\t" + id_type + "\t" + db_flag + "\t" + ids.get(0));

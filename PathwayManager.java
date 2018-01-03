@@ -17,604 +17,16 @@ import java.util.Set;
 import java.util.TreeMap;
 
 /**
+ * PathwayManager class contains methods to deal with pathways
  *
  * @author Natalia Rubanova
  */
 public class PathwayManager {
 
-    /**
-     * Find and rank miRNAs inside pathways
-     *
-     * @param foundf File with common paths
-     * @param resf Output file
-     * @param mirtarbase Link to mirTarBase network
-     * @param hg Hit genes list
-     * @param fpl Final implementer list
-     * @param length Maximum length
-     * @param min
-     * @param mask
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
-    public void calcmiRNAs(String foundf, String resf, Network mirtarbase, Map<String, String> hg, Map<String, String> fpl, int length, int min, String mask) throws FileNotFoundException, IOException {
-        System.out.println("+++++++++++++calcmiRNAs++++++++++++");
-        BufferedReader rd = new BufferedReader(new FileReader(foundf));
-        //BufferedWriter wr= new BufferedWriter (new FileWriter(resf));
-        String s;//, mi;
-        String[] ss;
-        int count;
-        Map<String, Integer> id_count = new HashMap();
-        Map<String, int[]> id_count_by_3 = new HashMap();        //mirtarbase id - data
-        Map<String, List<Map<String, Integer>>> id_list = new HashMap();
-
-        Map<String, Integer> mi_count = new HashMap(); //mirna - number of occurrence
-        Map<String, int[]> mi_count_by_3 = new HashMap();        //mirna - data
-        Map<String, List<Map<String, Integer>>> mi_list = new HashMap();
-
-        int[] ln;
-        List<Map<String, Integer>> ln_m;
-        Map<String, Integer> ln_m_tmp;
-        String beg, end;
-        List<String> all_mi;
-        int d;
-        int start_pos;
-        String mi;
-        while ((s = rd.readLine()) != null) {
-            if (s.contains("MIRT")) {
-                all_mi = new ArrayList();
-                ss = s.split("\t");
-                if (mask.equals("countonlymiddle")) {
-                    start_pos = 3;
-                } else {
-                    start_pos = 2;
-                }
-                for (int i = start_pos; i < ss.length; i++) {
-                    if (ss[i].contains("MIRT")) {
-                        all_mi.add(ss[i]);
-                    }
-                }
-                for (String mir_int : all_mi) {
-                    mi = mirtarbase.interactions.get(mir_int).int1.id;
-                    if (id_count.containsKey(mi)) {
-                        ////////////////////////////////
-                        count = id_count.get(mi);
-                        id_count.put(mi, count + 1);
-                        ////////////////////////////////
-                        ss = s.split("\t");
-                        ln = id_count_by_3.get(mi);
-                        for (int i = 0; i < length - min; i++) {
-                            if (ss.length == i + 5) {
-                                ln[i]++;
-                            }
-                        }
-                        id_count_by_3.put(mi, ln);
-
-                        ////////////////////////////////
-                        //*1
-                        beg = hg.get(ss[1]);
-                        end = fpl.get(ss[ss.length - 1]);
-                        ln_m = id_list.get(mi);
-                        for (int i = 0; i < length - min; i++) {
-                            if (ss.length == i + 6) {
-                                ln_m_tmp = ln_m.get(i);
-                                if (ln_m.get(i).containsKey(beg + "-" + end)) {
-                                    d = ln_m_tmp.get(beg + "-" + end) + 1;
-                                    ln_m_tmp.put(beg + "-" + end, d);
-                                } else {
-                                    ln_m_tmp.put(beg + "-" + end, 1);
-                                }
-                                ln_m.set(i, ln_m_tmp);
-                                break;
-                            }
-                        }
-                        id_list.put(mi, ln_m);
-                        ////////////////////////////////
-                    } else {
-                        ////////////////////////////////
-                        id_count.put(mi, 1);
-                        //////////////////////////////
-                        ln = new int[length - min];
-                        /*  for (int i = 0; i < length - min; i++) {
-                         ln[i] = 0;
-                         }
-                         ss = s.split("\t"); */
-                        for (int i = 0; i < length - min; i++) {
-                            ln[i] = 0;
-                            if (ss.length == i + 5) {
-                                ln[i] = 1;
-                            }
-                        }
-                        id_count_by_3.put(mi, ln);
-                        //////////////////////////////////*2
-                        beg = hg.get(ss[1]);  // bez + beg\end
-                        end = fpl.get(ss[ss.length - 1]);
-                        ln_m = new ArrayList();
-                        ln_m_tmp = new HashMap();
-                        for (int i = 0; i < length - min; i++) {
-                            ln_m.add(new HashMap());
-                            if (ss.length == i + 6) {
-                                ln_m_tmp.put(beg + "-" + end, 1);
-                                ln_m.set(i, ln_m_tmp);
-                            }
-                        }
-                        id_list.put(mi, ln_m);
-                    }
-                }
-            }
-        }
-
-        count = 0;
-        for (String t : id_count.keySet()) {
-            count = count + id_count.get(t);
-            System.out.print(t + "\t" + id_count.get(t) + "\t");
-            for (int i = 0; i < length - min; i++) {
-                System.out.print(id_count_by_3.get(t)[i] + "\t");
-            }
-            for (int i = 0; i < length - min; i++) {
-                System.out.print(i + length - min - 1 + ":\t");
-                for (String tt : id_list.get(t).get(i).keySet()) {
-                    System.out.print(tt + " x " + id_list.get(t).get(i).get(tt) + "\t");
-                }
-            }
-            System.out.println();
-        }
-        System.out.println("count " + count);
-        rd.close();
-    }
-
-    /**
-     * Find and rank miRNAs inside paths
-     *
-     * @param foundf Common paths file
-     * @param resf Output file
-     * @param mirtarbase Link to mirTarBAse network
-     * @param transmir Link to transMir network
-     * @param hg Hit genes list
-     * @param fpl Final players List
-     * @param length Maximum length
-     * @param min_occ Minimum occurence
-     * @param mask
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
-    public void calcmiRNAs_overrep(String foundf, String resf, Network mirtarbase, Network transmir, Map<String, String> hg, Map<String, String> fpl, int length, int min_occ, String mask) throws FileNotFoundException, IOException {
-        System.out.println("+++++++++++++calcmiRNAs_overrepr++++++++++++");
-        BufferedReader rd = new BufferedReader(new FileReader(foundf));
-        //BufferedWriter wr= new BufferedWriter (new FileWriter(resf));
-        String s;
-        String[] ss;
-        Map<String, List<String[]>> mirnas = new HashMap();
-        TreeMap<String, Integer> mirnas_maxocc = new TreeMap();
-        List<String_Int> mirnas_maxocc_list = new ArrayList();
-        List<String[]> list;
-        String mi, t;
-        while ((s = rd.readLine()) != null) {
-            ss = s.split("\t");
-            if (Integer.parseInt(ss[0]) >= min_occ) {
-                for (int i = 5; i < ss.length - Integer.parseInt(ss[1]); i++) {
-                    if (ss[i].contains("MIRT")) {
-                        mi = mirtarbase.interactions.get(ss[i]).int1.id;
-                        if (mirnas.containsKey(mi)) {
-                            list = mirnas.get(mi);
-                            list.add(ss);
-                            mirnas.put(mi, list);
-                            if (Integer.parseInt(ss[0]) > mirnas_maxocc.get(mi)) {
-                                mirnas_maxocc.put(mi, Integer.parseInt(ss[0]));
-                            }
-                        } else {
-                            list = new ArrayList();
-                            list.add(ss);
-                            mirnas.put(mi, list);
-                            mirnas_maxocc.put(mi, Integer.parseInt(ss[0]));
-                        }
-                    }
-                    if (ss[i].contains("transmir")) {
-                        mi = transmir.interactions.get(ss[i]).int2.id;
-                        if (mirnas.containsKey(mi)) {
-                            list = mirnas.get(mi);
-                            list.add(ss);
-                            mirnas.put(mi, list);
-                            if (Integer.parseInt(ss[0]) > mirnas_maxocc.get(mi)) {
-                                mirnas_maxocc.put(mi, Integer.parseInt(ss[0]));
-                            }
-                        } else {
-                            list = new ArrayList();
-                            list.add(ss);
-                            mirnas.put(mi, list);
-                            mirnas_maxocc.put(mi, Integer.parseInt(ss[0]));
-                        }
-                    }
-                }
-            }
-        }
-
-        for (String tt : mirnas_maxocc.keySet()) {
-            mirnas_maxocc_list.add(new String_Int(tt, mirnas_maxocc.get(tt)));
-        }
-        Collections.sort(mirnas_maxocc_list, new MaxOccComparator());
-
-        for (String_Int strint : mirnas_maxocc_list) {
-            t = strint.str;
-            System.out.println(t + "\t" + strint.it);
-            Collections.sort(mirnas.get(t), new ListComparator());
-            for (String[] get : mirnas.get(t)) {
-                System.out.print("--");
-                for (String get1 : get) {
-                    System.out.print("\t" + get1);
-                }
-                System.out.println();
-            }
-        }
-        rd.close();
-    }
-
-    /**
-     * Create a file for Cytoscape software from the shortest paths
-     *
-     * @param foundf Common paths file
-     * @param all Network
-     * @param hg Hit genes list
-     * @param fpl Final players list
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
-    public void create_cyto_for_paths(String foundf, Network all, Map<String, String> hg, Map<String, String> fpl) throws FileNotFoundException, IOException {
-        BufferedReader rd = new BufferedReader(new FileReader(foundf));
-        BufferedWriter wr = new BufferedWriter(new FileWriter(foundf + "_cyto"));
-        String s, fp;
-        String[] ss;
-        int count = 0;
-        int id_path = 0;
-        int ss_len;
-        //String[] fpls = {"pHGNC:7611", "pHGNC:4223", "pHGNC:7566", "pHGNC:5466"};
-        Map<String, Integer> fpl_count = new HashMap();
-        /* fpl_count.put("pHGNC:7611", 0);
-         fpl_count.put("pHGNC:4223", 0);
-         fpl_count.put("pHGNC:7566", 0);
-         fpl_count.put("pHGNC:5466", 0); */
-
-        for (String t : fpl.keySet()) {
-            fpl_count.put(t, 0);
-        }
-        while ((s = rd.readLine()) != null) {
-            ss = s.split("\t");
-            ss_len = ss.length;
-            fp = ss[4];
-            count = fpl_count.get(fp);
-            fpl_count.put(fp, count + 1);
-            for (int i = 5; i < ss.length; i++) {
-                wr.write(fp + "_" + fpl_count.get(fp) + "_" + i + "\t");
-                wr.write(ss[2] + "\t");
-                wr.write(ss[3] + "\t");
-                wr.write(ss[0] + "\t");
-                wr.write(ss[1] + "\t");
-                wr.write(ss[i] + "\t");
-                try {
-                    wr.write(all.interactions.get(ss[i]).int1.id + "\t");
-                } catch (NullPointerException e) {
-                    System.out.println(ss[i]);
-                    System.out.println(all.interactions.get(ss[i]).sourcedbentry.get(0));
-                    break;
-                }
-                wr.write(all.interactions.get(ss[i]).int2.id + "\t");
-                wr.write(fp + "_" + fpl_count.get(fp) + "\t");
-                wr.newLine();
-            }
-        }
-        rd.close();
-        wr.close();
-    }
-
-    /**
-     * Creates a file for a list of pathways by pathways ids for Cytoscape software
-     *
-     * @param path_file File with pathways
-     * @param filename File with list of pathways by id
-     * @param out_dir Output folder
-     * @param all Network
-     * @param hg Hit genes list
-     * @param fpl Final players list
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
-    public void create_cyto_for_list(String path_file, String filename, String out_dir, Network all, Map<String, String> hg, Map<String, String> fpl) throws FileNotFoundException, IOException {
-
-        BufferedReader rd = new BufferedReader(new FileReader(path_file));
-        BufferedWriter wr;
-        Map<String, Integer> fpl_count = new HashMap();
-        Map<String, String> paths = new HashMap();
-        String s, fp, pth;
-        String[] ss, ids, pth_ss;
-        int ss_len, pth_len, count = 0, id_path = 0;
-
-        for (String t : fpl.keySet()) {
-            fpl_count.put(t, 0);
-            // System.out.println(t);
-        }
-        while ((s = rd.readLine()) != null) {
-            ss = s.split("\t");
-            paths.put(ss[0], s);
-        }
-        rd.close();
-        rd = new BufferedReader(new FileReader(filename));
-        while ((s = rd.readLine()) != null) {
-
-            ss = s.split("\t");
-            wr = new BufferedWriter(new FileWriter(out_dir + ss[0] + "_cyto"));
-            ids = ss[1].split(";");
-            for (int j = 0; j < ids.length; j++) {
-                pth = paths.get(ids[j]);
-                pth_ss = pth.split("\t");
-                pth_len = pth_ss.length;
-                fp = pth_ss[pth_len - 1];
-                // System.out.println("------- " + fp);
-                count = fpl_count.get(fp);
-                fpl_count.put(fp, count + 1);
-                for (int i = 2; i < pth_len - 1; i++) {
-                    wr.write(fp + "_" + fpl_count.get(fp) + "_" + i + "\t");
-                    wr.write(pth_ss[2] + "\t");
-                    wr.write(pth_ss[3] + "\t");
-                    wr.write(pth_ss[0] + "\t");
-                    wr.write(pth_ss[1] + "\t");
-                    wr.write(pth_ss[i] + "\t");
-                    try {
-                        wr.write(all.interactions.get(pth_ss[i]).int1.id + "\t");
-                    } catch (NullPointerException e) {
-                        System.out.println(pth_ss[i]);
-                        System.out.println(ids[j]);
-                        System.out.println(all.interactions.get(pth_ss[i]).sourcedbentry.get(0));
-                        break;
-                    }
-                    wr.write(all.interactions.get(pth_ss[i]).int2.id + "\t");
-                    wr.write(fp + "_" + fpl_count.get(fp) + "\t");
-                    wr.newLine();
-                }
-            }
-            wr.close();
-        }
-        rd.close();
-    }
-
-    /**
-     * Create a file for Cytoscape software for comparison of two lists
-     *
-     * @param com
-     * @param p1
-     * @param p1_single_max
-     * @param p2
-     * @param p2_single_max
-     * @param out
-     * @param all
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
-    public void create_cyto_for_comparisson(String com, String p1, String p1_single_max, String p2, String p2_single_max, String out, Network all) throws FileNotFoundException, IOException {
-        //, Map<String, String> hg, Map<String, String> fpl
-        BufferedReader rd;
-        BufferedWriter wr = new BufferedWriter(new FileWriter(out));
-        String s;
-        String[] ss, tt;
-        int off, len, j;
-        Set<String> p_id1 = new HashSet();
-        Set<String> p_id2 = new HashSet();
-        Set<String> pth = new HashSet();
-        //Set <String> pth2= new HashSet();
-        Map<String, String> comp = new HashMap();
-        Map<String, String[]> orp_pth1 = new HashMap();
-        Map<String, String[]> orp_pth2 = new HashMap();
-        Map<String, String> cyto = new HashMap();
-        rd = new BufferedReader(new FileReader(com));
-        while ((s = rd.readLine()) != null) {
-            off = 0;
-            ss = s.split("\t");
-            for (String s1 : ss) {
-                if ("".equals(s1)) {
-                    off++;
-                }
-            }
-            len = (ss.length - 1 - off) / 2;
-            j = 0;
-            for (int i = 1 + 5; i < len + 1; i++) {
-                j++;
-                //cyto.put(ss[0] + "_" + j, all.interactions.get(ss[i]).int1.id + "\t" + all.interactions.get(ss[i]).int2.id + "\t" + ss[1] + "\t" + ss[1 + len + off] + "\t" + ss[2]);
-                if (comp.containsKey(ss[i]) && Integer.parseInt(comp.get(ss[i]).split("\t")[1]) + Integer.parseInt(comp.get(ss[i]).split("\t")[2]) < Integer.parseInt(ss[1] + Integer.parseInt(ss[1 + len + off]))) {
-                    comp.put(ss[i], ss[0] + "_" + j + "\t" + ss[1] + "\t" + ss[1 + len + off] + "\t" + ss[2] + "\t" + "sh");
-                } else {
-                    comp.put(ss[i], ss[0] + "_" + j + "\t" + ss[1] + "\t" + ss[1 + len + off] + "\t" + ss[2] + "\t" + "sh");
-                }
-            }
-            tt = ss[3].split(";");
-            for (String t : tt) {
-                if (!"".equals(t)) {
-                    p_id1.add(t);
-                }
-            }
-            tt = ss[1 + len + off + 2].split(";");
-            for (String t : tt) {
-                if (!"".equals(t)) {
-                    p_id2.add(t);
-                }
-            }
-        }
-        rd = new BufferedReader(new FileReader(p1_single_max));
-        while ((s = rd.readLine()) != null) {
-            ss = s.split("\t");
-            orp_pth1.put(ss[0], ss);
-        }
-        rd = new BufferedReader(new FileReader(p2_single_max));
-        while ((s = rd.readLine()) != null) {
-            ss = s.split("\t");
-            orp_pth2.put(ss[0], ss);
-        }
-        rd = new BufferedReader(new FileReader(p1));
-        while ((s = rd.readLine()) != null) {
-            ss = s.split("\t");
-            if (p_id1.contains(ss[0])) {
-                pth.add(s);
-            }
-        }
-        rd = new BufferedReader(new FileReader(p2));
-        while ((s = rd.readLine()) != null) {
-            ss = s.split("\t");
-            if (p_id2.contains(ss[0])) {
-                pth.add(s);
-            }
-        }
-
-        for (String t : pth) {
-            ss = t.split("\t");
-            j = 0;
-            for (int i = 2; i < ss.length - 1; i++) {
-                j++;
-                if (!comp.containsKey(ss[i])) {
-                    //System.out.println(ss[i]);
-                    if (orp_pth1.containsKey(ss[i])) {
-                        if (orp_pth2.containsKey(ss[i])) {
-                            comp.put(ss[i], ss[0] + "_" + j + "\t" + orp_pth1.get(ss[i])[1] + "\t" + orp_pth2.get(ss[i])[1] + "\t" + orp_pth1.get(ss[i])[2] + "\t" + "12");
-                        } else {
-                            comp.put(ss[i], ss[0] + "_" + j + "\t" + orp_pth1.get(ss[i])[1] + "\t" + 0 + "\t" + orp_pth1.get(ss[i])[2] + "\t" + "1");
-                        }
-                    } else {
-                        comp.put(ss[i], ss[1] + "_" + j + "\t" + 0 + "\t" + orp_pth2.get(ss[i])[1] + "\t" + orp_pth2.get(ss[i])[2] + "\t" + "2");
-                    }
-                }
-            }
-        }
-
-        for (String t : comp.keySet()) {
-            ss = comp.get(t).split("\t");
-            wr.write(ss[0] + "\t" + all.interactions.get(t).int1.id + "\t" + all.interactions.get(t).int2.id + "\t" + ss[1] + "\t" + ss[2] + "\t" + ss[3] + "\t" + ss[4]);
-            wr.newLine();
-        }
-
-        rd.close();
-        wr.close();
-    }
-
-    /**
-     * Filters pathways by length
-     *
-     * @param inf Input file
-     * @param outf Output file
-     * @param min Minimum length
-     * @param max Maximum length
-     * @throws IOException
-     */
-    public void filterPathways_by_length(String inf, String outf, int min, int max) throws IOException {
-        BufferedReader rd = new BufferedReader(new FileReader(inf));
-        BufferedWriter wr = new BufferedWriter(new FileWriter(inf + outf));
-        String s;
-        String[] ss;
-        while ((s = rd.readLine()) != null) {
-            ss = s.split("\t");
-            if (ss.length >= min + 3 && ss.length <= max + 3) {
-                wr.write(s);
-                wr.newLine();
-            }
-        }
-        rd.close();
-        wr.close();
-    }
-
-    /**
-     * Filter pathways by node names \ type
-     *
-     * @param foundf Input file
-     * @param outname Output file
-     * @param all Network
-     * @param hg Hit genes list
-     * @param fpl Final players list
-     * @param mask Mask
-     * @param gene Node name
-     * @param type Node type
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
-    public void filterPathways(String foundf, String outname, Network all, Map<String, String> hg, Map<String, String> fpl, String mask, String gene, String type) throws FileNotFoundException, IOException {
-        System.out.println("+++++++++++++filter pathways++++++++++++");
-        BufferedReader rd = new BufferedReader(new FileReader(foundf));
-        BufferedWriter wr = new BufferedWriter(new FileWriter(outname));
-        String s, gene_name;
-        String[] ss;
-        List<String> checked_mirnas;
-
-        while ((s = rd.readLine()) != null) {
-            ss = s.split("\t");
-            if (mask.equals("mir_middle") && s.contains("transmir")) { //mirna in the middle
-                wr.write(s);
-                wr.newLine();
-            }
-            if (mask.equals("mir_all") && s.contains("MIRT")) { //mirna on the pathway including in the begining
-                wr.write(s);
-                wr.newLine();
-            }
-            if (mask.equals("hg") && ss[1].equals(gene) && s.contains("MIRT")) { // starts with specific hg, mirna on the pathway
-                wr.write(s);
-                wr.newLine();
-            }
-            if (mask.equals("mirna") && s.contains("MIRT")) { //mirna on the pathway , pathway contains specific mirna
-                ss = s.split("\t");
-                checked_mirnas = new ArrayList();
-                for (int i = 2; i < ss.length - 1; i++) {
-                    gene_name = all.interactions.get(ss[i]).int1.id;
-                    if (ss[i].contains("MIRT") && gene_name.equals(gene)) {
-                        if (!checked_mirnas.contains(gene_name)) {
-                            wr.write(s + "\n");
-                            checked_mirnas.add(gene_name);
-                        }
-                    }
-                }
-            }
-
-        }
-        rd.close();
-        wr.close();
-    }
-
-    /**
-     * Filter paths on condition ppi [3,4] & miRNA [6/5] or ppi [3,4] or miRNA [6/5]
-     * @param foundf
-     * @param outname
-     * @param all
-     * @param hg
-     * @param fpl
-     * @param gene
-     * @param l1
-     * @param l2
-     * @param l3
-     * @param l4
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
-    public void filterPathways_2(String foundf, String outname, Network all, Map<String, String> hg, Map<String, String> fpl, String gene, int l1, int l2, int l3, int l4) throws FileNotFoundException, IOException {
-        //filter on condition ppi [3,4] & miRNA [6/5] or ppi [3,4] or miRNA [6/5]
-        System.out.println("+++++++++++++filter pathways_2++++++++++++");
-        BufferedReader rd = new BufferedReader(new FileReader(foundf));
-        BufferedWriter wr = new BufferedWriter(new FileWriter(foundf + outname));
-        String s;
-        String[] ss;
-        while ((s = rd.readLine()) != null) {
-            ss = s.split("\t");
-            if (s.contains("transmir") && ss.length <= l4 + 3 && ss.length >= l3 + 3) {
-                for (int i = 2; i < ss.length - 1; i++) {
-                    if (ss[i].contains("MIRT") && all.interactions.get(ss[i]).int1.id.equals(gene)) {
-                        wr.write(s + "\n");
-                        break;
-                    }
-                }
-            } else {
-                if (ss[1].equals(gene) && ss.length <= l2 + 3 && ss.length >= l1 + 3) {
-                    wr.write(s);
-                    wr.newLine();
-                }
-            }
-        }
-        rd.close();
-        wr.close();
-    }
-
-    /**
-     * Find top ranked pathways
+    
+    
+     /**
+     * Find the shortest pathways
      *
      * @param foundf Input file
      * @param outname Output file
@@ -625,10 +37,8 @@ public class PathwayManager {
      * @param d_tf Length gap for transcriptional interactions
      * @param d_mirna Length gap for miRNA-mRNA interactions
      * @param d_kegg Length gap for metabolic interactions
-     * @throws FileNotFoundException
-     * @throws IOException
      */
-    public void rank_pathways(String foundf, String outname, Network all, Map<String, String> hg, Map<String, String> fpl, int d_ppi, int d_tf, int d_mirna, int d_kegg) throws FileNotFoundException, IOException {
+    public void find_the_shortest_paths(String foundf, String outname, Network all, Map<String, String> hg, Map<String, String> fpl, int d_ppi, int d_tf, int d_mirna, int d_kegg) throws FileNotFoundException, IOException {
         System.out.println("+++++++++++++rank_pathways++++++++++++");
         BufferedReader rd = new BufferedReader(new FileReader(foundf));
         BufferedWriter wr = new BufferedWriter(new FileWriter(foundf + outname));
@@ -799,16 +209,645 @@ public class PathwayManager {
         rd.close();
         wr.close();
     }
+    
+    /**
+     * Find the strongest pathways
+     *
+     * @param foundf Input file
+     * @param outname Output file     
+     */
+
+    public void find_the_strongest_pathways(String foundf, String outfile) throws IOException {
+        BufferedWriter wr = new BufferedWriter(new FileWriter(outfile));
+        BufferedReader rd = new BufferedReader(new FileReader(foundf));
+
+        String s;
+        String[] ss;
+        while ((s = rd.readLine()) != null) {
+            ss = s.split("\t");
+            if (Float.parseFloat(ss[1]) <= 0.002 && Float.parseFloat(ss[0]) >= 2) {
+                wr.write(ss[3]);
+                for (int i = 4; i < ss.length; i++) {
+                    wr.write("\t" + ss[i] );
+                }
+                wr.write( "\n");
+            }
+        }
+        rd.close();
+        wr.close();
+
+    }
+    
+    
+    
+    /**
+     * Find and rank miRNAs inside pathways
+     *
+     * @param foundf File with common paths
+     * @param resf Output file
+     * @param mirtarbase Link to mirTarBase network
+     * @param hg Hit genes list
+     * @param fpl Final implementer list
+     * @param length Maximum length
+     * @param min
+     * @param mask
+     */
+    public void find_miRNAs_on_pathways(String foundf, String resf, Network mirtarbase, Map<String, String> hg, Map<String, String> fpl, int length, int min, String mask) throws FileNotFoundException, IOException {
+        System.out.println("+++++++++++++calcmiRNAs++++++++++++");
+        BufferedReader rd = new BufferedReader(new FileReader(foundf));
+        //BufferedWriter wr= new BufferedWriter (new FileWriter(resf));
+        String s;//, mi;
+        String[] ss;
+        int count;
+        Map<String, Integer> id_count = new HashMap();
+        Map<String, int[]> id_count_by_3 = new HashMap();        //mirtarbase id - data
+        Map<String, List<Map<String, Integer>>> id_list = new HashMap();
+
+        Map<String, Integer> mi_count = new HashMap(); //mirna - number of occurrence
+        Map<String, int[]> mi_count_by_3 = new HashMap();        //mirna - data
+        Map<String, List<Map<String, Integer>>> mi_list = new HashMap();
+
+        int[] ln;
+        List<Map<String, Integer>> ln_m;
+        Map<String, Integer> ln_m_tmp;
+        String beg, end;
+        List<String> all_mi;
+        int d;
+        int start_pos;
+        String mi;
+        while ((s = rd.readLine()) != null) {
+            if (s.contains("MIRT")) {
+                all_mi = new ArrayList();
+                ss = s.split("\t");
+                if (mask.equals("countonlymiddle")) {
+                    start_pos = 3;
+                } else {
+                    start_pos = 2;
+                }
+                for (int i = start_pos; i < ss.length; i++) {
+                    if (ss[i].contains("MIRT")) {
+                        all_mi.add(ss[i]);
+                    }
+                }
+                for (String mir_int : all_mi) {
+                    mi = mirtarbase.interactions.get(mir_int).int1.id;
+                    if (id_count.containsKey(mi)) {
+                        ////////////////////////////////
+                        count = id_count.get(mi);
+                        id_count.put(mi, count + 1);
+                        ////////////////////////////////
+                        ss = s.split("\t");
+                        ln = id_count_by_3.get(mi);
+                        for (int i = 0; i < length - min; i++) {
+                            if (ss.length == i + 5) {
+                                ln[i]++;
+                            }
+                        }
+                        id_count_by_3.put(mi, ln);
+
+                        ////////////////////////////////
+                        //*1
+                        beg = hg.get(ss[1]);
+                        end = fpl.get(ss[ss.length - 1]);
+                        ln_m = id_list.get(mi);
+                        for (int i = 0; i < length - min; i++) {
+                            if (ss.length == i + 6) {
+                                ln_m_tmp = ln_m.get(i);
+                                if (ln_m.get(i).containsKey(beg + "-" + end)) {
+                                    d = ln_m_tmp.get(beg + "-" + end) + 1;
+                                    ln_m_tmp.put(beg + "-" + end, d);
+                                } else {
+                                    ln_m_tmp.put(beg + "-" + end, 1);
+                                }
+                                ln_m.set(i, ln_m_tmp);
+                                break;
+                            }
+                        }
+                        id_list.put(mi, ln_m);
+                        ////////////////////////////////
+                    } else {
+                        ////////////////////////////////
+                        id_count.put(mi, 1);
+                        //////////////////////////////
+                        ln = new int[length - min];
+                        /*  for (int i = 0; i < length - min; i++) {
+                         ln[i] = 0;
+                         }
+                         ss = s.split("\t"); */
+                        for (int i = 0; i < length - min; i++) {
+                            ln[i] = 0;
+                            if (ss.length == i + 5) {
+                                ln[i] = 1;
+                            }
+                        }
+                        id_count_by_3.put(mi, ln);
+                        //////////////////////////////////*2
+                        beg = hg.get(ss[1]);  // bez + beg\end
+                        end = fpl.get(ss[ss.length - 1]);
+                        ln_m = new ArrayList();
+                        ln_m_tmp = new HashMap();
+                        for (int i = 0; i < length - min; i++) {
+                            ln_m.add(new HashMap());
+                            if (ss.length == i + 6) {
+                                ln_m_tmp.put(beg + "-" + end, 1);
+                                ln_m.set(i, ln_m_tmp);
+                            }
+                        }
+                        id_list.put(mi, ln_m);
+                    }
+                }
+            }
+        }
+
+        count = 0;
+        for (String t : id_count.keySet()) {
+            count = count + id_count.get(t);
+            System.out.print(t + "\t" + id_count.get(t) + "\t");
+            for (int i = 0; i < length - min; i++) {
+                System.out.print(id_count_by_3.get(t)[i] + "\t");
+            }
+            for (int i = 0; i < length - min; i++) {
+                System.out.print(i + length - min - 1 + ":\t");
+                for (String tt : id_list.get(t).get(i).keySet()) {
+                    System.out.print(tt + " x " + id_list.get(t).get(i).get(tt) + "\t");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("count " + count);
+        rd.close();
+    }
 
     /**
-     * Calculat pathways connectivity
+     * Find and rank miRNAs inside paths
+     *
+     * @param foundf Common paths file
+     * @param resf Output file
+     * @param mirtarbase Link to mirTarBAse network
+     * @param transmir Link to transMir network
+     * @param hg Hit genes list
+     * @param fpl Final players List
+     * @param length Maximum length
+     * @param min_occ Minimum occurrence
+     * @param mask Mask
+     */
+    public void find_miRNAs_on_paths(String foundf, String resf, Network mirtarbase, Network transmir, Map<String, String> hg, Map<String, String> fpl, int length, int min_occ, String mask) throws FileNotFoundException, IOException {
+        System.out.println("+++++++++++++calcmiRNAs_overrepr++++++++++++");
+        BufferedReader rd = new BufferedReader(new FileReader(foundf));
+        //BufferedWriter wr= new BufferedWriter (new FileWriter(resf));
+        String s;
+        String[] ss;
+        Map<String, List<String[]>> mirnas = new HashMap();
+        TreeMap<String, Integer> mirnas_maxocc = new TreeMap();
+        List<String_Int> mirnas_maxocc_list = new ArrayList();
+        List<String[]> list;
+        String mi, t;
+        while ((s = rd.readLine()) != null) {
+            ss = s.split("\t");
+            if (Integer.parseInt(ss[0]) >= min_occ) {
+                for (int i = 5; i < ss.length - Integer.parseInt(ss[1]); i++) {
+                    if (ss[i].contains("MIRT")) {
+                        mi = mirtarbase.interactions.get(ss[i]).int1.id;
+                        if (mirnas.containsKey(mi)) {
+                            list = mirnas.get(mi);
+                            list.add(ss);
+                            mirnas.put(mi, list);
+                            if (Integer.parseInt(ss[0]) > mirnas_maxocc.get(mi)) {
+                                mirnas_maxocc.put(mi, Integer.parseInt(ss[0]));
+                            }
+                        } else {
+                            list = new ArrayList();
+                            list.add(ss);
+                            mirnas.put(mi, list);
+                            mirnas_maxocc.put(mi, Integer.parseInt(ss[0]));
+                        }
+                    }
+                    if (ss[i].contains("transmir")) {
+                        mi = transmir.interactions.get(ss[i]).int2.id;
+                        if (mirnas.containsKey(mi)) {
+                            list = mirnas.get(mi);
+                            list.add(ss);
+                            mirnas.put(mi, list);
+                            if (Integer.parseInt(ss[0]) > mirnas_maxocc.get(mi)) {
+                                mirnas_maxocc.put(mi, Integer.parseInt(ss[0]));
+                            }
+                        } else {
+                            list = new ArrayList();
+                            list.add(ss);
+                            mirnas.put(mi, list);
+                            mirnas_maxocc.put(mi, Integer.parseInt(ss[0]));
+                        }
+                    }
+                }
+            }
+        }
+
+        for (String tt : mirnas_maxocc.keySet()) {
+            mirnas_maxocc_list.add(new String_Int(tt, mirnas_maxocc.get(tt)));
+        }
+        Collections.sort(mirnas_maxocc_list, new MaxOccComparator());
+
+        for (String_Int strint : mirnas_maxocc_list) {
+            t = strint.str;
+            System.out.println(t + "\t" + strint.it);
+            Collections.sort(mirnas.get(t), new ListComparator());
+            for (String[] get : mirnas.get(t)) {
+                System.out.print("--");
+                for (String get1 : get) {
+                    System.out.print("\t" + get1);
+                }
+                System.out.println();
+            }
+        }
+        rd.close();
+    }
+
+    /**
+     * Create a file for Cytoscape software from the shortest paths
+     *
+     * @param foundf File with paths
+     * @param all Network
+     * @param hg Hit genes list
+     * @param fpl Final players list
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
+    public void create_cyto_for_paths(String foundf, Network all, Map<String, String> hg, Map<String, String> fpl) throws FileNotFoundException, IOException {
+        BufferedReader rd = new BufferedReader(new FileReader(foundf));
+        BufferedWriter wr = new BufferedWriter(new FileWriter(foundf + "_cyto"));
+        String s, fp;
+        String[] ss;
+        int count = 0;
+        int id_path = 0;
+        int ss_len;
+        //String[] fpls = {"pHGNC:7611", "pHGNC:4223", "pHGNC:7566", "pHGNC:5466"};
+        Map<String, Integer> fpl_count = new HashMap();
+        /* fpl_count.put("pHGNC:7611", 0);
+         fpl_count.put("pHGNC:4223", 0);
+         fpl_count.put("pHGNC:7566", 0);
+         fpl_count.put("pHGNC:5466", 0); */
+
+        for (String t : fpl.keySet()) {
+            fpl_count.put(t, 0);
+        }
+        while ((s = rd.readLine()) != null) {
+            ss = s.split("\t");
+            ss_len = ss.length;
+            fp = ss[4];
+            count = fpl_count.get(fp);
+            fpl_count.put(fp, count + 1);
+            for (int i = 5; i < ss.length; i++) {
+                wr.write(fp + "_" + fpl_count.get(fp) + "_" + i + "\t");
+                wr.write(ss[2] + "\t");
+                wr.write(ss[3] + "\t");
+                wr.write(ss[0] + "\t");
+                wr.write(ss[1] + "\t");
+                wr.write(ss[i] + "\t");
+                try {
+                    wr.write(all.interactions.get(ss[i]).int1.id + "\t");
+                } catch (NullPointerException e) {
+                    System.out.println(ss[i]);
+                    System.out.println(all.interactions.get(ss[i]).sourcedbentry.get(0));
+                    break;
+                }
+                wr.write(all.interactions.get(ss[i]).int2.id + "\t");
+                wr.write(fp + "_" + fpl_count.get(fp) + "\t");
+                wr.newLine();
+            }
+        }
+        rd.close();
+        wr.close();
+    }
+
+    /**
+     * Creates a file for Cytoscape software for a list of pathways by pathways
+     * ids
+     *
+     * @param path_file File with pathways
+     * @param filename File with list of pathways by id
+     * @param out_dir Output folder
+     * @param all Network
+     * @param hg Hit genes list
+     * @param fpl Final players list
+     */
+    public void create_cyto_for_pathways(String path_file, String filename, String out_dir, Network all, Map<String, String> hg, Map<String, String> fpl) throws FileNotFoundException, IOException {
+
+        BufferedReader rd = new BufferedReader(new FileReader(path_file));
+        BufferedWriter wr;
+        Map<String, Integer> fpl_count = new HashMap();
+        Map<String, String> paths = new HashMap();
+        String s, fp, pth;
+        String[] ss, ids, pth_ss;
+        int ss_len, pth_len, count = 0, id_path = 0;
+
+        for (String t : fpl.keySet()) {
+            fpl_count.put(t, 0);
+            // System.out.println(t);
+        }
+        while ((s = rd.readLine()) != null) {
+            ss = s.split("\t");
+            paths.put(ss[0], s);
+        }
+        rd.close();
+        rd = new BufferedReader(new FileReader(filename));
+        while ((s = rd.readLine()) != null) {
+
+            ss = s.split("\t");
+            wr = new BufferedWriter(new FileWriter(out_dir + ss[0] + "_cyto"));
+            ids = ss[1].split(";");
+            for (int j = 0; j < ids.length; j++) {
+                pth = paths.get(ids[j]);
+                pth_ss = pth.split("\t");
+                pth_len = pth_ss.length;
+                fp = pth_ss[pth_len - 1];
+                // System.out.println("------- " + fp);
+                count = fpl_count.get(fp);
+                fpl_count.put(fp, count + 1);
+                for (int i = 2; i < pth_len - 1; i++) {
+                    wr.write(fp + "_" + fpl_count.get(fp) + "_" + i + "\t");
+                    wr.write(pth_ss[2] + "\t");
+                    wr.write(pth_ss[3] + "\t");
+                    wr.write(pth_ss[0] + "\t");
+                    wr.write(pth_ss[1] + "\t");
+                    wr.write(pth_ss[i] + "\t");
+                    try {
+                        wr.write(all.interactions.get(pth_ss[i]).int1.id + "\t");
+                    } catch (NullPointerException e) {
+                        System.out.println(pth_ss[i]);
+                        System.out.println(ids[j]);
+                        System.out.println(all.interactions.get(pth_ss[i]).sourcedbentry.get(0));
+                        break;
+                    }
+                    wr.write(all.interactions.get(pth_ss[i]).int2.id + "\t");
+                    wr.write(fp + "_" + fpl_count.get(fp) + "\t");
+                    wr.newLine();
+                }
+            }
+            wr.close();
+        }
+        rd.close();
+    }
+
+    private void create_cyto_for_comparisson(String com, String p1, String p1_single_max, String p2, String p2_single_max, String out, Network all) throws FileNotFoundException, IOException {
+        //, Map<String, String> hg, Map<String, String> fpl
+        BufferedReader rd;
+        BufferedWriter wr = new BufferedWriter(new FileWriter(out));
+        String s;
+        String[] ss, tt;
+        int off, len, j;
+        Set<String> p_id1 = new HashSet();
+        Set<String> p_id2 = new HashSet();
+        Set<String> pth = new HashSet();
+        //Set <String> pth2= new HashSet();
+        Map<String, String> comp = new HashMap();
+        Map<String, String[]> orp_pth1 = new HashMap();
+        Map<String, String[]> orp_pth2 = new HashMap();
+        Map<String, String> cyto = new HashMap();
+        rd = new BufferedReader(new FileReader(com));
+        while ((s = rd.readLine()) != null) {
+            off = 0;
+            ss = s.split("\t");
+            for (String s1 : ss) {
+                if ("".equals(s1)) {
+                    off++;
+                }
+            }
+            len = (ss.length - 1 - off) / 2;
+            j = 0;
+            for (int i = 1 + 5; i < len + 1; i++) {
+                j++;
+                //cyto.put(ss[0] + "_" + j, all.interactions.get(ss[i]).int1.id + "\t" + all.interactions.get(ss[i]).int2.id + "\t" + ss[1] + "\t" + ss[1 + len + off] + "\t" + ss[2]);
+                if (comp.containsKey(ss[i]) && Integer.parseInt(comp.get(ss[i]).split("\t")[1]) + Integer.parseInt(comp.get(ss[i]).split("\t")[2]) < Integer.parseInt(ss[1] + Integer.parseInt(ss[1 + len + off]))) {
+                    comp.put(ss[i], ss[0] + "_" + j + "\t" + ss[1] + "\t" + ss[1 + len + off] + "\t" + ss[2] + "\t" + "sh");
+                } else {
+                    comp.put(ss[i], ss[0] + "_" + j + "\t" + ss[1] + "\t" + ss[1 + len + off] + "\t" + ss[2] + "\t" + "sh");
+                }
+            }
+            tt = ss[3].split(";");
+            for (String t : tt) {
+                if (!"".equals(t)) {
+                    p_id1.add(t);
+                }
+            }
+            tt = ss[1 + len + off + 2].split(";");
+            for (String t : tt) {
+                if (!"".equals(t)) {
+                    p_id2.add(t);
+                }
+            }
+        }
+        rd = new BufferedReader(new FileReader(p1_single_max));
+        while ((s = rd.readLine()) != null) {
+            ss = s.split("\t");
+            orp_pth1.put(ss[0], ss);
+        }
+        rd = new BufferedReader(new FileReader(p2_single_max));
+        while ((s = rd.readLine()) != null) {
+            ss = s.split("\t");
+            orp_pth2.put(ss[0], ss);
+        }
+        rd = new BufferedReader(new FileReader(p1));
+        while ((s = rd.readLine()) != null) {
+            ss = s.split("\t");
+            if (p_id1.contains(ss[0])) {
+                pth.add(s);
+            }
+        }
+        rd = new BufferedReader(new FileReader(p2));
+        while ((s = rd.readLine()) != null) {
+            ss = s.split("\t");
+            if (p_id2.contains(ss[0])) {
+                pth.add(s);
+            }
+        }
+
+        for (String t : pth) {
+            ss = t.split("\t");
+            j = 0;
+            for (int i = 2; i < ss.length - 1; i++) {
+                j++;
+                if (!comp.containsKey(ss[i])) {
+                    //System.out.println(ss[i]);
+                    if (orp_pth1.containsKey(ss[i])) {
+                        if (orp_pth2.containsKey(ss[i])) {
+                            comp.put(ss[i], ss[0] + "_" + j + "\t" + orp_pth1.get(ss[i])[1] + "\t" + orp_pth2.get(ss[i])[1] + "\t" + orp_pth1.get(ss[i])[2] + "\t" + "12");
+                        } else {
+                            comp.put(ss[i], ss[0] + "_" + j + "\t" + orp_pth1.get(ss[i])[1] + "\t" + 0 + "\t" + orp_pth1.get(ss[i])[2] + "\t" + "1");
+                        }
+                    } else {
+                        comp.put(ss[i], ss[1] + "_" + j + "\t" + 0 + "\t" + orp_pth2.get(ss[i])[1] + "\t" + orp_pth2.get(ss[i])[2] + "\t" + "2");
+                    }
+                }
+            }
+        }
+
+        for (String t : comp.keySet()) {
+            ss = comp.get(t).split("\t");
+            wr.write(ss[0] + "\t" + all.interactions.get(t).int1.id + "\t" + all.interactions.get(t).int2.id + "\t" + ss[1] + "\t" + ss[2] + "\t" + ss[3] + "\t" + ss[4]);
+            wr.newLine();
+        }
+
+        rd.close();
+        wr.close();
+    }
+
+    /**
+     * Filter pathways by length
+     *
+     * @param inf Input file
+     * @param outf Output file
+     * @param min Minimum length
+     * @param max Maximum length
+     */
+    public void filterPathways_by_length(String inf, String outf, int min, int max) throws IOException {
+        BufferedReader rd = new BufferedReader(new FileReader(inf));
+        BufferedWriter wr = new BufferedWriter(new FileWriter(inf + outf));
+        String s;
+        String[] ss;
+        while ((s = rd.readLine()) != null) {
+            ss = s.split("\t");
+            if (ss.length >= min + 3 && ss.length <= max + 3) {
+                wr.write(s);
+                wr.newLine();
+            }
+        }
+        rd.close();
+        wr.close();
+    }
+        /**
+     * Filter pathways by length
+     *
+     * @param inf Input file
+     * @param outf Output file
+     * @param min Minimum length
+     * @param max Maximum length
+     */
+    public void filterPathways_by_centrality_score(String inf, String outf, int min, int max) throws IOException {
+        BufferedReader rd = new BufferedReader(new FileReader(inf));
+        BufferedWriter wr = new BufferedWriter(new FileWriter(outf));
+        String s;
+        String[] ss;
+        int score;
+        int length;
+        while ((s = rd.readLine()) != null) {
+            ss = s.split("\t");
+            score =Integer.parseInt(ss[6]);
+            length =Integer.parseInt(ss[0]);
+            if ((length>2 && score >= min )) {
+                //(length ==1 && score>=10 ) || 
+                wr.write(s);
+                wr.newLine();
+            }
+        }
+        rd.close();
+        wr.close();
+    }
+    
+    /**
+     * Filter pathways by node names \ type
+     *
+     * @param foundf Input file
+     * @param outname Output file
+     * @param all Network
+     * @param hg Hit genes list
+     * @param fpl Final players list
+     * @param mask Mask
+     * @param gene Node name
+     * @param type Node type
+     */
+    public void filterPathways(String foundf, String outname, Network all, Map<String, String> hg, Map<String, String> fpl, String mask, String gene, String type) throws FileNotFoundException, IOException {
+        System.out.println("+++++++++++++filter pathways++++++++++++");
+        BufferedReader rd = new BufferedReader(new FileReader(foundf));
+        BufferedWriter wr = new BufferedWriter(new FileWriter(outname));
+        String s, gene_name;
+        String[] ss;
+        List<String> checked_mirnas;
+
+        while ((s = rd.readLine()) != null) {
+            ss = s.split("\t");
+            if (mask.equals("mir_middle") && s.contains("transmir")) { //mirna in the middle
+                wr.write(s);
+                wr.newLine();
+            }
+            if (mask.equals("mir_all") && s.contains("MIRT")) { //mirna on the pathway including in the begining
+                wr.write(s);
+                wr.newLine();
+            }
+            if (mask.equals("hg") && ss[1].equals(gene) && s.contains("MIRT")) { // starts with specific hg, mirna on the pathway
+                wr.write(s);
+                wr.newLine();
+            }
+            if (mask.equals("mirna") && s.contains("MIRT")) { //mirna on the pathway , pathway contains specific mirna
+                ss = s.split("\t");
+                checked_mirnas = new ArrayList();
+                for (int i = 2; i < ss.length - 1; i++) {
+                    gene_name = all.interactions.get(ss[i]).int1.id;
+                    if (ss[i].contains("MIRT") && gene_name.equals(gene)) {
+                        if (!checked_mirnas.contains(gene_name)) {
+                            wr.write(s + "\n");
+                            checked_mirnas.add(gene_name);
+                        }
+                    }
+                }
+            }
+
+        }
+        rd.close();
+        wr.close();
+    }
+
+    /**
+     * Filter paths on condition ppi [3,4] & miRNA [6/5] or ppi [3,4] or miRNA
+     * [6/5]
+     *
+     * @param foundf File with pathways
+     * @param outname Output file
+     * @param all Network
+     * @param hg Hit genes
+     * @param fpl Final implementers
+     * @param gene Gene name
+     * @param l1 min length for ppi path
+     * @param l2 max length for ppi path
+     * @param l3 min length for miRNA path
+     * @param l4 max length for miRNA path
+     */
+    public void filterPathways_2(String foundf, String outname, Network all, Map<String, String> hg, Map<String, String> fpl, String gene, int l1, int l2, int l3, int l4) throws FileNotFoundException, IOException {
+        //filter on condition ppi [3,4] & miRNA [6/5] or ppi [3,4] or miRNA [6/5]
+        System.out.println("+++++++++++++filter pathways_2++++++++++++");
+        BufferedReader rd = new BufferedReader(new FileReader(foundf));
+        BufferedWriter wr = new BufferedWriter(new FileWriter(foundf + outname));
+        String s;
+        String[] ss;
+        while ((s = rd.readLine()) != null) {
+            ss = s.split("\t");
+            if (s.contains("transmir") && ss.length <= l4 + 3 && ss.length >= l3 + 3) {
+                for (int i = 2; i < ss.length - 1; i++) {
+                    if (ss[i].contains("MIRT") && all.interactions.get(ss[i]).int1.id.equals(gene)) {
+                        wr.write(s + "\n");
+                        break;
+                    }
+                }
+            } else {
+                if (ss[1].equals(gene) && ss.length <= l2 + 3 && ss.length >= l1 + 3) {
+                    wr.write(s);
+                    wr.newLine();
+                }
+            }
+        }
+        rd.close();
+        wr.close();
+    }
+
+   
+
+    /**
+     * Calculate pathways connectivity
      *
      * @param all Network
      * @param infile Input file
      * @param outfile Output file
-     * @throws IOException
      */
-    public void calculate_connectivity_for_pathways(Network all, String infile, String outfile) throws IOException {
+    public void add_connectivity_to_pathways(Network all, String infile, String outfile) throws IOException {
         BufferedWriter wr = new BufferedWriter(new FileWriter(outfile));
         BufferedReader rd = new BufferedReader(new FileReader(infile));
 
@@ -821,12 +860,17 @@ public class PathwayManager {
             scon = "";
             ss = s.split("\t");
             for (int j = 2; j < ss.length - 1; j++) {
-
-                con1 = (all.interactions.get(ss[j]).int1.downnbrs.size() + all.interactions.get(ss[j]).int1.revnbrs.size()) * (all.interactions.get(ss[j]).int1.upnbrs.size() + all.interactions.get(ss[j]).int1.revnbrs.size());
-                con2 = (all.interactions.get(ss[j]).int2.downnbrs.size() + all.interactions.get(ss[j]).int2.revnbrs.size()) * (all.interactions.get(ss[j]).int2.upnbrs.size() + all.interactions.get(ss[j]).int2.revnbrs.size());
-                scon1 = "" + (all.interactions.get(ss[j]).int1.downnbrs.size() + all.interactions.get(ss[j]).int1.revnbrs.size()) + "*" + (all.interactions.get(ss[j]).int1.upnbrs.size() + all.interactions.get(ss[j]).int1.revnbrs.size()) + " " + all.interactions.get(ss[j]).int1.id;
-                scon2 = "" + (all.interactions.get(ss[j]).int2.downnbrs.size() + all.interactions.get(ss[j]).int2.revnbrs.size()) + "*" + (all.interactions.get(ss[j]).int2.upnbrs.size() + all.interactions.get(ss[j]).int2.revnbrs.size()) + " " + all.interactions.get(ss[j]).int2.id;
-
+                try {
+                    con1 = (all.interactions.get(ss[j]).int1.downnbrs.size() + all.interactions.get(ss[j]).int1.revnbrs.size()) * (all.interactions.get(ss[j]).int1.upnbrs.size() + all.interactions.get(ss[j]).int1.revnbrs.size());
+                    con2 = (all.interactions.get(ss[j]).int2.downnbrs.size() + all.interactions.get(ss[j]).int2.revnbrs.size()) * (all.interactions.get(ss[j]).int2.upnbrs.size() + all.interactions.get(ss[j]).int2.revnbrs.size());
+                    scon1 = "" + (all.interactions.get(ss[j]).int1.downnbrs.size() + all.interactions.get(ss[j]).int1.revnbrs.size()) + "*" + (all.interactions.get(ss[j]).int1.upnbrs.size() + all.interactions.get(ss[j]).int1.revnbrs.size()) + " " + all.interactions.get(ss[j]).int1.id;
+                    scon2 = "" + (all.interactions.get(ss[j]).int2.downnbrs.size() + all.interactions.get(ss[j]).int2.revnbrs.size()) + "*" + (all.interactions.get(ss[j]).int2.upnbrs.size() + all.interactions.get(ss[j]).int2.revnbrs.size()) + " " + all.interactions.get(ss[j]).int2.id;
+                } catch (NullPointerException e) {
+                    con1 = 1;
+                    con2 = 1;
+                    scon1 = "*";
+                    scon2 = "*";
+                }
                 if (con1 > con) {
                     con = con1;
                     scon = scon1;
@@ -848,7 +892,8 @@ public class PathwayManager {
      *
      * @param in Input file
      * @param out Output file
-     * @param out_for_overrreps
+     * @param out_for_overrreps Output file only for pathway without additional
+     * information
      * @param in_min Minimum inward connectivity
      * @param in_max Maximum inward connectivity
      * @param out_min Minimum outward connectivity
@@ -884,16 +929,15 @@ public class PathwayManager {
     }
 
     /**
-     *Compare two files with paths
-     * @param all
-     * @param hugo_by_id
-     * @param f1
-     * @param f2
-     * @param out
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Compare two files with paths
+     *
+     * @param all Network
+     * @param hugo_by_id Map with HGNC ids
+     * @param f1 File1
+     * @param f2 File 2
+     * @param out OUtput file
      */
-    public void compare_two_overreps(Network all, Map<String, String[]> hugo_by_id, String f1, String f2, String out) throws FileNotFoundException, IOException {
+    public void compare_two_paths_files(Network all, Map<String, String[]> hugo_by_id, String f1, String f2, String out) throws FileNotFoundException, IOException {
         BufferedReader rd1 = new BufferedReader(new FileReader(f1));
         BufferedReader rd2 = new BufferedReader(new FileReader(f2));
         BufferedWriter wr = new BufferedWriter(new FileWriter(out));
@@ -922,7 +966,7 @@ public class PathwayManager {
         while ((s = rd2.readLine()) != null) {
             ss = s.split("\t");
             path = ss[1];
-            if (Float.parseFloat(ss[ss.length - 1]) <=0.05 && Integer.parseInt(ss[0]) > 1) {
+            if (Float.parseFloat(ss[ss.length - 1]) <= 0.05 && Integer.parseInt(ss[0]) > 1) {
                 for (int i = 2; i <= Integer.parseInt(ss[0]); i++) {
                     path = path + "\t" + ss[i];
                 }
@@ -949,16 +993,15 @@ public class PathwayManager {
     }
 
     /**
-     *Compare two files with nodes
-     * @param all
-     * @param hugo_by_id
-     * @param f1
-     * @param f2
-     * @param out
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Compare two files with nodes
+     *
+     * @param all Network
+     * @param hugo_by_id HGNC ids map
+     * @param f1 File 1
+     * @param f2 File 2
+     * @param out Output file
      */
-    public void compare_two_hubs(Network all, Map<String, String[]> hugo_by_id, String f1, String f2, String out) throws FileNotFoundException, IOException {
+    public void compare_two_nodes_files(Network all, Map<String, String[]> hugo_by_id, String f1, String f2, String out) throws FileNotFoundException, IOException {
         BufferedReader rd1 = new BufferedReader(new FileReader(f1));
         BufferedReader rd2 = new BufferedReader(new FileReader(f2));
         BufferedWriter wr = new BufferedWriter(new FileWriter(out));
@@ -975,7 +1018,7 @@ public class PathwayManager {
         }
         while ((s = rd2.readLine()) != null) {
             ss = s.split("\t");
-            if (Integer.parseInt(ss[ss.length - 2]) > 1&& Float.parseFloat(ss[ss.length - 1]) <= 0.05) {
+            if (Integer.parseInt(ss[ss.length - 2]) > 1 && Float.parseFloat(ss[ss.length - 1]) <= 0.05) {
                 f2_hubs.put(ss[0], s);
             }
         }
@@ -993,16 +1036,15 @@ public class PathwayManager {
     }
 
     /**
-     *Compare a file with paths with a hitlist
-     * @param all
-     * @param nutils
-     * @param hugo_by_id
-     * @param f1
-     * @param out
-     * @throws FileNotFoundException
-     * @throws IOException
+     * Compare a file with paths with a hit list
+     *
+     * @param all Network
+     * @param nutils NetworkManager object
+     * @param hugo_by_id HGNC ids map
+     * @param f1 File with paths
+     * @param out OUtput file
      */
-    public void compare_overreps_with_hitlist(Network all, NetworkManager nutils, Map<String, String[]> hugo_by_id, String f1, String out) throws FileNotFoundException, IOException {
+    public void find_hitgenes_on_paths(Network all, NetworkManager nutils, Map<String, String[]> hugo_by_id, String f1, String out) throws FileNotFoundException, IOException {
         BufferedReader rd1 = new BufferedReader(new FileReader(f1));
         BufferedWriter wr = new BufferedWriter(new FileWriter(out));
         String s, path;
@@ -1024,21 +1066,20 @@ public class PathwayManager {
             }
         }
 
-        for (String w: nutils.hg.keySet()){
+        for (String w : nutils.hg.keySet()) {
             //System.out.println(w + "\t" + nutils.hg.get(w)+"\n");
         }
-        
+
         for (String t : f1_paths.keySet()) {
             ss = t.split("\t");
             for (String q : ss) {
-              //  System.out.println(all.interactions.get(q).int1.id);
-              //  System.out.println(all.interactions.get(q).int2.id);
-                
-                if ((nutils.hg.containsKey(all.interactions.get(q).int1.id) || nutils.hg.containsKey(all.interactions.get(q).int2.id))
-                       // && !all.interactions.get(q).int1.id.equals("HGNC:129")
-                       // && !all.interactions.get(q).int1.id.equals("pHGNC:129")
-                       // && !all.interactions.get(q).int2.id.equals("HGNC:129")
-                       // && !all.interactions.get(q).int2.id.equals("pHGNC:129")
+                //  System.out.println(all.interactions.get(q).int1.id);
+                //  System.out.println(all.interactions.get(q).int2.id);
+
+                if ((nutils.hg.containsKey(all.interactions.get(q).int1.id) || nutils.hg.containsKey(all.interactions.get(q).int2.id)) // && !all.interactions.get(q).int1.id.equals("HGNC:129")
+                        // && !all.interactions.get(q).int1.id.equals("pHGNC:129")
+                        // && !all.interactions.get(q).int2.id.equals("HGNC:129")
+                        // && !all.interactions.get(q).int2.id.equals("pHGNC:129")
                         ) {
                     count++;
                     wr.write(f1_paths.get(t) + "\n");
@@ -1051,20 +1092,8 @@ public class PathwayManager {
         rd1.close();
         wr.close();
     }
-    
 
-    
-
-    /**
-     * Finds expression for gene list
-     *
-     * @param exp File with expression
-     * @param gene_list List of genes
-     * @param out Output file
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
-    public void get_expression(String exp, String gene_list, String out) throws FileNotFoundException, IOException {
+    private void get_expression(String exp, String gene_list, String out) throws FileNotFoundException, IOException {
         System.out.println("+++++++++++++get_expression++++++++++++");
         BufferedReader rd = new BufferedReader(new FileReader(exp));
         BufferedWriter wr = new BufferedWriter(new FileWriter(out));
@@ -1096,6 +1125,116 @@ public class PathwayManager {
         expr = null;
         rd.close();
         wr.close();
+    }
+
+    /**
+     *
+     * @param all the value of all
+     * @param f_pathways the value of f_pathways
+     * @param gw_file the value of gw_file
+     * @param conv_table the value of conv_table
+     * @param out the value of out
+     * @param hugo_by_id the value of hugo_by_id
+     * @param centralityManager the value of centralityManager
+     * @throws IOException
+     */
+    public void add_aggregated_pvalues_to_pathways(Network all, String f_pathways, String gw_file, String conv_table, String out, Map<String, String[]> hugo_by_id, CentralityManager centralityManager) throws IOException {
+        BufferedReader rd = new BufferedReader(new FileReader(f_pathways));
+        BufferedReader rd_pv = new BufferedReader(new FileReader(gw_file));
+        BufferedWriter wr = new BufferedWriter(new FileWriter(out));
+        int pos = 12;
+        String s;
+        String[] ss;
+        String[] tt;
+        int len;
+        int number;
+        double pvalue;
+        double tfct;
+        double tfct_test;
+        double foldchange;
+        double[] tfct_permuted = new double[1000];
+        Map<String, List<Float>> permutation_table = new HashMap();
+        Map<String, Float> p_values = new HashMap();
+        Map<String, Float> fold_changes = new HashMap();
+        List<String> genes;
+        List<String> genes_new;
+        List<String> genes_hugo;
+        permutation_table = centralityManager.return_permutation_distribution(gw_file, conv_table, 1000);
+        Map<String, Float[]> table = new HashMap();
+        table = centralityManager.load_screening_data(gw_file, conv_table);
+        for (String q : table.keySet()) {
+            p_values.put(q, table.get(q)[1]);
+            fold_changes.put(q, table.get(q)[0]);
+        }
+        String pth;
+        String[] pth_ss;
+        int pth_len;
+        while ((s = rd.readLine()) != null) {
+            pth = s;
+            pth_ss = pth.split("\t");
+            pth_len = pth_ss.length;
+            genes_hugo = new ArrayList();
+            for (int i = 2; i < pth_len - 1; i++) {
+                try {
+                    genes_hugo.add(all.interactions.get(pth_ss[i]).int1.id);
+                } catch (NullPointerException e) {
+                    System.out.println(pth_ss[i]);
+                    System.out.println(all.interactions.get(pth_ss[i]).sourcedbentry.get(0));
+                    break;
+                }
+                genes_hugo.add(all.interactions.get(pth_ss[i]).int2.id);
+            }
+            String symbol = "";
+            genes = new ArrayList();
+            genes_new = new ArrayList();
+            for (String gene : genes_hugo) {
+                try {
+                    if (gene.startsWith("p")) {
+                        symbol = hugo_by_id.get(gene.substring(1))[1];
+                    } else {
+                        symbol = hugo_by_id.get(gene)[1];
+                    }
+                } catch (NullPointerException e) {
+                    symbol = gene;
+                }
+                if (!genes.contains(symbol)) {
+                    genes.add(symbol);
+                }
+            }
+            tfct = 0.0;
+            foldchange = 0.0;
+            for (String gene : genes) {
+                if (p_values.containsKey(gene)) {
+                    genes_new.add(gene);
+                    tfct = tfct + (Math.log(p_values.get(gene)) * 1.0) / Math.log(2);
+                    foldchange = foldchange + fold_changes.get(gene);
+                } else {
+                    //System.out.println(gene + " ");
+                }
+            }
+            tfct = -2 * tfct;
+            foldchange = foldchange / genes.size();
+            number = 0;
+            if (genes.size() == 1) {
+            }
+            for (int i = 0; i < 1000; i++) {
+                tfct_test = 0.0;
+                for (String gene : genes_new) {
+                    tfct_test = tfct_test + (Math.log(permutation_table.get(gene).get(i)) * 1.0) / Math.log(2);
+                }
+                tfct_test = -2 * tfct_test;
+                if (tfct_test >= tfct) {
+                    number++;
+                }
+                tfct_permuted[i] = tfct_test;
+            }
+            pvalue = (number * 1.0) / 1000;
+            pth_len = pth_len - 3;
+            wr.write(foldchange + "\t" + pvalue + "\t" + pth_len + "\t" + s + "\n");
+        }
+        wr.close();
+        rd.close();
+        rd_pv.close();
     }
 
 }
@@ -1197,8 +1336,8 @@ class Strength {
 }
 
 /*
- public void rank_pathways(String foundf, String outname, Network all, Map<String, String> hg, Map<String, String> fpl, int d_ppi, int d_tf, int d_mirna, int d_kegg) throws FileNotFoundException, IOException {
- System.out.println("+++++++++++++rank_pathways++++++++++++");
+ public void find_the_shortest_paths(String foundf, String outname, Network all, Map<String, String> hg, Map<String, String> fpl, int d_ppi, int d_tf, int d_mirna, int d_kegg) throws FileNotFoundException, IOException {
+ System.out.println("+++++++++++++find_the_shortest_paths++++++++++++");
  BufferedReader rd = new BufferedReader(new FileReader(foundf));
  BufferedWriter wr = new BufferedWriter(new FileWriter(foundf + outname));
  Map<String, List<Path_strength>> hps = new HashMap(); //hg - path- strength
@@ -1616,8 +1755,8 @@ class Strength {
  }
 
 
- public void calcmiRNAs(String foundf, String resf, Network mirtarbase, Map<String, String> hg, Map<String, String> fpl, int length, int min, String mask) throws FileNotFoundException, IOException {
- System.out.println("+++++++++++++calcmiRNAs++++++++++++");
+ public void find_miRNAs_on_pathways(String foundf, String resf, Network mirtarbase, Map<String, String> hg, Map<String, String> fpl, int length, int min, String mask) throws FileNotFoundException, IOException {
+ System.out.println("+++++++++++++find_miRNAs_on_pathways++++++++++++");
  BufferedReader rd = new BufferedReader(new FileReader(foundf));
  //BufferedWriter wr= new BufferedWriter (new FileWriter(resf));
  String s;//, mi;

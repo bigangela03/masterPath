@@ -1,20 +1,19 @@
 package masterPATH;
 
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
- *
- * @author a
+ * Main class
+ * 
+ * @author Natalia Rubanova
  */
 public class MasterPATH {
 
     /**
      * main method
      * @param args
-     * @throws FileNotFoundException
-     * @throws IOException
-     * @throws InterruptedException
      */
     public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException {
 
@@ -40,37 +39,37 @@ public class MasterPATH {
          all0_hippie_h.loadNetwork2(nutils, putils, outils, dbutils);
          all0_hippie_h.saveNetworktofile(FoldersPaths.dbpath + "nodes_hippie_h", FoldersPaths.dbpath + "int_hippie_h");
          all0_hippie_h.loadNetworkfromfile(FoldersPaths.dbpath + "nodes_hippie_h", FoldersPaths.dbpath + "int_hippie_h");
-         nutils.buildNeighbours(all0_hippie_h);
+         nutils.build_map_of_neighbors(all0_hippie_h);
        
          //PPI network with interactions for which confidence score is more 0
          all0_hippie_m0.loadNetwork2(nutils, putils, outils, dbutils);
          all0_hippie_m0.saveNetworktofile(FoldersPaths.dbpath + "nodes_hippie_m0", FoldersPaths.dbpath + "int_hippie_m0");
          all0_hippie_m0.loadNetworkfromfile(FoldersPaths.dbpath + "nodes_hippie_m0", FoldersPaths.dbpath + "int_hippie_m0");
-         nutils.buildNeighbours(all0_hippie_m0);
+         nutils.build_map_of_neighbors(all0_hippie_m0);
          
          //PPI network with all available interactions
          all0_hippie_a.loadNetwork2(nutils, putils, outils, dbutils);
          all0_hippie_a.saveNetworktofile(FoldersPaths.dbpath + "nodes_hippie_a", FoldersPaths.dbpath + "int_hippie_a");
          all0_hippie_a.loadNetworkfromfile(FoldersPaths.dbpath + "nodes_hippie_a", FoldersPaths.dbpath + "int_hippie_a");
-         nutils.buildNeighbours(all0_hippie_a);
+         nutils.build_map_of_neighbors(all0_hippie_a);
       
          //PPI network with high + medium confidence interactions        
          all0_hippie_meq.loadNetwork2(nutils, putils, outils, dbutils);
          all0_hippie_meq.saveNetworktofile(FoldersPaths.dbpath + "nodes_hippie_meq", FoldersPaths.dbpath + "int_hippie_meq");
          all0_hippie_meq.loadNetworkfromfile(FoldersPaths.dbpath + "nodes_hippie_meq", FoldersPaths.dbpath + "int_hippie_meq");
-         nutils.buildNeighbours(all0_hippie_meq);
+         nutils.build_map_of_neighbors(all0_hippie_meq);
     
          //PPI network with only HPRD interactions        
          all0_hprd.loadNetwork2(nutils, putils, outils, dbutils);
          all0_hprd.saveNetworktofile(FoldersPaths.dbpath + "nodes_hprd", FoldersPaths.dbpath + "int_hprd");
          all0_hprd.loadNetworkfromfile(FoldersPaths.dbpath + "nodes_hprd", FoldersPaths.dbpath + "int_hprd");
-         nutils.buildNeighbours(all0_hprd);
+         nutils.build_map_of_neighbors(all0_hprd);
      */
          //Integrated network        
          //all2.loadNetwork2(nutils, putils, outils, dbutils);
          //all2.saveNetworktofile(FoldersPaths.dbpath + "all_nodes_all_hippie_high_ogg1", FoldersPaths.dbpath + "all_int_all_hippie_high_ogg1");
          all2.loadNetworkfromfile(FoldersPaths.dbpath + "all_nodes_all_hippie_high_ogg1", FoldersPaths.dbpath + "all_int_all_hippie_high_ogg1");
-         nutils.buildNeighbours(all2);
+         nutils.build_map_of_neighbors(all2);
        
          /*
          //DNA repair screening hit genes - OGG1
@@ -87,13 +86,13 @@ public class MasterPATH {
          wrap.ogg1_part4_ppi(all0_hippie_h, nutils, putils, outils, dbutils);
          
          //Further analysis
-         outils.get_centrality_nodes(all0_hippie_h, dbutils.hugo_by_id, nutils, FoldersPaths.foundDFOG_ppi + "_top_ranked", FoldersPaths.foundDFOG_ppi + "_top_ranked_hubs");
-         nutils.loadHitGenes_and_FinalPlayers(FoldersPaths.hlOG, FoldersPaths.fpOG_ppi, dbutils.hugo);
+         outils.calculate_centrality_scores_for_nodes(all0_hippie_h, dbutils.hugo_by_id, nutils, FoldersPaths.foundDFOG_ppi + "_top_ranked", FoldersPaths.foundDFOG_ppi + "_top_ranked_hubs");
+         nutils.load_hitlist_and_finalimpl(FoldersPaths.hlOG, FoldersPaths.fpOG_ppi, dbutils.hugo);
          int initial_hitlist_size = nutils.hg.size();
-         rand.calculate_p_values_hubs(all0_hippie_h, nutils, putils, outils, dbutils, FoldersPaths.OGrandom_path_ppi + "foundDF.txt_top_ranked", FoldersPaths.foundDFOG_ppi + "_top_ranked_hubs", FoldersPaths.OGrandom_path_ppi + "RandomHitGenes_lists.txt", initial_hitlist_size, dbutils.hugo_by_id);
+         rand.calculate_p_values_phenotype_label_permutation_nodes(all0_hippie_h, nutils, putils, outils, dbutils, FoldersPaths.OGrandom_path_ppi + "foundDF.txt_top_ranked", FoldersPaths.foundDFOG_ppi + "_top_ranked_hubs", FoldersPaths.OGrandom_path_ppi + "RandomHitGenes_lists.txt", initial_hitlist_size, dbutils.hugo_by_id);
          wrap.ogg1_random2_ppi(all0_hippie_h, nutils, putils, outils, dbutils, rand);
-         nutils.loadHitGenes_and_FinalPlayers(FoldersPaths.hlOG, FoldersPaths.fpOG, dbutils.hugo);
-         putils.rank_pathways(FoldersPaths.foundDFOG, "_top_ranked", all2, nutils.hg, nutils.fpl, 0, 0, 0, 0);
+         nutils.load_hitlist_and_finalimpl(FoldersPaths.hlOG, FoldersPaths.fpOG, dbutils.hugo);
+         putils.find_the_shortest_paths(FoldersPaths.foundDFOG, "_top_ranked", all2, nutils.hg, nutils.fpl, 0, 0, 0, 0);
          outils.rank_hit_genes(all2, FoldersPaths.foundDFOG_ppi + "_top_ranked", FoldersPaths.foundDFOG_ppi + "_ranked_hits", dbutils);
      
          //ARP2/3 loss of function screening
@@ -125,10 +124,10 @@ public class MasterPATH {
         // wrap.mirna63Sys_part2(all2, nutils, putils, outils, dbutils);
         // wrap.mirna63Sys_part3(all2, nutils, putils, outils, dbutils);
          wrap.mirna63Sys_random(all2, nutils, putils, outils, dbutils,rand);         
-         outils.get_centrality_nodes(all2, dbutils.hugo_by_id, nutils, "F:\\Dropbox\\_Работа\\Programms\\DATA\\PhD\\Systems\\63mirnas\\output\\foundDF_18_01.txt_top_ranked", "F:\\Dropbox\\_Работа\\Programms\\DATA\\PhD\\Systems\\63mirnas\\output\\foundDF_18_01.txt_top_ranked_hubs");
-         nutils.loadHitGenes_and_FinalPlayers(FoldersPaths.hl63, FoldersPaths.fp63, dbutils.hugo);
-         int initial_hitlist_size = nutils.hg.size();
-         rand.calculate_p_values_hubs(all2, nutils, putils, outils, dbutils, FoldersPaths.M63random_path + "foundDF.txt_top_ranked", FoldersPaths.foundDF63 + "_top_ranked_hubs", FoldersPaths.M63random_path + "RandomHitGenes_lists.txt", initial_hitlist_size, dbutils.hugo_by_id);
+        // outils.calculate_centrality_scores_for_nodes(all2, dbutils.hugo_by_id, nutils, "F:\\Dropbox\\_Работа\\Programms\\DATA\\PhD\\Systems\\63mirnas\\output\\foundDF_18_01.txt_top_ranked", "F:\\Dropbox\\_Работа\\Programms\\DATA\\PhD\\Systems\\63mirnas\\output\\foundDF_18_01.txt_top_ranked_hubs");
+        // nutils.load_hitlist_and_finalimpl(FoldersPaths.hl63, FoldersPaths.fp63, dbutils.hugo);
+        // int initial_hitlist_size = nutils.hg.size();
+        // rand.calculate_p_values_phenotype_label_permutation_nodes(all2, nutils, putils, outils, dbutils, FoldersPaths.M63random_path + "foundDF.txt_top_ranked", FoldersPaths.foundDF63 + "_top_ranked_hubs", FoldersPaths.M63random_path + "RandomHitGenes_lists.txt", initial_hitlist_size, dbutils.hugo_by_id);
          
         
 /*
@@ -136,33 +135,33 @@ public class MasterPATH {
          wrap.case2_part1(all2, nutils, putils, outils, dbutils);
          wrap.case2_part2(all2, nutils, putils, outils, dbutils);
          wrap.case2_part3(all2, nutils, putils, outils, dbutils);
-         outils.get_centrality_nodes(all2, dbutils.hugo_by_id, nutils, "F:\\Dropbox\\_Работа\\Programms\\DATA\\PhD\\Systems\\Case2_Control\\output\\foundDF_18_01.txt_top_ranked", "F:\\Dropbox\\_Работа\\Programms\\DATA\\PhD\\Systems\\Case2_Control\\output\\foundDF_18_01.txt_top_ranked_hubs");
+         outils.calculate_centrality_scores_for_nodes(all2, dbutils.hugo_by_id, nutils, "F:\\Dropbox\\_Работа\\Programms\\DATA\\PhD\\Systems\\Case2_Control\\output\\foundDF_18_01.txt_top_ranked", "F:\\Dropbox\\_Работа\\Programms\\DATA\\PhD\\Systems\\Case2_Control\\output\\foundDF_18_01.txt_top_ranked_hubs");
          wrap.case2_part4(all2, nutils, putils, outils, dbutils);
          wrap.case2_random(all2, nutils, putils, outils, dbutils, rand);
-         rand.build_random_networks(all2, nutils, putils, outils, dbutils);
+         rand.create_random_network(all2, nutils, putils, outils, dbutils);
          wrap.case2_random2(all2, nutils, putils, outils, dbutils, rand);
      
          //Networks topological properties
          System.out.println("hprd");
          utils.calculate_average_clustering_coefficient_ppi(all0_hprd);
-         utils.calculate_number_of_conected_components_ppi(all0_hprd);
+         utils.calculate_number_of_connected_components_ppi(all0_hprd);
          System.out.println("hippi high");
          utils.calculate_average_clustering_coefficient_ppi(all0_hippie_h);
-         utils.calculate_number_of_conected_components_ppi(all0_hippie_h);
+         utils.calculate_number_of_connected_components_ppi(all0_hippie_h);
          System.out.println("hippi all");
          utils.calculate_average_clustering_coefficient_ppi(all0_hippie_a);
-         utils.calculate_number_of_conected_components_ppi(all0_hippie_a);
+         utils.calculate_number_of_connected_components_ppi(all0_hippie_a);
          System.out.println("hippi meq");
          utils.calculate_average_clustering_coefficient_ppi(all0_hippie_meq);
-         utils.calculate_number_of_conected_components_ppi(all0_hippie_meq);
+         utils.calculate_number_of_connected_components_ppi(all0_hippie_meq);
          System.out.println("hprd");
-         utils.calculate_diametr_ppi(all0_hprd);
+         utils.calculate_diameter_ppi(all0_hprd);
          System.out.println("hippi high");
-         utils.calculate_diametr_ppi(all0_hippie_h);
+         utils.calculate_diameter_ppi(all0_hippie_h);
          System.out.println("hippi meq");
-         utils.calculate_diametr_ppi(all0_hippie_meq);
+         utils.calculate_diameter_ppi(all0_hippie_meq);
          System.out.println("hippi all");
-         utils.calculate_diametr_ppi(all0_hippie_a);
+         utils.calculate_diameter_ppi(all0_hippie_a);
          System.out.println("hprd");
          utils.get_degree_distribution_ppi(all0_hprd,"F:\\Dropbox\\_Работа\\Programms\\DATA\\PhD\\hprd.txt");
          System.out.println("hippi high");
@@ -175,7 +174,7 @@ public class MasterPATH {
          utils.calculate_number_of_connected_components_direct(all2);
          utils.get_degree_distribution_direct(all2,"F:\\Dropbox\\_Работа\\Programms\\DATA\\PhD\\all2.txt");
          utils.calculate_average_clustering_coefficient_direct(all2);
-         utils.calculate_diametr_direct(all2);
+         utils.calculate_diameter_direct(all2);
          utils.compare_two_lists();
          utils.get_subnetwork_statistics(all2, "F:\\Dropbox\\_Работа\\Programms\\DATA\\PhD\\Systems\\Case2_Control\\output\\foundDF_18_01.txt_top_ranked");
          utils.get_subnetwork_statistics(all2, "F:\\Dropbox\\_Работа\\Programms\\DATA\\PhD\\Systems\\63mirnas\\output\\foundDF_18_01.txt_top_ranked"); 
@@ -213,7 +212,7 @@ public class MasterPATH {
 
  // putils.filterPathways_cyto_by_length(FoldersPaths.outputF + "foundDF_28_11.txt_206", "_min_6", 6, 6);
 
- putils.calcmiRNAs(FoldersPaths.foundDF, FoldersPaths.foundDF_mirnas, dbutils.mirtarbase, nutils.hg, nutils.fpl, 6, 2);
+ putils.find_miRNAs_on_pathways(FoldersPaths.foundDF, FoldersPaths.foundDF_mirnas, dbutils.mirtarbase, nutils.hg, nutils.fpl, 6, 2);
  putils.filterPathways(FoldersPaths.foundDF, "_filter_JAG1mirna", all, nutils.hg, nutils.fpl, "HGNC:6188", "miRNA");
  putils.filterPathways(FoldersPaths.foundDF, "_filter_allmirna", all, nutils.hg, nutils.fpl, "all", "miRNA");
  nutils.find_overreprs(5, 3, FoldersPaths.foundDF + "_filter_JAG1mirna", FoldersPaths.foundDF + "_filter_JAG1mirna" + "_overrepr");
@@ -248,7 +247,7 @@ public class MasterPATH {
  putils.create_cyto_for_paths(FoldersPaths.outputF + "foundDF_28_11.txt_206_filter_mirna_overrepr", all, nutils.hg, nutils.fpl);
  */
 /*
- putils.calcmiRNAs(FoldersPaths.foundDF, FoldersPaths.foundDF_mirnas, dbutils.mirtarbase, nutils.hg, nutils.fpl, 6, 2);
+ putils.find_miRNAs_on_pathways(FoldersPaths.foundDF, FoldersPaths.foundDF_mirnas, dbutils.mirtarbase, nutils.hg, nutils.fpl, 6, 2);
  putils.filterPathways(FoldersPaths.foundDF, "_filter_JAG1mirna", all, nutils.hg, nutils.fpl, "HGNC:6188", "miRNA");
  putils.filterPathways(FoldersPaths.foundDF, "_filter_allmirna", all, nutils.hg, nutils.fpl, "all", "miRNA");
  nutils.find_overreprs(5, 3, FoldersPaths.foundDF + "_filter_JAG1mirna", FoldersPaths.foundDF + "_filter_JAG1mirna" + "_overrepr");
@@ -258,7 +257,7 @@ public class MasterPATH {
  putils.create_network_for_cytoscape(FoldersPaths.foundDF + "_filter_allmirna" + "_an", all, nutils.hg, nutils.fpl); */
 
 /*
- putils.calcmiRNAs(FoldersPaths.foundDF, FoldersPaths.foundDF_mirnas, dbutils.mirtarbase, nutils.hg, nutils.fpl, 6, 2);
+ putils.find_miRNAs_on_pathways(FoldersPaths.foundDF, FoldersPaths.foundDF_mirnas, dbutils.mirtarbase, nutils.hg, nutils.fpl, 6, 2);
  putils.filterPathways(FoldersPaths.foundDF, "_filter_JAG1mirna", all, nutils.hg, nutils.fpl, "HGNC:6188", "miRNA");
  putils.filterPathways(FoldersPaths.foundDF, "_filter_allmirna", all, nutils.hg, nutils.fpl, "all", "miRNA");
  nutils.find_overreprs(5, 3, FoldersPaths.foundDF + "_filter_JAG1mirna", FoldersPaths.foundDF + "_filter_JAG1mirna" + "_overrepr");
@@ -284,7 +283,7 @@ public class MasterPATH {
  putils.create_cyto_for_paths(FoldersPaths.outputF + "foundDF_28_11.txt_206_filter_mirna_overrepr", all, nutils.hg, nutils.fpl);
  */
 /*
- putils.calcmiRNAs(FoldersPaths.foundDF, FoldersPaths.foundDF_mirnas, dbutils.mirtarbase, nutils.hg, nutils.fpl, 6, 2);
+ putils.find_miRNAs_on_pathways(FoldersPaths.foundDF, FoldersPaths.foundDF_mirnas, dbutils.mirtarbase, nutils.hg, nutils.fpl, 6, 2);
  putils.filterPathways(FoldersPaths.foundDF, "_filter_JAG1mirna", all, nutils.hg, nutils.fpl, "HGNC:6188", "miRNA");
  putils.filterPathways(FoldersPaths.foundDF, "_filter_allmirna", all, nutils.hg, nutils.fpl, "all", "miRNA");
  nutils.find_overreprs(5, 3, FoldersPaths.foundDF + "_filter_JAG1mirna", FoldersPaths.foundDF + "_filter_JAG1mirna" + "_overrepr");
@@ -385,15 +384,15 @@ public class MasterPATH {
 
 
  NetworkManager nutils = new NetworkManager();
- nutils.loadHitGenes_and_FinalPlayers(hl, fp, dbutils.hugo);
+ nutils.load_hitlist_and_finalimpl(hl, fp, dbutils.hugo);
  List<PathUnit> npaths = new ArrayList();
  List<PathUnit> npathsBF = new ArrayList();
  List<PathUnit> npathsDF = new ArrayList();
  // nutils.getPathsforList(all, hl, fp, dbutils.hugo, 3, muscle_paths);
- // nutils.getLongPathsforListBF(all, hl, fp, dbutils.hugo, 5, musclef);
+ // nutils.find_pathway_for_list_BF_algorithm(all, hl, fp, dbutils.hugo, 5, musclef);
  // nutils.getConnectivity(all, muscle_nw2, muscle_nw2_w_connectivities);
  // npaths = nutils.getPath(all, "pHGNC:7611", "pHGNC:6996", 3);
- // npathsBF=nutils.getLongPathBF(all, "HGNC:7611", "pHGNC:6996", 3);
+ // npathsBF=nutils.find_pathway_BF_algorithm(all, "HGNC:7611", "pHGNC:6996", 3);
  // npathsDF = nutils.getLongPathDF(all, "pHGNC:7611", "pHGNC:6996", 5);
  //!!!    nutils.getLongPathsforListDF(all, hl, fp, dbutils.hugo, 5, foundDF);
  System.out.println("npaths size " + npaths.size() + " npathsDF size " + npathsDF.size());               
