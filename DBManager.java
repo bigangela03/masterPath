@@ -164,7 +164,7 @@ public class DBManager {
             }
             db_entr = new ArrayList();
             db_entr.add(s);
-            hprd.interactions.put("hprd:" + ss[0], new Interaction("hprd:" + ss[0], other_ids, n1, n2, "PPI", "hprd", db_entr, "-", "direct"));
+            hprd.interactions.put("hprd:" + ss[0], new Interaction("hprd:" + ss[0], other_ids, n1, n2, "PPI", "hprd", db_entr, "-", "indirect"));
         }
         rd.close();
         System.out.println("hprd.nodes.size " + hprd.nodes.size());
