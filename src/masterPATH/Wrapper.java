@@ -84,6 +84,7 @@ public class Wrapper {
         outils.calculate_centrality_scores_for_paths_ppi(all, FoldersPaths.foundDFOG_ppi + "_top_ranked", FoldersPaths.foundDFOG_ppi + "_top_ranked__unique_overrepr", 2, 3);
         outils.add_hgnc_symbols_to_paths(FoldersPaths.foundDFOG_ppi + "_top_ranked__unique_overrepr", FoldersPaths.foundDFOG_ppi + "_top_ranked__unique_overrepr_w_names", all, dbutils.hugo_by_id);
         outils.calculate_paths_degree(FoldersPaths.foundDFOG_ppi + "_top_ranked__unique_overrepr_w_names", FoldersPaths.foundDFOG_ppi + "_top_ranked_with_connectivity", FoldersPaths.foundDFOG_ppi + "_top_ranked__unique_overrepr_w_names_pthconn");
+    
     }
 
     /**
