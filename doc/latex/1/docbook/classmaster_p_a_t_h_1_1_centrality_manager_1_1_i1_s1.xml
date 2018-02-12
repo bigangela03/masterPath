@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1_1_i1_s1">
+<title>masterPATH::CentralityManager::I1S1 class Reference</title>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int i1</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String s1</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1_1_i1_s1_1a51a23dd5d04c54ec093632efca7ea88d">I1S1</link> (
+int i1, String s1)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1_1_i1_s1_1ad146fa8579a5f8a876c4688cc5a68520">toString</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>boolean <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1_1_i1_s1_1ace5581fdb5219a705ee2e1812c883023">equals</link> (
+Object s)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1_1_i1_s1_1a077e18fe97323c7194e2665ffc766399">hashCode</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1_1_i1_s1_1a51a23dd5d04c54ec093632efca7ea88d">
+                <title>I1S1 (int i1, String s1)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1_1_i1_s1_1ad146fa8579a5f8a876c4688cc5a68520">
+                <title>String toString ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1_1_i1_s1_1ace5581fdb5219a705ee2e1812c883023">
+                <title>boolean equals (Object s)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1_1_i1_s1_1a077e18fe97323c7194e2665ffc766399">
+                <title>int hashCode ()</title> <emphasis></emphasis>
+                
+            </section>
+</section>

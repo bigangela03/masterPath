@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_path__strength">
+<title>masterPATH::Path_strength class Reference</title>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String path</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Strength strength</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classmaster_p_a_t_h_1_1_path__strength_1a518648543b4f9c12c8b4e3b5a6ea4a18">Path_strength</link> (
+String path, Strength strength)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_path__strength_1a518648543b4f9c12c8b4e3b5a6ea4a18">
+                <title>Path_strength (String path, Strength strength)</title> <emphasis></emphasis>
+                
+            </section>
+</section>

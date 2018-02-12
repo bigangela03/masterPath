@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_network_manager_1_1_depth___list__of___path_unit">
+<title>masterPATH::NetworkManager::Depth_List_of_PathUnit class Reference</title>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int max_depth</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>List&lt; PathUnit &gt; punits</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classmaster_p_a_t_h_1_1_network_manager_1_1_depth___list__of___path_unit_1af778262052f288644ac9549cb4e7c0bd">Depth_List_of_PathUnit</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classmaster_p_a_t_h_1_1_network_manager_1_1_depth___list__of___path_unit_1a14674883f49f3d9c2e53d51346b79a95">Depth_List_of_PathUnit</link> (
+int max_depth, List&lt; PathUnit &gt; punits)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_manager_1_1_depth___list__of___path_unit_1af778262052f288644ac9549cb4e7c0bd">
+                <title>Depth_List_of_PathUnit ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_manager_1_1_depth___list__of___path_unit_1a14674883f49f3d9c2e53d51346b79a95">
+                <title>Depth_List_of_PathUnit (int max_depth, List&lt; PathUnit &gt; punits)</title> <emphasis></emphasis>
+                
+            </section>
+</section>

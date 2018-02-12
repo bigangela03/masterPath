@@ -1,0 +1,771 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_random_manager">
+<title>masterPATH::RandomManager class Reference</title>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_random_manager_1a01233bbbab32bcc8d32227181efb1526">permute_phenotype_label</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, String folder, String prefix, int count, List&lt; String &gt; hit_list, Map&lt; String, String[]&gt; hugo_by_id, String fplayers)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_random_manager_1a2d5e939810579ee2f0eb7d1c9b6d4f9c">calculate_p_values_phenotype_label_permutation</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, int position_of_overreps_count, Map&lt; String, String[]&gt; hugo_by_id)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_random_manager_1a63e525be780848f5dde0a66274bd2301">calculate_p_values_phenotype_label_permutation_nodes</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, Map&lt; String, String[]&gt; hugo_by_id)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_random_manager_1a6e0a9169abecc939516d28ffc2b04f3b">calculate_p_values_paths_random_networks</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, int position_of_overreps_count, Map&lt; String, String[]&gt; hugo_by_id)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_random_manager_1aaa797296f4172edfeb16b3b8f6e515d2">calculate_p_values_phenotype_label_permutation_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, int position_of_overreps_count, Map&lt; String, String[]&gt; hugo_by_id)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> <link linkend="classmaster_p_a_t_h_1_1_random_manager_1a8527889663c673a3c3a37f8a5acbbf68">create_random_network</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_random_manager_1ab7e56001e096384147ea3102671f577e">calculate_p_values_nodes_random_networks</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, String file_name_random, int count, String hubs_file, String overreps_file)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_random_manager_1ae291d927b0521ac36a0b842966dc2cf9">calculate_p_values_nodes_random_networks_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, String file_name_random, int count, String hubs_file, String overreps_file)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_random_manager_1a4478c964092139a60aa840ad680b78e8">check_distributions</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, Map&lt; String, String[]&gt; hugo_by_id)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="classmaster_p_a_t_h_1_1_random_manager_1a93e0b925aaad4ffe3e78dcc148f3194d">get_bin</link> (
+int degree)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String <link linkend="classmaster_p_a_t_h_1_1_random_manager_1a8af3e251aacb2ad1074ae98a403eea79">returnGeneName</link> (
+String s, Map&lt; String, String[]&gt; hugo_by_id)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para><link linkend="classmaster_p_a_t_h_1_1_random_manager">RandomManager</link> contains methods to calculate p-values</para>
+
+<para><formalpara><title>Author: </title>
+
+<para>Natalia Rubanova </para>
+</formalpara>
+</para>
+                <para>Definition at line 21 of file RandomManager.java</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>RandomManager.java</para></listitem></itemizedlist></para>
+        </simplesect>
+            <section xml:id="classmaster_p_a_t_h_1_1_random_manager_1a01233bbbab32bcc8d32227181efb1526">
+                <title>void permute_phenotype_label (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String folder, String prefix, int count, List&lt; String &gt; hit_list, Map&lt; String, String[]&gt; hugo_by_id, String fplayers)</title> <emphasis></emphasis>
+                
+<para>Permute phenotype label</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>folder</entry>
+                                <entry>
+<para>Folder to store information about pathways </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>prefix</entry>
+                                <entry>
+<para>Prefix for pathways ids </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>count</entry>
+                                <entry>
+<para>Number of shuffling steps </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hit_list</entry>
+                                <entry>
+<para>Hit List </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hugo_by_id</entry>
+                                <entry>
+<para>HGNC ids map </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>fplayers</entry>
+                                <entry>
+<para>Final implementers </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_random_manager_1a2d5e939810579ee2f0eb7d1c9b6d4f9c">
+                <title>void calculate_p_values_phenotype_label_permutation (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, int position_of_overreps_count, Map&lt; String, String[]&gt; hugo_by_id)</title> <emphasis></emphasis>
+                
+<para>Calculate p-values for paths for shuffled phenotype label</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>random_paths_file</entry>
+                                <entry>
+<para>File name for pathways from shuffled hit genes </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>ovrreps_paths_file</entry>
+                                <entry>
+<para>File with paths </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hitlists_file</entry>
+                                <entry>
+<para>File with hit genes </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hitlist_length</entry>
+                                <entry>
+<para>Length of hit list </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>position_of_overreps_count</entry>
+                                <entry>
+<para>Position of the centrality count in the paths file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hugo_by_id</entry>
+                                <entry>
+<para>HGNC ids map </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_random_manager_1a63e525be780848f5dde0a66274bd2301">
+                <title>void calculate_p_values_phenotype_label_permutation_nodes (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, Map&lt; String, String[]&gt; hugo_by_id)</title> <emphasis></emphasis>
+                
+<para>Calculate p-values for nodes for shuffled phenotype label</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>random_paths_file</entry>
+                                <entry>
+<para>File name for pathways from shuffled hit genes </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>ovrreps_paths_file</entry>
+                                <entry>
+<para>File with nodes </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hitlists_file</entry>
+                                <entry>
+<para>File with hit genes </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hitlist_length</entry>
+                                <entry>
+<para>Length of hit list </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hugo_by_id</entry>
+                                <entry>
+<para>HGNC ids map </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_random_manager_1a6e0a9169abecc939516d28ffc2b04f3b">
+                <title>void calculate_p_values_paths_random_networks (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, int position_of_overreps_count, Map&lt; String, String[]&gt; hugo_by_id)</title> <emphasis></emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>random_paths_file</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>ovrreps_paths_file</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hitlists_file</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hitlist_length</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>position_of_overreps_count</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hugo_by_id</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Exceptions                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>IOException</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_random_manager_1aaa797296f4172edfeb16b3b8f6e515d2">
+                <title>void calculate_p_values_phenotype_label_permutation_ppi (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String random_paths_file, String ovrreps_paths_file, String hitlists_file, int hitlist_length, int position_of_overreps_count, Map&lt; String, String[]&gt; hugo_by_id)</title> <emphasis></emphasis>
+                
+<para>Calculate p-values for paths for shuffled phenotype label for ppi network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>random_paths_file</entry>
+                                <entry>
+<para>File name for pathways from shuffled hit genes </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>ovrreps_paths_file</entry>
+                                <entry>
+<para>File with paths </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hitlists_file</entry>
+                                <entry>
+<para>File with hit genes </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hitlist_length</entry>
+                                <entry>
+<para>Length of hit list </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>position_of_overreps_count</entry>
+                                <entry>
+<para>Position of the centrality count in the paths file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hugo_by_id</entry>
+                                <entry>
+<para>HGNC ids map </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_random_manager_1a8527889663c673a3c3a37f8a5acbbf68">
+                <title>Network create_random_network (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Create random network with the same degree distribution</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_random_manager_1ab7e56001e096384147ea3102671f577e">
+                <title>void calculate_p_values_nodes_random_networks (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String file_name_random, int count, String hubs_file, String overreps_file)</title> <emphasis></emphasis>
+                
+<para>Calculate p-values for nodes on random network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>file_name_random</entry>
+                                <entry>
+<para>Name for file to store information about pathways built on the random network </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>count</entry>
+                                <entry>
+<para>Number of shuffling steps </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hubs_file</entry>
+                                <entry>
+<para>File with nodes and centrality scores </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>overreps_file</entry>
+                                <entry>
+<para>File with paths and centrality scores </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_random_manager_1ae291d927b0521ac36a0b842966dc2cf9">
+                <title>void calculate_p_values_nodes_random_networks_ppi (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, String file_name_random, int count, String hubs_file, String overreps_file)</title> <emphasis></emphasis>
+                
+<para>Calculate p-values on for nodes random ppi network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>file_name_random</entry>
+                                <entry>
+<para>File name to store information about pathways built on the random network </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>count</entry>
+                                <entry>
+<para>Number of shuffling steps </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hubs_file</entry>
+                                <entry>
+<para>File with nodes and centrality scores </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>overreps_file</entry>
+                                <entry>
+<para>File with paths and centrality scores </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_random_manager_1a4478c964092139a60aa840ad680b78e8">
+                <title>void check_distributions (Network all, Map&lt; String, String[]&gt; hugo_by_id)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_random_manager_1a93e0b925aaad4ffe3e78dcc148f3194d">
+                <title>int get_bin (int degree)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_random_manager_1a8af3e251aacb2ad1074ae98a403eea79">
+                <title>String returnGeneName (String s, Map&lt; String, String[]&gt; hugo_by_id)</title> <emphasis></emphasis>
+                
+            </section>
+</section>

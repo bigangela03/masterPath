@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_network">
+<title>masterPATH::Network class Reference</title>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, Node &gt; nodes</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, Interaction &gt; interactions</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classmaster_p_a_t_h_1_1_network_1a5f56923e4eac55c8c08d72599b0a0d41">Network</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_1a6ca1ad552737723af822aa7b6d3c5fd6">print_interactions_to_file</link> (
+String file)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_1a8829ba4d08110477a9917ba14bbe2346">loadNetworkfromfile</link> (
+String nodef, String intf)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_1a6bb30d9c68383bba2f5276f6b73fbb70">saveNetworktofile</link> (
+String nodef, String intf)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_1a9b0a5a3ad9972ab0e8eb0b54873aac6b">removeAll</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_1ae42a9d679e65b4d42cc5c9f01ace118e">loadNetwork2</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> class describes an <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> object</para>
+
+<para><formalpara><title>Author: </title>
+
+<para>Natalia Rubanova </para>
+</formalpara>
+</para>
+                <para>Definition at line 21 of file Network.java</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>Network.java</para></listitem></itemizedlist></para>
+        </simplesect>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_1a5f56923e4eac55c8c08d72599b0a0d41">
+                <title>Network ()</title> <emphasis></emphasis>
+                
+<para>Constructor </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_1a6ca1ad552737723af822aa7b6d3c5fd6">
+                <title>void print_interactions_to_file (String file)</title> <emphasis></emphasis>
+                
+<para>Saves all interactions in the network to the output file 
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>file</entry>
+                                <entry>
+<para>output file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_1a8829ba4d08110477a9917ba14bbe2346">
+                <title>void loadNetworkfromfile (String nodef, String intf)</title> <emphasis></emphasis>
+                
+<para>Load network from two files * 
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>nodef</entry>
+                                <entry>
+<para>file with information about nodes </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>intf</entry>
+                                <entry>
+<para>file with information about interactions </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_1a6bb30d9c68383bba2f5276f6b73fbb70">
+                <title>void saveNetworktofile (String nodef, String intf)</title> <emphasis></emphasis>
+                
+<para>Saves all interactions and nodes in the network to the two output files 
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>nodef</entry>
+                                <entry>
+<para>node file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>intf</entry>
+                                <entry>
+<para>interaction file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_1a9b0a5a3ad9972ab0e8eb0b54873aac6b">
+                <title>void removeAll ()</title> <emphasis></emphasis>
+                
+<para>Remove all interactions and nodes from network </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_1ae42a9d679e65b4d42cc5c9f01ace118e">
+                <title>void loadNetwork2 (NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Load network from databases</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+</section>

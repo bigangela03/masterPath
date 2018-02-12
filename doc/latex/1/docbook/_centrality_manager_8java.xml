@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_centrality_manager_8java">
+    <title>CentralityManager.java File Reference</title>
+        <section>
+            <title> Data Structures </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">masterPATH::CentralityManager</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1_1_i2_s2">masterPATH::CentralityManager::I2S2</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1_1_i1_s1">masterPATH::CentralityManager::I1S1</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1_1_s3">masterPATH::CentralityManager::S3</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <simplesect>
+            <title> Namespaces </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="namespacemaster_p_a_t_h">masterPATH</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file F:/Dropbox/_Работа/Programms/CODE/masterPath/src/masterPATH/CentralityManager.java</para>
+    </simplesect>
+</section>

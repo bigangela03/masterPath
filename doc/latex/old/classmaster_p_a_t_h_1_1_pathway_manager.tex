@@ -1,0 +1,342 @@
+\section{master\+P\+A\+T\+H.\+Pathway\+Manager Class Reference}
+\label{classmaster_p_a_t_h_1_1_pathway_manager}\index{master\+P\+A\+T\+H.\+Pathway\+Manager@{master\+P\+A\+T\+H.\+Pathway\+Manager}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ find\+\_\+mi\+R\+N\+As\+\_\+on\+\_\+pathways} (String foundf, String resf, \textbf{ Network} mirtarbase, Map$<$ String, String $>$ hg, Map$<$ String, String $>$ fpl, int length, int min, String mask)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+void \textbf{ find\+\_\+mi\+R\+N\+As\+\_\+on\+\_\+paths} (String foundf, String resf, \textbf{ Network} mirtarbase, \textbf{ Network} transmir, Map$<$ String, String $>$ hg, Map$<$ String, String $>$ fpl, int length, int min\+\_\+occ, String mask)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+void \textbf{ create\+\_\+cyto\+\_\+for\+\_\+paths} (String foundf, \textbf{ Network} all, Map$<$ String, String $>$ hg, Map$<$ String, String $>$ fpl)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+void \textbf{ create\+\_\+cyto\+\_\+for\+\_\+pathways} (String path\+\_\+file, String filename, String out\+\_\+dir, \textbf{ Network} all, Map$<$ String, String $>$ hg, Map$<$ String, String $>$ fpl)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+void \textbf{ filter\+Pathways\+\_\+by\+\_\+length} (String inf, String outf, int min, int max)  throws I\+O\+Exception 
+\item 
+void \textbf{ filter\+Pathways} (String foundf, String outname, \textbf{ Network} all, Map$<$ String, String $>$ hg, Map$<$ String, String $>$ fpl, String mask, String gene, String type)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+void \textbf{ filter\+Pathways\+\_\+2} (String foundf, String outname, \textbf{ Network} all, Map$<$ String, String $>$ hg, Map$<$ String, String $>$ fpl, String gene, int l1, int l2, int l3, int l4)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+void \textbf{ find\+\_\+shortest\+\_\+paths} (String foundf, String outname, \textbf{ Network} all, Map$<$ String, String $>$ hg, Map$<$ String, String $>$ fpl, int d\+\_\+ppi, int d\+\_\+tf, int d\+\_\+mirna, int d\+\_\+kegg)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+void \textbf{ add\+\_\+connectivity\+\_\+for\+\_\+pathways} (\textbf{ Network} all, String infile, String outfile)  throws I\+O\+Exception 
+\item 
+void \textbf{ filter\+\_\+pathways\+\_\+by\+\_\+connectivity} (String in, String out, String out\+\_\+for\+\_\+overrreps, int in\+\_\+min, int in\+\_\+max, int out\+\_\+min, int out\+\_\+max)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+void \textbf{ compare\+\_\+two\+\_\+paths\+\_\+files} (\textbf{ Network} all, Map$<$ String, String[$\,$]$>$ hugo\+\_\+by\+\_\+id, String f1, String f2, String out)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+void \textbf{ compare\+\_\+two\+\_\+nodes\+\_\+files} (\textbf{ Network} all, Map$<$ String, String[$\,$]$>$ hugo\+\_\+by\+\_\+id, String f1, String f2, String out)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+void \textbf{ find\+\_\+hitgenes\+\_\+on\+\_\+paths} (\textbf{ Network} all, \textbf{ Network\+Manager} nutils, Map$<$ String, String[$\,$]$>$ hugo\+\_\+by\+\_\+id, String f1, String out)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{Pathway\+Manager}{p.}{classmaster_p_a_t_h_1_1_pathway_manager} class describes methods to deal with pathways \begin{DoxyAuthor}{Author}
+Natalia Rubanova 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classmaster_p_a_t_h_1_1_pathway_manager_a206f5cebb011c45bd6abd1a5a6a5967c}} 
+\index{master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}!add\+\_\+connectivity\+\_\+for\+\_\+pathways@{add\+\_\+connectivity\+\_\+for\+\_\+pathways}}
+\index{add\+\_\+connectivity\+\_\+for\+\_\+pathways@{add\+\_\+connectivity\+\_\+for\+\_\+pathways}!master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}}
+\subsubsection{add\+\_\+connectivity\+\_\+for\+\_\+pathways()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Pathway\+Manager.\+add\+\_\+connectivity\+\_\+for\+\_\+pathways (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{String}]{infile,  }\item[{String}]{outfile }\end{DoxyParamCaption}) throws I\+O\+Exception}
+
+Calculate pathways connectivity 
+\begin{DoxyParams}{Parameters}
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em infile} & Input file \\
+\hline
+{\em outfile} & Output file \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_pathway_manager_aa1ccceeb27db0fe0afffcad72ee3cee2}} 
+\index{master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}!compare\+\_\+two\+\_\+nodes\+\_\+files@{compare\+\_\+two\+\_\+nodes\+\_\+files}}
+\index{compare\+\_\+two\+\_\+nodes\+\_\+files@{compare\+\_\+two\+\_\+nodes\+\_\+files}!master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}}
+\subsubsection{compare\+\_\+two\+\_\+nodes\+\_\+files()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Pathway\+Manager.\+compare\+\_\+two\+\_\+nodes\+\_\+files (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{Map$<$ String, String[$\,$]$>$}]{hugo\+\_\+by\+\_\+id,  }\item[{String}]{f1,  }\item[{String}]{f2,  }\item[{String}]{out }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Compare two files with nodes 
+\begin{DoxyParams}{Parameters}
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em hugo\+\_\+by\+\_\+id} & H\+G\+NC ids map \\
+\hline
+{\em f1} & File 1 \\
+\hline
+{\em f2} & File 2 \\
+\hline
+{\em out} & Output file \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_pathway_manager_a7b31a6ffddfe7fafc022318bdec656d9}} 
+\index{master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}!compare\+\_\+two\+\_\+paths\+\_\+files@{compare\+\_\+two\+\_\+paths\+\_\+files}}
+\index{compare\+\_\+two\+\_\+paths\+\_\+files@{compare\+\_\+two\+\_\+paths\+\_\+files}!master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}}
+\subsubsection{compare\+\_\+two\+\_\+paths\+\_\+files()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Pathway\+Manager.\+compare\+\_\+two\+\_\+paths\+\_\+files (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{Map$<$ String, String[$\,$]$>$}]{hugo\+\_\+by\+\_\+id,  }\item[{String}]{f1,  }\item[{String}]{f2,  }\item[{String}]{out }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Compare two files with paths 
+\begin{DoxyParams}{Parameters}
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em hugo\+\_\+by\+\_\+id} & Map with H\+G\+NC ids \\
+\hline
+{\em f1} & File1 \\
+\hline
+{\em f2} & File 2 \\
+\hline
+{\em out} & O\+Utput file \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_pathway_manager_afc45ecc3468ea5d91860ef70b2be21fc}} 
+\index{master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}!create\+\_\+cyto\+\_\+for\+\_\+paths@{create\+\_\+cyto\+\_\+for\+\_\+paths}}
+\index{create\+\_\+cyto\+\_\+for\+\_\+paths@{create\+\_\+cyto\+\_\+for\+\_\+paths}!master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}}
+\subsubsection{create\+\_\+cyto\+\_\+for\+\_\+paths()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Pathway\+Manager.\+create\+\_\+cyto\+\_\+for\+\_\+paths (\begin{DoxyParamCaption}\item[{String}]{foundf,  }\item[{\textbf{ Network}}]{all,  }\item[{Map$<$ String, String $>$}]{hg,  }\item[{Map$<$ String, String $>$}]{fpl }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Create a file for Cytoscape software from the shortest paths 
+\begin{DoxyParams}{Parameters}
+{\em foundf} & File with paths \\
+\hline
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em hg} & Hit genes list \\
+\hline
+{\em fpl} & Final players list \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em File\+Not\+Found\+Exception} & \\
+\hline
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\label{classmaster_p_a_t_h_1_1_pathway_manager_aa279e82bcc910f09c390669f1a2f6d7a}} 
+\index{master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}!create\+\_\+cyto\+\_\+for\+\_\+pathways@{create\+\_\+cyto\+\_\+for\+\_\+pathways}}
+\index{create\+\_\+cyto\+\_\+for\+\_\+pathways@{create\+\_\+cyto\+\_\+for\+\_\+pathways}!master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}}
+\subsubsection{create\+\_\+cyto\+\_\+for\+\_\+pathways()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Pathway\+Manager.\+create\+\_\+cyto\+\_\+for\+\_\+pathways (\begin{DoxyParamCaption}\item[{String}]{path\+\_\+file,  }\item[{String}]{filename,  }\item[{String}]{out\+\_\+dir,  }\item[{\textbf{ Network}}]{all,  }\item[{Map$<$ String, String $>$}]{hg,  }\item[{Map$<$ String, String $>$}]{fpl }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Creates a file for Cytoscape software for a list of pathways by pathways ids 
+\begin{DoxyParams}{Parameters}
+{\em path\+\_\+file} & File with pathways \\
+\hline
+{\em filename} & File with list of pathways by id \\
+\hline
+{\em out\+\_\+dir} & Output folder \\
+\hline
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em hg} & Hit genes list \\
+\hline
+{\em fpl} & Final players list \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_pathway_manager_a7be6441c0e1a65d39d9d00da221c4258}} 
+\index{master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}!filter\+\_\+pathways\+\_\+by\+\_\+connectivity@{filter\+\_\+pathways\+\_\+by\+\_\+connectivity}}
+\index{filter\+\_\+pathways\+\_\+by\+\_\+connectivity@{filter\+\_\+pathways\+\_\+by\+\_\+connectivity}!master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}}
+\subsubsection{filter\+\_\+pathways\+\_\+by\+\_\+connectivity()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Pathway\+Manager.\+filter\+\_\+pathways\+\_\+by\+\_\+connectivity (\begin{DoxyParamCaption}\item[{String}]{in,  }\item[{String}]{out,  }\item[{String}]{out\+\_\+for\+\_\+overrreps,  }\item[{int}]{in\+\_\+min,  }\item[{int}]{in\+\_\+max,  }\item[{int}]{out\+\_\+min,  }\item[{int}]{out\+\_\+max }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Filter pathways by connectivity 
+\begin{DoxyParams}{Parameters}
+{\em in} & Input file \\
+\hline
+{\em out} & Output file \\
+\hline
+{\em out\+\_\+for\+\_\+overrreps} & Output file only for pathway without additional information \\
+\hline
+{\em in\+\_\+min} & Minimum inward connectivity \\
+\hline
+{\em in\+\_\+max} & Maximum inward connectivity \\
+\hline
+{\em out\+\_\+min} & Minimum outward connectivity \\
+\hline
+{\em out\+\_\+max} & Maximum outward connectivity \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em File\+Not\+Found\+Exception} & \\
+\hline
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\label{classmaster_p_a_t_h_1_1_pathway_manager_abd0215b8bdc6f86f5dfaa0d96b4a5be4}} 
+\index{master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}!filter\+Pathways@{filter\+Pathways}}
+\index{filter\+Pathways@{filter\+Pathways}!master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}}
+\subsubsection{filter\+Pathways()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Pathway\+Manager.\+filter\+Pathways (\begin{DoxyParamCaption}\item[{String}]{foundf,  }\item[{String}]{outname,  }\item[{\textbf{ Network}}]{all,  }\item[{Map$<$ String, String $>$}]{hg,  }\item[{Map$<$ String, String $>$}]{fpl,  }\item[{String}]{mask,  }\item[{String}]{gene,  }\item[{String}]{type }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Filter pathways by node names \textbackslash{} type 
+\begin{DoxyParams}{Parameters}
+{\em foundf} & Input file \\
+\hline
+{\em outname} & Output file \\
+\hline
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em hg} & Hit genes list \\
+\hline
+{\em fpl} & Final players list \\
+\hline
+{\em mask} & Mask \\
+\hline
+{\em gene} & \doxyref{Node}{p.}{classmaster_p_a_t_h_1_1_node} name \\
+\hline
+{\em type} & \doxyref{Node}{p.}{classmaster_p_a_t_h_1_1_node} type \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_pathway_manager_a17247b6877fd7ca541350397a1e70a52}} 
+\index{master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}!filter\+Pathways\+\_\+2@{filter\+Pathways\+\_\+2}}
+\index{filter\+Pathways\+\_\+2@{filter\+Pathways\+\_\+2}!master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}}
+\subsubsection{filter\+Pathways\+\_\+2()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Pathway\+Manager.\+filter\+Pathways\+\_\+2 (\begin{DoxyParamCaption}\item[{String}]{foundf,  }\item[{String}]{outname,  }\item[{\textbf{ Network}}]{all,  }\item[{Map$<$ String, String $>$}]{hg,  }\item[{Map$<$ String, String $>$}]{fpl,  }\item[{String}]{gene,  }\item[{int}]{l1,  }\item[{int}]{l2,  }\item[{int}]{l3,  }\item[{int}]{l4 }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Filter paths on condition ppi [3,4] \& mi\+R\+NA [6/5] or ppi [3,4] or mi\+R\+NA [6/5] 
+\begin{DoxyParams}{Parameters}
+{\em foundf} & File with pathways \\
+\hline
+{\em outname} & Output file \\
+\hline
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em hg} & Hit genes \\
+\hline
+{\em fpl} & Final implementers \\
+\hline
+{\em gene} & Gene name \\
+\hline
+{\em l1} & min length for ppi path \\
+\hline
+{\em l2} & max length for ppi path \\
+\hline
+{\em l3} & min length for mi\+R\+NA path \\
+\hline
+{\em l4} & max length for mi\+R\+NA path \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_pathway_manager_a0a0c50c15be3db2b0605c6bf720628ee}} 
+\index{master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}!filter\+Pathways\+\_\+by\+\_\+length@{filter\+Pathways\+\_\+by\+\_\+length}}
+\index{filter\+Pathways\+\_\+by\+\_\+length@{filter\+Pathways\+\_\+by\+\_\+length}!master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}}
+\subsubsection{filter\+Pathways\+\_\+by\+\_\+length()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Pathway\+Manager.\+filter\+Pathways\+\_\+by\+\_\+length (\begin{DoxyParamCaption}\item[{String}]{inf,  }\item[{String}]{outf,  }\item[{int}]{min,  }\item[{int}]{max }\end{DoxyParamCaption}) throws I\+O\+Exception}
+
+Filter pathways by length 
+\begin{DoxyParams}{Parameters}
+{\em inf} & Input file \\
+\hline
+{\em outf} & Output file \\
+\hline
+{\em min} & Minimum length \\
+\hline
+{\em max} & Maximum length \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_pathway_manager_ac39f25f3f3d2586dcb048b3ede671e0b}} 
+\index{master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}!find\+\_\+hitgenes\+\_\+on\+\_\+paths@{find\+\_\+hitgenes\+\_\+on\+\_\+paths}}
+\index{find\+\_\+hitgenes\+\_\+on\+\_\+paths@{find\+\_\+hitgenes\+\_\+on\+\_\+paths}!master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}}
+\subsubsection{find\+\_\+hitgenes\+\_\+on\+\_\+paths()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Pathway\+Manager.\+find\+\_\+hitgenes\+\_\+on\+\_\+paths (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{\textbf{ Network\+Manager}}]{nutils,  }\item[{Map$<$ String, String[$\,$]$>$}]{hugo\+\_\+by\+\_\+id,  }\item[{String}]{f1,  }\item[{String}]{out }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Compare a file with paths with a hit list 
+\begin{DoxyParams}{Parameters}
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em nutils} & \doxyref{Network\+Manager}{p.}{classmaster_p_a_t_h_1_1_network_manager} object \\
+\hline
+{\em hugo\+\_\+by\+\_\+id} & H\+G\+NC ids map \\
+\hline
+{\em f1} & File with paths \\
+\hline
+{\em out} & O\+Utput file \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_pathway_manager_ab835aeacca9240454ccdbe8e2b05911e}} 
+\index{master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}!find\+\_\+mi\+R\+N\+As\+\_\+on\+\_\+paths@{find\+\_\+mi\+R\+N\+As\+\_\+on\+\_\+paths}}
+\index{find\+\_\+mi\+R\+N\+As\+\_\+on\+\_\+paths@{find\+\_\+mi\+R\+N\+As\+\_\+on\+\_\+paths}!master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}}
+\subsubsection{find\+\_\+mi\+R\+N\+As\+\_\+on\+\_\+paths()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Pathway\+Manager.\+find\+\_\+mi\+R\+N\+As\+\_\+on\+\_\+paths (\begin{DoxyParamCaption}\item[{String}]{foundf,  }\item[{String}]{resf,  }\item[{\textbf{ Network}}]{mirtarbase,  }\item[{\textbf{ Network}}]{transmir,  }\item[{Map$<$ String, String $>$}]{hg,  }\item[{Map$<$ String, String $>$}]{fpl,  }\item[{int}]{length,  }\item[{int}]{min\+\_\+occ,  }\item[{String}]{mask }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Find and rank mi\+R\+N\+As inside paths 
+\begin{DoxyParams}{Parameters}
+{\em foundf} & Common paths file \\
+\hline
+{\em resf} & Output file \\
+\hline
+{\em mirtarbase} & Link to mir\+Tar\+B\+Ase network \\
+\hline
+{\em transmir} & Link to trans\+Mir network \\
+\hline
+{\em hg} & Hit genes list \\
+\hline
+{\em fpl} & Final players List \\
+\hline
+{\em length} & Maximum length \\
+\hline
+{\em min\+\_\+occ} & Minimum occurrence \\
+\hline
+{\em mask} & Mask \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_pathway_manager_a7db1192ab6f8623e8fa6cd6c59e104a9}} 
+\index{master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}!find\+\_\+mi\+R\+N\+As\+\_\+on\+\_\+pathways@{find\+\_\+mi\+R\+N\+As\+\_\+on\+\_\+pathways}}
+\index{find\+\_\+mi\+R\+N\+As\+\_\+on\+\_\+pathways@{find\+\_\+mi\+R\+N\+As\+\_\+on\+\_\+pathways}!master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}}
+\subsubsection{find\+\_\+mi\+R\+N\+As\+\_\+on\+\_\+pathways()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Pathway\+Manager.\+find\+\_\+mi\+R\+N\+As\+\_\+on\+\_\+pathways (\begin{DoxyParamCaption}\item[{String}]{foundf,  }\item[{String}]{resf,  }\item[{\textbf{ Network}}]{mirtarbase,  }\item[{Map$<$ String, String $>$}]{hg,  }\item[{Map$<$ String, String $>$}]{fpl,  }\item[{int}]{length,  }\item[{int}]{min,  }\item[{String}]{mask }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Find and rank mi\+R\+N\+As inside pathways 
+\begin{DoxyParams}{Parameters}
+{\em foundf} & File with common paths \\
+\hline
+{\em resf} & Output file \\
+\hline
+{\em mirtarbase} & Link to mir\+Tar\+Base network \\
+\hline
+{\em hg} & Hit genes list \\
+\hline
+{\em fpl} & Final implementer list \\
+\hline
+{\em length} & Maximum length \\
+\hline
+{\em min} & \\
+\hline
+{\em mask} & \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_pathway_manager_a947ec25d75d412c0fad5a3f1a0ebb18c}} 
+\index{master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}!find\+\_\+shortest\+\_\+paths@{find\+\_\+shortest\+\_\+paths}}
+\index{find\+\_\+shortest\+\_\+paths@{find\+\_\+shortest\+\_\+paths}!master\+P\+A\+T\+H\+::\+Pathway\+Manager@{master\+P\+A\+T\+H\+::\+Pathway\+Manager}}
+\subsubsection{find\+\_\+shortest\+\_\+paths()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Pathway\+Manager.\+find\+\_\+shortest\+\_\+paths (\begin{DoxyParamCaption}\item[{String}]{foundf,  }\item[{String}]{outname,  }\item[{\textbf{ Network}}]{all,  }\item[{Map$<$ String, String $>$}]{hg,  }\item[{Map$<$ String, String $>$}]{fpl,  }\item[{int}]{d\+\_\+ppi,  }\item[{int}]{d\+\_\+tf,  }\item[{int}]{d\+\_\+mirna,  }\item[{int}]{d\+\_\+kegg }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Find the shortest pathways 
+\begin{DoxyParams}{Parameters}
+{\em foundf} & Input file \\
+\hline
+{\em outname} & Output file \\
+\hline
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em hg} & Hit genes list \\
+\hline
+{\em fpl} & Final players list \\
+\hline
+{\em d\+\_\+ppi} & Length gap for protein-\/protein interactions \\
+\hline
+{\em d\+\_\+tf} & Length gap for transcriptional interactions \\
+\hline
+{\em d\+\_\+mirna} & Length gap for mi\+R\+N\+A-\/m\+R\+NA interactions \\
+\hline
+{\em d\+\_\+kegg} & Length gap for metabolic interactions \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/\+Dropbox/\+\_\+Работа/\+Programms/\+C\+O\+D\+E/master\+Path/src/master\+P\+A\+T\+H/Pathway\+Manager.\+java\end{DoxyCompactItemize}

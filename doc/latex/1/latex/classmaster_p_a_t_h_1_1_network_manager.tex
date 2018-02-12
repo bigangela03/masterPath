@@ -1,0 +1,198 @@
+\section{Network\+Manager Class Reference}
+\label{classmaster_p_a_t_h_1_1_network_manager}\index{Network\+Manager@{Network\+Manager}}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Depth\+\_\+\+List\+\_\+of\+\_\+\+Path\+Unit}
+\item 
+class {\bfseries Path\+Unit}
+\item 
+class {\bfseries Path\+Unitw\+FP}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Network} \textbf{ merge\+\_\+list\+\_\+of\+\_\+networks} (List$<$ \textbf{ Network} $>$ n)
+\item 
+void \textbf{ build\+\_\+map\+\_\+of\+\_\+neighbors} (\textbf{ Network} nw)
+\item 
+void \textbf{ load\+\_\+hitlist\+\_\+and\+\_\+finalimpl} (String hgf, String fpf, Map$<$ String, String[$\,$]$>$ hugo)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+List$<$ Path\+Unit $>$ \textbf{ find\+\_\+pathway\+\_\+\+B\+F\+\_\+algorithm} (\textbf{ Network} network, List$<$ String $>$ n1, List$<$ String $>$ n2, int max, String prefix, File\+Writer out)  throws I\+O\+Exception 
+\item 
+List$<$ Path\+Unit $>$ \textbf{ find\+\_\+pathway\+\_\+\+B\+F\+\_\+algorithm\+\_\+ppi} (\textbf{ Network} network, List$<$ String $>$ n1, List$<$ String $>$ n2, int max, String prefix, Buffered\+Writer out)  throws I\+O\+Exception 
+\item 
+void \textbf{ find\+\_\+pathway\+\_\+for\+\_\+list\+\_\+\+B\+F\+\_\+algorithm} (\textbf{ Network} nw, Map$<$ String, String[$\,$]$>$ hugo, int max, String outf, String prefix)  throws I\+O\+Exception 
+\item 
+void \textbf{ find\+\_\+pathway\+\_\+for\+\_\+list\+\_\+\+B\+F\+\_\+algorithm\+\_\+ppi} (\textbf{ Network} nw, Map$<$ String, String[$\,$]$>$ hugo, int max, String outf, String prefix)  throws I\+O\+Exception 
+\item 
+void \textbf{ add\+\_\+missing\+\_\+genes\+\_\+and\+\_\+products} (\textbf{ Network} nw)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{Network\+Manager}{p.}{classmaster_p_a_t_h_1_1_network_manager} class contains methods to deal with networks
+
+\begin{DoxyAuthor}{Author}
+Natalia Rubanova 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classmaster_p_a_t_h_1_1_network_manager_acdf88e4463853924bec444ab9eb9acaf}} 
+\index{master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}!add\+\_\+missing\+\_\+genes\+\_\+and\+\_\+products@{add\+\_\+missing\+\_\+genes\+\_\+and\+\_\+products}}
+\index{add\+\_\+missing\+\_\+genes\+\_\+and\+\_\+products@{add\+\_\+missing\+\_\+genes\+\_\+and\+\_\+products}!master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}}
+\subsubsection{add\+\_\+missing\+\_\+genes\+\_\+and\+\_\+products()}
+{\footnotesize\ttfamily void add\+\_\+missing\+\_\+genes\+\_\+and\+\_\+products (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{nw }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Add transcription information
+
+
+\begin{DoxyParams}{Parameters}
+{\em nw} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_network_manager_ae001f802cbc071826a94d6554d265ee4}} 
+\index{master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}!build\+\_\+map\+\_\+of\+\_\+neighbors@{build\+\_\+map\+\_\+of\+\_\+neighbors}}
+\index{build\+\_\+map\+\_\+of\+\_\+neighbors@{build\+\_\+map\+\_\+of\+\_\+neighbors}!master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}}
+\subsubsection{build\+\_\+map\+\_\+of\+\_\+neighbors()}
+{\footnotesize\ttfamily void build\+\_\+map\+\_\+of\+\_\+neighbors (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{nw }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Create links to all neighbors for every node in the network
+
+
+\begin{DoxyParams}{Parameters}
+{\em nw} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_network_manager_a267de2684c52a84deb7e2389be3e66ce}} 
+\index{master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}!find\+\_\+pathway\+\_\+\+B\+F\+\_\+algorithm@{find\+\_\+pathway\+\_\+\+B\+F\+\_\+algorithm}}
+\index{find\+\_\+pathway\+\_\+\+B\+F\+\_\+algorithm@{find\+\_\+pathway\+\_\+\+B\+F\+\_\+algorithm}!master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}}
+\subsubsection{find\+\_\+pathway\+\_\+\+B\+F\+\_\+algorithm()}
+{\footnotesize\ttfamily List$<$Path\+Unit$>$ find\+\_\+pathway\+\_\+\+B\+F\+\_\+algorithm (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{network,  }\item[{List$<$ String $>$}]{n1,  }\item[{List$<$ String $>$}]{n2,  }\item[{int}]{max,  }\item[{String}]{prefix,  }\item[{File\+Writer}]{out }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+Find a pathway between two lists of nodes
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+{\em n1} & List of Hit genes nodes \\
+\hline
+{\em n2} & List of Final implementers nodes \\
+\hline
+{\em max} & Maximum length \\
+\hline
+{\em prefix} & Prefix for interaction id \\
+\hline
+{\em out} & Output file \\
+\hline
+\end{DoxyParams}
+Arrays.\+equals(visited\+\_\+nodes.\+get(n), visited\+\_\+nodes.\+get(curn.\+current\+\_\+seed)) $\vert$$\vert$ $\vert$$\vert$ path\+\_\+type $>$= 1
+
+Arrays.\+equals(visited\+\_\+nodes.\+get(n), visited\+\_\+nodes.\+get(curn.\+current\+\_\+seed)) $\vert$$\vert$ $\vert$$\vert$ path\+\_\+type $>$= 1
+
+tmp\+\_\+visited\+\_\+nodes.\+contains\+Key(n) \mbox{\label{classmaster_p_a_t_h_1_1_network_manager_a94e0775799a825363caa0acfee967496}} 
+\index{master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}!find\+\_\+pathway\+\_\+\+B\+F\+\_\+algorithm\+\_\+ppi@{find\+\_\+pathway\+\_\+\+B\+F\+\_\+algorithm\+\_\+ppi}}
+\index{find\+\_\+pathway\+\_\+\+B\+F\+\_\+algorithm\+\_\+ppi@{find\+\_\+pathway\+\_\+\+B\+F\+\_\+algorithm\+\_\+ppi}!master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}}
+\subsubsection{find\+\_\+pathway\+\_\+\+B\+F\+\_\+algorithm\+\_\+ppi()}
+{\footnotesize\ttfamily List$<$Path\+Unit$>$ find\+\_\+pathway\+\_\+\+B\+F\+\_\+algorithm\+\_\+ppi (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{network,  }\item[{List$<$ String $>$}]{n1,  }\item[{List$<$ String $>$}]{n2,  }\item[{int}]{max,  }\item[{String}]{prefix,  }\item[{Buffered\+Writer}]{out }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+Find a pathway between two lists of nodes in a P\+PI network
+
+
+\begin{DoxyParams}{Parameters}
+{\em network} & \\
+\hline
+{\em n1} & List of Hit genes nodes \\
+\hline
+{\em n2} & List of Final implementers nodes \\
+\hline
+{\em max} & Maximum length \\
+\hline
+{\em prefix} & Prefix for interaction id \\
+\hline
+{\em out} & output file \\
+\hline
+\end{DoxyParams}
+Arrays.\+equals(visited\+\_\+nodes.\+get(n), visited\+\_\+nodes.\+get(curn.\+current\+\_\+seed)) $\vert$$\vert$ $\vert$$\vert$ path\+\_\+type $>$= 1
+
+Arrays.\+equals(visited\+\_\+nodes.\+get(n), visited\+\_\+nodes.\+get(curn.\+current\+\_\+seed)) $\vert$$\vert$ $\vert$$\vert$ path\+\_\+type $>$= 1
+
+tmp\+\_\+visited\+\_\+nodes.\+contains\+Key(n) \mbox{\label{classmaster_p_a_t_h_1_1_network_manager_a73ce086aad29f93090f0bb10a0cc4a87}} 
+\index{master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}!find\+\_\+pathway\+\_\+for\+\_\+list\+\_\+\+B\+F\+\_\+algorithm@{find\+\_\+pathway\+\_\+for\+\_\+list\+\_\+\+B\+F\+\_\+algorithm}}
+\index{find\+\_\+pathway\+\_\+for\+\_\+list\+\_\+\+B\+F\+\_\+algorithm@{find\+\_\+pathway\+\_\+for\+\_\+list\+\_\+\+B\+F\+\_\+algorithm}!master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}}
+\subsubsection{find\+\_\+pathway\+\_\+for\+\_\+list\+\_\+\+B\+F\+\_\+algorithm()}
+{\footnotesize\ttfamily void find\+\_\+pathway\+\_\+for\+\_\+list\+\_\+\+B\+F\+\_\+algorithm (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{nw,  }\item[{Map$<$ String, String[$\,$]$>$}]{hugo,  }\item[{int}]{max,  }\item[{String}]{outf,  }\item[{String}]{prefix }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+\doxyref{Wrapper}{p.}{classmaster_p_a_t_h_1_1_wrapper} for finding pathways
+
+
+\begin{DoxyParams}{Parameters}
+{\em nw} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em hugo} & Link to H\+G\+NC nomenclature \\
+\hline
+{\em max} & Maximum length \\
+\hline
+{\em outf} & Output file \\
+\hline
+{\em prefix} & Prefix for interaction id \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_network_manager_acc9ce5ae3e48738340fe5f5ba813e281}} 
+\index{master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}!find\+\_\+pathway\+\_\+for\+\_\+list\+\_\+\+B\+F\+\_\+algorithm\+\_\+ppi@{find\+\_\+pathway\+\_\+for\+\_\+list\+\_\+\+B\+F\+\_\+algorithm\+\_\+ppi}}
+\index{find\+\_\+pathway\+\_\+for\+\_\+list\+\_\+\+B\+F\+\_\+algorithm\+\_\+ppi@{find\+\_\+pathway\+\_\+for\+\_\+list\+\_\+\+B\+F\+\_\+algorithm\+\_\+ppi}!master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}}
+\subsubsection{find\+\_\+pathway\+\_\+for\+\_\+list\+\_\+\+B\+F\+\_\+algorithm\+\_\+ppi()}
+{\footnotesize\ttfamily void find\+\_\+pathway\+\_\+for\+\_\+list\+\_\+\+B\+F\+\_\+algorithm\+\_\+ppi (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{nw,  }\item[{Map$<$ String, String[$\,$]$>$}]{hugo,  }\item[{int}]{max,  }\item[{String}]{outf,  }\item[{String}]{prefix }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+\doxyref{Wrapper}{p.}{classmaster_p_a_t_h_1_1_wrapper} for finding pathways in a P\+PI network
+
+
+\begin{DoxyParams}{Parameters}
+{\em nw} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em hugo} & Link to H\+G\+NC nomenclature \\
+\hline
+{\em max} & Maximum length \\
+\hline
+{\em outf} & Output file \\
+\hline
+{\em prefix} & Prefix for interaction id \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_network_manager_a988f06e1e2d08049c57c1f40f79237f8}} 
+\index{master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}!load\+\_\+hitlist\+\_\+and\+\_\+finalimpl@{load\+\_\+hitlist\+\_\+and\+\_\+finalimpl}}
+\index{load\+\_\+hitlist\+\_\+and\+\_\+finalimpl@{load\+\_\+hitlist\+\_\+and\+\_\+finalimpl}!master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}}
+\subsubsection{load\+\_\+hitlist\+\_\+and\+\_\+finalimpl()}
+{\footnotesize\ttfamily void load\+\_\+hitlist\+\_\+and\+\_\+finalimpl (\begin{DoxyParamCaption}\item[{String}]{hgf,  }\item[{String}]{fpf,  }\item[{Map$<$ String, String[$\,$]$>$}]{hugo }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+Load hit genes and final implementers files
+
+
+\begin{DoxyParams}{Parameters}
+{\em hgf} & Hit genes file \\
+\hline
+{\em fpf} & Final players file \\
+\hline
+{\em hugo} & Link to the H\+G\+NC nomenclature \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_network_manager_af2a292872906e9e446211be4c7ddfde5}} 
+\index{master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}!merge\+\_\+list\+\_\+of\+\_\+networks@{merge\+\_\+list\+\_\+of\+\_\+networks}}
+\index{merge\+\_\+list\+\_\+of\+\_\+networks@{merge\+\_\+list\+\_\+of\+\_\+networks}!master\+P\+A\+T\+H\+::\+Network\+Manager@{master\+P\+A\+T\+H\+::\+Network\+Manager}}
+\subsubsection{merge\+\_\+list\+\_\+of\+\_\+networks()}
+{\footnotesize\ttfamily \textbf{ Network} merge\+\_\+list\+\_\+of\+\_\+networks (\begin{DoxyParamCaption}\item[{List$<$ \textbf{ Network} $>$}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Merge list of networks
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & List of networks \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/\+Dropbox/\+\_\+Работа/\+Programms/\+C\+O\+D\+E/master\+Path/src/master\+P\+A\+T\+H/Network\+Manager.\+java\end{DoxyCompactItemize}

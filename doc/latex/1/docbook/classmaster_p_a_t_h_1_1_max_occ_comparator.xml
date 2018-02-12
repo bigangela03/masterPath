@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_max_occ_comparator">
+<title>masterPATH::MaxOccComparator class Reference</title>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="classmaster_p_a_t_h_1_1_max_occ_comparator_1a0719e84915d1b467e88fe0db0f389cea">compare</link> (
+String_Int a, String_Int b)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_max_occ_comparator_1a0719e84915d1b467e88fe0db0f389cea">
+                <title>int compare (String_Int a, String_Int b)</title> <emphasis></emphasis>
+                
+            </section>
+</section>

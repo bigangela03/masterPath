@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_pathway_manager_8java">
+    <title>PathwayManager.java File Reference</title>
+        <section>
+            <title> Data Structures </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">masterPATH::PathwayManager</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_list_comparator">masterPATH::ListComparator</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_string___int">masterPATH::String_Int</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_max_occ_comparator">masterPATH::MaxOccComparator</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_edge_attributes">masterPATH::EdgeAttributes</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_link">masterPATH::Link</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_aux_cyto_class">masterPATH::AuxCytoClass</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_path__strength">masterPATH::Path_strength</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_strength">masterPATH::Strength</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <simplesect>
+            <title> Namespaces </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="namespacemaster_p_a_t_h">masterPATH</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+    <para>Definition in file F:/Dropbox/_Работа/Programms/CODE/masterPath/src/masterPATH/PathwayManager.java</para>
+    </simplesect>
+</section>

@@ -1,0 +1,918 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_centrality_manager">
+<title>masterPATH::CentralityManager class Reference</title>
+        <section>
+            <title> Data Structures </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1_1_i1_s1">masterPATH::CentralityManager::I1S1</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1_1_i2_s2">masterPATH::CentralityManager::I2S2</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1_1_s3">masterPATH::CentralityManager::S3</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1abeb81c9a12d9d01daf78cac4e6340812">calculate_centrality_scores_for_nodes</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, Map&lt; String, String[]&gt; hugo_by_id, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, String f_shortest_pathways, String output_file)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1accb85600628c83df4da7a9d861d5c17e">calculate_centrality_scores_for_paths</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, String inf, String outf, int min_length, int max_length)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1a41683f9552455699ce26a2e8896a895f">calculate_centrality_scores_for_paths_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, String inf, String outf, int min_length, int max_length)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1abb39cfdc51f8b8850b6579814239e42f">add_hgnc_symbols_to_paths</link> (
+String inf, String outf, <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, Map&lt; String, String[]&gt; hugo_by_id)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1ad318d10164b6651ce8437cce9c463d8b">add_experimental_scores_and_pvalues_to_nodes</link> (
+String nodes_file, String gw_file, String conv_table, String out)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1a7c8be248081eccbc113ef8de480a629a">add_experimnetal_scores_and_aggregated_pvalues_to_paths</link> (
+String unique_over, String gw_file, String conv_table, String out)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1aaf364d81e876eb9d18d467fbe9932a9b">add_degree_to_paths</link> (
+String unique_over, String path_con, String out)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, I1S1 &gt; <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1a427c8ac4ddb5f2387078b1c6b4c24513">find_unique_paths_for_list_of_pathways_ppi</link> (
+int max_length, int min_length, List&lt; String &gt; all_paths)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1a530132ff0e79ff60b52481b67db4a65a">filter_paths</link> (
+String foundf, String outname, <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl, int min_occ, String mask)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>HashMap&lt; String, Float[]&gt; <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1abef96cc4b9600b2f23d59aa18dc41dcd">load_screening_data</link> (
+String p_file, String n_file)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>HashMap&lt; String, List&lt; Float &gt; &gt; <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1a1973dd1adda91219b3c4efc16d4619af">return_permutation_distribution</link> (
+String p_file, String n_file, int number_of_permutations)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, I1S1 &gt; <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1a3878cc894b5e248af436381933e3a7c9">find_unique_paths_for_list_of_pathways</link> (
+int max_length, int min_length, List&lt; String &gt; all_paths)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1a77f6658a7d18fc5866b81f8ef319c1f0">compare_two_lists_of_nodes</link> (
+String f1, String f2)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1a727cf9c7bd4eeda2d7107b167833e6f2">returnPathType</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, String s)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static String <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1a78428eb2dfadac52d766e5f72eea8d76">return_symmetric_path</link> (
+String part)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, I1S1 &gt; <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1acbe1fe6cffac3626b41515113c831e26">return_unique_path</link> (
+List&lt; String &gt; all_paths, Map&lt; String, I1S1 &gt; unique_parts, String part, int offset_in_path, String path_id)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, I1S1 &gt; <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1ac4e3b135023088050b55cf808ceea81f">return_unique_path_ppi</link> (
+List&lt; String &gt; all_paths, Map&lt; String, I1S1 &gt; unique_parts, String part, int offset_in_path, String path_id)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1acc4de8c7d27628cc486c031535970a61">get_occurance_type</link> (
+List&lt; String &gt; all_paths, String part, int offset_in_path)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1a2795a138e35cbc3cfd458bce67bfbc91">returnName</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, String interaction, Map&lt; String, String[]&gt; hugo_by_id, int i)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1aaeeba22a4a43fe31a5086f44fadbdfba">find_overreprs</link> (
+int max_length, int min_length, String inf, String outf)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1a18ec6f18e1bf9c4b6932302b1b69e7d1">put_gene_symbols_for_paths</link> (
+String inf, String outf, <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, Map&lt; String, String[]&gt; hugo_by_id)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1a5e688df7c9363fa9d7a9ca6969378233">find_paths_of_lenght1</link> (
+String inf, String outf)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1a8dacd8922ef637b489233b1a1fe8e471">checkLinks</link> (
+Map&lt; String, String[]&gt; paths, Map&lt; Integer, List&lt; Link &gt;&gt; links, String [] pth, String path_id, int offset, int length)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1a1b1ffa2b854619a7298b98c97118846c">writeLinks</link> (
+Map&lt; String, String[]&gt; paths, Map&lt; Integer, List&lt; Link &gt;&gt; links, String outf)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1ac68a3c46e3689e71dfd2a1066617eb21">get_connectivity</link> (
+String infile, String outfile, <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> class contains methods to calculate centrality scores</para>
+
+<para><formalpara><title>Author: </title>
+
+<para>Natalia Rubanova </para>
+</formalpara>
+</para>
+                <para>Definition at line 23 of file CentralityManager.java</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>CentralityManager.java</para></listitem></itemizedlist></para>
+        </simplesect>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1abeb81c9a12d9d01daf78cac4e6340812">
+                <title>void calculate_centrality_scores_for_nodes (Network all, Map&lt; String, String[]&gt; hugo_by_id, NetworkManager nutils, String f_shortest_pathways, String output_file)</title> <emphasis></emphasis>
+                
+<para>Find nodes and calculate centrality scores</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hugo_by_id</entry>
+                                <entry>
+<para>Map with HGNC ids </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para>Link to <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>f_shortest_pathways</entry>
+                                <entry>
+<para>File with pathways </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>output_file</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1accb85600628c83df4da7a9d861d5c17e">
+                <title>void calculate_centrality_scores_for_paths (Network all, String inf, String outf, int min_length, int max_length)</title> <emphasis></emphasis>
+                
+<para>Find short linear paths in a mixed direct/indirect subnetwork and calculate centrality scores</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>inf</entry>
+                                <entry>
+<para>List of pathways to create subnetwork </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outf</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>min_length</entry>
+                                <entry>
+<para>minimum length of a path </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>max_length</entry>
+                                <entry>
+<para>maximum length of a path </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1a41683f9552455699ce26a2e8896a895f">
+                <title>void calculate_centrality_scores_for_paths_ppi (Network all, String inf, String outf, int min_length, int max_length)</title> <emphasis></emphasis>
+                
+<para>Find short linear paths in a indirect subnetwork and calculate centrality scores</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>inf</entry>
+                                <entry>
+<para>List of pathways to create subnetwork </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outf</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>min_length</entry>
+                                <entry>
+<para>Minimum path length </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>max_length</entry>
+                                <entry>
+<para>Maximum path length </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1abb39cfdc51f8b8850b6579814239e42f">
+                <title>void add_hgnc_symbols_to_paths (String inf, String outf, Network all, Map&lt; String, String[]&gt; hugo_by_id)</title> <emphasis></emphasis>
+                
+<para>Add approved gene symbols to file with paths and centrality scores</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>inf</entry>
+                                <entry>
+<para>Input file with paths </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outf</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hugo_by_id</entry>
+                                <entry>
+<para>Map of approved gene symbols and gene IDs from <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> class </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1ad318d10164b6651ce8437cce9c463d8b">
+                <title>void add_experimental_scores_and_pvalues_to_nodes (String nodes_file, String gw_file, String conv_table, String out)</title> <emphasis></emphasis>
+                
+<para>Add scores and p-values from GW screen to file with nodes and centrality scores</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>nodes_file</entry>
+                                <entry>
+<para>File with nodes and centrality scores </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>gw_file</entry>
+                                <entry>
+<para>File with screening data </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>conv_table</entry>
+                                <entry>
+<para>Conversion table for genes ids </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>out</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1a7c8be248081eccbc113ef8de480a629a">
+                <title>void add_experimnetal_scores_and_aggregated_pvalues_to_paths (String unique_over, String gw_file, String conv_table, String out)</title> <emphasis></emphasis>
+                
+<para>Add aggregated p-values from GW screen to file with paths and centrality scores</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>unique_over</entry>
+                                <entry>
+<para>File with paths </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>path_con</entry>
+                                <entry>
+<para>File with pathway connectivity </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>out</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1aaf364d81e876eb9d18d467fbe9932a9b">
+                <title>void add_degree_to_paths (String unique_over, String path_con, String out)</title> <emphasis></emphasis>
+                
+<para>Add information about degree to file with paths and centrality scores</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>unique_over</entry>
+                                <entry>
+<para>File with paths </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>path_con</entry>
+                                <entry>
+<para>File with pathway connectivity </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>out</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1a427c8ac4ddb5f2387078b1c6b4c24513">
+                <title>Map&lt;String, I1S1&gt; find_unique_paths_for_list_of_pathways_ppi (int max_length, int min_length, List&lt; String &gt; all_paths)</title> <emphasis></emphasis>
+                
+<para>Find all unique paths in a indirect subnetwork</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>max_length</entry>
+                                <entry>
+<para>Maximum length </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>min_length</entry>
+                                <entry>
+<para>Minimum length </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>all_paths</entry>
+                                <entry>
+<para>Pathways to create subnetwork </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1a530132ff0e79ff60b52481b67db4a65a">
+                <title>void filter_paths (String foundf, String outname, Network all, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl, int min_occ, String mask)</title> <emphasis></emphasis>
+                
+<para>Filter paths</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>foundf</entry>
+                                <entry>
+<para>File with paths </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outname</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hg</entry>
+                                <entry>
+<para>Hit genes </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>fpl</entry>
+                                <entry>
+<para>Final Players </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>min_occ</entry>
+                                <entry>
+<para>Minimum occurrence filter </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>mask</entry>
+                                <entry>
+<para>Mask to include only paths with miRNAs </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1abef96cc4b9600b2f23d59aa18dc41dcd">
+                <title>HashMap&lt;String, Float[]&gt; load_screening_data (String p_file, String n_file)</title> <emphasis></emphasis>
+                
+<para>Load experimental data</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>p_file</entry>
+                                <entry>
+<para>Experimental data </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>n_file</entry>
+                                <entry>
+<para>File for symbol conversion </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1a1973dd1adda91219b3c4efc16d4619af">
+                <title>HashMap&lt;String, List&lt;Float&gt; &gt; return_permutation_distribution (String p_file, String n_file, int number_of_permutations)</title> <emphasis></emphasis>
+                
+<para>Calculate empirical distribution for Fisher&apos;s statistic</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>p_file</entry>
+                                <entry>
+<para>Experimental data </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>n_file</entry>
+                                <entry>
+<para>File for symbol conversion </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>number_of_permutations</entry>
+                                <entry>
+<para>Number of permutations </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1a3878cc894b5e248af436381933e3a7c9">
+                <title>Map&lt;String, I1S1&gt; find_unique_paths_for_list_of_pathways (int max_length, int min_length, List&lt; String &gt; all_paths)</title> <emphasis></emphasis>
+                
+<para>Find all unique paths in a mixed direct/indirect subnetwork</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>max_length</entry>
+                                <entry>
+<para>Minimum length </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>min_length</entry>
+                                <entry>
+<para>Maximum length </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>all_paths</entry>
+                                <entry>
+<para>List of pathways to create subnetwork </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1a77f6658a7d18fc5866b81f8ef319c1f0">
+                <title>void compare_two_lists_of_nodes (String f1, String f2)</title> <emphasis></emphasis>
+                
+<para>Compare two lists of nodes</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>f1</entry>
+                                <entry>
+<para>File 1 </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>f2</entry>
+                                <entry>
+<para>File 2 </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1a727cf9c7bd4eeda2d7107b167833e6f2">
+                <title>String returnPathType (Network all, String s)</title> <emphasis></emphasis>
+                
+<para>Check type of the pathway</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>s</entry>
+                                <entry>
+<para>pathway </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1a78428eb2dfadac52d766e5f72eea8d76">
+                <title>static String return_symmetric_path (String part)</title> <emphasis></emphasis>
+                
+<para>Return symmetric pathway</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>part</entry>
+                                <entry>
+<para>Pathway </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1acbe1fe6cffac3626b41515113c831e26">
+                <title>Map&lt;String, I1S1&gt; return_unique_path (List&lt; String &gt; all_paths, Map&lt; String, I1S1 &gt; unique_parts, String part, int offset_in_path, String path_id)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1ac4e3b135023088050b55cf808ceea81f">
+                <title>Map&lt;String, I1S1&gt; return_unique_path_ppi (List&lt; String &gt; all_paths, Map&lt; String, I1S1 &gt; unique_parts, String part, int offset_in_path, String path_id)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1acc4de8c7d27628cc486c031535970a61">
+                <title>int get_occurance_type (List&lt; String &gt; all_paths, String part, int offset_in_path)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1a2795a138e35cbc3cfd458bce67bfbc91">
+                <title>String returnName (Network all, String interaction, Map&lt; String, String[]&gt; hugo_by_id, int i)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1aaeeba22a4a43fe31a5086f44fadbdfba">
+                <title>void find_overreprs (int max_length, int min_length, String inf, String outf)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1a18ec6f18e1bf9c4b6932302b1b69e7d1">
+                <title>void put_gene_symbols_for_paths (String inf, String outf, Network all, Map&lt; String, String[]&gt; hugo_by_id)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1a5e688df7c9363fa9d7a9ca6969378233">
+                <title>void find_paths_of_lenght1 (String inf, String outf)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1a8dacd8922ef637b489233b1a1fe8e471">
+                <title>void checkLinks (Map&lt; String, String[]&gt; paths, Map&lt; Integer, List&lt; Link &gt;&gt; links, String[] pth, String path_id, int offset, int length)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1a1b1ffa2b854619a7298b98c97118846c">
+                <title>void writeLinks (Map&lt; String, String[]&gt; paths, Map&lt; Integer, List&lt; Link &gt;&gt; links, String outf)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1ac68a3c46e3689e71dfd2a1066617eb21">
+                <title>void get_connectivity (String infile, String outfile, Network all)</title> <emphasis></emphasis>
+                
+            </section>
+</section>

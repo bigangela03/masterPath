@@ -1,0 +1,282 @@
+\section{Random\+Manager Class Reference}
+\label{classmaster_p_a_t_h_1_1_random_manager}\index{Random\+Manager@{Random\+Manager}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ permute\+\_\+phenotype\+\_\+label} (\textbf{ Network} all, \textbf{ Network\+Manager} nutils, \textbf{ Pathway\+Manager} putils, \textbf{ Centrality\+Manager} outils, \textbf{ D\+B\+Manager} dbutils, String folder, String prefix, int count, List$<$ String $>$ hit\+\_\+list, Map$<$ String, String[$\,$]$>$ hugo\+\_\+by\+\_\+id, String fplayers)  throws I\+O\+Exception 
+\item 
+void \textbf{ calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation} (\textbf{ Network} all, \textbf{ Network\+Manager} nutils, \textbf{ Pathway\+Manager} putils, \textbf{ Centrality\+Manager} outils, \textbf{ D\+B\+Manager} dbutils, String random\+\_\+paths\+\_\+file, String ovrreps\+\_\+paths\+\_\+file, String hitlists\+\_\+file, int hitlist\+\_\+length, int position\+\_\+of\+\_\+overreps\+\_\+count, Map$<$ String, String[$\,$]$>$ hugo\+\_\+by\+\_\+id)  throws I\+O\+Exception 
+\item 
+void \textbf{ calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation\+\_\+nodes} (\textbf{ Network} all, \textbf{ Network\+Manager} nutils, \textbf{ Pathway\+Manager} putils, \textbf{ Centrality\+Manager} outils, \textbf{ D\+B\+Manager} dbutils, String random\+\_\+paths\+\_\+file, String ovrreps\+\_\+paths\+\_\+file, String hitlists\+\_\+file, int hitlist\+\_\+length, Map$<$ String, String[$\,$]$>$ hugo\+\_\+by\+\_\+id)  throws I\+O\+Exception 
+\item 
+void \textbf{ calculate\+\_\+p\+\_\+values\+\_\+paths\+\_\+random\+\_\+networks} (\textbf{ Network} all, \textbf{ Network\+Manager} nutils, \textbf{ Pathway\+Manager} putils, \textbf{ Centrality\+Manager} outils, \textbf{ D\+B\+Manager} dbutils, String random\+\_\+paths\+\_\+file, String ovrreps\+\_\+paths\+\_\+file, String hitlists\+\_\+file, int hitlist\+\_\+length, int position\+\_\+of\+\_\+overreps\+\_\+count, Map$<$ String, String[$\,$]$>$ hugo\+\_\+by\+\_\+id)  throws I\+O\+Exception 
+\item 
+void \textbf{ calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation\+\_\+ppi} (\textbf{ Network} all, \textbf{ Network\+Manager} nutils, \textbf{ Pathway\+Manager} putils, \textbf{ Centrality\+Manager} outils, \textbf{ D\+B\+Manager} dbutils, String random\+\_\+paths\+\_\+file, String ovrreps\+\_\+paths\+\_\+file, String hitlists\+\_\+file, int hitlist\+\_\+length, int position\+\_\+of\+\_\+overreps\+\_\+count, Map$<$ String, String[$\,$]$>$ hugo\+\_\+by\+\_\+id)  throws I\+O\+Exception 
+\item 
+\textbf{ Network} \textbf{ create\+\_\+random\+\_\+network} (\textbf{ Network} all, \textbf{ Network\+Manager} nutils, \textbf{ Pathway\+Manager} putils, \textbf{ Centrality\+Manager} outils, \textbf{ D\+B\+Manager} dbutils)
+\item 
+void \textbf{ calculate\+\_\+p\+\_\+values\+\_\+nodes\+\_\+random\+\_\+networks} (\textbf{ Network} all, \textbf{ Network\+Manager} nutils, \textbf{ Pathway\+Manager} putils, \textbf{ Centrality\+Manager} outils, \textbf{ D\+B\+Manager} dbutils, String file\+\_\+name\+\_\+random, int count, String hubs\+\_\+file, String overreps\+\_\+file)  throws I\+O\+Exception 
+\item 
+void \textbf{ calculate\+\_\+p\+\_\+values\+\_\+nodes\+\_\+random\+\_\+networks\+\_\+ppi} (\textbf{ Network} all, \textbf{ Network\+Manager} nutils, \textbf{ Pathway\+Manager} putils, \textbf{ Centrality\+Manager} outils, \textbf{ D\+B\+Manager} dbutils, String file\+\_\+name\+\_\+random, int count, String hubs\+\_\+file, String overreps\+\_\+file)  throws I\+O\+Exception 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{Random\+Manager}{p.}{classmaster_p_a_t_h_1_1_random_manager} contains methods to calculate p-\/values
+
+\begin{DoxyAuthor}{Author}
+Natalia Rubanova 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classmaster_p_a_t_h_1_1_random_manager_ab7e56001e096384147ea3102671f577e}} 
+\index{master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}!calculate\+\_\+p\+\_\+values\+\_\+nodes\+\_\+random\+\_\+networks@{calculate\+\_\+p\+\_\+values\+\_\+nodes\+\_\+random\+\_\+networks}}
+\index{calculate\+\_\+p\+\_\+values\+\_\+nodes\+\_\+random\+\_\+networks@{calculate\+\_\+p\+\_\+values\+\_\+nodes\+\_\+random\+\_\+networks}!master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}}
+\subsubsection{calculate\+\_\+p\+\_\+values\+\_\+nodes\+\_\+random\+\_\+networks()}
+{\footnotesize\ttfamily void calculate\+\_\+p\+\_\+values\+\_\+nodes\+\_\+random\+\_\+networks (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{\textbf{ Network\+Manager}}]{nutils,  }\item[{\textbf{ Pathway\+Manager}}]{putils,  }\item[{\textbf{ Centrality\+Manager}}]{outils,  }\item[{\textbf{ D\+B\+Manager}}]{dbutils,  }\item[{String}]{file\+\_\+name\+\_\+random,  }\item[{int}]{count,  }\item[{String}]{hubs\+\_\+file,  }\item[{String}]{overreps\+\_\+file }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+Calculate p-\/values for nodes on random network
+
+
+\begin{DoxyParams}{Parameters}
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em nutils} & \doxyref{Network\+Manager}{p.}{classmaster_p_a_t_h_1_1_network_manager} object \\
+\hline
+{\em putils} & \doxyref{Pathway\+Manager}{p.}{classmaster_p_a_t_h_1_1_pathway_manager} object \\
+\hline
+{\em outils} & \doxyref{Centrality\+Manager}{p.}{classmaster_p_a_t_h_1_1_centrality_manager} object \\
+\hline
+{\em dbutils} & \doxyref{D\+B\+Manager}{p.}{classmaster_p_a_t_h_1_1_d_b_manager} object \\
+\hline
+{\em file\+\_\+name\+\_\+random} & Name for file to store information about pathways built on the random network \\
+\hline
+{\em count} & Number of shuffling steps \\
+\hline
+{\em hubs\+\_\+file} & File with nodes and centrality scores \\
+\hline
+{\em overreps\+\_\+file} & File with paths and centrality scores \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_random_manager_ae291d927b0521ac36a0b842966dc2cf9}} 
+\index{master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}!calculate\+\_\+p\+\_\+values\+\_\+nodes\+\_\+random\+\_\+networks\+\_\+ppi@{calculate\+\_\+p\+\_\+values\+\_\+nodes\+\_\+random\+\_\+networks\+\_\+ppi}}
+\index{calculate\+\_\+p\+\_\+values\+\_\+nodes\+\_\+random\+\_\+networks\+\_\+ppi@{calculate\+\_\+p\+\_\+values\+\_\+nodes\+\_\+random\+\_\+networks\+\_\+ppi}!master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}}
+\subsubsection{calculate\+\_\+p\+\_\+values\+\_\+nodes\+\_\+random\+\_\+networks\+\_\+ppi()}
+{\footnotesize\ttfamily void calculate\+\_\+p\+\_\+values\+\_\+nodes\+\_\+random\+\_\+networks\+\_\+ppi (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{\textbf{ Network\+Manager}}]{nutils,  }\item[{\textbf{ Pathway\+Manager}}]{putils,  }\item[{\textbf{ Centrality\+Manager}}]{outils,  }\item[{\textbf{ D\+B\+Manager}}]{dbutils,  }\item[{String}]{file\+\_\+name\+\_\+random,  }\item[{int}]{count,  }\item[{String}]{hubs\+\_\+file,  }\item[{String}]{overreps\+\_\+file }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+Calculate p-\/values on for nodes random ppi network
+
+
+\begin{DoxyParams}{Parameters}
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em nutils} & \doxyref{Network\+Manager}{p.}{classmaster_p_a_t_h_1_1_network_manager} object \\
+\hline
+{\em putils} & \doxyref{Pathway\+Manager}{p.}{classmaster_p_a_t_h_1_1_pathway_manager} object \\
+\hline
+{\em outils} & \doxyref{Centrality\+Manager}{p.}{classmaster_p_a_t_h_1_1_centrality_manager} object \\
+\hline
+{\em dbutils} & \doxyref{D\+B\+Manager}{p.}{classmaster_p_a_t_h_1_1_d_b_manager} object \\
+\hline
+{\em file\+\_\+name\+\_\+random} & File name to store information about pathways built on the random network \\
+\hline
+{\em count} & Number of shuffling steps \\
+\hline
+{\em hubs\+\_\+file} & File with nodes and centrality scores \\
+\hline
+{\em overreps\+\_\+file} & File with paths and centrality scores \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_random_manager_a6e0a9169abecc939516d28ffc2b04f3b}} 
+\index{master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}!calculate\+\_\+p\+\_\+values\+\_\+paths\+\_\+random\+\_\+networks@{calculate\+\_\+p\+\_\+values\+\_\+paths\+\_\+random\+\_\+networks}}
+\index{calculate\+\_\+p\+\_\+values\+\_\+paths\+\_\+random\+\_\+networks@{calculate\+\_\+p\+\_\+values\+\_\+paths\+\_\+random\+\_\+networks}!master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}}
+\subsubsection{calculate\+\_\+p\+\_\+values\+\_\+paths\+\_\+random\+\_\+networks()}
+{\footnotesize\ttfamily void calculate\+\_\+p\+\_\+values\+\_\+paths\+\_\+random\+\_\+networks (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{\textbf{ Network\+Manager}}]{nutils,  }\item[{\textbf{ Pathway\+Manager}}]{putils,  }\item[{\textbf{ Centrality\+Manager}}]{outils,  }\item[{\textbf{ D\+B\+Manager}}]{dbutils,  }\item[{String}]{random\+\_\+paths\+\_\+file,  }\item[{String}]{ovrreps\+\_\+paths\+\_\+file,  }\item[{String}]{hitlists\+\_\+file,  }\item[{int}]{hitlist\+\_\+length,  }\item[{int}]{position\+\_\+of\+\_\+overreps\+\_\+count,  }\item[{Map$<$ String, String[$\,$]$>$}]{hugo\+\_\+by\+\_\+id }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em all} & \\
+\hline
+{\em nutils} & \\
+\hline
+{\em putils} & \\
+\hline
+{\em outils} & \\
+\hline
+{\em dbutils} & \\
+\hline
+{\em random\+\_\+paths\+\_\+file} & \\
+\hline
+{\em ovrreps\+\_\+paths\+\_\+file} & \\
+\hline
+{\em hitlists\+\_\+file} & \\
+\hline
+{\em hitlist\+\_\+length} & \\
+\hline
+{\em position\+\_\+of\+\_\+overreps\+\_\+count} & \\
+\hline
+{\em hugo\+\_\+by\+\_\+id} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em I\+O\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\label{classmaster_p_a_t_h_1_1_random_manager_a2d5e939810579ee2f0eb7d1c9b6d4f9c}} 
+\index{master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}!calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation@{calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation}}
+\index{calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation@{calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation}!master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}}
+\subsubsection{calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation()}
+{\footnotesize\ttfamily void calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{\textbf{ Network\+Manager}}]{nutils,  }\item[{\textbf{ Pathway\+Manager}}]{putils,  }\item[{\textbf{ Centrality\+Manager}}]{outils,  }\item[{\textbf{ D\+B\+Manager}}]{dbutils,  }\item[{String}]{random\+\_\+paths\+\_\+file,  }\item[{String}]{ovrreps\+\_\+paths\+\_\+file,  }\item[{String}]{hitlists\+\_\+file,  }\item[{int}]{hitlist\+\_\+length,  }\item[{int}]{position\+\_\+of\+\_\+overreps\+\_\+count,  }\item[{Map$<$ String, String[$\,$]$>$}]{hugo\+\_\+by\+\_\+id }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+Calculate p-\/values for paths for shuffled phenotype label
+
+
+\begin{DoxyParams}{Parameters}
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em nutils} & \doxyref{Network\+Manager}{p.}{classmaster_p_a_t_h_1_1_network_manager} object \\
+\hline
+{\em putils} & \doxyref{Pathway\+Manager}{p.}{classmaster_p_a_t_h_1_1_pathway_manager} object \\
+\hline
+{\em outils} & \doxyref{Centrality\+Manager}{p.}{classmaster_p_a_t_h_1_1_centrality_manager} object \\
+\hline
+{\em dbutils} & \doxyref{D\+B\+Manager}{p.}{classmaster_p_a_t_h_1_1_d_b_manager} object \\
+\hline
+{\em random\+\_\+paths\+\_\+file} & File name for pathways from shuffled hit genes \\
+\hline
+{\em ovrreps\+\_\+paths\+\_\+file} & File with paths \\
+\hline
+{\em hitlists\+\_\+file} & File with hit genes \\
+\hline
+{\em hitlist\+\_\+length} & Length of hit list \\
+\hline
+{\em position\+\_\+of\+\_\+overreps\+\_\+count} & Position of the centrality count in the paths file \\
+\hline
+{\em hugo\+\_\+by\+\_\+id} & H\+G\+NC ids map \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_random_manager_a63e525be780848f5dde0a66274bd2301}} 
+\index{master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}!calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation\+\_\+nodes@{calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation\+\_\+nodes}}
+\index{calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation\+\_\+nodes@{calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation\+\_\+nodes}!master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}}
+\subsubsection{calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation\+\_\+nodes()}
+{\footnotesize\ttfamily void calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation\+\_\+nodes (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{\textbf{ Network\+Manager}}]{nutils,  }\item[{\textbf{ Pathway\+Manager}}]{putils,  }\item[{\textbf{ Centrality\+Manager}}]{outils,  }\item[{\textbf{ D\+B\+Manager}}]{dbutils,  }\item[{String}]{random\+\_\+paths\+\_\+file,  }\item[{String}]{ovrreps\+\_\+paths\+\_\+file,  }\item[{String}]{hitlists\+\_\+file,  }\item[{int}]{hitlist\+\_\+length,  }\item[{Map$<$ String, String[$\,$]$>$}]{hugo\+\_\+by\+\_\+id }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+Calculate p-\/values for nodes for shuffled phenotype label
+
+
+\begin{DoxyParams}{Parameters}
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em nutils} & \doxyref{Network\+Manager}{p.}{classmaster_p_a_t_h_1_1_network_manager} object \\
+\hline
+{\em putils} & \doxyref{Pathway\+Manager}{p.}{classmaster_p_a_t_h_1_1_pathway_manager} object \\
+\hline
+{\em outils} & \doxyref{Centrality\+Manager}{p.}{classmaster_p_a_t_h_1_1_centrality_manager} object \\
+\hline
+{\em dbutils} & \doxyref{D\+B\+Manager}{p.}{classmaster_p_a_t_h_1_1_d_b_manager} object \\
+\hline
+{\em random\+\_\+paths\+\_\+file} & File name for pathways from shuffled hit genes \\
+\hline
+{\em ovrreps\+\_\+paths\+\_\+file} & File with nodes \\
+\hline
+{\em hitlists\+\_\+file} & File with hit genes \\
+\hline
+{\em hitlist\+\_\+length} & Length of hit list \\
+\hline
+{\em hugo\+\_\+by\+\_\+id} & H\+G\+NC ids map \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_random_manager_aaa797296f4172edfeb16b3b8f6e515d2}} 
+\index{master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}!calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation\+\_\+ppi@{calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation\+\_\+ppi}}
+\index{calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation\+\_\+ppi@{calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation\+\_\+ppi}!master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}}
+\subsubsection{calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation\+\_\+ppi()}
+{\footnotesize\ttfamily void calculate\+\_\+p\+\_\+values\+\_\+phenotype\+\_\+label\+\_\+permutation\+\_\+ppi (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{\textbf{ Network\+Manager}}]{nutils,  }\item[{\textbf{ Pathway\+Manager}}]{putils,  }\item[{\textbf{ Centrality\+Manager}}]{outils,  }\item[{\textbf{ D\+B\+Manager}}]{dbutils,  }\item[{String}]{random\+\_\+paths\+\_\+file,  }\item[{String}]{ovrreps\+\_\+paths\+\_\+file,  }\item[{String}]{hitlists\+\_\+file,  }\item[{int}]{hitlist\+\_\+length,  }\item[{int}]{position\+\_\+of\+\_\+overreps\+\_\+count,  }\item[{Map$<$ String, String[$\,$]$>$}]{hugo\+\_\+by\+\_\+id }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+Calculate p-\/values for paths for shuffled phenotype label for ppi network
+
+
+\begin{DoxyParams}{Parameters}
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em nutils} & \doxyref{Network\+Manager}{p.}{classmaster_p_a_t_h_1_1_network_manager} object \\
+\hline
+{\em putils} & \doxyref{Pathway\+Manager}{p.}{classmaster_p_a_t_h_1_1_pathway_manager} object \\
+\hline
+{\em outils} & \doxyref{Centrality\+Manager}{p.}{classmaster_p_a_t_h_1_1_centrality_manager} object \\
+\hline
+{\em dbutils} & \doxyref{D\+B\+Manager}{p.}{classmaster_p_a_t_h_1_1_d_b_manager} object \\
+\hline
+{\em random\+\_\+paths\+\_\+file} & File name for pathways from shuffled hit genes \\
+\hline
+{\em ovrreps\+\_\+paths\+\_\+file} & File with paths \\
+\hline
+{\em hitlists\+\_\+file} & File with hit genes \\
+\hline
+{\em hitlist\+\_\+length} & Length of hit list \\
+\hline
+{\em position\+\_\+of\+\_\+overreps\+\_\+count} & Position of the centrality count in the paths file \\
+\hline
+{\em hugo\+\_\+by\+\_\+id} & H\+G\+NC ids map \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_random_manager_a8527889663c673a3c3a37f8a5acbbf68}} 
+\index{master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}!create\+\_\+random\+\_\+network@{create\+\_\+random\+\_\+network}}
+\index{create\+\_\+random\+\_\+network@{create\+\_\+random\+\_\+network}!master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}}
+\subsubsection{create\+\_\+random\+\_\+network()}
+{\footnotesize\ttfamily \textbf{ Network} create\+\_\+random\+\_\+network (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{\textbf{ Network\+Manager}}]{nutils,  }\item[{\textbf{ Pathway\+Manager}}]{putils,  }\item[{\textbf{ Centrality\+Manager}}]{outils,  }\item[{\textbf{ D\+B\+Manager}}]{dbutils }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Create random network with the same degree distribution
+
+
+\begin{DoxyParams}{Parameters}
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em nutils} & \doxyref{Network\+Manager}{p.}{classmaster_p_a_t_h_1_1_network_manager} object \\
+\hline
+{\em putils} & \doxyref{Pathway\+Manager}{p.}{classmaster_p_a_t_h_1_1_pathway_manager} object \\
+\hline
+{\em outils} & \doxyref{Centrality\+Manager}{p.}{classmaster_p_a_t_h_1_1_centrality_manager} object \\
+\hline
+{\em dbutils} & \doxyref{D\+B\+Manager}{p.}{classmaster_p_a_t_h_1_1_d_b_manager} object \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_random_manager_a01233bbbab32bcc8d32227181efb1526}} 
+\index{master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}!permute\+\_\+phenotype\+\_\+label@{permute\+\_\+phenotype\+\_\+label}}
+\index{permute\+\_\+phenotype\+\_\+label@{permute\+\_\+phenotype\+\_\+label}!master\+P\+A\+T\+H\+::\+Random\+Manager@{master\+P\+A\+T\+H\+::\+Random\+Manager}}
+\subsubsection{permute\+\_\+phenotype\+\_\+label()}
+{\footnotesize\ttfamily void permute\+\_\+phenotype\+\_\+label (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{\textbf{ Network\+Manager}}]{nutils,  }\item[{\textbf{ Pathway\+Manager}}]{putils,  }\item[{\textbf{ Centrality\+Manager}}]{outils,  }\item[{\textbf{ D\+B\+Manager}}]{dbutils,  }\item[{String}]{folder,  }\item[{String}]{prefix,  }\item[{int}]{count,  }\item[{List$<$ String $>$}]{hit\+\_\+list,  }\item[{Map$<$ String, String[$\,$]$>$}]{hugo\+\_\+by\+\_\+id,  }\item[{String}]{fplayers }\end{DoxyParamCaption}) throws I\+O\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+Permute phenotype label
+
+
+\begin{DoxyParams}{Parameters}
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em nutils} & \doxyref{Network\+Manager}{p.}{classmaster_p_a_t_h_1_1_network_manager} object \\
+\hline
+{\em putils} & \doxyref{Pathway\+Manager}{p.}{classmaster_p_a_t_h_1_1_pathway_manager} object \\
+\hline
+{\em outils} & \doxyref{Centrality\+Manager}{p.}{classmaster_p_a_t_h_1_1_centrality_manager} object \\
+\hline
+{\em dbutils} & \doxyref{D\+B\+Manager}{p.}{classmaster_p_a_t_h_1_1_d_b_manager} object \\
+\hline
+{\em folder} & Folder to store information about pathways \\
+\hline
+{\em prefix} & Prefix for pathways ids \\
+\hline
+{\em count} & Number of shuffling steps \\
+\hline
+{\em hit\+\_\+list} & Hit List \\
+\hline
+{\em hugo\+\_\+by\+\_\+id} & H\+G\+NC ids map \\
+\hline
+{\em fplayers} & Final implementers \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/\+Dropbox/\+\_\+Работа/\+Programms/\+C\+O\+D\+E/master\+Path/src/master\+P\+A\+T\+H/Random\+Manager.\+java\end{DoxyCompactItemize}

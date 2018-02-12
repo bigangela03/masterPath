@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1_1_s3">
+<title>masterPATH::CentralityManager::S3 class Reference</title>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String s1</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String s2</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String s3</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1_1_s3_1af0779b64f9a4a74f1cc10644e14aab28">S3</link> (
+String s1, String s2, String s3)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1_1_s3_1ad146fa8579a5f8a876c4688cc5a68520">toString</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>boolean <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1_1_s3_1ace5581fdb5219a705ee2e1812c883023">equals</link> (
+Object s)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="classmaster_p_a_t_h_1_1_centrality_manager_1_1_s3_1a077e18fe97323c7194e2665ffc766399">hashCode</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1_1_s3_1af0779b64f9a4a74f1cc10644e14aab28">
+                <title>S3 (String s1, String s2, String s3)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1_1_s3_1ad146fa8579a5f8a876c4688cc5a68520">
+                <title>String toString ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1_1_s3_1ace5581fdb5219a705ee2e1812c883023">
+                <title>boolean equals (Object s)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_centrality_manager_1_1_s3_1a077e18fe97323c7194e2665ffc766399">
+                <title>int hashCode ()</title> <emphasis></emphasis>
+                
+            </section>
+</section>

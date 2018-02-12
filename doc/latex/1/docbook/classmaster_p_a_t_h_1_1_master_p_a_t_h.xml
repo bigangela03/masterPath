@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_master_p_a_t_h">
+<title>masterPATH::MasterPATH class Reference</title>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="classmaster_p_a_t_h_1_1_master_p_a_t_h_1a8b260eecbaabcef8473fd87ada040682">main</link> (
+String [] args)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para>Main class</para>
+
+<para><formalpara><title>Author: </title>
+
+<para>Natalia Rubanova </para>
+</formalpara>
+</para>
+                <para>Definition at line 12 of file MasterPATH.java</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>MasterPATH.java</para></listitem></itemizedlist></para>
+        </simplesect>
+            <section xml:id="classmaster_p_a_t_h_1_1_master_p_a_t_h_1a8b260eecbaabcef8473fd87ada040682">
+                <title>static void main (String[] args)</title> <emphasis></emphasis>
+                
+<para>main method 
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>args</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+</section>

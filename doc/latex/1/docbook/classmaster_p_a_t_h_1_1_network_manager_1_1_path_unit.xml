@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_network_manager_1_1_path_unit">
+<title>masterPATH::NetworkManager::PathUnit class Reference</title>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>List&lt; String &gt; path</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>List&lt; String &gt; seeds</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String current_seed</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String path_string</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classmaster_p_a_t_h_1_1_network_manager_1_1_path_unit_1a9e8d61ecda108530007e7c253ef28a8b">PathUnit</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classmaster_p_a_t_h_1_1_network_manager_1_1_path_unit_1a33adb3ce0f02a8662514308182de0de0">PathUnit</link> (
+List&lt; String &gt; path, List&lt; String &gt; seeds, String seed, String path_string)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String <link linkend="classmaster_p_a_t_h_1_1_network_manager_1_1_path_unit_1ad146fa8579a5f8a876c4688cc5a68520">toString</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_manager_1_1_path_unit_1a9e8d61ecda108530007e7c253ef28a8b">
+                <title>PathUnit ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_manager_1_1_path_unit_1a33adb3ce0f02a8662514308182de0de0">
+                <title>PathUnit (List&lt; String &gt; path, List&lt; String &gt; seeds, String seed, String path_string)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_manager_1_1_path_unit_1ad146fa8579a5f8a876c4688cc5a68520">
+                <title>String toString ()</title> <emphasis></emphasis>
+                
+            </section>
+</section>

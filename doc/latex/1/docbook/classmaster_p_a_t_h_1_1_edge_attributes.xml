@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_edge_attributes">
+<title>masterPATH::EdgeAttributes class Reference</title>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String beg</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String end</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String [] used_fp</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Integer overall_occ</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int [] detailed_occ</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classmaster_p_a_t_h_1_1_edge_attributes_1af9365d7c25f61add5b175ab9cdd91002">EdgeAttributes</link> (
+String [] used_fp, int [] detailed_occ, int overall_occ, String beg, String end)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_edge_attributes_1a47374fd94a0919867891f77604558c31">setAttributes</link> (
+String [] used_fp, int [] detailed_occ, int overall_occ)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_edge_attributes_1af9365d7c25f61add5b175ab9cdd91002">
+                <title>EdgeAttributes (String[] used_fp, int[] detailed_occ, int overall_occ, String beg, String end)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_edge_attributes_1a47374fd94a0919867891f77604558c31">
+                <title>void setAttributes (String[] used_fp, int[] detailed_occ, int overall_occ)</title> <emphasis></emphasis>
+                
+            </section>
+</section>

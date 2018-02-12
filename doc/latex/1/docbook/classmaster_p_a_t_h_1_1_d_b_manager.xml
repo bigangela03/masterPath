@@ -1,0 +1,353 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_d_b_manager">
+<title>masterPATH::DBManager class Reference</title>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Network hprd</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Network pc</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Network transpath</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Network kegg</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Network transmir</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Network mirtarbase</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Network tfacts</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Network hippie</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Network hippie_high</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Network hippie_medium_meq</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Network hippie_medium_m</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Network hippie_medium_m0</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Network hippie_all</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Network signor</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Network signalink</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, String[]&gt; hugo</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, String[]&gt; hugo_by_id</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, String &gt; tfacts_to_hugo</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, String[]&gt; hugo_entrez</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, String[]&gt; entrez_wo_hugo</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, String &gt; hprd_to_hugo</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, String &gt; transpath_to_hugo</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, String &gt; bioDBhprd_to_hugo</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>List&lt; String &gt; lostgenes</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classmaster_p_a_t_h_1_1_d_b_manager_1ac3e038a49c77656b8fb59ff18a6c5e39">DBManager</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_d_b_manager_1a449195f7522807dd967085a1a9772ceb">loadHUGO</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_d_b_manager_1af79eafbe712dc8b77acda16a2efcb5e2">loadHPRD</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_d_b_manager_1ac1dd32d1ea6279bb17e87f509c4f7b5d">loadHIPPIE</link> (
+boolean high)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_d_b_manager_1ab576d5b1758af0bc1d02ed67d89a970d">loadSignor</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_d_b_manager_1a485287276ec815346bcc9e11bde91741">loadSignalink</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_d_b_manager_1ae35b6a85231030fe69c5cdbcbb47956c">loadtFacts</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_d_b_manager_1ae09d5554faa27b970b5077981a98f68b">loadKEGG</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_d_b_manager_1ad28b404673f2f7d547967d194c9c8c00">loadTransmir</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_d_b_manager_1a5d95172bb26ad5509ca1e16fef9117bf">loadmirTarBase</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> class contains methods to load databases</para>
+
+<para><formalpara><title>Author: </title>
+
+<para>Natalia Rubanova </para>
+</formalpara>
+</para>
+                <para>Definition at line 17 of file DBManager.java</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>DBManager.java</para></listitem></itemizedlist></para>
+        </simplesect>
+            <section xml:id="classmaster_p_a_t_h_1_1_d_b_manager_1ac3e038a49c77656b8fb59ff18a6c5e39">
+                <title>DBManager ()</title> <emphasis></emphasis>
+                
+<para>Constructor </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_d_b_manager_1a449195f7522807dd967085a1a9772ceb">
+                <title>void loadHUGO ()</title> <emphasis></emphasis>
+                
+<para>Loads HGNC nomenclature </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_d_b_manager_1af79eafbe712dc8b77acda16a2efcb5e2">
+                <title>void loadHPRD ()</title> <emphasis></emphasis>
+                
+<para>Load HPRD database </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_d_b_manager_1ac1dd32d1ea6279bb17e87f509c4f7b5d">
+                <title>void loadHIPPIE (boolean high)</title> <emphasis></emphasis>
+                
+<para>Load HIPPIE database</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>high</entry>
+                                <entry>
+<para>load all or only high confidence interactions </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_d_b_manager_1ab576d5b1758af0bc1d02ed67d89a970d">
+                <title>void loadSignor ()</title> <emphasis></emphasis>
+                
+<para>Load Signor database </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_d_b_manager_1a485287276ec815346bcc9e11bde91741">
+                <title>void loadSignalink ()</title> <emphasis></emphasis>
+                
+<para>Load Signalink database </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_d_b_manager_1ae35b6a85231030fe69c5cdbcbb47956c">
+                <title>void loadtFacts ()</title> <emphasis></emphasis>
+                
+<para>Load tFacts database </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_d_b_manager_1ae09d5554faa27b970b5077981a98f68b">
+                <title>void loadKEGG ()</title> <emphasis></emphasis>
+                
+<para>Load KEGG database </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_d_b_manager_1ad28b404673f2f7d547967d194c9c8c00">
+                <title>void loadTransmir ()</title> <emphasis></emphasis>
+                
+<para>Load TransMir database </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_d_b_manager_1a5d95172bb26ad5509ca1e16fef9117bf">
+                <title>void loadmirTarBase ()</title> <emphasis></emphasis>
+                
+<para>Load mitTarBase database </para>
+
+            </section>
+</section>

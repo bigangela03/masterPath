@@ -1,0 +1,457 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_network_topology">
+<title>masterPATH::NetworkTopology class Reference</title>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_topology_1a24e7e1c7a8e7a6a80ecbdb26f7660cd0">get_and_calculate_for_random</link> (
+<link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, String musclef_com, String fp, String foundDF, String foundDF_mirnas)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_topology_1aceb043324aabdbaff4cf3abe63e2bf51">hubStatistics</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, String outfile, int len)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> <link linkend="classmaster_p_a_t_h_1_1_network_topology_1a0d637db2457e58c6d3a0d528858131bd">remove_genes</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_topology_1aa598301b8e39ab98404c6227304c3220">calculate_average_clustering_coefficient_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_topology_1ad45b64924bd1ebe3d0f605c5bee3d3d1">calculate_average_clustering_coefficient_direct</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_topology_1ae5cdfb4ecd4494745f623d2af1f587ed">calculate_number_of_connected_components_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_topology_1ac69ce6ac6ea0acd2689bd2049a05b9dd">calculate_number_of_connected_components_direct</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_topology_1a67f00fc5e563e8e5f6eaa9297e92901e">calculate_diameter_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_topology_1a80cfb9ee6f190f7aef32dd56d4399549">calculate_diameter_direct</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_topology_1ace285d6623e9137c0e70296252a104ee">get_degree_distribution_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, String outfile)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_topology_1af3f96f7bf38acb94bc6cc55fdd8194ee">get_degree_distribution_direct</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, String outfile)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_topology_1acd0157c8316b5fbde7bb2216faf0da12">get_subnetwork_statistics</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, String fname)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para><link linkend="classmaster_p_a_t_h_1_1_network_topology">NetworkTopology</link> class contains methods to calculate network&apos;s topological properties</para>
+
+<para><formalpara><title>Author: </title>
+
+<para>Natalia Rubanova </para>
+</formalpara>
+</para>
+                <para>Definition at line 21 of file NetworkTopology.java</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>NetworkTopology.java</para></listitem></itemizedlist></para>
+        </simplesect>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_topology_1a24e7e1c7a8e7a6a80ecbdb26f7660cd0">
+                <title>void get_and_calculate_for_random (PathwayManager putils, NetworkManager nutils, DBManager dbutils, Network all, String musclef_com, String fp, String foundDF, String foundDF_mirnas)</title> <emphasis></emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>musclef_com</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>fp</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>foundDF</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>foundDF_mirnas</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Exceptions                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>IOException</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_topology_1aceb043324aabdbaff4cf3abe63e2bf51">
+                <title>void hubStatistics (Network all, String outfile, int len)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_topology_1a0d637db2457e58c6d3a0d528858131bd">
+                <title>Network remove_genes (Network all)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_topology_1aa598301b8e39ab98404c6227304c3220">
+                <title>void calculate_average_clustering_coefficient_ppi (Network all)</title> <emphasis></emphasis>
+                
+<para>Calculate average clustering coefficient for PPI network 
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_topology_1ad45b64924bd1ebe3d0f605c5bee3d3d1">
+                <title>void calculate_average_clustering_coefficient_direct (Network all)</title> <emphasis></emphasis>
+                
+<para>Calculate average clustering coefficient for direct network 
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_topology_1ae5cdfb4ecd4494745f623d2af1f587ed">
+                <title>void calculate_number_of_connected_components_ppi (Network all)</title> <emphasis></emphasis>
+                
+<para>Calculate number of connected components PPI network 
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_topology_1ac69ce6ac6ea0acd2689bd2049a05b9dd">
+                <title>void calculate_number_of_connected_components_direct (Network all)</title> <emphasis></emphasis>
+                
+<para>Calculate number of connected components for direct network 
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_topology_1a67f00fc5e563e8e5f6eaa9297e92901e">
+                <title>void calculate_diameter_ppi (Network all)</title> <emphasis></emphasis>
+                
+<para>Calculate diameter 
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_topology_1a80cfb9ee6f190f7aef32dd56d4399549">
+                <title>void calculate_diameter_direct (Network all)</title> <emphasis></emphasis>
+                
+<para>Calculate diameter of a direct network 
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_topology_1ace285d6623e9137c0e70296252a104ee">
+                <title>void get_degree_distribution_ppi (Network all, String outfile)</title> <emphasis></emphasis>
+                
+<para>Build degree distribution for PPI network 
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outfile</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_topology_1af3f96f7bf38acb94bc6cc55fdd8194ee">
+                <title>void get_degree_distribution_direct (Network all, String outfile)</title> <emphasis></emphasis>
+                
+<para>Build degree distribution for direct network 
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outfile</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_topology_1acd0157c8316b5fbde7bb2216faf0da12">
+                <title>void get_subnetwork_statistics (Network all, String fname)</title> <emphasis></emphasis>
+                
+<para>Calculate subnetwork properties 
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>fname</entry>
+                                <entry>
+<para>File with pathways to create subnetwork </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+</section>

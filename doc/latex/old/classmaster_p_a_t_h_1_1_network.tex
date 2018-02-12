@@ -1,0 +1,102 @@
+\section{master\+P\+A\+T\+H.\+Network Class Reference}
+\label{classmaster_p_a_t_h_1_1_network}\index{master\+P\+A\+T\+H.\+Network@{master\+P\+A\+T\+H.\+Network}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Network} ()
+\item 
+void \textbf{ print\+\_\+interactions\+\_\+to\+\_\+file} (String file)  throws I\+O\+Exception 
+\item 
+void \textbf{ load\+Networkfromfile} (String nodef, String intf)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+void \textbf{ save\+Networktofile} (String nodef, String intf)  throws I\+O\+Exception 
+\item 
+void \textbf{ remove\+All} ()
+\item 
+void \textbf{ load\+Network2} (\textbf{ Network\+Manager} nutils, \textbf{ Pathway\+Manager} putils, \textbf{ Centrality\+Manager} outils, \textbf{ D\+B\+Manager} dbutils)  throws I\+O\+Exception 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} class describes an \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} object \begin{DoxyAuthor}{Author}
+Natalia Rubanova 
+\end{DoxyAuthor}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classmaster_p_a_t_h_1_1_network_a313f84a429f173de8f8506f380a5d1eb}} 
+\index{master\+P\+A\+T\+H\+::\+Network@{master\+P\+A\+T\+H\+::\+Network}!Network@{Network}}
+\index{Network@{Network}!master\+P\+A\+T\+H\+::\+Network@{master\+P\+A\+T\+H\+::\+Network}}
+\subsubsection{Network()}
+{\footnotesize\ttfamily master\+P\+A\+T\+H.\+Network.\+Network (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Constructor 
+
+\subsection{Member Function Documentation}
+\mbox{\label{classmaster_p_a_t_h_1_1_network_aaf838be477b6438e6fa25dabf39b687e}} 
+\index{master\+P\+A\+T\+H\+::\+Network@{master\+P\+A\+T\+H\+::\+Network}!load\+Network2@{load\+Network2}}
+\index{load\+Network2@{load\+Network2}!master\+P\+A\+T\+H\+::\+Network@{master\+P\+A\+T\+H\+::\+Network}}
+\subsubsection{load\+Network2()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Network.\+load\+Network2 (\begin{DoxyParamCaption}\item[{\textbf{ Network\+Manager}}]{nutils,  }\item[{\textbf{ Pathway\+Manager}}]{putils,  }\item[{\textbf{ Centrality\+Manager}}]{outils,  }\item[{\textbf{ D\+B\+Manager}}]{dbutils }\end{DoxyParamCaption}) throws I\+O\+Exception}
+
+Load network from databases
+
+
+\begin{DoxyParams}{Parameters}
+{\em nutils} & \doxyref{Network\+Manager}{p.}{classmaster_p_a_t_h_1_1_network_manager} object \\
+\hline
+{\em putils} & \doxyref{Pathway\+Manager}{p.}{classmaster_p_a_t_h_1_1_pathway_manager} object \\
+\hline
+{\em outils} & \doxyref{Centrality\+Manager}{p.}{classmaster_p_a_t_h_1_1_centrality_manager} object \\
+\hline
+{\em dbutils} & \doxyref{D\+B\+Manager}{p.}{classmaster_p_a_t_h_1_1_d_b_manager} object \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_network_ac2338d4acf683f624b37b1bfd786fe23}} 
+\index{master\+P\+A\+T\+H\+::\+Network@{master\+P\+A\+T\+H\+::\+Network}!load\+Networkfromfile@{load\+Networkfromfile}}
+\index{load\+Networkfromfile@{load\+Networkfromfile}!master\+P\+A\+T\+H\+::\+Network@{master\+P\+A\+T\+H\+::\+Network}}
+\subsubsection{load\+Networkfromfile()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Network.\+load\+Networkfromfile (\begin{DoxyParamCaption}\item[{String}]{nodef,  }\item[{String}]{intf }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Load network from two files $\ast$ 
+\begin{DoxyParams}{Parameters}
+{\em nodef} & file with information about nodes \\
+\hline
+{\em intf} & file with information about interactions \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_network_a58de6592a56a6d97127dff2299477d94}} 
+\index{master\+P\+A\+T\+H\+::\+Network@{master\+P\+A\+T\+H\+::\+Network}!print\+\_\+interactions\+\_\+to\+\_\+file@{print\+\_\+interactions\+\_\+to\+\_\+file}}
+\index{print\+\_\+interactions\+\_\+to\+\_\+file@{print\+\_\+interactions\+\_\+to\+\_\+file}!master\+P\+A\+T\+H\+::\+Network@{master\+P\+A\+T\+H\+::\+Network}}
+\subsubsection{print\+\_\+interactions\+\_\+to\+\_\+file()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Network.\+print\+\_\+interactions\+\_\+to\+\_\+file (\begin{DoxyParamCaption}\item[{String}]{file }\end{DoxyParamCaption}) throws I\+O\+Exception}
+
+Saves all interactions in the network to the output file 
+\begin{DoxyParams}{Parameters}
+{\em file} & output file \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_network_ae3af14a07513f1cd4016f69c0d7b9de1}} 
+\index{master\+P\+A\+T\+H\+::\+Network@{master\+P\+A\+T\+H\+::\+Network}!remove\+All@{remove\+All}}
+\index{remove\+All@{remove\+All}!master\+P\+A\+T\+H\+::\+Network@{master\+P\+A\+T\+H\+::\+Network}}
+\subsubsection{remove\+All()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Network.\+remove\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Remove all interactions and nodes from network \mbox{\label{classmaster_p_a_t_h_1_1_network_a7b9a0ec328a583dd86e228f302a7d695}} 
+\index{master\+P\+A\+T\+H\+::\+Network@{master\+P\+A\+T\+H\+::\+Network}!save\+Networktofile@{save\+Networktofile}}
+\index{save\+Networktofile@{save\+Networktofile}!master\+P\+A\+T\+H\+::\+Network@{master\+P\+A\+T\+H\+::\+Network}}
+\subsubsection{save\+Networktofile()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Network.\+save\+Networktofile (\begin{DoxyParamCaption}\item[{String}]{nodef,  }\item[{String}]{intf }\end{DoxyParamCaption}) throws I\+O\+Exception}
+
+Saves all interactions and nodes in the network to the two output files 
+\begin{DoxyParams}{Parameters}
+{\em nodef} & node file \\
+\hline
+{\em intf} & interaction file \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/\+Dropbox/\+\_\+Работа/\+Programms/\+C\+O\+D\+E/master\+Path/src/master\+P\+A\+T\+H/Network.\+java\end{DoxyCompactItemize}

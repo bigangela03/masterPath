@@ -1,0 +1,223 @@
+\section{master\+P\+A\+T\+H.\+Centrality\+Manager Class Reference}
+\label{classmaster_p_a_t_h_1_1_centrality_manager}\index{master\+P\+A\+T\+H.\+Centrality\+Manager@{master\+P\+A\+T\+H.\+Centrality\+Manager}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \textbf{ get\+\_\+centrality\+\_\+paths} (\textbf{ Network} all, String inf, String outf, int min\+\_\+length, int max\+\_\+length)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+Map$<$ String, I1\+S1 $>$ \textbf{ find\+\_\+unique\+\_\+paths\+\_\+for\+\_\+list\+\_\+of\+\_\+pathways} (int max\+\_\+length, int min\+\_\+length, List$<$ String $>$ all\+\_\+paths)  throws I\+O\+Exception 
+\item 
+void \textbf{ get\+\_\+centrality\+\_\+paths\+\_\+ppi} (\textbf{ Network} all, String inf, String outf, int min\+\_\+length, int max\+\_\+length)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+Map$<$ String, I1\+S1 $>$ \textbf{ find\+\_\+unique\+\_\+paths\+\_\+for\+\_\+list\+\_\+of\+\_\+pathways\+\_\+ppi} (int max\+\_\+length, int min\+\_\+length, List$<$ String $>$ all\+\_\+paths)  throws I\+O\+Exception 
+\item 
+void \textbf{ add\+\_\+names\+\_\+on\+\_\+paths} (String inf, String outf, \textbf{ Network} all, Map$<$ String, String[$\,$]$>$ hugo\+\_\+by\+\_\+id)  throws I\+O\+Exception 
+\item 
+void \textbf{ add\+\_\+connectivity\+\_\+on\+\_\+paths} (String unique\+\_\+over, String path\+\_\+con, String out)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+void \textbf{ filter\+\_\+paths} (String foundf, String outname, \textbf{ Network} all, Map$<$ String, String $>$ hg, Map$<$ String, String $>$ fpl, int min\+\_\+occ, String mask)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+String \textbf{ return\+Path\+Type} (\textbf{ Network} all, String s)
+\item 
+void \textbf{ get\+\_\+centrality\+\_\+nodes} (\textbf{ Network} all, Map$<$ String, String[$\,$]$>$ hugo\+\_\+by\+\_\+id, \textbf{ Network\+Manager} nutils, String f\+\_\+shortest\+\_\+pathways, String output\+\_\+file)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\item 
+void \textbf{ compare\+\_\+two\+\_\+lists\+\_\+of\+\_\+nodes} (String f1, String f2)  throws File\+Not\+Found\+Exception, I\+O\+Exception 
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static String \textbf{ return\+\_\+symmetric\+\_\+path} (String part)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\doxyref{Centrality\+Manager}{p.}{classmaster_p_a_t_h_1_1_centrality_manager} class contains methods to calculate centrality scores \begin{DoxyAuthor}{Author}
+Natalia Rubanova 
+\end{DoxyAuthor}
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classmaster_p_a_t_h_1_1_centrality_manager_ad5115c78d2075ad7b1f051138729d8dd}} 
+\index{master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}!add\+\_\+connectivity\+\_\+on\+\_\+paths@{add\+\_\+connectivity\+\_\+on\+\_\+paths}}
+\index{add\+\_\+connectivity\+\_\+on\+\_\+paths@{add\+\_\+connectivity\+\_\+on\+\_\+paths}!master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}}
+\subsubsection{add\+\_\+connectivity\+\_\+on\+\_\+paths()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Centrality\+Manager.\+add\+\_\+connectivity\+\_\+on\+\_\+paths (\begin{DoxyParamCaption}\item[{String}]{unique\+\_\+over,  }\item[{String}]{path\+\_\+con,  }\item[{String}]{out }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Add information about connectivity to file with paths and centrality scores 
+\begin{DoxyParams}{Parameters}
+{\em unique\+\_\+over} & File with paths \\
+\hline
+{\em path\+\_\+con} & File with pathway connectivity \\
+\hline
+{\em out} & Output file \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_centrality_manager_accde53671a49353c4287eb3624b25658}} 
+\index{master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}!add\+\_\+names\+\_\+on\+\_\+paths@{add\+\_\+names\+\_\+on\+\_\+paths}}
+\index{add\+\_\+names\+\_\+on\+\_\+paths@{add\+\_\+names\+\_\+on\+\_\+paths}!master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}}
+\subsubsection{add\+\_\+names\+\_\+on\+\_\+paths()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Centrality\+Manager.\+add\+\_\+names\+\_\+on\+\_\+paths (\begin{DoxyParamCaption}\item[{String}]{inf,  }\item[{String}]{outf,  }\item[{\textbf{ Network}}]{all,  }\item[{Map$<$ String, String[$\,$]$>$}]{hugo\+\_\+by\+\_\+id }\end{DoxyParamCaption}) throws I\+O\+Exception}
+
+Add approved gene symbols to file with paths and centrality scores 
+\begin{DoxyParams}{Parameters}
+{\em inf} & Input file with paths \\
+\hline
+{\em outf} & Output file \\
+\hline
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} all \\
+\hline
+{\em hugo\+\_\+by\+\_\+id} & Map of approved gene symbols and gene I\+Ds from \doxyref{D\+B\+Manager}{p.}{classmaster_p_a_t_h_1_1_d_b_manager} class \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_centrality_manager_aeb12b0859f7dc6a34941c4597823dc30}} 
+\index{master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}!compare\+\_\+two\+\_\+lists\+\_\+of\+\_\+nodes@{compare\+\_\+two\+\_\+lists\+\_\+of\+\_\+nodes}}
+\index{compare\+\_\+two\+\_\+lists\+\_\+of\+\_\+nodes@{compare\+\_\+two\+\_\+lists\+\_\+of\+\_\+nodes}!master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}}
+\subsubsection{compare\+\_\+two\+\_\+lists\+\_\+of\+\_\+nodes()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Centrality\+Manager.\+compare\+\_\+two\+\_\+lists\+\_\+of\+\_\+nodes (\begin{DoxyParamCaption}\item[{String}]{f1,  }\item[{String}]{f2 }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Compare two lists of nodes 
+\begin{DoxyParams}{Parameters}
+{\em f1} & File 1 \\
+\hline
+{\em f2} & File 2 \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_centrality_manager_aea966fadc8db2eccbc8bb31340b87882}} 
+\index{master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}!filter\+\_\+paths@{filter\+\_\+paths}}
+\index{filter\+\_\+paths@{filter\+\_\+paths}!master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}}
+\subsubsection{filter\+\_\+paths()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Centrality\+Manager.\+filter\+\_\+paths (\begin{DoxyParamCaption}\item[{String}]{foundf,  }\item[{String}]{outname,  }\item[{\textbf{ Network}}]{all,  }\item[{Map$<$ String, String $>$}]{hg,  }\item[{Map$<$ String, String $>$}]{fpl,  }\item[{int}]{min\+\_\+occ,  }\item[{String}]{mask }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Filter paths 
+\begin{DoxyParams}{Parameters}
+{\em foundf} & File with paths \\
+\hline
+{\em outname} & Output file \\
+\hline
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em hg} & Hit genes \\
+\hline
+{\em fpl} & Final Players \\
+\hline
+{\em min\+\_\+occ} & Minimum occurrence filter \\
+\hline
+{\em mask} & Mask to include only paths with mi\+R\+N\+As \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_centrality_manager_a88e03fc4389a8dca1b68ffb6548064c4}} 
+\index{master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}!find\+\_\+unique\+\_\+paths\+\_\+for\+\_\+list\+\_\+of\+\_\+pathways@{find\+\_\+unique\+\_\+paths\+\_\+for\+\_\+list\+\_\+of\+\_\+pathways}}
+\index{find\+\_\+unique\+\_\+paths\+\_\+for\+\_\+list\+\_\+of\+\_\+pathways@{find\+\_\+unique\+\_\+paths\+\_\+for\+\_\+list\+\_\+of\+\_\+pathways}!master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}}
+\subsubsection{find\+\_\+unique\+\_\+paths\+\_\+for\+\_\+list\+\_\+of\+\_\+pathways()}
+{\footnotesize\ttfamily Map$<$String, I1\+S1$>$ master\+P\+A\+T\+H.\+Centrality\+Manager.\+find\+\_\+unique\+\_\+paths\+\_\+for\+\_\+list\+\_\+of\+\_\+pathways (\begin{DoxyParamCaption}\item[{int}]{max\+\_\+length,  }\item[{int}]{min\+\_\+length,  }\item[{List$<$ String $>$}]{all\+\_\+paths }\end{DoxyParamCaption}) throws I\+O\+Exception}
+
+Find all unique paths in a mixed direct/indirect subnetwork 
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+length} & Minimum length \\
+\hline
+{\em min\+\_\+length} & Maximum length \\
+\hline
+{\em all\+\_\+paths} & List of pathways to create subnetwork \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_centrality_manager_a46ba94521857e78d890112c880d42809}} 
+\index{master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}!find\+\_\+unique\+\_\+paths\+\_\+for\+\_\+list\+\_\+of\+\_\+pathways\+\_\+ppi@{find\+\_\+unique\+\_\+paths\+\_\+for\+\_\+list\+\_\+of\+\_\+pathways\+\_\+ppi}}
+\index{find\+\_\+unique\+\_\+paths\+\_\+for\+\_\+list\+\_\+of\+\_\+pathways\+\_\+ppi@{find\+\_\+unique\+\_\+paths\+\_\+for\+\_\+list\+\_\+of\+\_\+pathways\+\_\+ppi}!master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}}
+\subsubsection{find\+\_\+unique\+\_\+paths\+\_\+for\+\_\+list\+\_\+of\+\_\+pathways\+\_\+ppi()}
+{\footnotesize\ttfamily Map$<$String, I1\+S1$>$ master\+P\+A\+T\+H.\+Centrality\+Manager.\+find\+\_\+unique\+\_\+paths\+\_\+for\+\_\+list\+\_\+of\+\_\+pathways\+\_\+ppi (\begin{DoxyParamCaption}\item[{int}]{max\+\_\+length,  }\item[{int}]{min\+\_\+length,  }\item[{List$<$ String $>$}]{all\+\_\+paths }\end{DoxyParamCaption}) throws I\+O\+Exception}
+
+Find all unique paths in a indirect subnetwork 
+\begin{DoxyParams}{Parameters}
+{\em max\+\_\+length} & Maximum length \\
+\hline
+{\em min\+\_\+length} & Minimum length \\
+\hline
+{\em all\+\_\+paths} & Pathways to create subnetwork \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_centrality_manager_afe056aa1632a8b96120ab5bcd2a32997}} 
+\index{master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}!get\+\_\+centrality\+\_\+nodes@{get\+\_\+centrality\+\_\+nodes}}
+\index{get\+\_\+centrality\+\_\+nodes@{get\+\_\+centrality\+\_\+nodes}!master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}}
+\subsubsection{get\+\_\+centrality\+\_\+nodes()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Centrality\+Manager.\+get\+\_\+centrality\+\_\+nodes (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{Map$<$ String, String[$\,$]$>$}]{hugo\+\_\+by\+\_\+id,  }\item[{\textbf{ Network\+Manager}}]{nutils,  }\item[{String}]{f\+\_\+shortest\+\_\+pathways,  }\item[{String}]{output\+\_\+file }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Find nodes for pathways and calculate centrality scores 
+\begin{DoxyParams}{Parameters}
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em hugo\+\_\+by\+\_\+id} & Map with H\+G\+NC ids \\
+\hline
+{\em nutils} & Link to \doxyref{Network\+Manager}{p.}{classmaster_p_a_t_h_1_1_network_manager} object \\
+\hline
+{\em f\+\_\+shortest\+\_\+pathways} & File with pathways \\
+\hline
+{\em output\+\_\+file} & Output file \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_centrality_manager_a3e49f95d1eecd3a6675d0429d0dd15c3}} 
+\index{master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}!get\+\_\+centrality\+\_\+paths@{get\+\_\+centrality\+\_\+paths}}
+\index{get\+\_\+centrality\+\_\+paths@{get\+\_\+centrality\+\_\+paths}!master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}}
+\subsubsection{get\+\_\+centrality\+\_\+paths()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Centrality\+Manager.\+get\+\_\+centrality\+\_\+paths (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{String}]{inf,  }\item[{String}]{outf,  }\item[{int}]{min\+\_\+length,  }\item[{int}]{max\+\_\+length }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Find short linear paths in a mixed direct/indirect subnetwork and calculate centrality scores 
+\begin{DoxyParams}{Parameters}
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em inf} & List of pathways to create subnetwork \\
+\hline
+{\em outf} & Output file \\
+\hline
+{\em min\+\_\+length} & minimum length of a path \\
+\hline
+{\em max\+\_\+length} & maximum length of a path \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_centrality_manager_a6936f2420118593c8eec5337c1fc5091}} 
+\index{master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}!get\+\_\+centrality\+\_\+paths\+\_\+ppi@{get\+\_\+centrality\+\_\+paths\+\_\+ppi}}
+\index{get\+\_\+centrality\+\_\+paths\+\_\+ppi@{get\+\_\+centrality\+\_\+paths\+\_\+ppi}!master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}}
+\subsubsection{get\+\_\+centrality\+\_\+paths\+\_\+ppi()}
+{\footnotesize\ttfamily void master\+P\+A\+T\+H.\+Centrality\+Manager.\+get\+\_\+centrality\+\_\+paths\+\_\+ppi (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{String}]{inf,  }\item[{String}]{outf,  }\item[{int}]{min\+\_\+length,  }\item[{int}]{max\+\_\+length }\end{DoxyParamCaption}) throws File\+Not\+Found\+Exception, I\+O\+Exception}
+
+Find short linear paths in a indirect subnetwork and calculate centrality scores 
+\begin{DoxyParams}{Parameters}
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em inf} & List of pathways to create subnetwork \\
+\hline
+{\em outf} & Output file \\
+\hline
+{\em min\+\_\+length} & Minimum path length \\
+\hline
+{\em max\+\_\+length} & Maximum path length \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_centrality_manager_a5bde0dc352e1903f8a83acfcd92371c4}} 
+\index{master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}!return\+\_\+symmetric\+\_\+path@{return\+\_\+symmetric\+\_\+path}}
+\index{return\+\_\+symmetric\+\_\+path@{return\+\_\+symmetric\+\_\+path}!master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}}
+\subsubsection{return\+\_\+symmetric\+\_\+path()}
+{\footnotesize\ttfamily static String master\+P\+A\+T\+H.\+Centrality\+Manager.\+return\+\_\+symmetric\+\_\+path (\begin{DoxyParamCaption}\item[{String}]{part }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Return symmetric pathway 
+\begin{DoxyParams}{Parameters}
+{\em part} & Pathway \\
+\hline
+\end{DoxyParams}
+\mbox{\label{classmaster_p_a_t_h_1_1_centrality_manager_a99d6f3c5b111eb1baa296fc6c99c3696}} 
+\index{master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}!return\+Path\+Type@{return\+Path\+Type}}
+\index{return\+Path\+Type@{return\+Path\+Type}!master\+P\+A\+T\+H\+::\+Centrality\+Manager@{master\+P\+A\+T\+H\+::\+Centrality\+Manager}}
+\subsubsection{return\+Path\+Type()}
+{\footnotesize\ttfamily String master\+P\+A\+T\+H.\+Centrality\+Manager.\+return\+Path\+Type (\begin{DoxyParamCaption}\item[{\textbf{ Network}}]{all,  }\item[{String}]{s }\end{DoxyParamCaption})}
+
+Check type of the pathway 
+\begin{DoxyParams}{Parameters}
+{\em all} & \doxyref{Network}{p.}{classmaster_p_a_t_h_1_1_network} \\
+\hline
+{\em s} & pathway \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+F\+:/\+Dropbox/\+\_\+Работа/\+Programms/\+C\+O\+D\+E/master\+Path/src/master\+P\+A\+T\+H/Centrality\+Manager.\+java\end{DoxyCompactItemize}

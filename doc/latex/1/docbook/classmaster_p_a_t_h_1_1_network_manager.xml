@@ -1,0 +1,489 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_network_manager">
+<title>masterPATH::NetworkManager class Reference</title>
+        <section>
+            <title> Data Structures </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_network_manager_1_1_depth___list__of___path_unit">masterPATH::NetworkManager::Depth_List_of_PathUnit</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_network_manager_1_1_path_unit">masterPATH::NetworkManager::PathUnit</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="classmaster_p_a_t_h_1_1_network_manager_1_1_path_unitw_f_p">masterPATH::NetworkManager::PathUnitwFP</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static Map&lt; String, String &gt; fpl</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static Map&lt; String, String &gt; hg</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> <link linkend="classmaster_p_a_t_h_1_1_network_manager_1af2a292872906e9e446211be4c7ddfde5">merge_list_of_networks</link> (
+List&lt; <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> &gt; n)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_manager_1ae001f802cbc071826a94d6554d265ee4">build_map_of_neighbors</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> nw)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_manager_1a988f06e1e2d08049c57c1f40f79237f8">load_hitlist_and_finalimpl</link> (
+String hgf, String fpf, Map&lt; String, String[]&gt; hugo)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>List&lt; PathUnit &gt; <link linkend="classmaster_p_a_t_h_1_1_network_manager_1a267de2684c52a84deb7e2389be3e66ce">find_pathway_BF_algorithm</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> network, List&lt; String &gt; n1, List&lt; String &gt; n2, int max, String prefix, FileWriter out)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>List&lt; PathUnit &gt; <link linkend="classmaster_p_a_t_h_1_1_network_manager_1a94e0775799a825363caa0acfee967496">find_pathway_BF_algorithm_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> network, List&lt; String &gt; n1, List&lt; String &gt; n2, int max, String prefix, BufferedWriter out)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_manager_1a73ce086aad29f93090f0bb10a0cc4a87">find_pathway_for_list_BF_algorithm</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> nw, Map&lt; String, String[]&gt; hugo, int max, String outf, String prefix)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_manager_1acc9ce5ae3e48738340fe5f5ba813e281">find_pathway_for_list_BF_algorithm_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> nw, Map&lt; String, String[]&gt; hugo, int max, String outf, String prefix)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_network_manager_1acdf88e4463853924bec444ab9eb9acaf">add_missing_genes_and_products</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> nw)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="classmaster_p_a_t_h_1_1_network_manager_1a2a250802d5a7b5e0aa5e5a4d73f7a46b">return_node_type</link> (
+String current_node)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String <link linkend="classmaster_p_a_t_h_1_1_network_manager_1a62840fc860ffccdb792c77e829d1471a">db_name_by_number</link> (
+int i)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> class contains methods to deal with networks</para>
+
+<para><formalpara><title>Author: </title>
+
+<para>Natalia Rubanova </para>
+</formalpara>
+</para>
+                <para>Definition at line 21 of file NetworkManager.java</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>NetworkManager.java</para></listitem></itemizedlist></para>
+        </simplesect>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_manager_1af2a292872906e9e446211be4c7ddfde5">
+                <title>Network merge_list_of_networks (List&lt; Network &gt; n)</title> <emphasis></emphasis>
+                
+<para>Merge list of networks</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>n</entry>
+                                <entry>
+<para>List of networks </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_manager_1ae001f802cbc071826a94d6554d265ee4">
+                <title>void build_map_of_neighbors (Network nw)</title> <emphasis></emphasis>
+                
+<para>Create links to all neighbors for every node in the network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>nw</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_manager_1a988f06e1e2d08049c57c1f40f79237f8">
+                <title>void load_hitlist_and_finalimpl (String hgf, String fpf, Map&lt; String, String[]&gt; hugo)</title> <emphasis></emphasis>
+                
+<para>Load hit genes and final implementers files</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>hgf</entry>
+                                <entry>
+<para>Hit genes file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>fpf</entry>
+                                <entry>
+<para>Final players file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hugo</entry>
+                                <entry>
+<para>Link to the HGNC nomenclature </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_manager_1a267de2684c52a84deb7e2389be3e66ce">
+                <title>List&lt;PathUnit&gt; find_pathway_BF_algorithm (Network network, List&lt; String &gt; n1, List&lt; String &gt; n2, int max, String prefix, FileWriter out)</title> <emphasis></emphasis>
+                
+<para>Find a pathway between two lists of nodes</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>network</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>n1</entry>
+                                <entry>
+<para>List of Hit genes nodes </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>n2</entry>
+                                <entry>
+<para>List of Final implementers nodes </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>max</entry>
+                                <entry>
+<para>Maximum length </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>prefix</entry>
+                                <entry>
+<para>Prefix for interaction id </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>out</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_manager_1a94e0775799a825363caa0acfee967496">
+                <title>List&lt;PathUnit&gt; find_pathway_BF_algorithm_ppi (Network network, List&lt; String &gt; n1, List&lt; String &gt; n2, int max, String prefix, BufferedWriter out)</title> <emphasis></emphasis>
+                
+<para>Find a pathway between two lists of nodes in a PPI network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>network</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>n1</entry>
+                                <entry>
+<para>List of Hit genes nodes </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>n2</entry>
+                                <entry>
+<para>List of Final implementers nodes </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>max</entry>
+                                <entry>
+<para>Maximum length </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>prefix</entry>
+                                <entry>
+<para>Prefix for interaction id </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>out</entry>
+                                <entry>
+<para>output file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_manager_1a73ce086aad29f93090f0bb10a0cc4a87">
+                <title>void find_pathway_for_list_BF_algorithm (Network nw, Map&lt; String, String[]&gt; hugo, int max, String outf, String prefix)</title> <emphasis></emphasis>
+                
+<para><link linkend="classmaster_p_a_t_h_1_1_wrapper">Wrapper</link> for finding pathways</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>nw</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hugo</entry>
+                                <entry>
+<para>Link to HGNC nomenclature </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>max</entry>
+                                <entry>
+<para>Maximum length </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outf</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>prefix</entry>
+                                <entry>
+<para>Prefix for interaction id </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_manager_1acc9ce5ae3e48738340fe5f5ba813e281">
+                <title>void find_pathway_for_list_BF_algorithm_ppi (Network nw, Map&lt; String, String[]&gt; hugo, int max, String outf, String prefix)</title> <emphasis></emphasis>
+                
+<para><link linkend="classmaster_p_a_t_h_1_1_wrapper">Wrapper</link> for finding pathways in a PPI network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>nw</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hugo</entry>
+                                <entry>
+<para>Link to HGNC nomenclature </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>max</entry>
+                                <entry>
+<para>Maximum length </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outf</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>prefix</entry>
+                                <entry>
+<para>Prefix for interaction id </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_manager_1acdf88e4463853924bec444ab9eb9acaf">
+                <title>void add_missing_genes_and_products (Network nw)</title> <emphasis></emphasis>
+                
+<para>Add transcription information</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>nw</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_manager_1a2a250802d5a7b5e0aa5e5a4d73f7a46b">
+                <title>int return_node_type (String current_node)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_network_manager_1a62840fc860ffccdb792c77e829d1471a">
+                <title>String db_name_by_number (int i)</title> <emphasis></emphasis>
+                
+            </section>
+</section>

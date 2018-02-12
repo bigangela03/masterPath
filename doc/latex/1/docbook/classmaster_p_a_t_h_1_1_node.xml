@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_node">
+<title>masterPATH::Node class Reference</title>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String id</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String type</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String id_type</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String db_flag</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, Interaction &gt; upnbrs</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, Interaction &gt; downnbrs</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>Map&lt; String, Interaction &gt; revnbrs</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>List&lt; String[]&gt; ids</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para> <link linkend="classmaster_p_a_t_h_1_1_node_1af6c08bbce3fc2b884f7de283857a4bd6">Node</link> (
+String id, String type, String id_type, String db_flag, List&lt; String[]&gt; ids)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>String <link linkend="classmaster_p_a_t_h_1_1_node_1ad146fa8579a5f8a876c4688cc5a68520">toString</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_node_1a388f572c62279f839ee138a9afbdeeb5">print</link> (
+)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para><link linkend="classmaster_p_a_t_h_1_1_node">Node</link> class describes a <link linkend="classmaster_p_a_t_h_1_1_node">Node</link> object</para>
+
+<para><formalpara><title>Author: </title>
+
+<para>Natalia Rubanova </para>
+</formalpara>
+</para>
+                <para>Definition at line 12 of file Node.java</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>Node.java</para></listitem></itemizedlist></para>
+        </simplesect>
+            <section xml:id="classmaster_p_a_t_h_1_1_node_1af6c08bbce3fc2b884f7de283857a4bd6">
+                <title>Node (String id, String type, String id_type, String db_flag, List&lt; String[]&gt; ids)</title> <emphasis></emphasis>
+                
+<para>Constructor 
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>id</entry>
+                                <entry>
+<para>id of the <link linkend="classmaster_p_a_t_h_1_1_node">Node</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>type</entry>
+                                <entry>
+<para>type of the <link linkend="classmaster_p_a_t_h_1_1_node">Node</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>id_type</entry>
+                                <entry>
+<para>type of the id(nomenclature) </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>db_flag</entry>
+                                <entry>
+<para>flag of the source database </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>ids</entry>
+                                <entry>
+<para>ids from other nomenclatures </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_node_1ad146fa8579a5f8a876c4688cc5a68520">
+                <title>String toString ()</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_node_1a388f572c62279f839ee138a9afbdeeb5">
+                <title>void print ()</title> <emphasis></emphasis>
+                
+<para>Print node information in one line </para>
+
+            </section>
+</section>

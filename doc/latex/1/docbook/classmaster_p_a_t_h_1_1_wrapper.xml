@@ -1,0 +1,2366 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_wrapper">
+<title>masterPATH::Wrapper class Reference</title>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a53e9a9f4f85f916c333b0865942b20d0">ogg1_add_connections</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, Map&lt; String, String[]&gt; hugo)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1aeac275ee99e5cab70db1fdaad8bb9ebf">ogg1_part1_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a4e52abb2509b33ca908f1bc2100ca995">ogg1_part2_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a31c7f58d0ae45ba21ae60c1247e8eac2">ogg1_random_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, <link linkend="classmaster_p_a_t_h_1_1_random_manager">RandomManager</link> rand)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a926be02003a554401161a413d5a6c961">ogg1_part4_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a45ddda2cd580ae4edf77820241f6413c">ogg1_random2_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, <link linkend="classmaster_p_a_t_h_1_1_random_manager">RandomManager</link> rand)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1afc70b88ec1fba63870a5fcff3608f5e0">ogg1_part1</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a04803c04ddba57356d2a9d439caa741d">ogg1_part2</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a98489af9c83265dcaa8fde3550d2f7b4">ogg1_part3</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1abcd9e94701e07aa14f1a9e99409ccf95">ogg1_part4</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a269d5d25d8e534b817679138efdba6a5">ogg1_random</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, <link linkend="classmaster_p_a_t_h_1_1_random_manager">RandomManager</link> rand)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a45508a1e8fe79dd9d59d1a5432b52aad">arp_part1_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a1be147a2d70877a905372ac696bb09b5">arp_part2_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a4c34146f0c68effa6cf40a1d015304fd">arp_random_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, <link linkend="classmaster_p_a_t_h_1_1_random_manager">RandomManager</link> rand)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> <link linkend="classmaster_p_a_t_h_1_1_wrapper_1ae1bb0472c95d87448a0625f2dbe9403d">arp_add_connections</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, Map&lt; String, String[]&gt; hugo, String hitlist)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a72051273e814a2a1f6062126afb0dd6f">arp_part1_LIMCH1</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a06714270cd975bdec818e6004d5c4398">arp_part1</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a740eecba855293b2e78302cf199e0d24">arp_part2</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1aa8c7b33f4b4edd3e092e91b3e01755ae">arp_random</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, <link linkend="classmaster_p_a_t_h_1_1_random_manager">RandomManager</link> rand)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1adb0689be9d49826359a7401cee4549ac">arp_part3</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1ae439bb5d8a1891f6b3f21d71ff8abac9">arp_filter</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a0ded55df75eb8aaaff88a14a5fea83cf">adenocarcinoma_part1</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1af36024dfcdc70c659736029058512fac">adenocarcinoma_part2</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a7db5a2fd33ddf8500b70d50a362d06c4">adenocarcinoma_random</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, <link linkend="classmaster_p_a_t_h_1_1_random_manager">RandomManager</link> rand)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a480551f9abf0e780c35317421abf7339">adenocarcinoma_part1_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a555771c7a3074a7e91146c74340df6a4">adenocarcinoma_part2_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a7fc40730b558ce19ade5f70576676bb2">adenocarcinoma_random_ppi</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, <link linkend="classmaster_p_a_t_h_1_1_random_manager">RandomManager</link> rand)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a743293a06ccca2976dd3f5217aabdd28">mirna63Sys_part1</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1ad5b714cefcafcc3074d61085942708b6">mirna63Sys_part2</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a6ab616b87c78839e0d162b10a013c295">mirna63Sys_random</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, <link linkend="classmaster_p_a_t_h_1_1_random_manager">RandomManager</link> rand)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a19aef3ca23da4bf78c64ee34dd4f4ac3">mirna63Sys_part3</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a5e87d7cbc3f829f6f7a266409e254351">case2_part1</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a068937d1c263887d24364ede95c8916e">case2_part2</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a860a1e180c5b3a0235c7268773896d87">case2_part3</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a66bbc50fbf7ba574d3e72556edb8a8ee">case2_part4</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a0bbb0ee1d53a4aa920372217bec72c20">case2_random</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, <link linkend="classmaster_p_a_t_h_1_1_random_manager">RandomManager</link> rand)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1adf4a2462a6c7ad3c1c21c334c0ec9cdc">case2_random2</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils, <link linkend="classmaster_p_a_t_h_1_1_random_manager">RandomManager</link> rand)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a750837b51c52712107bc86a95496018f">mirna63Sys_part3_3</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a6806a0dca431286694e0b18d176df14e">mirna63Sys_part4</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="classmaster_p_a_t_h_1_1_wrapper_1a3d070845700e8a3411774578f0c0f2b9">case2_part2_2</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, <link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> putils, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> outils, <link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> dbutils)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para><link linkend="classmaster_p_a_t_h_1_1_wrapper">Wrapper</link> class contains wrappers implementing the whole pipeline</para>
+
+<para><formalpara><title>Author: </title>
+
+<para>Natalia Rubanova </para>
+</formalpara>
+</para>
+                <para>Definition at line 16 of file Wrapper.java</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>Wrapper.java</para></listitem></itemizedlist></para>
+        </simplesect>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a53e9a9f4f85f916c333b0865942b20d0">
+                <title>Network ogg1_add_connections (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, Map&lt; String, String[]&gt; hugo)</title> <emphasis></emphasis>
+                
+<para>Add low confident connections for OGG1 protein</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hugo</entry>
+                                <entry>
+<para>HGNC ids map </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1aeac275ee99e5cab70db1fdaad8bb9ebf">
+                <title>void ogg1_part1_ppi (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 1 of pipeline for DNA repair screen in ppi network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a4e52abb2509b33ca908f1bc2100ca995">
+                <title>void ogg1_part2_ppi (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 2 of pipeline for DNA repair screen in ppi network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a31c7f58d0ae45ba21ae60c1247e8eac2">
+                <title>void ogg1_random_ppi (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, RandomManager rand)</title> <emphasis></emphasis>
+                
+<para>Part &apos;pvalues&apos; of pipeline for DNA repair screen in ppi network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a926be02003a554401161a413d5a6c961">
+                <title>void ogg1_part4_ppi (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 4 of pipeline for DNA repair screen in ppi network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a45ddda2cd580ae4edf77820241f6413c">
+                <title>void ogg1_random2_ppi (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, RandomManager rand)</title> <emphasis></emphasis>
+                
+<para>Part &apos;random network&apos; of pipeline for DNA repair screen in ppi network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1afc70b88ec1fba63870a5fcff3608f5e0">
+                <title>void ogg1_part1 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 1 of pipeline for DNA repair screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a04803c04ddba57356d2a9d439caa741d">
+                <title>void ogg1_part2 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 2 of pipeline for DNA repair screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a98489af9c83265dcaa8fde3550d2f7b4">
+                <title>void ogg1_part3 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 3 of pipeline for DNA repair screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1abcd9e94701e07aa14f1a9e99409ccf95">
+                <title>void ogg1_part4 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 4 of pipeline for DNA repair screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a269d5d25d8e534b817679138efdba6a5">
+                <title>void ogg1_random (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, RandomManager rand)</title> <emphasis></emphasis>
+                
+<para>Part &apos;p-values&apos; of pipeline for DNA repair screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a45508a1e8fe79dd9d59d1a5432b52aad">
+                <title>void arp_part1_ppi (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 1 of pipeline for arp2/3 screen in ppi network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a1be147a2d70877a905372ac696bb09b5">
+                <title>void arp_part2_ppi (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 2 of pipeline for arp2/3 screen in ppi network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a4c34146f0c68effa6cf40a1d015304fd">
+                <title>void arp_random_ppi (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, RandomManager rand)</title> <emphasis></emphasis>
+                
+<para>Part &apos;p-values&apos; of pipeline for arp2/3 screen in ppi network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1ae1bb0472c95d87448a0625f2dbe9403d">
+                <title>Network arp_add_connections (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, Map&lt; String, String[]&gt; hugo, String hitlist)</title> <emphasis></emphasis>
+                
+<para>Add low confident interactions for LIMCH1 protein</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a72051273e814a2a1f6062126afb0dd6f">
+                <title>void arp_part1_LIMCH1 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 1 of pipeline for arp2/3 screen in mixed network Hit list only LMCH1 gene</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a06714270cd975bdec818e6004d5c4398">
+                <title>void arp_part1 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 1 of pipeline for arp2/3 screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a740eecba855293b2e78302cf199e0d24">
+                <title>void arp_part2 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 2 of pipeline for arp2/3 screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1aa8c7b33f4b4edd3e092e91b3e01755ae">
+                <title>void arp_random (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, RandomManager rand)</title> <emphasis></emphasis>
+                
+<para>Part &apos;p-values&apos; of pipeline for arp2/3 screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1adb0689be9d49826359a7401cee4549ac">
+                <title>void arp_part3 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 3 of pipeline for arp2/3 screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1ae439bb5d8a1891f6b3f21d71ff8abac9">
+                <title>void arp_filter (Network all)</title> <emphasis></emphasis>
+                
+<para>Filter pathways for arp2/3 screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a0ded55df75eb8aaaff88a14a5fea83cf">
+                <title>void adenocarcinoma_part1 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 1 of pipeline for adenocarcinoma screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1af36024dfcdc70c659736029058512fac">
+                <title>void adenocarcinoma_part2 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 2 of pipeline for adenocarcinoma screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a7db5a2fd33ddf8500b70d50a362d06c4">
+                <title>void adenocarcinoma_random (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, RandomManager rand)</title> <emphasis></emphasis>
+                
+<para>Part &apos;p-values&apos; of pipeline for adenocarcinoma screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a480551f9abf0e780c35317421abf7339">
+                <title>void adenocarcinoma_part1_ppi (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 1 of pipeline for adenocarcinoma screen in ppi network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a555771c7a3074a7e91146c74340df6a4">
+                <title>void adenocarcinoma_part2_ppi (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 2 of pipeline for adenocarcinoma screen in ppi network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a7fc40730b558ce19ade5f70576676bb2">
+                <title>void adenocarcinoma_random_ppi (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, RandomManager rand)</title> <emphasis></emphasis>
+                
+<para>Part &apos;p-values&apos; of pipeline for adenocarcinoma screen in ppi network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a743293a06ccca2976dd3f5217aabdd28">
+                <title>void mirna63Sys_part1 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 1 of pipeline for miRNA muscle differentiation screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1ad5b714cefcafcc3074d61085942708b6">
+                <title>void mirna63Sys_part2 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 2 of pipeline for miRNA muscle differentiation screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a6ab616b87c78839e0d162b10a013c295">
+                <title>void mirna63Sys_random (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, RandomManager rand)</title> <emphasis></emphasis>
+                
+<para>Part &apos;p-values&apos; of pipeline for miRNA muscle differentiation screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a19aef3ca23da4bf78c64ee34dd4f4ac3">
+                <title>void mirna63Sys_part3 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 3 of pipeline for miRNA muscle differentiation screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a5e87d7cbc3f829f6f7a266409e254351">
+                <title>void case2_part1 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 1 of pipeline for transcriptome profiling muscle differentiation screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a068937d1c263887d24364ede95c8916e">
+                <title>void case2_part2 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 2 of pipeline for transcriptome profiling muscle differentiation screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a860a1e180c5b3a0235c7268773896d87">
+                <title>void case2_part3 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 3 of pipeline for transcriptome profiling muscle differentiation screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a66bbc50fbf7ba574d3e72556edb8a8ee">
+                <title>void case2_part4 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 4 of pipeline for transcriptome profiling muscle differentiation screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a0bbb0ee1d53a4aa920372217bec72c20">
+                <title>void case2_random (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, RandomManager rand)</title> <emphasis></emphasis>
+                
+<para>Part &apos;p-values&apos; of pipeline for transcriptome profiling muscle differentiation screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1adf4a2462a6c7ad3c1c21c334c0ec9cdc">
+                <title>void case2_random2 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, RandomManager rand)</title> <emphasis></emphasis>
+                
+<para>Part &apos;p-values on random networks&apos; of pipeline for transcriptome profiling muscle differentiation screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a750837b51c52712107bc86a95496018f">
+                <title>static void mirna63Sys_part3_3 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 3 + filter of pipeline for miRNA muscle differentiation screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a6806a0dca431286694e0b18d176df14e">
+                <title>static void mirna63Sys_part4 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 4 of pipeline for miRNA muscle differentiation screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_wrapper_1a3d070845700e8a3411774578f0c0f2b9">
+                <title>static void case2_part2_2 (Network all, NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils)</title> <emphasis></emphasis>
+                
+<para>Part 2 + filter of pipeline for transcriptome profiling muscle differentiation screen in mixed network</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>putils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>dbutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_d_b_manager">DBManager</link> object </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+</section>

@@ -1,0 +1,1155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="classmaster_p_a_t_h_1_1_pathway_manager">
+<title>masterPATH::PathwayManager class Reference</title>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1a85c4fa78d4d52365a401f611ddcbf285">find_the_shortest_paths</link> (
+String foundf, String outname, <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl, int d_ppi, int d_tf, int d_mirna, int d_kegg)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1a22c9982a07c53f79960e6c60c19a46a7">find_the_strongest_pathways</link> (
+String foundf, String outfile)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1a2edad4651e0e9d07284db53adcbf3ce9">find_miRNAs_on_pathways</link> (
+String foundf, String resf, <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> mirtarbase, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl, int length, int min, String mask)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1a89d4d655307ddcdb718982407df2e7fb">find_miRNAs_on_paths</link> (
+String foundf, String resf, <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> mirtarbase, <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> transmir, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl, int length, int min_occ, String mask)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1ab7e0a9702649cc7304842f2cf041cdc5">create_cyto_for_paths</link> (
+String foundf, <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1adb03f8c857bf872e030d7f5cc73bf982">create_cyto_for_pathways</link> (
+String path_file, String filename, String out_dir, <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1a21d15807d8e5a7c1bba3d259097bf6c8">filterPathways_by_length</link> (
+String inf, String outf, int min, int max)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1a6e54b05baa34ad61011f6d419e4c71bc">filterPathways_by_centrality_score</link> (
+String inf, String outf, int min, int max)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1a00db9f1b0cac1be6fe13800aed9d11aa">filterPathways</link> (
+String foundf, String outname, <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl, String mask, String gene, String type)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1a6f96a87c8b44f29c41c983baba091667">filterPathways_2</link> (
+String foundf, String outname, <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl, String gene, int l1, int l2, int l3, int l4)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1ac4d2f6cf6d8804c98b6a6740c729946f">add_connectivity_to_pathways</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, String infile, String outfile)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1a1051396c3c2a42fbfa19ca8bf40390a9">filter_pathways_by_connectivity</link> (
+String in, String out, String out_for_overrreps, int in_min, int in_max, int out_min, int out_max)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1a871f49760d6e4acfac791d5a6c2e7973">compare_two_paths_files</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, Map&lt; String, String[]&gt; hugo_by_id, String f1, String f2, String out)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1a9a99c43f290d90ec38f21400cb9c1a68">compare_two_nodes_files</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, Map&lt; String, String[]&gt; hugo_by_id, String f1, String f2, String out)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1afb6ce9b30a18cc4225ed2779a09c0b27">find_hitgenes_on_paths</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, <link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> nutils, Map&lt; String, String[]&gt; hugo_by_id, String f1, String out)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1a8deee1050f7652192142cc0c3613a3f7">add_aggregated_pvalues_to_pathways</link> (
+<link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all, String f_pathways, String gw_file, String conv_table, String out, Map&lt; String, String[]&gt; hugo_by_id, <link linkend="classmaster_p_a_t_h_1_1_centrality_manager">CentralityManager</link> centralityManager)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <section>
+            <title></title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1aa55d3359743ef0b567be44a069ebac3c">create_cyto_for_comparisson</link> (
+String com, String p1, String p1_single_max, String p2, String p2_single_max, String out, <link linkend="classmaster_p_a_t_h_1_1_network">Network</link> all)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="classmaster_p_a_t_h_1_1_pathway_manager_1a4a75997477b1e36f73d028337b5d28e0">get_expression</link> (
+String exp, String gene_list, String out)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
+        <simplesect>
+            <title>Detailed Description</title>
+
+<para><link linkend="classmaster_p_a_t_h_1_1_pathway_manager">PathwayManager</link> class contains methods to deal with pathways</para>
+
+<para><formalpara><title>Author: </title>
+
+<para>Natalia Rubanova </para>
+</formalpara>
+</para>
+                <para>Definition at line 24 of file PathwayManager.java</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>PathwayManager.java</para></listitem></itemizedlist></para>
+        </simplesect>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1a85c4fa78d4d52365a401f611ddcbf285">
+                <title>void find_the_shortest_paths (String foundf, String outname, Network all, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl, int d_ppi, int d_tf, int d_mirna, int d_kegg)</title> <emphasis></emphasis>
+                
+<para>Find the shortest pathways</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>foundf</entry>
+                                <entry>
+<para>Input file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outname</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hg</entry>
+                                <entry>
+<para>Hit genes list </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>fpl</entry>
+                                <entry>
+<para>Final players list </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>d_ppi</entry>
+                                <entry>
+<para>Length gap for protein-protein interactions </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>d_tf</entry>
+                                <entry>
+<para>Length gap for transcriptional interactions </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>d_mirna</entry>
+                                <entry>
+<para>Length gap for miRNA-mRNA interactions </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>d_kegg</entry>
+                                <entry>
+<para>Length gap for metabolic interactions </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1a22c9982a07c53f79960e6c60c19a46a7">
+                <title>void find_the_strongest_pathways (String foundf, String outfile)</title> <emphasis></emphasis>
+                
+<para>Find the strongest pathways</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>foundf</entry>
+                                <entry>
+<para>Input file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outname</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1a2edad4651e0e9d07284db53adcbf3ce9">
+                <title>void find_miRNAs_on_pathways (String foundf, String resf, Network mirtarbase, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl, int length, int min, String mask)</title> <emphasis></emphasis>
+                
+<para>Find and rank miRNAs inside pathways</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>foundf</entry>
+                                <entry>
+<para>File with common paths </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>resf</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>mirtarbase</entry>
+                                <entry>
+<para>Link to mirTarBase network </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hg</entry>
+                                <entry>
+<para>Hit genes list </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>fpl</entry>
+                                <entry>
+<para>Final implementer list </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>length</entry>
+                                <entry>
+<para>Maximum length </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>min</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>mask</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1a89d4d655307ddcdb718982407df2e7fb">
+                <title>void find_miRNAs_on_paths (String foundf, String resf, Network mirtarbase, Network transmir, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl, int length, int min_occ, String mask)</title> <emphasis></emphasis>
+                
+<para>Find and rank miRNAs inside paths</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>foundf</entry>
+                                <entry>
+<para>Common paths file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>resf</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>mirtarbase</entry>
+                                <entry>
+<para>Link to mirTarBAse network </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>transmir</entry>
+                                <entry>
+<para>Link to transMir network </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hg</entry>
+                                <entry>
+<para>Hit genes list </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>fpl</entry>
+                                <entry>
+<para>Final players List </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>length</entry>
+                                <entry>
+<para>Maximum length </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>min_occ</entry>
+                                <entry>
+<para>Minimum occurrence </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>mask</entry>
+                                <entry>
+<para>Mask </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1ab7e0a9702649cc7304842f2cf041cdc5">
+                <title>void create_cyto_for_paths (String foundf, Network all, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl)</title> <emphasis></emphasis>
+                
+<para>Create a file for Cytoscape software from the shortest paths</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>foundf</entry>
+                                <entry>
+<para>File with paths </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hg</entry>
+                                <entry>
+<para>Hit genes list </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>fpl</entry>
+                                <entry>
+<para>Final players list </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Exceptions                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>FileNotFoundException</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>IOException</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1adb03f8c857bf872e030d7f5cc73bf982">
+                <title>void create_cyto_for_pathways (String path_file, String filename, String out_dir, Network all, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl)</title> <emphasis></emphasis>
+                
+<para>Creates a file for Cytoscape software for a list of pathways by pathways ids</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>path_file</entry>
+                                <entry>
+<para>File with pathways </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>filename</entry>
+                                <entry>
+<para>File with list of pathways by id </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>out_dir</entry>
+                                <entry>
+<para>Output folder </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hg</entry>
+                                <entry>
+<para>Hit genes list </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>fpl</entry>
+                                <entry>
+<para>Final players list </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1a21d15807d8e5a7c1bba3d259097bf6c8">
+                <title>void filterPathways_by_length (String inf, String outf, int min, int max)</title> <emphasis></emphasis>
+                
+<para>Filter pathways by length</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>inf</entry>
+                                <entry>
+<para>Input file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outf</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>min</entry>
+                                <entry>
+<para>Minimum length </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>max</entry>
+                                <entry>
+<para>Maximum length </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1a6e54b05baa34ad61011f6d419e4c71bc">
+                <title>void filterPathways_by_centrality_score (String inf, String outf, int min, int max)</title> <emphasis></emphasis>
+                
+<para>Filter pathways by length</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>inf</entry>
+                                <entry>
+<para>Input file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outf</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>min</entry>
+                                <entry>
+<para>Minimum length </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>max</entry>
+                                <entry>
+<para>Maximum length </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1a00db9f1b0cac1be6fe13800aed9d11aa">
+                <title>void filterPathways (String foundf, String outname, Network all, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl, String mask, String gene, String type)</title> <emphasis></emphasis>
+                
+<para>Filter pathways by node names \ type</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>foundf</entry>
+                                <entry>
+<para>Input file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outname</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hg</entry>
+                                <entry>
+<para>Hit genes list </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>fpl</entry>
+                                <entry>
+<para>Final players list </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>mask</entry>
+                                <entry>
+<para>Mask </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>gene</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_node">Node</link> name </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>type</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_node">Node</link> type </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1a6f96a87c8b44f29c41c983baba091667">
+                <title>void filterPathways_2 (String foundf, String outname, Network all, Map&lt; String, String &gt; hg, Map&lt; String, String &gt; fpl, String gene, int l1, int l2, int l3, int l4)</title> <emphasis></emphasis>
+                
+<para>Filter paths on condition ppi [3,4] &amp; miRNA [6/5] or ppi [3,4] or miRNA [6/5]</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>foundf</entry>
+                                <entry>
+<para>File with pathways </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outname</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hg</entry>
+                                <entry>
+<para>Hit genes </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>fpl</entry>
+                                <entry>
+<para>Final implementers </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>gene</entry>
+                                <entry>
+<para>Gene name </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>l1</entry>
+                                <entry>
+<para>min length for ppi path </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>l2</entry>
+                                <entry>
+<para>max length for ppi path </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>l3</entry>
+                                <entry>
+<para>min length for miRNA path </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>l4</entry>
+                                <entry>
+<para>max length for miRNA path </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1ac4d2f6cf6d8804c98b6a6740c729946f">
+                <title>void add_connectivity_to_pathways (Network all, String infile, String outfile)</title> <emphasis></emphasis>
+                
+<para>Calculate pathways connectivity</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>infile</entry>
+                                <entry>
+<para>Input file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>outfile</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1a1051396c3c2a42fbfa19ca8bf40390a9">
+                <title>void filter_pathways_by_connectivity (String in, String out, String out_for_overrreps, int in_min, int in_max, int out_min, int out_max)</title> <emphasis></emphasis>
+                
+<para>Filter pathways by connectivity</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>in</entry>
+                                <entry>
+<para>Input file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>out</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>out_for_overrreps</entry>
+                                <entry>
+<para>Output file only for pathway without additional information </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>in_min</entry>
+                                <entry>
+<para>Minimum inward connectivity </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>in_max</entry>
+                                <entry>
+<para>Maximum inward connectivity </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>out_min</entry>
+                                <entry>
+<para>Minimum outward connectivity </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>out_max</entry>
+                                <entry>
+<para>Maximum outward connectivity </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Exceptions                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>FileNotFoundException</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>IOException</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1a871f49760d6e4acfac791d5a6c2e7973">
+                <title>void compare_two_paths_files (Network all, Map&lt; String, String[]&gt; hugo_by_id, String f1, String f2, String out)</title> <emphasis></emphasis>
+                
+<para>Compare two files with paths</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hugo_by_id</entry>
+                                <entry>
+<para>Map with HGNC ids </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>f1</entry>
+                                <entry>
+<para>File1 </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>f2</entry>
+                                <entry>
+<para>File 2 </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>out</entry>
+                                <entry>
+<para>OUtput file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1a9a99c43f290d90ec38f21400cb9c1a68">
+                <title>void compare_two_nodes_files (Network all, Map&lt; String, String[]&gt; hugo_by_id, String f1, String f2, String out)</title> <emphasis></emphasis>
+                
+<para>Compare two files with nodes</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hugo_by_id</entry>
+                                <entry>
+<para>HGNC ids map </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>f1</entry>
+                                <entry>
+<para>File 1 </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>f2</entry>
+                                <entry>
+<para>File 2 </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>out</entry>
+                                <entry>
+<para>Output file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1afb6ce9b30a18cc4225ed2779a09c0b27">
+                <title>void find_hitgenes_on_paths (Network all, NetworkManager nutils, Map&lt; String, String[]&gt; hugo_by_id, String f1, String out)</title> <emphasis></emphasis>
+                
+<para>Compare a file with paths with a hit list</para>
+
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network">Network</link> </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>nutils</entry>
+                                <entry>
+<para><link linkend="classmaster_p_a_t_h_1_1_network_manager">NetworkManager</link> object </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hugo_by_id</entry>
+                                <entry>
+<para>HGNC ids map </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>f1</entry>
+                                <entry>
+<para>File with paths </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>out</entry>
+                                <entry>
+<para>OUtput file </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1a8deee1050f7652192142cc0c3613a3f7">
+                <title>void add_aggregated_pvalues_to_pathways (Network all, String f_pathways, String gw_file, String conv_table, String out, Map&lt; String, String[]&gt; hugo_by_id, CentralityManager centralityManager)</title> <emphasis></emphasis>
+                
+<para>
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Parameters                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>all</entry>
+                                <entry>
+<para>the value of all </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>f_pathways</entry>
+                                <entry>
+<para>the value of f_pathways </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>gw_file</entry>
+                                <entry>
+<para>the value of gw_file </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>conv_table</entry>
+                                <entry>
+<para>the value of conv_table </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>out</entry>
+                                <entry>
+<para>the value of out </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>hugo_by_id</entry>
+                                <entry>
+<para>the value of hugo_by_id </para>
+</entry>
+                            </row>
+                            <row>
+                                <entry>centralityManager</entry>
+                                <entry>
+<para>the value of centralityManager </para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                
+                <formalpara>
+                    <title/>
+                    <table frame="all">
+                        <title>Exceptions                        </title>
+                        <tgroup cols="2" align="left" colsep="1" rowsep="1">
+                        <colspec colwidth="1*"/>
+                        <colspec colwidth="4*"/>
+                        <tbody>
+                            <row>
+                                <entry>IOException</entry>
+                                <entry>
+<para></para>
+</entry>
+                            </row>
+                        </tbody>
+                        </tgroup>
+                    </table>
+                </formalpara>
+                </para>
+
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1aa55d3359743ef0b567be44a069ebac3c">
+                <title>void create_cyto_for_comparisson (String com, String p1, String p1_single_max, String p2, String p2_single_max, String out, Network all)</title> <emphasis></emphasis>
+                
+            </section>
+            <section xml:id="classmaster_p_a_t_h_1_1_pathway_manager_1a4a75997477b1e36f73d028337b5d28e0">
+                <title>void get_expression (String exp, String gene_list, String out)</title> <emphasis></emphasis>
+                
+            </section>
+</section>

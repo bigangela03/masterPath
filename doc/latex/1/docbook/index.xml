@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info>
+    <title>masterPATH</title>
+    </info>
+    <chapter>
+        <title>Namespace Documentation</title>
+        <xi:include href="namespacemaster_p_a_t_h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+    <chapter>
+        <title>Data Structure Documentation</title>
+        <xi:include href="classmaster_p_a_t_h_1_1_aux_cyto_class.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_centrality_manager.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_d_b_manager.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_network_manager_1_1_depth___list__of___path_unit.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_edge_attributes.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_folders_paths.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_centrality_manager_1_1_i1_s1.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_centrality_manager_1_1_i2_s2.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_interaction.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_link.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_list_comparator.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_master_p_a_t_h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_max_occ_comparator.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_network.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_network_manager.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_network_topology.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_node.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_path__strength.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_network_manager_1_1_path_unit.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_network_manager_1_1_path_unitw_f_p.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_pathway_manager.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_random_manager.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_centrality_manager_1_1_s3.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_strength.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_string___int.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="classmaster_p_a_t_h_1_1_wrapper.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+    <chapter>
+        <title>File Documentation</title>
+        <xi:include href="_centrality_manager_8java.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_d_b_manager_8java.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_folders_paths_8java.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_interaction_8java.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_master_p_a_t_h_8java.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_network_8java.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_network_manager_8java.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_network_topology_8java.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_node_8java.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_pathway_manager_8java.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_random_manager_8java.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_wrapper_8java.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+</book>
