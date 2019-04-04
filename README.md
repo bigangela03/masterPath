@@ -33,7 +33,7 @@ miRTarBase database
 http://mirtarbase.mbc.nctu.edu.tw/php/download.php
 
 
-## Instalation
+## Installation
 
 The easiest way to use masterPATH is to download masterPATH.jar from JAR/ folder.
 
