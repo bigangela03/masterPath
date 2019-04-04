@@ -146,34 +146,71 @@ public class Network {
      * @param outils CentralityManager object
      * @param dbutils DBManager object
      */
-    public void loadNetwork2(NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils) throws IOException {
+    public void integrateNetworks(NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, int [] db) throws IOException {
         Network all=new Network();
-        dbutils.loadHPRD();
-        //dbutils.loadTRANSPATH();
-        dbutils.loadHIPPIE(false);
-        dbutils.loadSignor();
-        dbutils.loadSignalink();
-
-        dbutils.loadKEGG();
-         dbutils.loadTransmir();
-        dbutils.loadmirTarBase();
-        dbutils.loadtFacts();
         List<Network> networks = new ArrayList();
         
-        networks.add(dbutils.hprd_invivo);
-        // networks.add(dbutils.hippie_high);
+        if (db[0] == 1){
+            dbutils.loadHPRD();
+            networks.add(dbutils.hprd);
+        }
+        
+        
+        if (db[1] == 1) {
+            dbutils.loadHIPPIE(false);
+            networks.add(dbutils.hippie_high);
+        }
+        
+        
+        if (db[2] == 1) {
+            dbutils.loadSignor();
+            networks.add(dbutils.signor);
+        }
+        
+        if (db[3] == 1) {
+            dbutils.loadSignalink();
+            networks.add(dbutils.signalink);
+        }
+        
+        if (db[4] == 1) {
+            dbutils.loadKEGG();
+            networks.add(dbutils.kegg);
+        }
+        
+        if(db[5] == 1){
+            dbutils.loadTransmir();
+            networks.add(dbutils.transmir);
+        }
+        
+        if(db[6] == 1){
+            dbutils.loadmirTarBase();
+            networks.add(dbutils.mirtarbase);
+        }
+        
+        if(db[7] == 1){
+            dbutils.loadtFacts();
+            networks.add(dbutils.tfacts);
+        }
+         
+        
+        
+        
+        
+        //
+        
+         
        // networks.add(dbutils.hippie_medium_meq);
         // networks.add(dbutils.hippie_medium_m);
         //networks.add(dbutils.hippie_medium_m0);
-        networks.add(dbutils.hippie_invivo);
+       // networks.add(dbutils.hippie_invivo);
         
         
-        //networks.add(dbutils.signor);
-        //networks.add(dbutils.signalink);
-        //networks.add(dbutils.kegg);
-        //networks.add(dbutils.transmir);
-        //networks.add(dbutils.mirtarbase);
-        //networks.add(dbutils.tfacts);
+        //
+        //
+        //
+        //
+        //
+        //
         
         all = nutils.merge_list_of_networks(networks);
         nutils.build_map_of_neighbors(all);
