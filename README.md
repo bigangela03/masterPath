@@ -57,7 +57,7 @@ Next, create a Wrapper and a Network objects :
     
 Next, load network :
 
-     nw = wr.load_network(String file_nodes, file_interaction);
+     nw = wr.load_network(String file_nodes, file_interactions);
      
 where 
 _String file_nodes_ is a full path to a file with network nodes,  
@@ -118,3 +118,12 @@ _String folder_for_random_paths_ is a full path to folder where files for permut
 _String prefix_for_random_paths_ is a prefix for the shortest paths ids for permuted hit lists,
 
 _int number_of_permutations_ is number of permutations.
+
+## Output files
+
+Output files from the method are :
+
+__file_output + _paths_centrality__ file with paths information is a tab separated text file. File format : _path id_, _path as a list of iteraction ids (each interaction is separated by a tab)_, _reserved field_, _centrality_, _hit gene-final implementer pairs that yeild this path as a list of HGNC ids separated by semicolon_, _list of the shortest paths ids that yeild this path separated by semicolon_, _reserved field_,  _reserved field_, _HGNC id of the node in the path with maximum centrality_, _Official symbol of the node in the path with maximum centrality_, _hit gene-final implementer pairs that yeild this path as a list of official symbols separated by semicolon_, _path as a list of intercator1-interactor2 pairs  (each interaction is separated by a tab)_, _centrality_.
+
+
+__file_output + _nodes_centrality__ file with nodes information is a tab separated text file. File format : _node id_, _node ofiicial symbol_, _centrality_.
