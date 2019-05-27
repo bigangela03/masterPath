@@ -61,7 +61,8 @@ Next, load network :
      
 where 
 _String file_nodes_ is a full path to a file with network nodes,  
-_String file_interactions_ is a full path to a file with network interactions 
+_String file_interactions_ is a full path to a file with network interactions.
+The prebuilt network files are available in the Networks/ folder.
 
 
 Finally, perform the computaion for mixed directed and undirected network:
