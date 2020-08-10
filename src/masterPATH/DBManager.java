@@ -1,10 +1,11 @@
-package masterPATH;
+package masterpath.masterpath;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,25 +51,27 @@ public class DBManager {
      *
      * Constructor
      */
-    public DBManager() throws IOException {
-        loadHUGO();
+    public DBManager(String hugo_path, String hugo_entrez_path, String entrz_wo_hugo, String hprd_bioDB, String tfacts_crosstable) throws IOException {
+        loadHUGO(hugo_path, hugo_entrez_path, entrz_wo_hugo, hprd_bioDB, tfacts_crosstable);
     }
 
     /**
      * Loads HGNC nomenclature
      */
-    public void loadHUGO() throws FileNotFoundException, IOException {
+    public void loadHUGO(String hugo_path, String hugo_entrez_path, String entrz_wo_hugo, String hprd_bioDB, String tfacts_crosstable) throws FileNotFoundException, IOException {
         String s;
         String[] ss;
         BufferedReader rd;
         int i;
-        for (i = 0; i < FoldersPaths.hugo_path.length; i++) {
-            rd = new BufferedReader(new FileReader(FoldersPaths.hugo_path[i]));
+        //for (i = 0; i < FoldersPaths.hugo_path.length; i++) {
+        for (i = 0; i < 1; i++) {
+            rd = new BufferedReader(new FileReader(hugo_path));
 
             s = rd.readLine();
             while ((s = rd.readLine()) != null) {
                 if (!s.toLowerCase().contains("entry withdrawn")) {
                     ss = s.split("\t");
+                    //System.out.println(Arrays.toString(ss));
                     hugo.put(ss[1], ss);
                     hugo_by_id.put(ss[0], ss);
                 }
@@ -76,7 +79,7 @@ public class DBManager {
             rd.close();
         }
 
-        rd = new BufferedReader(new FileReader(FoldersPaths.hugo_with_entrez));
+        rd = new BufferedReader(new FileReader(hugo_entrez_path));
         ss = new String[10];
         s = rd.readLine();
         while ((s = rd.readLine()) != null) {
@@ -90,7 +93,7 @@ public class DBManager {
         }
         rd.close();
 
-        rd = new BufferedReader(new FileReader(FoldersPaths.entrz_wo_hugo));
+        rd = new BufferedReader(new FileReader(entrz_wo_hugo));
         ss = new String[3];
         s = rd.readLine();
         while ((s = rd.readLine()) != null) {
@@ -99,7 +102,7 @@ public class DBManager {
         }
         rd.close();
 
-        rd = new BufferedReader(new FileReader(FoldersPaths.hprd_bioDB));
+        rd = new BufferedReader(new FileReader(hprd_bioDB));
         ss = new String[5];
         while ((s = rd.readLine()) != null) {
             ss = s.split("\t");
@@ -107,7 +110,7 @@ public class DBManager {
         }
         rd.close();
 
-        rd = new BufferedReader(new FileReader(FoldersPaths.tfacts_crosstable));
+        rd = new BufferedReader(new FileReader(tfacts_crosstable));
         ss = new String[2];
         while ((s = rd.readLine()) != null) {
             ss = s.split("\t");
@@ -119,8 +122,8 @@ public class DBManager {
     /**
      * Load HPRD database
      */
-    public void loadHPRD() throws FileNotFoundException, IOException {
-        //entities
+    public void loadHPRD(String dbpath_conv, String dbpath_int) throws FileNotFoundException, IOException {
+        //entities FoldersPaths.hprd_conv FoldersPaths.hprd_int
         System.out.println("+++++++++++++HPRD++++++++++++");
         List<String> db_entr;
         List<String> other_ids = new ArrayList(); //interactions , сначала пустой
@@ -129,7 +132,7 @@ public class DBManager {
         String[] ss;
         List<String[]> new_ids;
         String new_id;
-        BufferedReader rd = new BufferedReader(new FileReader(FoldersPaths.hprd_conv));
+        BufferedReader rd = new BufferedReader(new FileReader(dbpath_conv));
         HashMap<String, String> conv_map = new HashMap();
         Node n1, n2, n1_invivo, n2_invivo;
         boolean invivo = false;
@@ -140,7 +143,7 @@ public class DBManager {
         rd.close();
 
         //interactions
-        rd = new BufferedReader(new FileReader(FoldersPaths.hprd_int));
+        rd = new BufferedReader(new FileReader(dbpath_int));
         while ((s = rd.readLine()) != null) {
             if (s.contains("invivo")) {
                 invivo = true;
@@ -193,8 +196,8 @@ public class DBManager {
      *
      * @param high load all or only high confidence interactions
      */
-    public void loadHIPPIE(boolean high) throws FileNotFoundException, IOException {
-        //entities
+    public void loadHIPPIE(String dbpath_int_high, String dbpath_int_all, String dbpath_conv, boolean high) throws FileNotFoundException, IOException {
+        //entities FoldersPaths.hp_int_high FoldersPaths.hp_int FoldersPaths.hp_conv
         System.out.println("+++++++++++++Hippie++++++++++++");
         String prefix = "";
         List<String> db_entr;
@@ -206,13 +209,13 @@ public class DBManager {
         String new_id, type;
         BufferedReader rd;
         if (high) {
-            rd = new BufferedReader(new FileReader(FoldersPaths.hp_int_high));
+            rd = new BufferedReader(new FileReader(dbpath_int_high ));
             prefix = "";
         } else {
-            rd = new BufferedReader(new FileReader(FoldersPaths.hp_int));
+            rd = new BufferedReader(new FileReader(dbpath_int_all ));
             prefix = "all";
         }
-        BufferedReader conv = new BufferedReader(new FileReader(FoldersPaths.hp_conv));
+        BufferedReader conv = new BufferedReader(new FileReader(dbpath_conv ));
         Map<String, String> conv_map = new HashMap();
         Node n1, n2, n1_invivo, n2_invivo;
         int i = 0;
@@ -304,8 +307,8 @@ public class DBManager {
     /**
      * Load Signor database
      */
-    public void loadSignor() throws FileNotFoundException, IOException {
-        //entities
+    public void loadSignor(String dbpath_int, String dbpath_conv) throws FileNotFoundException, IOException {
+        //entities FoldersPaths.sg_int  FoldersPaths.sg_conv_uniprot_hgnc
         System.out.println("+++++++++++++Signor++++++++++++");
         List<String> db_entr;
         List<String> other_ids = new ArrayList(); //interactions , сначала пустой
@@ -314,8 +317,8 @@ public class DBManager {
         String[] ss;
         List<String[]> new_ids;
         String new_id, type;
-        BufferedReader rd = new BufferedReader(new FileReader(FoldersPaths.sg_int));
-        BufferedReader conv_uh = new BufferedReader(new FileReader(FoldersPaths.sg_conv_uniprot_hgnc));
+        BufferedReader rd = new BufferedReader(new FileReader(dbpath_int));
+        BufferedReader conv_uh = new BufferedReader(new FileReader(dbpath_conv));
         Map<String, String> conv_map_uh = new HashMap();
         Node n1, n2;
         int i = 0;
@@ -426,8 +429,8 @@ public class DBManager {
     /**
      * Load Signalink database
      */
-    public void loadSignalink() throws FileNotFoundException, IOException {
-        //entities
+    public void loadSignalink(String dbpath_int, String dbpath_conv) throws FileNotFoundException, IOException {
+        //entities FoldersPaths.sl_int FoldersPaths.sl_conv_uniprot_hgnc
         System.out.println("+++++++++++++Signalink++++++++++++");
         List<String> db_entr;
         List<String> other_ids = new ArrayList(); //interactions , сначала пустой
@@ -436,8 +439,8 @@ public class DBManager {
         String[] ss;
         List<String[]> new_ids;
         String new_id, direct;
-        BufferedReader rd = new BufferedReader(new FileReader(FoldersPaths.sl_int));
-        BufferedReader conv_uh = new BufferedReader(new FileReader(FoldersPaths.sl_conv_uniprot_hgnc));
+        BufferedReader rd = new BufferedReader(new FileReader(dbpath_int));
+        BufferedReader conv_uh = new BufferedReader(new FileReader(dbpath_conv));
         Map<String, String> conv_map_uh = new HashMap();
         Node n1, n2;
         int i = 0;
@@ -556,7 +559,8 @@ public class DBManager {
     /**
      * Load tFacts database
      */
-    public void loadtFacts() throws FileNotFoundException, IOException {
+    public void loadtFacts(String dbpath_int) throws FileNotFoundException, IOException {
+        // FoldersPaths.tfactsf
         System.out.println("+++++++++++++tFacts++++++++++++");
         String s;
         List<String> db_entr;
@@ -573,7 +577,7 @@ public class DBManager {
         int j = 0;
         int k = 0;
         //entities  & interactions       
-        BufferedReader rd = new BufferedReader(new FileReader(FoldersPaths.tfactsf));
+        BufferedReader rd = new BufferedReader(new FileReader(dbpath_int));
         s = rd.readLine();
         while ((s = rd.readLine()) != null) {
             i++;
@@ -652,7 +656,8 @@ public class DBManager {
     /**
      * Load KEGG database
      */
-    public void loadKEGG() throws FileNotFoundException, IOException {
+    public void loadKEGG(String dbpath_int, String dbpath_ent) throws FileNotFoundException, IOException {
+        // FoldersPaths.kegg_ent_comp FoldersPaths.kegg_int
         System.out.println("+++++++++++++KEGG++++++++++++");
         List<String> db_entr;
         List<String> other_ids = new ArrayList(); //interactions , сначала пустой
@@ -667,7 +672,7 @@ public class DBManager {
         int j = 0;
         int k = 0;
         //entities compounds and glycans only
-        BufferedReader rd = new BufferedReader(new FileReader(FoldersPaths.kegg_ent_comp));
+        BufferedReader rd = new BufferedReader(new FileReader(dbpath_ent));
         while ((s = rd.readLine()) != null) {
             i++;
             new_ids = new ArrayList();
@@ -692,7 +697,7 @@ public class DBManager {
         //interactions and genes
         ss = new String[11];
         String new_id1, new_id2;
-        rd = new BufferedReader(new FileReader(FoldersPaths.kegg_int));
+        rd = new BufferedReader(new FileReader(dbpath_int));
         while ((s = rd.readLine()) != null) {
             new_ids = new ArrayList();
             ss = s.split("\t");
@@ -756,7 +761,8 @@ public class DBManager {
     /**
      * Load TransMir database
      */
-    public void loadTransmir() throws FileNotFoundException, IOException {
+    public void loadTransmir(String dbpath_int, String dbpath_conv) throws FileNotFoundException, IOException {
+        //  FoldersPaths.trsmir_crstbl  FoldersPaths.trsmir
         System.out.println("+++++++++++++Transmir++++++++++++");
         String s;
         List<String> db_entr;
@@ -776,7 +782,7 @@ public class DBManager {
         List<String> mirna_gene_names;
         Map<String, List<String>> mirna_hugo_crtbl = new HashMap();
         List<String> tmp_list;
-        BufferedReader rd = new BufferedReader(new FileReader(FoldersPaths.trsmir_crstbl));
+        BufferedReader rd = new BufferedReader(new FileReader(dbpath_conv));
         while ((s = rd.readLine()) != null) {
             ss = s.split("\t");
             if (mirna_hugo_crtbl.containsKey(ss[0])) {
@@ -791,7 +797,7 @@ public class DBManager {
         }
         rd.close();
         //entities  & interactions       
-        rd = new BufferedReader(new FileReader(FoldersPaths.trsmir));
+        rd = new BufferedReader(new FileReader(dbpath_int));
         s = rd.readLine();
         while ((s = rd.readLine()) != null) {
             ii++;
@@ -894,7 +900,8 @@ public class DBManager {
     /**
      * Load mitTarBase database
      */
-    public void loadmirTarBase() throws FileNotFoundException, IOException {
+    public void loadmirTarBase(String dbpath_int) throws FileNotFoundException, IOException {
+        // FoldersPaths.mirtarb
         System.out.println("+++++++++++++mirTarBase++++++++++++");
         String s;
         String[] ss = new String[9];
@@ -910,7 +917,7 @@ public class DBManager {
         int k = 0;
 
         //entities  & interactions       
-        BufferedReader rd = new BufferedReader(new FileReader(FoldersPaths.mirtarb));
+        BufferedReader rd = new BufferedReader(new FileReader(dbpath_int));
         s = rd.readLine();
         while ((s = rd.readLine()) != null) {
             i++;

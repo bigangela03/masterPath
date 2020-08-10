@@ -1,4 +1,4 @@
-package masterPATH;
+package masterpath.masterpath;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -39,7 +39,7 @@ public class PathwayManager {
      * @param d_kegg Length gap for metabolic interactions
      */
     public void find_the_shortest_paths(String foundf, String outname, Network all, Map<String, String> hg, Map<String, String> fpl, int d_ppi, int d_tf, int d_mirna, int d_kegg) throws FileNotFoundException, IOException {
-        System.out.println("+++++++++++++rank_pathways++++++++++++");
+        System.out.println("+++++++++++++find_the_shortest_paths++++++++++++");
         BufferedReader rd = new BufferedReader(new FileReader(foundf));
         BufferedWriter wr = new BufferedWriter(new FileWriter(foundf + outname));
         Map<String, Map<String, List<Path_strength>>> hps = new HashMap(); //hg - path- strength
@@ -185,7 +185,11 @@ public class PathwayManager {
             for (String fplr : fplayers_names) {
                 System.out.print("\t" + fplr + "\t");
                 for (int j = 0; j < map_min_length.get(hgn).get(fplr).length; j++) {
-                    System.out.print(map_min_length.get(hgn).get(fplr)[j] + "\t");
+                    if (map_min_length.get(hgn).get(fplr)[j] < Integer.MAX_VALUE) {
+                        System.out.print(map_min_length.get(hgn).get(fplr)[j] + "\t"); 
+                    } else {
+                        System.out.print("NA" + "\t");
+                    }
                 }
                 System.out.print("\n");
 
@@ -587,7 +591,112 @@ public class PathwayManager {
         }
         rd.close();
     }
+    
+        /**
+     * Creates a file for Cytoscape software for a list of pathways 
+     * 
+     *
+     * @param path_file File with pathways
+     * @param filename File with list of pathways by id
+     * @param out_dir Output folder
+     * @param all Network
+     * @param hg Hit genes list
+     * @param fpl Final players list
+     */
+    
+    public void create_cyto_for_list_of_pathways(String path_file, String filename, String out_dir, Network all, Map<String, String[]> hugo_by_id) throws FileNotFoundException, IOException {
 
+        BufferedReader rd ;
+        BufferedWriter wr_nodes = new BufferedWriter(new FileWriter(filename + "_nodes_cyto"));
+        BufferedWriter wr_interactions = new BufferedWriter(new FileWriter(filename + "_intercations_cyto"));
+
+        String s;
+        String[] ss;
+
+
+
+  
+        rd = new BufferedReader(new FileReader(filename));
+        ArrayList<String> pathsids = new ArrayList();
+        
+        while ((s = rd.readLine()) != null) {
+            if (!pathsids.contains(s)){
+                pathsids.add(s);
+            }
+        }
+        
+        rd = new BufferedReader(new FileReader(path_file));
+        
+        String id, intr, intr1, intr2, type, dir, entry, symb1, symb2,type1, type2, entry1, entry2;
+        ArrayList<String> all_intr = new ArrayList();
+        ArrayList<String> all_nodes = new ArrayList();
+       
+        while ((s = rd.readLine()) != null) {     
+            ss = s.split("\t");
+            id = ss[0];            
+            if (pathsids.contains(id)) {
+                for ( int j = 2; j < ss.length -1 ; j++){
+                    intr = ss[j];
+                    try {
+                        intr1 = all.interactions.get(intr).int1.id;                      
+                    } catch (NullPointerException e) {
+                        intr1 = all.interactions.get(intr).sourcedbentry.get(0);
+                    }
+                    try {
+                        intr2 = all.interactions.get(intr).int2.id;                      
+                    } catch (NullPointerException e) {
+                        intr2 = all.interactions.get(intr).sourcedbentry.get(0);
+                    }
+                    dir = all.interactions.get(intr).dir;
+                    type = all.interactions.get(intr).type;
+                    
+                    entry = intr1 + "\t" + intr2 + "\t" + type + "\t" + dir;
+                    if (!all_intr.contains(entry)){
+                        all_intr.add(entry);
+                    }
+                    
+                    if (intr1.startsWith("pHGNC")){
+                        symb1 = "p" + hugo_by_id.get(intr1.substring(1))[1];
+                    } else if (intr1.startsWith("HGNC")) {
+                        symb1 = hugo_by_id.get(intr1)[1];
+                    } else {
+                        symb1 = intr1;
+                    }
+                    if (intr2.startsWith("pHGNC")){
+                        symb2 = "p" + hugo_by_id.get(intr2.substring(1))[1];
+                    } else if (intr1.startsWith("HGNC")) {
+                        symb2 = hugo_by_id.get(intr2)[1];
+                    } else {
+                        symb2 = intr2;
+                    }
+                    
+                    type1 = all.nodes.get(intr1).type;
+                    
+                    type2 = all.nodes.get(intr2).type;
+                    entry1 = intr1 + "\t" + symb1 + "\t" + type1;
+                    entry2 = intr2 + "\t" + symb2 + "\t" + type2;
+                    if (!all_nodes.contains(entry1)){
+                        all_nodes.add(entry1);
+                    }
+                    if (!all_nodes.contains(entry2)){
+                        all_nodes.add(entry2);
+                    }                    
+                }
+            } 
+        }
+        
+        for (String ent : all_intr){
+            wr_interactions.write(ent + "\n");
+        }
+        for (String ent : all_nodes){
+            wr_nodes.write(ent + "\n");
+        }
+        wr_interactions.close();
+        wr_nodes.close();
+        rd.close();
+    }
+        
+        
     private void create_cyto_for_comparisson(String com, String p1, String p1_single_max, String p2, String p2_single_max, String out, Network all) throws FileNotFoundException, IOException {
         //, Map<String, String> hg, Map<String, String> fpl
         BufferedReader rd;

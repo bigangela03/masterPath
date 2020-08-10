@@ -1,4 +1,4 @@
-package masterPATH;
+package masterpath.masterpath;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -20,9 +20,10 @@ import java.util.Map;
  */
 public class NetworkManager {
 
-    static Map<String, String> fpl = new HashMap();
-    static Map<String, String> hg = new HashMap();
-
+    Map<String, String> fpl = new HashMap();
+    Map<String, String> hg = new HashMap();
+    
+    
     /**
      * Merge list of networks
      *
@@ -110,8 +111,8 @@ public class NetworkManager {
             nw.nodes.get(s).upnbrs = new HashMap();
             nw.nodes.get(s).revnbrs = new HashMap();
         }
-        System.out.println("sum degree1 " + sum_degree);
-        System.out.println("interactions1 " + nw.interactions.size());
+//        System.out.println("sum degree1 " + sum_degree);
+//        System.out.println("interactions1 " + nw.interactions.size());
 
         for (String it : nw.interactions.keySet()) {
             if (nw.interactions.get(it).int1.type.toLowerCase().equals("stimulus")
@@ -243,6 +244,7 @@ public class NetworkManager {
         for (String s : it_type.keySet()) {
             // System.out.println(s);
         }
+        int numb_nodes = 0;
         sum_degree = 0;
         for (String s : nw.nodes.keySet()) {
             sum_degree = sum_degree + nw.nodes.get(s).downnbrs.size()
@@ -251,13 +253,21 @@ public class NetworkManager {
             sum_degree_down = sum_degree_down + nw.nodes.get(s).downnbrs.size();
             sum_degree_up = sum_degree_up + nw.nodes.get(s).upnbrs.size();
             sum_degree_rev = sum_degree_rev + nw.nodes.get(s).revnbrs.size();
+            
+            if (nw.nodes.get(s).downnbrs.size()
+                    + nw.nodes.get(s).upnbrs.size()
+                    + nw.nodes.get(s).revnbrs.size() > 0) {
+                numb_nodes += 1;
+            }
         }
-        System.out.println("indirect count " + indirect_count + " direct_count " + direct_count);
-        System.out.println("sum degree2 " + sum_degree);
-        System.out.println("sum degree down " + sum_degree_down);
-        System.out.println("sum degree up " + sum_degree_up);
-        System.out.println("sum degree rev " + sum_degree_rev);
-        System.out.println("interactions2 " + nw.interactions.size());
+        System.out.println("Number of nodes: " + numb_nodes);
+        System.out.println("Number of undirected interactions: " + indirect_count + " number of directed interactions: " + direct_count);
+        
+//        System.out.println("sum degree2 " + sum_degree);
+//        System.out.println("sum degree down " + sum_degree_down);
+//        System.out.println("sum degree up " + sum_degree_up);
+//        System.out.println("sum degree rev " + sum_degree_rev);
+//        System.out.println("interactions2 " + nw.interactions.size());
     }
 
     /**
@@ -267,7 +277,7 @@ public class NetworkManager {
      * @param fpf Final players file
      * @param hugo Link to the HGNC nomenclature
      */
-    public void load_hitlist_and_finalimpl(String hgf, String fpf, Map<String, String[]> hugo) throws FileNotFoundException, IOException {
+    public void load_hitlist_and_finalimpl(Network nw, String hgf, String fpf, Map<String, String[]> hugo) throws FileNotFoundException, IOException {
         System.out.println(" +++++++++++++loadHitGenes_and_FinalPlayers++++++++++++ ");
         System.out.println("Loading hit list and fplayers files");
         char[] alphabet = "123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
@@ -275,6 +285,7 @@ public class NetworkManager {
         //loadHitGenes_and_FinalPlayers(hgf, fpf, hugo);
         fpl = new HashMap<String, String>();
         hg = new HashMap<String, String>();
+        String [] types_of_nodes = new String[]{"protein", "gene", "chemical", "mirna"};
         String s;
         String[] ss;
         int i = 0;
@@ -282,77 +293,104 @@ public class NetworkManager {
         BufferedReader rd = new BufferedReader(new FileReader(fpf));
         while ((s = rd.readLine()) != null) {
             ss = s.split("\t");
-            fpl.put(ss[1], ss[0]);
-        }
-        rd.close();
-        rd = new BufferedReader(new FileReader(hgf));
-        boolean flag = false;
-        String sep = "";
-        while ((s = rd.readLine()) != null) {
-            i++;
-            if (hugo.containsKey(s)) {
-                flag = false;
-                if (s.startsWith("MIR") && (hugo.get(s)[2].startsWith("microRNA"))) {
-                    if (s.contains("LET")) {
-                        hg.put("hsa-let-" + s.substring(6).toLowerCase(), s);
-                        flag = true;
-                        //   System.out.println(s + "\t" + "hsa-let-" + s.substring(6));
-                    } else {
-                        flag = true;
-                        hg.put("hsa-mir-" + s.substring(3).toLowerCase(), s);
-                        //  System.out.println(s + "\t" + "hsa-mir-" + s.substring(3));
-                    }
-                } else {
-                    flag = true;
-                    hg.put("p" + hugo.get(s)[0], "p" + s);// hit gene - gene
-                }
-            } else if (s.startsWith("MIR")) {
-                flag = false;
-                for (char c : alphabet) {
-                    if (s.contains("LET")) {
-                        if (hugo.containsKey(s + c) && !(Character.isDigit(c) && Character.isDigit(s.charAt(s.length() - 1)))) {
-                            if (Character.isDigit(c)) {
-                                hg.put("hsa-let-" + s.substring(6).toLowerCase() + "-" + c, s + c);
-                            } else {
-                                hg.put("hsa-let-" + s.substring(6).toLowerCase() + "" + c, s + c);
-                            }
-                            flag = true;
-                        }
-                        if (hugo.containsKey(s + "-" + c)) {
-                            hg.put("hsa-let-" + s.substring(6).toLowerCase() + "-" + c, s);
-                            flag = true;
-                        }
-                    } else {
-                        if (hugo.containsKey(s + c) && !(Character.isDigit(c) && Character.isDigit(s.charAt(s.length() - 1)))) {
-                            if (Character.isDigit(c)) {
-                                hg.put("hsa-mir-" + s.substring(3).toLowerCase() + "-" + c, s + c);
-                            } else {
-                                hg.put("hsa-mir-" + s.substring(3).toLowerCase() + c, s + c);
-                            }
-                            flag = true;
-                        }
-                        if (hugo.containsKey(s + "-" + c)) {
-                            hg.put("hsa-mir-" + s.substring(3).toLowerCase(), s);
-                            flag = true;
-                        }
-                    }
-                }
+            if ( !"".equals(s) && (ss.length < 2) ) {
+                System.err.println("Bad format for final implementer file. Symbol /tab/ Id .");
+                System.exit(1);
             }
-            if (!flag) {
-                System.out.println("Not in HUGO! " + s);
+            if (nw.nodes.containsKey(ss[1]) ) {
+                fpl.put(ss[1], ss[0]);
+                
+                i++;
             } else {
-                j++;
+                System.out.println(ss[0] + "\t" + ss[1] + " is not in the network");
             }
-
         }
-        /*if (s.equals("MIR206")) {
-         hg.put("hsa-mir-206", s);
-         } */
+        rd.close();
+        
+        
+        rd = new BufferedReader(new FileReader(hgf));
+        
+        while ((s = rd.readLine()) != null) {
+            ss = s.split("\t");
+            if ( !"".equals(s) && (ss.length < 2) ) {
+                System.err.println("Bad format for hit list file. Symbol /tab/ Id .");
+                System.exit(1);
+            }
+            if (nw.nodes.containsKey(ss[1]) ) {
+                hg.put(ss[1], ss[0]);
+                //System.out.println(s + "\t" + nw.nodes.get(ss[1]).type);
+                j++;
+            } else {
+                System.out.println(ss[0] + "\t" + ss[1] + " is not in the network");
+            }
+        }
+        rd.close();
+        
+        
+//        boolean flag = false;
+//        String sep = "";
+//        while ((s = rd.readLine()) != null) {
+//            i++;
+//            if (hugo.containsKey(s)) {
+//                flag = false;
+//                if (s.startsWith("MIR") && (hugo.get(s)[2].startsWith("microRNA"))) {
+//                    if (s.contains("LET")) {
+//                        hg.put("hsa-let-" + s.substring(6).toLowerCase(), s);
+//                        flag = true;
+//                        //   System.out.println(s + "\t" + "hsa-let-" + s.substring(6));
+//                    } else {
+//                        flag = true;
+//                        hg.put("hsa-mir-" + s.substring(3).toLowerCase(), s);
+//                        //  System.out.println(s + "\t" + "hsa-mir-" + s.substring(3));
+//                    }
+//                } else {
+//                    flag = true;
+//                    hg.put("p" + hugo.get(s)[0], "p" + s);// hit gene - gene
+//                }
+//            } else if (s.startsWith("MIR")) {
+//                flag = false;
+//                for (char c : alphabet) {
+//                    if (s.contains("LET")) {
+//                        if (hugo.containsKey(s + c) && !(Character.isDigit(c) && Character.isDigit(s.charAt(s.length() - 1)))) {
+//                            if (Character.isDigit(c)) {
+//                                hg.put("hsa-let-" + s.substring(6).toLowerCase() + "-" + c, s + c);
+//                            } else {
+//                                hg.put("hsa-let-" + s.substring(6).toLowerCase() + "" + c, s + c);
+//                            }
+//                            flag = true;
+//                        }
+//                        if (hugo.containsKey(s + "-" + c)) {
+//                            hg.put("hsa-let-" + s.substring(6).toLowerCase() + "-" + c, s);
+//                            flag = true;
+//                        }
+//                    } else {
+//                        if (hugo.containsKey(s + c) && !(Character.isDigit(c) && Character.isDigit(s.charAt(s.length() - 1)))) {
+//                            if (Character.isDigit(c)) {
+//                                hg.put("hsa-mir-" + s.substring(3).toLowerCase() + "-" + c, s + c);
+//                            } else {
+//                                hg.put("hsa-mir-" + s.substring(3).toLowerCase() + c, s + c);
+//                            }
+//                            flag = true;
+//                        }
+//                        if (hugo.containsKey(s + "-" + c)) {
+//                            hg.put("hsa-mir-" + s.substring(3).toLowerCase(), s);
+//                            flag = true;
+//                        }
+//                    }
+//                }
+//            }
+//            if (!flag) {
+//                System.out.println("Not in HUGO! " + s);
+//            } else {
+//                j++;
+//            }
+//
+//        }
+
 
         rd.close();
 
-        System.out.println(j
-                + "/" + i + " finished");
+        System.out.println("Loaded " + j + " hit genes, " + i + " final implementers");
     }
 
     private int return_node_type(String current_node) {
@@ -446,7 +484,7 @@ public class NetworkManager {
                 }
             }
 ////////////////////////////////////////////////////////////////////////////////
-            for (int i = 2; i <= 5; i++) {
+            for (int i = 2; i <= max; i++) {
                 int p_s = paths.size();
                 System.out.println("length " + i + "\t" + "paths size " + paths.size());
                 tmp_paths = new ArrayList();
@@ -487,7 +525,7 @@ public class NetworkManager {
                                 continue_length++;
                                 continue;
                             }
-                            if (i < 5) {
+                            if (i < max) {
                                 tmp_paths.add(tmp_curn);
                                 if (visited_nodes.containsKey(n) && Arrays.equals(only_ppi, visited_nodes.get(curn.current_seed))) {
                                     tmp_path_type = visited_nodes.get(n).clone();
@@ -548,9 +586,11 @@ public class NetworkManager {
                         }
                     }
                     if (paths.size() > 50000) {
+                       // System.out.print("Processing .." + "\n");
                         if ((j % 50000) == 0) {
-                            System.out.print(j + "\t");
+                           // System.out.print(j + "\t");
                         }
+                        
                     }
                 }
                 //System.out.println("continue_length " + continue_length);
@@ -561,7 +601,7 @@ public class NetworkManager {
                 visited_nodes.putAll(tmp_visited_nodes);
             }
 ////////////////////////////////////////////////////////////////////////////////
-            System.out.println("Fruitfull seeds");
+           // System.out.println("Fruitfull seeds");
             for (PathUnit pu : pre_found) {
                 for (String seed : pu.seeds) {
                     if (!fruitfull_seeds.contains(seed)) {
@@ -570,7 +610,7 @@ public class NetworkManager {
                     visited_depth.remove(seed);
                 }
             }
-            System.out.println("Visited depth");
+           // System.out.println("Visited depth");
             if (paths.size() <= 200000) {
                 for (PathUnit pu : paths) {
                     jj = 0;
@@ -582,12 +622,12 @@ public class NetworkManager {
                     }
                 }
             }
-            System.out.println("Writing" + pre_found.size());
+           // System.out.println("Writing" + pre_found.size());
 
             //          for (int i = 0; i < pre_found.size(); i++) {
             for (PathUnit pu : pre_found) {
                 if ((id % 10000) == 0) {
-                    System.out.println(id);
+                    //  System.out.println(id);
                 }
                 id++;
                 //tmp_s = prefix + id + "\t" + beg;
@@ -601,7 +641,7 @@ public class NetworkManager {
                 out.write(tmp_s);
                 //  out.newLine();
             }
-            System.out.println("New vars");
+            // System.out.println("New vars");
             found = new LinkedList();
             pre_found = new LinkedList();
             paths = new ArrayList();
@@ -788,7 +828,7 @@ public class NetworkManager {
                     }
                     if (paths.size() > 50000) {
                         if ((j % 50000) == 0) {
-                            System.out.print(j + "\t");
+                            //System.out.print(j + "\t");
                         }
                     }
 
@@ -801,7 +841,7 @@ public class NetworkManager {
                 visited_nodes.putAll(tmp_visited_nodes);
             }
 ////////////////////////////////////////////////////////////////////////////////
-            System.out.println("Fruitfull seeds");
+            //System.out.println("Fruitfull seeds");
             for (PathUnit pu : pre_found) {
                 for (String seed : pu.seeds) {
                     if (!fruitfull_seeds.contains(seed)) {
@@ -810,7 +850,7 @@ public class NetworkManager {
                     visited_depth.remove(seed);
                 }
             }
-            System.out.println("Visited depth");
+            //System.out.println("Visited depth");
             if (paths.size() <= 200000) {
                 for (PathUnit pu : paths) {
                     jj = 0;
@@ -822,12 +862,12 @@ public class NetworkManager {
                     }
                 }
             }
-            System.out.println("Writing" + pre_found.size());
+            //System.out.println("Writing" + pre_found.size());
 
             //          for (int i = 0; i < pre_found.size(); i++) {
             for (PathUnit pu : pre_found) {
                 if ((id % 10000) == 0) {
-                    System.out.println(id);
+                    //System.out.println(id);
                 }
                 id++;
                 //tmp_s = prefix + id + "\t" + beg;
@@ -841,7 +881,7 @@ public class NetworkManager {
                 out.write(tmp_s);
                 //  out.newLine();
             }
-            System.out.println("New vars");
+            //System.out.println("New vars");
             found = new LinkedList();
             pre_found = new LinkedList();
             paths = new ArrayList();

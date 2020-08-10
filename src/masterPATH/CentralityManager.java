@@ -1,7 +1,7 @@
 /*
 
  */
-package masterPATH;
+package masterpath.masterpath;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -271,7 +271,7 @@ public class CentralityManager {
      * DBManager class
      */
     public void add_hgnc_symbols_to_paths(String inf, String outf, Network all, Map<String, String[]> hugo_by_id) throws IOException {
-        System.out.println("+++++++++++++put_names_for_overreprs_unique++++++++++++");
+        System.out.println("+++++++++++++add_symbols_to_paths++++++++++++");
         BufferedReader rd = new BufferedReader(new FileReader(inf));
         BufferedWriter wr = new BufferedWriter(new FileWriter(outf));
         String s, n1, n2, scon1 = "", scon2 = "", scon, sn1, sn2;
@@ -289,7 +289,7 @@ public class CentralityManager {
             ss = s.split("\t");
             path_names = "";
             i = 0;
-            //for (int i = 0; i < ss.length - 2; i++) {
+            
             paths = ss[ss.length - 2];
             pths = paths.split(";");
             String s1, s2;
@@ -302,16 +302,21 @@ public class CentralityManager {
                     } else {
                         s1 = hugo_by_id.get(tmp2[0])[1];
                     }
+                } catch (NullPointerException e) {
+                    s1 = tmp2[0];
+                }
+                try{
                     if (tmp2[1].startsWith("p")) {
                         s2 = "p" + hugo_by_id.get(tmp2[1].substring(1))[1];
                     } else {
                         s2 = hugo_by_id.get(tmp2[1])[1];
                     }
-                    path_names = path_names + ";" + s1 + "-" + s2 + "_" + tmp1[1];
+                    
                 } catch (NullPointerException e) {
-                    System.out.println(p);
-                    break;
+                    s2 = tmp2[1];
                 }
+                path_names = path_names + ";" + s1 + "-" + s2 + "_" + tmp1[1];
+                
             }
             t = "";
             len = 0;

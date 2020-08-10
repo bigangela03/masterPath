@@ -1,4 +1,4 @@
-package masterPATH;
+package masterpath.masterpath;
 
 
 import java.io.BufferedReader;
@@ -149,46 +149,46 @@ public class Network {
     public void integrateNetworks(NetworkManager nutils, PathwayManager putils, CentralityManager outils, DBManager dbutils, int [] db) throws IOException {
         Network all=new Network();
         List<Network> networks = new ArrayList();
-        
+        String dbpath = "";
         if (db[0] == 1){
-            dbutils.loadHPRD();
+            dbutils.loadHPRD(dbpath, dbpath);
             networks.add(dbutils.hprd);
         }
         
         
         if (db[1] == 1) {
-            dbutils.loadHIPPIE(false);
+            dbutils.loadHIPPIE(dbpath, dbpath, dbpath, false);
             networks.add(dbutils.hippie_high);
         }
         
         
         if (db[2] == 1) {
-            dbutils.loadSignor();
+            dbutils.loadSignor(dbpath, dbpath);
             networks.add(dbutils.signor);
         }
         
         if (db[3] == 1) {
-            dbutils.loadSignalink();
+            dbutils.loadSignalink(dbpath, dbpath);
             networks.add(dbutils.signalink);
         }
         
         if (db[4] == 1) {
-            dbutils.loadKEGG();
+            dbutils.loadKEGG(dbpath, dbpath);
             networks.add(dbutils.kegg);
         }
         
         if(db[5] == 1){
-            dbutils.loadTransmir();
+            dbutils.loadTransmir(dbpath, dbpath);
             networks.add(dbutils.transmir);
         }
         
         if(db[6] == 1){
-            dbutils.loadmirTarBase();
+            dbutils.loadmirTarBase(dbpath);
             networks.add(dbutils.mirtarbase);
         }
         
         if(db[7] == 1){
-            dbutils.loadtFacts();
+            dbutils.loadtFacts(dbpath);
             networks.add(dbutils.tfacts);
         }
          
