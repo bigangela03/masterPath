@@ -1,4 +1,4 @@
-package masterpath.masterpath;
+package masterPATH;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -1350,7 +1350,6 @@ public class PathwayManager {
 
 class ListComparator implements Comparator<String[]> {
 
-    @Override
     public int compare(String[] a, String[] b) {
         return Integer.parseInt(a[0]) > Integer.parseInt(b[0]) ? -1 : Integer.parseInt(a[0]) == Integer.parseInt(b[0]) ? 0 : 1;
     }
@@ -1369,7 +1368,6 @@ class String_Int {
 
 class MaxOccComparator implements Comparator<String_Int> {
 
-    @Override
     public int compare(String_Int a, String_Int b) {
         return a.it > b.it ? -1 : b.it == a.it ? 0 : 1;
     }

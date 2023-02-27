@@ -1,4 +1,4 @@
-package masterpath.masterpath;
+package masterPATH;
 
 import java.io.IOException;
 import java.util.List;

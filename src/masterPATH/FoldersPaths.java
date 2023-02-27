@@ -1,4 +1,4 @@
-package masterpath.masterpath;
+package masterPATH;
 
 /**
  * FolderPaths class contains system paths to databases files, files with pathways, paths, nodes, etc

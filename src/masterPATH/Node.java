@@ -1,4 +1,4 @@
-package masterpath.masterpath;
+package masterPATH;
 
 import java.util.HashMap;
 import java.util.List;

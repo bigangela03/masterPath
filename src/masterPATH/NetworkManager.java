@@ -1,4 +1,4 @@
-package masterpath.masterpath;
+package masterPATH;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -292,7 +292,11 @@ public class NetworkManager {
         int j = 0;
         BufferedReader rd = new BufferedReader(new FileReader(fpf));
         while ((s = rd.readLine()) != null) {
-            ss = s.split("\t");
+            ss = s.split("\t"); 
+            /********Angela test code************/
+            //System.out.println("fpf is " + fpf + "\ns is " + s);
+            /************************************/
+            
             if ( !"".equals(s) && (ss.length < 2) ) {
                 System.err.println("Bad format for final implementer file. Symbol /tab/ Id .");
                 System.exit(1);

@@ -1,4 +1,4 @@
-package masterpath.masterpath;
+package masterPATH;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,11 +35,18 @@ public class masterPATH {
 //        String entrz_wo_hugo= userDirectory + File.separator + "files" + File.separator + "entrez_wo_hugo.txt" ;
 //        String hprd_bioDB = userDirectory + File.separator + "files" + File.separator + "missed_hprd_to_hugo_bioDB.txt" ;
 //        String tfacts_crosstable = userDirectory + File.separator + "files" + File.separator + "tfacts_crosstable.txt" ;
-        String hugo_path = "/files" + File.separator + "hugo_all_17Jun.txt";
-        String hugo_entrez_path = "/files" + File.separator + "HUGO_with_entrezid.txt";
-        String entrz_wo_hugo = "/files" + File.separator + "entrez_wo_hugo.txt";
-        String hprd_bioDB = "/files" + File.separator + "missed_hprd_to_hugo_bioDB.txt";
-        String tfacts_crosstable = "/files" + File.separator + "tfacts_crosstable.txt";
+      //  String hugo_path = "/files" + File.separator + "hugo_all_17Jun.txt";
+      //  String hugo_entrez_path = "/files" + File.separator + "HUGO_with_entrezid.txt";
+      //  String entrz_wo_hugo = "/files" + File.separator + "entrez_wo_hugo.txt";
+      //  String hprd_bioDB = "/files" + File.separator + "missed_hprd_to_hugo_bioDB.txt";
+      //  String tfacts_crosstable = "/files" + File.separator + "tfacts_crosstable.txt";
+        
+        String hugo_path = "IDconversion" + File.separator + "hugo_all_17Jun.txt";
+        String hugo_entrez_path = "IDconversion" + File.separator + "HUGO_with_entrezid.txt";
+        String entrz_wo_hugo = "IDconversion" + File.separator + "entrez_wo_hugo.txt";
+        String hprd_bioDB = "IDconversion" + File.separator + "missed_hprd_to_hugo_bioDB.txt";
+        String tfacts_crosstable = "IDconversion" + File.separator + "tfacts_crosstable.txt";
+
 
         DBManager dbutils = new DBManager(hugo_path, hugo_entrez_path, entrz_wo_hugo, hprd_bioDB, tfacts_crosstable);
         NetworkManager nutils = new NetworkManager();
@@ -129,6 +136,26 @@ public class masterPATH {
         String outputFolder = cmd.getOptionValue("output");
         String mode = cmd.getOptionValue("mode");
         String pathlist = cmd.getOptionValue("pathlist");
+        
+        
+        
+        System.out.println(finalImplementers);
+        
+        /**************************************************************/
+        //Angela: assign value to parameters mannually
+        maxLengthString = "100";
+        minPathLengthString = "20";
+        maxPathLengthString = "80";
+        minCentralityString = "3";
+        threadsString = "1";
+        maxRandomString = "3";
+        prefix = "testrunning";
+        
+        /**************************************************************/
+        
+        
+        
+        
 
         // System.out.println(hitList);
         if (!"paths".equals(mode) && !"network".equals(mode)) {
@@ -179,10 +206,17 @@ public class masterPATH {
 //                        userDirectory + File.separator + "files" + File.separator + "Nodes.updatedApril2019", 
 //                        userDirectory + File.separator + "files" + File.separator + "Interactions.updatedApril2019"
 //                );
+            	/*
                 nw = wr.load_network(
                         "/files" + File.separator + "Nodes.updatedApril2019",
                         "/files" + File.separator + "Interactions.updatedApril2019"
                 );
+                */
+            	
+            	 nw = wr.load_network(
+                         "Networks" + File.separator + "Nodes.updatedApril2019",
+                         "Networks" + File.separator + "Interactions.updatedApril2019"
+                 );
 
                 nwType = "integrated";
                 break;
@@ -192,9 +226,12 @@ public class masterPATH {
 //                        userDirectory + File.separator + "files" + File.separator + "nodes_hippie_h",
 //                        userDirectory + File.separator + "files" + File.separator + "int_hippie_h"
 //                );
+            	
+            	//Angela: nodes_hippie_h can't be found in Examples folder!
                 nw = wr.load_network(
                         "/files" + File.separator + "nodes_hippie_h",
                         "/files" + File.separator + "int_hippie_h"
+                                            
                 );
                 nwType = "ppi";
                 break;
@@ -229,7 +266,7 @@ public class masterPATH {
                 }
                 minPathLength = Integer.parseInt(minPathLengthString);
             } catch (NumberFormatException e) {
-                System.err.println("Max length of paths for Breadth first algoritm should be an integer value");
+                System.err.println("Min length of paths for Breadth first algoritm should be an integer value");
                 System.exit(1);
             }
 
