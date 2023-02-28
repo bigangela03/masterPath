@@ -1,0 +1,32 @@
+
+1. change the package name in each java file. in src folder, type:
+find masterPATH/ -type f -exec sed -i -e "s/masterpath.masterpath/masterPATH/g" {} \;
+
+2. add libray to pathBuilder
+
+3. install Apache Commons CLI
+go to website 
+https://commons.apache.org/proper/commons-cli/download_cli.cgi
+
+download commons-cli-1.5.0-bin.tar.gz in option "Binaries".
+upzip it. JAR files are included. add jar file in "Properties/Java Build Path/Libraries/Add External JARs"
+
+some tutorial: https://www.tutorialspoint.com/commons_cli/commons_cli_environment.htm
+
+OS	Archive name
+Windows	commons-cli-1.4-bin.zip
+Linux	commons-cli-1.4-bin.tar.gz
+Mac	commons-cli-1.4-bin.tar.gz
+
+4. change paths to the database in source code in masterPATH.java
+
+for hugo_path etc at the beginning of the main function, change "/files" to "IDconversion" folder.
+
+for networkType "integrated", change "/files" to "Networks". 
+for networkType "ppi", "nodes_hippie_h" and "int_hippie_h" files are not not in Examples folder.
+
+5. in masterPATH.java, for parameter minPathLengthString, change "Max length of paths for Breadth first algoritm should be an integer value" to "Min length of paths for Breadth first algoritm should be an integer value" (since there are maxLengthString, minPathLenthString, and maxPathLengthString, I am not sure what they really means in algorithm, and the error message in Java source code is quite confusing)
+
+6.
+I used implementers file in DNA repair folder in Examples, but the format is reported to be incorrect. So I have to try Muscle Differentiation data.
+
