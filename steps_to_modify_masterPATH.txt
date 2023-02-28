@@ -30,3 +30,11 @@ for networkType "ppi", "nodes_hippie_h" and "int_hippie_h" files are not not in 
 6.
 I used implementers file in DNA repair folder in Examples, but the format is reported to be incorrect. So I have to try Muscle Differentiation data.
 
+7.
+Add arguments when running:
+-n integrated  -hl "Examples/Muscle Differentiation/miRNA_hit_list"
+-fp "Examples/Muscle Differentiation/Final implementers"
+-o "Angela_output"
+-m paths
+
+
