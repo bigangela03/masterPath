@@ -151,6 +151,20 @@ public class masterPATH {
         maxRandomString = "3";
         prefix = "testrunning";
         
+        networkType = "integrated";
+        outputFolder = "Angela_output";
+        mode = "paths";
+        finalImplementers = "Examples/Muscle Differentiation/Final implementers";
+        hitList = "Examples/Muscle Differentiation/miRNA_hit_list";
+        
+        /********the above can also be implemented in arguments as follows*******/
+        /*
+        -n integrated  -hl "/home/bigangela03/eclipse-test/masterPATH/Examples/Muscle Differentiation/miRNA_hit_list"
+        -fp "Examples/Muscle Differentiation/Final implementers"
+        -o "Angela_output"
+        -m paths
+        */
+        
         /**************************************************************/
         
         
